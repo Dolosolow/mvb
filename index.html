@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- owl-carosuel -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    />
+    <!-- booststrap - googlefont - font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script src="https://kit.fontawesome.com/e9063b30c3.js"></script>
+    <link rel="stylesheet" href="../css/card.css" />
+    <link rel="stylesheet" href="../css/owl-carosuel.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/pages.css" />
+    <link rel="stylesheet" href="../css/navbar.css" />
+    <!-- end of support links & scripts -->
+    <title>FLIX</title>
+  </head>
+
+  <body>
+    <nav class="main-nav">
+      <div class="navbar-brand">FLIX</div>
+      <div class="container-fluid">
+        <ul class="navigation">
+          <li>
+            <a href="./index.html">Movies</a>
+          </li>
+          <li>
+            <a href="./wine_dine.html">Wine & Dine</a>
+          </li>
+          <li>
+            <a href="./events.html">Events</a>
+          </li>
+          <li>
+            <a href="#">Membership</a>
+          </li>
+          <li>
+            <a href="#">Locations</a>
+          </li>
+          <li>
+            <a href="#">Sign in</a>
+          </li>
+          <li>
+            <a href="#">Sign up</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="navigation-wrapper"></div>
+        <ul class="navigation-collapse">
+          <span></span>
+          <li class="hide">
+            <a href="./index.html">Movies</a>
+          </li>
+          <li class="hide">
+            <a href="./wine_dine.html">Wine & Dine</a>
+          </li>
+          <li class="hide">
+            <a href="./events.html">Events</a>
+          </li>
+          <li class="hide">
+            <a href="#">Membership</a>
+          </li>
+          <li class="hide">
+            <a href="#">Locations</a>
+          </li>
+          <li class="hide">
+            <a href="#">Sign in</a>
+          </li>
+          <li class="hide">
+            <a href="#">Sign up</a>
+          </li>
+          <h4 class="hide">MORE</h4>
+          <li>
+            <a href="#">flix life</a>
+          </li>
+          <li>
+            <a href="#">shop</a>
+          </li>
+          <li>
+            <a href="#">careers</a>
+          </li>
+          <li>
+            <a href="#">in the news</a>
+          </li>
+          <li>
+            <a href="#">about us</a>
+          </li>
+          <li>
+            <a href="#">contact us</a>
+          </li>
+          <li style="margin-left: 60px;">
+            <img
+              src="https://conference.ccra-acrc.ca/wp-content/uploads/2019/10/app-store-300x200.png"
+              alt="download on store"
+              width="180px"
+            />
+          </li>
+        </ul>
+      </div>
+      <div class="hamburger">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="70"
+          height="70"
+          viewBox="0 0 200 200"
+        >
+          <g stroke-width="5" stroke-linecap="round">
+            <path
+              d="M72 82.286h28.75"
+              fill="#009100"
+              fill-rule="evenodd"
+              stroke="#000"
+            />
+            <path
+              d="M100.75 103.714l72.482-.143c.043 39.398-32.284 71.434-72.16 71.434-39.878 0-72.204-32.036-72.204-71.554"
+              fill="none"
+              stroke="#000"
+            />
+            <path
+              d="M72 125.143h28.75"
+              fill="#009100"
+              fill-rule="evenodd"
+              stroke="#000"
+            />
+            <path
+              d="M100.75 103.714l-71.908-.143c.026-39.638 32.352-71.674 72.23-71.674 39.876 0 72.203 32.036 72.203 71.554"
+              fill="none"
+              stroke="#000"
+            />
+            <path
+              d="M100.75 82.286h28.75"
+              fill="#009100"
+              fill-rule="evenodd"
+              stroke="#000"
+            />
+            <path
+              d="M100.75 125.143h28.75"
+              fill="#009100"
+              fill-rule="evenodd"
+              stroke="#000"
+            />
+          </g>
+        </svg>
+      </div>
+    </nav>
+    <div class="main">
+      <header class="t-nav">
+        <ul>
+          <li class="active">
+            <a>Today</a>
+          </li>
+          <li>
+            <a>Tomorrow</a>
+          </li>
+          <li>
+            <a>Future</a>
+          </li>
+        </ul>
+      </header>
+      <!-- https://images-na.ssl-images-amazon.com/images/I/81AJdOIEIhL._SL1500_.jpg -->
+      <section class="showtimes owl-carousel owl-theme owl-loaded">
+        <div class="card">
+          <img
+            src="https://static.ipic.com/filmimage/HO00001946/Jumanji_The_Next_Level.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <a class="card-title">JUMANJI: THE NEXT LEVEL</a>
+            <p class="card-text text-muted">
+              <span class="text-uppercase">R | 114 min</span> <br />Accessiblity
+              devices available
+            </p>
+            <div class="card-showtimes">
+              <a href="#" class="times">6:30pm<span></span></a>
+              <a href="#" class="times">7:25pm<span></span></a>
+              <a href="#" class="times">8:45pm<span></span></a>
+              <a href="#" class="times">10:15pm<span></span></a>
+              <a href="#" class="times">10:30pm<span></span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            src="https://static.ipic.com/filmimage/HO00001934/Frozen_II.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <a class="card-title">FROZEN 2</a>
+            <p class="card-text text-muted">
+              <span class="text-uppercase">R | 114 min</span> <br />Accessiblity
+              devices available
+            </p>
+            <div class="card-showtimes">
+              <a href="#" class="times">6:30pm<span></span></a>
+              <a href="#" class="times">7:25pm<span></span></a>
+              <a href="#" class="times">8:45pm<span></span></a>
+              <a href="#" class="times">10:15pm<span></span></a>
+              <a href="#" class="times">10:30pm<span></span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            src="https://static.ipic.com/filmimage/HO00001928/Ford_v_Ferrari.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <a class="card-title">Ford v Ferrari</a>
+            <p class="card-text text-muted">
+              <span class="text-uppercase">R | 114 min</span> <br />Accessiblity
+              devices available
+            </p>
+            <div class="card-showtimes">
+              <a href="#" class="times">6:30pm<span></span></a>
+              <a href="#" class="times">8:45pm<span></span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            src="https://static.ipic.com/filmimage/HO00001952/6_Underground.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <a class="card-title">6 Underground</a>
+            <p class="card-text text-muted">
+              <span class="text-uppercase">R | 114 min</span> <br />Accessiblity
+              devices available
+            </p>
+            <div class="card-showtimes">
+              <a href="#" class="times">6:30pm<span></span></a>
+              <a href="#" class="times">7:25pm<span></span></a>
+              <a href="#" class="times">8:45pm<span></span></a>
+              <a href="#" class="times">10:15pm<span></span></a>
+              <a href="#" class="times">10:30pm<span></span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            src="https://static.ipic.com/filmimage/HO00001944/Knives_Out.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <a class="card-title">knives out</a>
+            <p class="card-text text-muted">
+              <span class="text-uppercase">R | 114 min</span> <br />Accessiblity
+              devices available
+            </p>
+            <div class="card-showtimes">
+              <a href="#" class="times">6:30pm<span></span></a>
+              <a href="#" class="times">7:25pm<span></span></a>
+              <a href="#" class="times">8:45pm<span></span></a>
+              <a href="#" class="times">10:15pm<span></span></a>
+              <a href="#" class="times">10:30pm<span></span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <header class="t-nav">
+        <h1>Coming to Flix</h1>
+      </header>
+
+      <section class="upcoming owl-carousel owl-theme">
+        <div class="card">
+          <img
+            src="https://static.ipic.com/filmimage/HO00001890/Metallica_S_And_M_2_The_20th_Anniversary_Concert.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <button class="ubuy-btn">Buy Ticket</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            src="https://static.ipic.com/filmimage/HO00001893/Hustlers.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <button class="ubuy-btn">Buy Ticket</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            src="https://static.ipic.com/filmimage/HO00001900/Downton_Abbey.ipic"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <button class="ubuy-btn">Buy Ticket</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            src="https://static.ipic.com/filmimage/HO00001886/It_Chapter_Two.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <button class="ubuy-btn">Buy Ticket</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            src="https://static.ipic.com/filmimage/HO00001890/Metallica_S_And_M_2_The_20th_Anniversary_Concert.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <button class="ubuy-btn">Buy Ticket</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            src="https://static.ipic.com/filmimage/HO00001893/Hustlers.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <button class="ubuy-btn">Buy Ticket</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            src="https://static.ipic.com/filmimage/HO00001900/Downton_Abbey.ipic"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <button class="ubuy-btn">Buy Ticket</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            src="https://static.ipic.com/filmimage/HO00001886/It_Chapter_Two.jpg"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <button class="ubuy-btn">Buy Ticket</button>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <div class="col-md-3 footer-info">
+          <a class="navbar-brand" href="#" style="font-size: 2rem;">FLIX</a>
+          <div class="small footer-att">
+            <p>FLIX Int</p>
+            <p>1099 Flix Place, Flixville NJ 07100</p>
+            <p>800-345-FLIX</p>
+          </div>
+        </div>
+        <div class="col-md-9 footer-links">
+          <div>
+            <a href=""><i class="fab fa-facebook-f fa-lg mr-4"></i></a>
+            <a href=""><i class="fab fa-instagram fa-lg mr-4"></i></a>
+            <a href=""><i class="fab fa-twitter fa-lg mr-4"></i></a>
+            <a href=""><i class="fab fa-linkedin fa-lg mr-4"></i></a>
+            <a href=""><i class="fab fa-youtube fa-lg mr-4"></i></a>
+            <a href=""><i class="fab fa-yelp fa-lg"></i></a>
+          </div>
+          <ul class="text-center">
+            <li>
+              <a href="">Terms & Conditions</a>
+            </li>
+            <li>
+              <a href="">Membership Terms</a>
+            </li>
+            <li>
+              <a href="">Privacy</a>
+            </li>
+            <li>
+              <a href="">FAQs</a>
+            </li>
+            <li>
+              <a href="">Donations</a>
+            </li>
+            <li>
+              <a href="">ADA Seating Compliance</a>
+            </li>
+            <li>
+              <a href="">ADA Compliance</a>
+            </li>
+            <li>
+              <a href="">FLIX Sweepstakes</a>
+            </li>
+          </ul>
+          <div class="footer-cr">
+            <p class="muted">© All Rights Reserved, FLIX Theaters 2019</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
