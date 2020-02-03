@@ -17,6 +17,12 @@
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/e9063b30c3.js"></script>
     <!-- *************** -->
+    <!-- materializecss -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <!-- *************** -->
     <!-- facvicon -->
     <link
       rel="icon"
@@ -31,18 +37,6 @@
       href="/assets/images/favicons/favicon-16x16.png"
     />
     <link rel="manifest" href="/assets/images/favicons/site.webmanifest" />
-    <!-- *************** -->
-    <!-- materializecss -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <!-- *************** -->
-    <!-- materializecss -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
     <title>FLIX Theater | Dine in theater</title>
   </head>
   <body>
@@ -62,15 +56,9 @@
               <ul class="collapsible">
                 <li>
                   <h3 class="collapsible-header">
-                    <button id="act-personal" class="btn-transparent">
-                      Personal Information
-                    </button>
+                    <button id="act-personal" class="btn-transparent">Personal Information</button>
                   </h3>
-                  <form
-                    id="act-personal__form"
-                    class="collapsible-body"
-                    action="#"
-                  >
+                  <form id="act-personal__form" class="collapsible-body" action="#">
                     <div class="form-container-row">
                       <div class="input-field">
                         <input
@@ -122,30 +110,15 @@
                     </div>
                     <div class="radio-wrapper mt-sm">
                       <label>
-                        <input
-                          class="with-gap"
-                          name="gender"
-                          type="radio"
-                          required
-                        />
+                        <input class="with-gap" name="gender" type="radio" required />
                         <span>Male</span>
                       </label>
                       <label>
-                        <input
-                          class="with-gap"
-                          name="gender"
-                          type="radio"
-                          required
-                        />
+                        <input class="with-gap" name="gender" type="radio" required />
                         <span>Female</span>
                       </label>
                       <label>
-                        <input
-                          class="with-gap"
-                          name="gender"
-                          type="radio"
-                          required
-                        />
+                        <input class="with-gap" name="gender" type="radio" required />
                         <span>Undefined</span>
                       </label>
                     </div>
@@ -165,15 +138,9 @@
                 </li>
                 <li>
                   <h3 class="collapsible-header">
-                    <button id="act-login" class="btn-transparent">
-                      Login Information
-                    </button>
+                    <button id="act-login" class="btn-transparent">Login Information</button>
                   </h3>
-                  <form
-                    id="act-login__form"
-                    class="collapsible-body"
-                    action="#"
-                  >
+                  <form id="act-login__form" class="collapsible-body" action="#">
                     <div class="form-container-row">
                       <div class="input-field">
                         <input
@@ -219,15 +186,9 @@
                 </li>
                 <li>
                   <h3 class="collapsible-header">
-                    <button id="act-address" class="btn-transparent">
-                      Address Information
-                    </button>
+                    <button id="act-address" class="btn-transparent">Address Information</button>
                   </h3>
-                  <form
-                    id="act-address__form"
-                    class="collapsible-body"
-                    action="#"
-                  >
+                  <form id="act-address__form" class="collapsible-body" action="#">
                     <div class="form-container-row">
                       <div class="input-field">
                         <input
@@ -278,17 +239,14 @@
                 </li>
                 <li>
                   <h3 class="collapsible-header">
-                    <button id="act-cc" class="btn-transparent">
-                      Card Information
-                    </button>
+                    <button id="act-cc" class="btn-transparent">Card Information</button>
                   </h3>
                   <form id="act-cc__form" class="collapsible-body" action="#">
                     <p class="pay-note">Payment with FLIX is always secure</p>
                     <h2 class="pay-sum">Current Charge $0</h2>
                     <p class="pay-details">Annual Fee $45 + Tax $3.99</p>
                     <p class="pay-note">
-                      Your card will be charged $45 plus tax after your 30 day
-                      free trial expires
+                      Your card will be charged $45 plus tax after your 30 day free trial expires
                     </p>
                     <div class="form-container-row">
                       <div class="input-field">
@@ -329,10 +287,7 @@
                         />
                         <label for="ccCVV">CVV/CVC</label>
                         <div class="cvc-loc-img">
-                          <img
-                            src="/assets/images/svg/cc-cvc.svg"
-                            alt="cvv/cvc location"
-                          />
+                          <img src="/assets/images/svg/cc-cvc.svg" alt="cvv/cvc location" />
                         </div>
                         <div>
                           <button class="toggle-info-btn"></button>
@@ -377,22 +332,17 @@
                     checked
                   />
                   <span
-                    >I agree to receive information about my account,
-                    invitations to FLIX events, weekly showtimes emails, special
-                    offers and news</span
+                    >I agree to receive information about my account, invitations to FLIX events,
+                    weekly showtimes emails, special offers and news</span
                   >
                 </label>
                 <span
-                    >By creating an account, you agree to FLIX's
-                    <a href="#" class="color-text color-text__link"
-                      >Terms & Conditions</a
-                    >
-                    and
-                    <a href="#" class="color-text color-text__link"
-                      >Membership policies</a
-                    ></span
-                  >
-                <input type="hidden" name="type" value="gold">
+                  >By creating an account, you agree to FLIX's
+                  <a href="#" class="color-text color-text__link">Terms & Conditions</a>
+                  and
+                  <a href="#" class="color-text color-text__link">Membership policies</a></span
+                >
+                <input type="hidden" name="type" value="gold" />
                 <button id="submit-silver" type="submit" class="btn-prim">Submit</button>
                 <p>
                   No thank you, sign me up for
@@ -402,13 +352,12 @@
                 </p>
                 <div class="mem-desc__faq">
                   <p>
-                    * Discount varies based on day of week and location. Pricing
-                    is per ticket per visit. Subject to change without notice.
-                    Other restrictions may apply.
+                    * Discount varies based on day of week and location. Pricing is per ticket per
+                    visit. Subject to change without notice. Other restrictions may apply.
                   </p>
                   <p>
-                    * Only 5 tickets / day valid towards 25 Tickets Reward and
-                    Membership Level Upgrade
+                    * Only 5 tickets / day valid towards 25 Tickets Reward and Membership Level
+                    Upgrade
                   </p>
                 </div>
               </form>
@@ -417,9 +366,7 @@
           <!-- right half of signup (membership rewards/descriptions) -->
           <div class="section-content section-content--mem-desc">
             <div class="mem-desc__content">
-              <h2 class="promo-text">
-                Try our FLIX Premium Gold Membership free for 30 days
-              </h2>
+              <h2 class="promo-text">Try our FLIX Premium Gold Membership free for 30 days</h2>
               <p class="rewards-text">Rewards include:</p>
               <ul class="mem-desc-list">
                 <li>10% off your Food & Beverage</li>
@@ -429,18 +376,15 @@
                 <li>
                   Much more...
                   <a href="#" class="color-text color-text__link"
-                    >Click here to learn more about FLIX Premium Gold
-                    Membership</a
+                    >Click here to learn more about FLIX Premium Gold Membership</a
                   >
                 </li>
               </ul>
               <p class="rewards-sys-desc">
-                The more you visit FLIX, the more we treat you. Start earning
-                points towards additional rewards, perks, priority ticket access
-                and VIP services with each visit. Earn your way to Platinum and
-                Platinum Elite and enjoy a complimentary Dessert and Champagne
-                for two along with other surprises on your Birthday and
-                Anniversary.
+                The more you visit FLIX, the more we treat you. Start earning points towards
+                additional rewards, perks, priority ticket access and VIP services with each visit.
+                Earn your way to Platinum and Platinum Elite and enjoy a complimentary Dessert and
+                Champagne for two along with other surprises on your Birthday and Anniversary.
               </p>
             </div>
             <div class="mem-desc__img">
@@ -451,13 +395,11 @@
             </div>
             <div class="mem-desc__faq">
               <p>
-                * Discount varies based on day of week and location. Pricing is
-                per ticket per visit. Subject to change without notice. Other
-                restrictions may apply.
+                * Discount varies based on day of week and location. Pricing is per ticket per
+                visit. Subject to change without notice. Other restrictions may apply.
               </p>
               <p>
-                * Only 5 tickets / day valid towards 25 Tickets Reward and
-                Membership Level Upgrade
+                * Only 5 tickets / day valid towards 25 Tickets Reward and Membership Level Upgrade
               </p>
             </div>
           </div>
