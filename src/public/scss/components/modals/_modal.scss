@@ -8,23 +8,31 @@
     line-height: 0;
     padding: 2rem 2rem 0 0;
     text-align: center;
-
-    @include respond-to-breakpoint(tab-port) {
-      font-size: 6rem;
-    }
   }
 
   .modal-content {
     h2 {
       color: $primary-color;
       font-size: 6rem;
+    }
+  }
+}
+// ********************
+// Media Queries
+@include respond-to-breakpoint(tab-port) {
+  .modal {
+    button.btn-worded-only {
+      font-size: 6rem;
+    }
+  }
 
-      @include respond-to-breakpoint(tab-port) {
-        font-size: 4rem;
-      }
+  .modal-content {
+    h2 {
+      font-size: 4rem;
     }
   }
 }
 
 @import "./modal-msg";
 @import "./modal_login";
+@import "./modal_show_login";

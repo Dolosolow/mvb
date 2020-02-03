@@ -62,85 +62,84 @@
         >
           <!-- left half of signup (account sign up forms) -->
           <div class="section-content section-content--form-steps">
-            <div class="form-container">
+            <div id="act-silver-forms" class="form-container">
               <ul class="collapsable">
                 <li>
                   <form
                     id="act-personal__form"
                     class="collapsible-body"
-                    action="#"
+                  
                   >
                     <div class="form-container-row">
                       <div class="input-field">
                         <input
                           type="text"
-                          id="fName"
+                          id="su-fName"
                           name="fName"
-                          class="validate"
                           autocomplete="off"
                           required
                         />
-                        <label for="fName">First Name</label>
+                        <label for="su-fName">First Name</label>
+                        <span class="helper-text" data-error="This field is required."></span>
                       </div>
                       <div class="input-field">
                         <input
                           type="text"
-                          id="lName"
+                          id="su-lName"
                           name="lName"
-                          class="validate"
                           autocomplete="off"
                           required
                         />
-                        <label for="lName">Last Name</label>
+                        <label for="su-lName">Last Name</label>
+                        <span class="helper-text" data-error="This field is required."></span>
                       </div>
                     </div>
                     <div class="form-container-row">
                       <div class="input-field">
-                        <input
+                        <input 
                           type="email"
-                          id="email"
+                          id="su-email"
                           name="email"
-                          class="validate"
-                          autocomplete="email"
                           required
                         />
-                        <label for="email">Email</label>
+                        <label for="su-email">Email</label>
+                        <span class="helper-text" data-error="This field is required."></span>
                       </div>
                       <div class="input-field">
                         <input
                           type="tel"
-                          id="phone"
+                          id="su-phone"
                           name="phone"
-                          class="validate"
                           autocomplete="off"
                           required
                         />
-                        <label for="phone">Phone Number</label>
+                        <label for="su-phone">Phone Number</label>
+                        <span class="helper-text" data-error="This field is required."></span>
                       </div>
                     </div>
                     <div class="form-container-row">
                       <div class="input-field">
                         <input
                           type="password"
-                          id="password"
+                          id="su-password"
                           name="password"
-                          class="validate"
                           autocomplete="off"
                           required
                         />
-                        <label for="password">Password</label>
+                        <label for="su-password">Password</label>
+                        <span class="helper-text" data-error="This field is required."></span>
                         <div><i class="fas fa-lock fa-lg"></i></div>
                       </div>
                       <div class="input-field">
                         <input
                           type="password"
-                          id="confirmPassword"
+                          id="su-confirmPassword"
                           name="confirmPassword"
-                          class="validate"
                           autocomplete="off"
                           required
                         />
-                        <label for="confirmPassword">Confirm Password</label>
+                        <label for="su-confirmPassword">Confirm Password</label>
+                        <span class="helper-text" data-error="This field is required."></span>
                         <div><i class="fas fa-lock fa-lg"></i></div>
                       </div>
                     </div>
@@ -148,28 +147,35 @@
                       <div class="input-field">
                         <input
                           type="text"
-                          id="referralCode"
+                          id="su-referralCode"
                           name="referralCode"
-                          class="validate"
                           autocomplete="off"
                         />
-                        <label for="referralCode">Referral Code</label>
+                        <label for="su-referralCode">Referral Code</label>
+                        <span class="helper-text" data-error="This field is required."></span>
                       </div>
                     </div>
                   </form>
                 </li>
               </ul>
-              <form class="act-tos-form flex-column" action="#">
-                <label for="tcmPolicy">
+              <form class="act-tos-form flex-column">
+                <label for="su-eSubscription">
                   <input
                     type="checkbox"
-                    id="tcmPolicy"
-                    name="tcmPolicy"
+                    id="su-eSubscription"
+                    name="eSubscription"
                     class="filled-in"
-                    required
+                    value="true"
+                    checked
                   />
                   <span
-                    >I agree to the
+                    >I agree to receive information about my account,
+                    invitations to FLIX events, weekly showtimes emails, special
+                    offers and news</span
+                  >
+                </label>
+                <span
+                    >By creating an account, you agree to FLIX's
                     <a href="#" class="color-text color-text__link"
                       >Terms & Conditions</a
                     >
@@ -178,23 +184,9 @@
                       >Membership policies</a
                     ></span
                   >
-                </label>
-                <label for="eSubscription">
-                  <input
-                    type="checkbox"
-                    id="eSubscription"
-                    name="eSubscription"
-                    class="filled-in"
-                    checked
-                    required
-                  />
-                  <span
-                    >I agree to receive information about my account,
-                    invitations to FLIX events, weekly showtimes emails, special
-                    offers and news</span
-                  >
-                </label>
-                <button class="btn-prim">Submit</button>
+                <input type="hidden" name="type" value="silver">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button id="submit-silver" type="submit" class="btn-prim">Submit</button>
                 <p>
                   Already have an account?
                   <a href="#si-popup" class="color-text color-text__link"

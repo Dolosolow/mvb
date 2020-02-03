@@ -1,0 +1,33 @@
+{
+  "account": {
+    "success": {
+      "auth_logout": "You are now logged out. We hope to see you again soon.",
+      "newPwd_change": "Password was successfully changed.",
+      "signup_verified": "Your email address has been verified"
+    },
+    "error": {
+      "auth_credentials": "Email and/or password invalid.",
+      "auth_login": "Sorry, was unable to login, please try again. If error persists try clearing out your browser cache.",
+      "auth_logout": "Sorry, was unable to log you out, please try again. If error persists try clearing out your browser cache.",
+      "newPwd_change": "Password was not changed.",
+      "signup_taken": "Email already exists."
+    }
+  },
+  "email": {
+    "verifyMail": {
+      "subject": "Verify your email address",
+      "success": "Please click on the link that has just been sent to your email account to verify your email and complete the registration.<br/><br/>(can't find it? check spam)",
+      "fail": "Sorry, unable to send email verification, please try again."
+    },
+    "resetPwdMail": {
+      "subject": "Password Reset Instructions",
+      "success": "If there is an account associated with the provided email address, then you will receive an email with a link to reset your password.<br/><br/>(can't find it? check spam)",
+      "fail": "Sorry, unable to process your requests, please try again."
+    },
+    "sendTicketMail": {
+      "subject": "View your ticket below",
+      "success": "Thanks for ordering from FLIX. You should receive an email shortly with your ticket and details on how to preset your ticket at the booth.<br/><br/>(can't find it? check spam)",
+      "fail": "Sorry, we were unable to complete the transaction, please try again."
+    }
+  }
+}

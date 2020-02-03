@@ -3,14 +3,6 @@
 .signup-headline {
   padding: 3rem 0;
 
-  @include respond-to-breakpoint(1384) {
-    padding: 3rem 1.2rem;
-  }
-
-  @include respond-to-breakpoint(750) {
-    padding: 2rem 1.2rem;
-  }
-
   .t-nav {
     margin-bottom: 0.5rem;
   }
@@ -29,10 +21,6 @@
     font-family: $secondary-font;
     text-transform: none;
   }
-
-  @include respond-to-breakpoint(650) {
-    margin-left: 1.2rem;
-  }
 }
 // ---------------------
 // FORM CONTAINER(UL) + COLLAPSIBLE FORM
@@ -41,14 +29,6 @@
   max-width: 70rem;
   padding: 0 9 0 8rem;
   width: 100%;
-
-  @include respond-to-breakpoint(tab-port) {
-    float: left;
-  }
-
-  @include respond-to-breakpoint(750) {
-    padding: 0 1.2rem 0 1rem;
-  }
 
   .collapsible {
     background-color: $section-bg-color;
@@ -59,10 +39,6 @@
     margin-left: 6.4rem;
     position: relative;
     will-change: height;
-
-    @include respond-to-breakpoint(phone) {
-      margin-left: 4.4rem;
-    }
 
     li {
       min-height: 9rem;
@@ -81,13 +57,6 @@
         width: 2.5rem;
         will-change: background-color, border-color;
         z-index: 2;
-
-        @include respond-to-breakpoint(phone) {
-          height: 2rem;
-          width: 2rem;
-          top: 12px;
-          left: -40px;
-        }
       }
 
       &:not(:last-of-type) {
@@ -100,10 +69,6 @@
           top: 27px;
           left: -3.4rem;
           width: 2px;
-
-          @include respond-to-breakpoint(phone) {
-            left: -30px;
-          }
         }
       }
 
@@ -124,21 +89,11 @@
         border: none;
         margin: 0;
         padding-top: 0;
-
-        @include respond-to-breakpoint(750) {
-          padding-left: 0;
-          margin-left: -0.7rem;
-        }
       }
 
       .collapsible-body {
         border-bottom: none;
         padding: 5px 0 1rem 1rem;
-
-        @include respond-to-breakpoint(750) {
-          padding-left: 0;
-          margin-left: -0.7rem;
-        }
       }
 
       form {
@@ -150,6 +105,72 @@
         visibility: visible;
         width: 100%;
         will-change: height;
+      }
+    }
+  }
+}
+// ********************
+// Media Queries
+@include respond-to-breakpoint(1384) {
+  .signup-headline {
+    padding: 3rem 1.2rem;
+  }
+}
+
+@include respond-to-breakpoint(tab-port) {
+  .form-container {
+    float: left;
+  }
+}
+
+@include respond-to-breakpoint(750) {
+  .signup-headline {
+    padding: 2rem 1.2rem;
+  }
+
+  .form-container {
+    padding: 0 1.2rem 0 1rem;
+
+    .collapsible {
+      li {
+        .collapsible-header {
+          padding-left: 0;
+          margin-left: -0.7rem;
+        }
+
+        .collapsible-body {
+          padding-left: 0;
+          margin-left: -0.7rem;
+        }
+      }
+    }
+  }
+}
+
+@include respond-to-breakpoint(650) {
+  .t-subline {
+    margin-left: 1.2rem;
+  }
+}
+
+@include respond-to-breakpoint(phone) {
+  .form-container {
+    .collapsible {
+      margin-left: 4.4rem;
+
+      li {
+        &::before {
+          height: 2rem;
+          width: 2rem;
+          top: 12px;
+          left: -40px;
+        }
+
+        &:not(:last-of-type) {
+          &::after {
+            left: -30px;
+          }
+        }
       }
     }
   }

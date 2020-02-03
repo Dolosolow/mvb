@@ -7,4 +7,8 @@ router.post('/login', authController.postLogin);
 
 router.post('/logout', authController.postlogout);
 
+router.post('/sivler-signup', authController.postSilverSignup);
+
+// router.post('/gold-signup', authController.postGoldSignup);
+
 export default router;

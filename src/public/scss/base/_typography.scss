@@ -5,8 +5,7 @@
       format("embedded-opentype"),
     url("../fonts/Founders\ Grotesque\ X-Cond/0ecca429d3d3616f3407879f72ee874a.woff2")
       format("woff2"),
-    url("../fonts/Founders\ Grotesque\ X-Cond/0ecca429d3d3616f3407879f72ee874a.woff")
-      format("woff"),
+    url("../fonts/Founders\ Grotesque\ X-Cond/0ecca429d3d3616f3407879f72ee874a.woff") format("woff"),
     url("../fonts/Founders\ Grotesque\ X-Cond/0ecca429d3d3616f3407879f72ee874a.ttf")
       format("truetype"),
     url("../fonts/Founders\ Grotesque\ X-Cond/0ecca429d3d3616f3407879f72ee874a.svg#Founders Grotesque X-Cond")
@@ -20,8 +19,7 @@
   font-weight: 300;
   src: url("../fonts/lato/lato-v16-latin-300.eot");
   src: local("Lato Light"), local("Lato-Light"),
-    url("../fonts/lato/lato-v16-latin-300.eot?#iefix")
-      format("embedded-opentype"),
+    url("../fonts/lato/lato-v16-latin-300.eot?#iefix") format("embedded-opentype"),
     url("../fonts/lato/lato-v16-latin-300.woff2") format("woff2"),
     url("../fonts/lato/lato-v16-latin-300.woff") format("woff"),
     url("../fonts/lato/lato-v16-latin-300.ttf") format("truetype"),
@@ -35,8 +33,7 @@
   font-weight: 400;
   src: url("../fonts/lato/lato-v16-latin-regular.eot");
   src: local("Lato Regular"), local("Lato-Regular"),
-    url("../fonts/lato/lato-v16-latin-regular.eot?#iefix")
-      format("embedded-opentype"),
+    url("../fonts/lato/lato-v16-latin-regular.eot?#iefix") format("embedded-opentype"),
     url("../fonts/lato/lato-v16-latin-regular.woff2") format("woff2"),
     url("../fonts/lato/lato-v16-latin-regular.woff") format("woff"),
     url("../fonts/lato/lato-v16-latin-regular.ttf") format("truetype"),
@@ -56,13 +53,6 @@ h4 {
   font-weight: 300;
 }
 
-h1,
-h2 {
-  @include respond-to-breakpoint(tab-port) {
-    font-size: 5rem;
-  }
-}
-
 .t-nav {
   animation: expand-out 0.7s linear forwards;
   line-height: 1.1;
@@ -74,12 +64,12 @@ h2 {
   will-change: width;
   width: 0;
 
-  @include respond-to-breakpoint(tab-port) {
-    margin-bottom: 2.5rem;
+  &::before {
+    left: 0;
   }
 
-  @include respond-to-breakpoint(660) {
-    padding-left: 1.2rem;
+  &::after {
+    right: 0;
   }
 
   &::before,
@@ -90,46 +80,18 @@ h2 {
     width: 4px;
     position: absolute;
     bottom: 1rem;
-
-    @include respond-to-breakpoint(tab-port) {
-      bottom: 0.5rem;
-    }
-
-    @include respond-to-breakpoint(660) {
-      width: 2px;
-    }
-  }
-
-  &::before {
-    left: 0;
-  }
-
-  &::after {
-    right: 0;
   }
 
   h2 {
     animation: slide-in-side 0.6s linear forwards;
     font-size: 7rem;
     margin-bottom: 0;
-
-    @include respond-to-breakpoint(tab-port) {
-      font-size: 4.8rem;
-    }
-
-    @include respond-to-breakpoint(650) {
-      font-size: 4.2rem;
-    }
   }
 }
 
 .t-nav--md {
   h2 {
     font-size: 6.4rem;
-
-    @include respond-to-breakpoint(tab-port) {
-      font-size: 4.4rem;
-    }
   }
 }
 
@@ -142,23 +104,9 @@ h2 {
   }
 }
 
-.t-nav__wrapper {
-  @include respond-to-breakpoint(1366) {
-    padding: 0 3rem;
-  }
-}
-
 .description-text {
   margin-left: 3rem;
   padding-right: 8rem;
-
-  @include respond-to-breakpoint(tab-port) {
-    margin-left: 0;
-  }
-
-  @include respond-to-breakpoint(phone) {
-    padding-right: 0;
-  }
 }
 
 .color-text {
@@ -181,5 +129,62 @@ h2 {
       color: currentColor;
       text-decoration: underline;
     }
+  }
+}
+
+@include respond-to-breakpoint(1366) {
+  .t-nav__wrapper {
+    padding: 0 3rem;
+  }
+}
+
+@include respond-to-breakpoint(tab-port) {
+  h1,
+  h2 {
+    font-size: 5rem;
+  }
+
+  .t-nav {
+    margin-bottom: 2.5rem;
+
+    &::before,
+    &::after {
+      bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: 4.8rem;
+    }
+  }
+
+  .t-nav--md {
+    h2 {
+      font-size: 4.4rem;
+    }
+  }
+
+  .description-text {
+    margin-left: 0;
+  }
+}
+
+@include respond-to-breakpoint(660) {
+  t-nav {
+    padding-left: 1.2rem;
+
+    &::before,
+    &::after {
+      width: 2px;
+    }
+
+    h2 {
+      font-size: 4.2rem;
+    }
+  }
+}
+
+@include respond-to-breakpoint(phone) {
+  .description-text {
+    padding-right: 0;
   }
 }

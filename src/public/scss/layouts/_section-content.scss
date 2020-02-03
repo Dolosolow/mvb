@@ -1,38 +1,12 @@
 .section-content {
   // ******************
-  // Gold signup left side multi step form
-  &--form-steps {
-    @include respond-to-breakpoint(tab-port) {
-      align-items: flex-start;
-      margin-top: 2rem;
-      order: 2;
-      width: 100%;
-    }
-
-    @include respond-to-breakpoint(750) {
-      margin-top: 0;
-    }
-  }
-  // ******************
   // Gold signup Right side membership description + promo
   &--mem-desc {
     padding: 0 1.5rem 0 4rem;
     min-width: 50%;
 
-    @include respond-to-breakpoint(tab-port) {
-      padding: 0 3rem;
-    }
-
-    @include respond-to-breakpoint(750) {
-      padding-left: 2rem;
-    }
-
     .mem-desc__content {
       margin-bottom: 2rem;
-
-      @include respond-to-breakpoint(750) {
-        margin-bottom: 0;
-      }
 
       > * {
         margin-bottom: 2.5rem;
@@ -46,10 +20,6 @@
         line-height: 1;
         max-width: 55rem;
         text-transform: uppercase;
-
-        @include respond-to-breakpoint(750) {
-          max-width: 100%;
-        }
       }
 
       .rewards-text {
@@ -59,24 +29,64 @@
       .mem-desc-list {
         margin-left: 2rem;
       }
-
-      .rewards-sys-desc {
-        @include respond-to-breakpoint(750) {
-          display: none;
-        }
-      }
     }
 
     .mem-desc__img {
-      @include respond-to-breakpoint(750) {
-        display: none;
-      }
-
       img {
         max-height: 340px;
         object-fit: cover;
         object-position: center;
         width: 100%;
+      }
+    }
+  }
+}
+// ********************
+// Media Queries
+@include respond-to-breakpoint(tab-port) {
+  .section-content {
+    // ******************
+    // Gold signup left side multi step form
+    &--form-steps {
+      align-items: flex-start;
+      margin-top: 2rem;
+      order: 2;
+      width: 100%;
+    }
+    // ******************
+    // Gold signup Right side membership description + promo
+    &--mem-desc {
+      padding: 0 3rem;
+    }
+  }
+}
+
+@include respond-to-breakpoint(750) {
+  .section-content {
+    // ******************
+    // Gold signup left side multi step form
+    &--form-steps {
+      margin-top: 0;
+    }
+    // ******************
+    // Gold signup Right side membership description + promo
+    &--mem-desc {
+      padding-left: 2rem;
+
+      .mem-desc__content {
+        margin-bottom: 0;
+
+        .promo-text {
+          max-width: 100%;
+        }
+
+        .rewards-sys-desc {
+          display: none;
+        }
+      }
+
+      .mem-desc__img {
+        display: none;
       }
     }
   }

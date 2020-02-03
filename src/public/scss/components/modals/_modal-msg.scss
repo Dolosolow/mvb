@@ -1,7 +1,46 @@
 .modal-msg {
   width: 55rem;
 
-  @include respond-to-breakpoint(phone) {
+  .modal-content {
+    h2 {
+      margin: 0;
+    }
+
+    p {
+      margin: 1rem 0 2rem;
+    }
+  }
+
+  &--prompt {
+    .modal-btns {
+      display: flex;
+      justify-content: space-evenly;
+
+      button {
+        width: 46%;
+      }
+    }
+  }
+}
+// ********************
+// Media Queries
+@include respond-to-breakpoint(phone) {
+  .modal-msg {
     width: 95%;
+
+    .modal-content {
+      padding: 1.5rem;
+    }
+
+    &--prompt {
+      .modal-btns {
+        justify-content: space-between;
+
+        button {
+          max-width: 48%;
+          width: 48%;
+        }
+      }
+    }
   }
 }

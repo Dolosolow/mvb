@@ -1,30 +1,17 @@
 .container-layout--ua-header {
   padding-top: 3rem;
-
-  @include respond-to-breakpoint(1366) {
-    padding: 3rem 1.2rem 0 1.2rem;
-  }
-
-  @include respond-to-breakpoint(950) {
-    padding-top: 1.2rem;
-  }
 }
 
 .account__card {
   padding: 3.5rem 2rem;
   justify-content: space-between;
 
-  @include respond-to-breakpoint(950) {
-    flex-direction: column;
-    padding: 2rem;
-  }
-
-  @include respond-to-breakpoint(750) {
-    padding: 2rem 0 0 0;
-  }
-
   &-name {
     font: 400 3.6rem $primary-font;
+
+    span {
+      text-transform: capitalize;
+    }
   }
 
   &-note {
@@ -35,29 +22,10 @@
   ul {
     justify-content: space-between;
     min-width: 65rem;
-
-    @include respond-to-breakpoint(950) {
-      margin-top: 2rem;
-    }
-
-    @include respond-to-breakpoint(750) {
-      flex-wrap: wrap;
-      min-width: auto;
-    }
   }
 
   .info-item {
     padding: 4px;
-
-    @include respond-to-breakpoint(750) {
-      width: 50%;
-    }
-
-    &:nth-child(even) {
-      @include respond-to-breakpoint(750) {
-        text-align: right;
-      }
-    }
 
     &__label {
       color: $muted;
@@ -66,30 +34,41 @@
 
     &__val {
       font: 400 3.6rem $primary-font;
-
-      @include respond-to-breakpoint(750) {
-        font-size: 2.8rem;
-      }
     }
   }
 }
 
 .account__tabs {
   background-color: #ebeaea;
+  box-shadow: none;
+  color: #121212;
   font-size: 1.6rem;
+  height: max-content;
+  line-height: inherit;
   width: 52rem;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 
-  @include respond-to-breakpoint(1000) {
-    display: none;
+  &::-webkit-scrollbar {
+    background: transparent;
+    height: 0;
+    width: 0;
   }
 
   .nav-tabs {
+    display: flex;
+    flex-direction: column;
+    min-width: 73.5rem;
+
     &__item {
       cursor: pointer;
+      float: unset;
       padding: 1.2rem 0;
       position: relative;
       transition: all 0.2s;
       will-change: background-color, color;
+      width: 100%;
 
       i {
         color: black;
@@ -112,26 +91,15 @@
 .sections-container {
   padding: 0 5rem;
   width: 62%;
-
-  @include respond-to-breakpoint(1000) {
-    width: 100%;
-  }
-
-  @include respond-to-breakpoint(650) {
-    padding: 0 2.5rem;
-  }
 }
 
 .acct-page {
   height: max-content;
+  min-height: 600px;
 
   &__headline {
     font-size: 6.4rem;
     padding-top: 1.2rem;
-
-    @include respond-to-breakpoint(1000) {
-      font-size: 4.8rem;
-    }
   }
 
   &__orders {
@@ -144,10 +112,6 @@
         display: inline-block;
         margin-bottom: 8rem;
         width: 30rem;
-
-        @include respond-to-breakpoint(750) {
-          margin-bottom: 3rem;
-        }
       }
     }
 
@@ -163,20 +127,12 @@
         justify-content: space-between;
         width: 100%;
 
-        @include respond-to-breakpoint(750) {
-          flex-direction: column;
-        }
-
         &:not(:last-child) {
           margin-bottom: 3rem;
         }
 
         div:nth-child(even) {
           text-align: right;
-
-          @include respond-to-breakpoint(750) {
-            text-align: left;
-          }
         }
 
         .purchase-title {
@@ -190,10 +146,6 @@
   &__per-info {
     width: 94%;
 
-    @include respond-to-breakpoint(950) {
-      width: 100%;
-    }
-
     .acct-page__headeline-container {
       .side-note {
         margin-bottom: 5rem;
@@ -204,10 +156,6 @@
       > div {
         justify-content: space-between;
 
-        @include respond-to-breakpoint(phone) {
-          flex-direction: column;
-        }
-
         &:not(:last-child) {
           margin-bottom: 3rem;
         }
@@ -215,14 +163,6 @@
 
       .inline-form {
         width: 48%;
-
-        @include respond-to-breakpoint(phone) {
-          width: 100%;
-
-          &:nth-child(even) {
-            margin-top: 3rem;
-          }
-        }
       }
     }
 
@@ -239,10 +179,6 @@
     .acct-status__rank {
       float: right;
       font-size: 6.4rem;
-
-      @include respond-to-breakpoint(750) {
-        font-size: 3.6rem;
-      }
     }
 
     .acct-status__desc {
@@ -283,26 +219,14 @@
 
     .rewards__list {
       margin-bottom: 5rem;
-
-      @include respond-to-breakpoint(750) {
-        margin-bottom: 2rem;
-      }
     }
 
     .reward-point-counter {
       line-height: 1;
       margin-bottom: 5rem;
 
-      @include respond-to-breakpoint(750) {
-        margin-bottom: 0;
-      }
-
       span {
         font: 400 3.8rem $primary-font;
-
-        @include respond-to-breakpoint(750) {
-          font-size: 2.8rem;
-        }
       }
     }
 
@@ -351,29 +275,11 @@
           margin-bottom: 5rem;
         }
 
-        .inline-form {
-          @include respond-to-breakpoint(600) {
-            width: 90%;
-          }
-        }
-
         &:nth-child(2) {
           justify-content: space-between;
 
-          @include respond-to-breakpoint(600) {
-            flex-direction: column;
-          }
-
           .inline-form {
             width: 31%;
-
-            @include respond-to-breakpoint(600) {
-              width: 90%;
-
-              &:not(:last-child) {
-                margin-bottom: 5rem;
-              }
-            }
           }
         }
       }
@@ -399,12 +305,6 @@
         width: 22rem;
       }
     }
-
-    .switch-form-container {
-      @include respond-to-breakpoint(650) {
-        margin-top: 2rem !important;
-      }
-    }
   }
 }
 
@@ -418,12 +318,226 @@
   bottom: 5.5rem;
   left: -6.5rem;
   min-width: 25rem;
+}
+// ********************
+// Media Queries
+@include respond-to-breakpoint(1366) {
+  .container-layout--ua-header {
+    padding: 3rem 1.2rem 0 1.2rem;
 
-  @include respond-to-breakpoint(1000) {
-    left: -3rem;
+    @include respond-to-breakpoint(950) {
+      padding-top: 1.2rem;
+    }
+  }
+}
+
+@include respond-to-breakpoint(1000) {
+  .container-layout--ua-content {
+    flex-direction: column;
+    margin-top: 2.5rem;
   }
 
-  @include respond-to-breakpoint(600) {
+  .account__tabs {
+    width: 100%;
+
+    .nav-tabs {
+      flex-direction: row;
+
+      &__item {
+        flex-direction: column;
+        text-align: center;
+
+        i {
+          transform: scale(0.8);
+          margin: 0;
+        }
+
+        .tab-desc {
+          .text-uppercase {
+            font-size: 1.3rem;
+          }
+
+          .muted {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .sections-container {
+    width: 100%;
+  }
+
+  .acct-page {
+    &__headline {
+      font-size: 4.8rem;
+    }
+  }
+
+  .cvc-loc-img {
+    left: -3rem;
+  }
+}
+
+@include respond-to-breakpoint(950) {
+  .container-layout--ua-header {
+    padding-top: 1.2rem;
+  }
+
+  .account__card {
+    flex-direction: column;
+    padding: 2rem;
+
+    ul {
+      margin-top: 2rem;
+    }
+  }
+
+  .acct-page {
+    &__per-info {
+      width: 100%;
+    }
+  }
+}
+
+@include respond-to-breakpoint(830) {
+  .account__tabs {
+    .nav-tabs {
+      &__item {
+        i {
+          transform: scale(0.8);
+        }
+
+        .tab-desc {
+          .text-uppercase {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include respond-to-breakpoint(750) {
+  .account__card {
+    padding: 2rem 0 0 0;
+
+    ul {
+      flex-wrap: wrap;
+      min-width: auto;
+    }
+
+    .info-item {
+      width: 50%;
+
+      &:nth-child(even) {
+        text-align: right;
+      }
+
+      &__val {
+        font-size: 2.8rem;
+      }
+    }
+  }
+
+  .acct-page {
+    &__orders {
+      .acct-page__headeline-container {
+        .btn-prim {
+          margin-bottom: 3rem;
+        }
+      }
+
+      .acct-page__book-history {
+        .book-history__item {
+          flex-direction: column;
+
+          div:nth-child(even) {
+            text-align: left;
+          }
+        }
+      }
+    }
+
+    &__status {
+      .acct-status__rank {
+        font-size: 3.6rem;
+      }
+    }
+
+    &__rewards {
+      .rewards__list {
+        margin-bottom: 2rem;
+      }
+
+      .reward-point-counter {
+        margin-bottom: 0;
+
+        span {
+          font-size: 2.8rem;
+        }
+      }
+    }
+  }
+}
+
+@include respond-to-breakpoint(650) {
+  .sections-container {
+    padding: 0 2.5rem;
+  }
+
+  .acct-page {
+    &__settings {
+      .switch-form-container {
+        margin-top: 2rem !important;
+      }
+    }
+  }
+}
+
+@include respond-to-breakpoint(phone) {
+  .acct-page {
+    &__per-info {
+      article {
+        > div {
+          flex-direction: column;
+        }
+
+        .inline-form {
+          width: 100%;
+
+          &:nth-child(even) {
+            margin-top: 3rem;
+          }
+        }
+      }
+    }
+
+    &__wallet {
+      form {
+        > div {
+          .inline-form {
+            width: 90%;
+          }
+
+          &:nth-child(2) {
+            flex-direction: column;
+
+            .inline-form {
+              width: 90%;
+
+              &:not(:last-child) {
+                margin-bottom: 5rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .cvc-loc-img {
     bottom: 4rem;
     left: 0rem;
   }

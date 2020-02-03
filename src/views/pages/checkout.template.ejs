@@ -59,66 +59,59 @@
           <div class="section-content section-content--form-steps">
             <div class="form-container">
               <ul class="collapsible">
+                <% if(user.type === 'guest') { %>
                 <li>
                   <h3 class="collapsible-header">
-                    <button id="act-personal" class="btn-transparent">
-                      Already a Member?
-                    </button>
+                    <button id="act-quick-login" class="btn-transparent">Already a Member?</button>
                   </h3>
-                  <form
-                    id="act-personal__form"
-                    class="collapsible-body"
-                    action="#"
-                  >
-                  <div class="popup show flex-row" id="si-popup">
-                    <div class="popup__form" id="popup__form">
-                      <form action="#">
+                  <form id="act-quick-login__form" class="collapsible-body" action="#">
+                    <div class="modal-login--show">
+                      <div id="login-form--checkout">
                         <div class="input-field">
                           <input
                             type="email"
-                            id="email"
+                            id="si-email--checkout"
                             name="email"
                             class="validate"
                             autocomplete="email"
                             required
                           />
-                          <label for="email">Email</label>
+                          <label for="si-email--checkout">Email</label>
+                          <span class="helper-text" data-error="This field is required."></span>
                         </div>
                         <div class="input-field">
                           <input
                             type="password"
-                            id="password"
+                            id="si-password--checkout"
                             name="password"
                             class="validate"
                             autocomplete="off"
                             required
                           />
-                          <label for="password">Password</label>
+                          <label for="si-password--checkout">Password</label>
+                          <span class="helper-text" data-error="This field is required."></span>
                           <div><i class="fas fa-lock fa-lg"></i></div>
                         </div>
-                        <button class="color-text color-text__btn float-right">
+                        <button id="fg-pwd" type="button" class="color-text color-text__btn">
                           Forgot Password?
                         </button>
-                        <button class="btn-prim">Log In</button>
-                      </form>
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                        <button type="submit" class="btn-prim btn-block sif">Log In</button>
+                      </div>
                       <p class="text-center">
-                        <a href="#" class="color-text color-text__link">Continue as a Guest</a>
+                        <button id="guest-co-btn" type="button" class="color-text color-text__btn">
+                          Continue as a Guest
+                        </button>
                       </p>
                     </div>
-                  </div>
                   </form>
                 </li>
+                <% } %>
                 <li>
                   <h3 class="collapsible-header">
-                    <button id="act-personal" class="btn-transparent">
-                      Personal Info
-                    </button>
+                    <button id="act-personal" class="btn-transparent">Personal Info</button>
                   </h3>
-                  <form
-                    id="act-personal__form"
-                    class="collapsible-body"
-                    action="#"
-                  >
+                  <form id="act-personal__form" class="collapsible-body" action="#">
                     <div class="form-container-row">
                       <div class="input-field">
                         <input
@@ -127,6 +120,7 @@
                           name="name"
                           class="validate"
                           autocomplete="off"
+                          value="<%= user ? user.fName : '' %> <%= user ? user.lName : '' %>"
                           required
                         />
                         <label for="name">Name</label>
@@ -138,6 +132,7 @@
                           name="email"
                           class="validate"
                           autocomplete="email"
+                          value="<%= user ? user.email : '' %>"
                           required
                         />
                         <label for="email">Email</label>
@@ -151,6 +146,7 @@
                           name="phone"
                           class="validate"
                           autocomplete="off"
+                          value="<%= user ? user.phone : '' %>"
                           required
                         />
                         <label for="phone">Phone</label>
@@ -162,6 +158,7 @@
                           name="zipcode"
                           class="validate"
                           autocomplete="postal-code"
+                          value="<%= user ? user.zipcode : '' %>"
                           required
                         />
                         <label for="zipcode">Zip Code</label>
@@ -175,6 +172,7 @@
                           name="streetAddress"
                           class="validate"
                           autocomplete="street-address"
+                          value="<%= user ? user.streetAddress : '' %>"
                           required
                         />
                         <label for="streetAddress">Street Address</label>
@@ -184,8 +182,8 @@
                           type="text"
                           id="streetAddress2"
                           name="streetAddress2"
-                          class="validate"
                           autocomplete="off"
+                          value="<%= user ? user.streetAddress2 : '' %>"
                         />
                         <label for="streetAddress2">Street Address (optional)</label>
                       </div>
@@ -198,6 +196,7 @@
                           name="city"
                           class="validate"
                           autocomplete="off"
+                          value="<%= user ? user.city : '' %>"
                           required
                         />
                         <label for="city">City</label>
@@ -216,9 +215,7 @@
                 </li>
                 <li>
                   <h3 class="collapsible-header">
-                    <button id="act-cc" class="btn-transparent">
-                      Payment Info
-                    </button>
+                    <button id="act-cc" class="btn-transparent">Payment Info</button>
                   </h3>
                   <form id="act-cc__form" class="collapsible-body" action="#">
                     <div class="form-container-row">
@@ -260,10 +257,7 @@
                         />
                         <label for="ccCVV">CVV/CVC</label>
                         <div class="cvc-loc-img">
-                          <img
-                            src="/assets/images/svg/cc-cvc.svg"
-                            alt="cvv/cvc location"
-                          />
+                          <img src="/assets/images/svg/cc-cvc.svg" alt="cvv/cvc location" />
                         </div>
                         <div>
                           <button class="toggle-info-btn"></button>
@@ -305,21 +299,30 @@
               <p class="mycart__title text-capitalize">Cart</p>
               <div class="mycart__list-wrapper" id="mycart_list-wrapper">
                 <ul class="mycart__list" id="cart">
-                    <% for(item of cart.items) { %>
-                      <li class="mycart__item" data-id="test">
-                        <span class="seat-type">
-                          <%= item.screenId.startTime.split(' ')[1] %> &nbsp; <%= item.screenId.movieTitle %> &nbsp;@<%= item.screenId.startTime.split(' ')[2] %>pm
-                        </span>
-                        <span class="seat-id"><%= item.itemId.replace(/-/g, '/') %></span>
-                        <span class="seat-price">$<%= item.itemId.split('-').length * item.unit_price %></span>
-                      </li>
-                    <% } %>
-                  </ul>
+                  <% for(item of cart.items) { %>
+                  <li class="mycart__item" data-id="test">
+                    <span class="seat-type">
+                      <span><%= item.screenId.movieTitle %> &nbsp;</span
+                      ><span><%= item.screenId.startTime.split(' ')[1] %></span>@<%=
+                      item.screenId.startTime.split(' ')[2] %>pm
+                    </span>
+                    <span class="seat-id"><%= item.itemId.replace(/-/g, '/') %></span>
+                    <span class="seat-price"
+                      >$<%= item.itemId.split('-').length * item.unit_price %></span
+                    >
+                  </li>
+                  <% } %>
+                </ul>
               </div>
               <h2 class="mycart_total text-center">Total: $<%= cart.totalPrice.toFixed(2) %></h2>
               <div class="mycart_btns">
-                <button class="btn-outline-dark btn-block mt-xs mr-xs" id="cart-cancel-btn">Cancel</button>
-                <button class="btn-prim btn-block mt-xs" id="cart-btn" disabled>Confirm</button>
+                <button class="btn-outline-dark btn-block mt-xs mr-xs" id="cart-cancel-btn">
+                  Cancel
+                </button>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                <button type="submit" class="btn-prim btn-block mt-xs" id="cart-btn">
+                  Confirm
+                </button>
               </div>
             </div>
             <div class="mobi-cart mobi-cart--checkout flex-column align-center" id="mobi-cart">
@@ -329,20 +332,30 @@
               <div class="mobi-cart__list-content" id="mobi-cart__list-content">
                 <ul class="mobi-cart__list" id="mobi-cart__list">
                   <% for(item of cart.items) { %>
-                    <li class="mobi-cart__item">
-                      <span class="seat-type flex-column">
-                        <span><%= item.screenId.startTime.split(' ')[1] %>&nbsp;@&nbsp;<%= item.screenId.startTime.split(' ')[2] %>pm</span>
-                        <span><%= item.screenId.movieTitle %></span>
-                      </span>
-                      <span class="seat-id"><%= item.itemId.replace(/-/g, '/') %></span>
-                      <span class="seat-price">$<%= item.itemId.split('-').length * item.unit_price %></span>
-                    </li>
+                  <li class="mobi-cart__item">
+                    <span class="seat-type flex-column">
+                      <span
+                        ><%= item.screenId.startTime.split(' ')[1] %>&nbsp;@&nbsp;<%=
+                        item.screenId.startTime.split(' ')[2] %>pm</span
+                      >
+                      <span><%= item.screenId.movieTitle %></span>
+                    </span>
+                    <span class="seat-id"><%= item.itemId.replace(/-/g, '/') %></span>
+                    <span class="seat-price"
+                      >$<%= item.itemId.split('-').length * item.unit_price %></span
+                    >
+                  </li>
                   <% } %>
                 </ul>
-                <h5 class="mobi-cart__total text-center">TOTAL: &nbsp;$<%= cart.totalPrice.toFixed(2) %></h5>
+                <h5 class="mobi-cart__total text-center">
+                  TOTAL: &nbsp;$<%= cart.totalPrice.toFixed(2) %>
+                </h5>
                 <div class="mobi-cart__ctrl flex-row" id="mobi-cart__ctrl">
                   <button class="btn-worded-only">Cancel</button>
-                  <button class="btn-worded-only" disabled>Checkout</button>
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                  <button id="cart-btn" type="submit" class="btn-worded-only" disabled>
+                    Confirm
+                  </button>
                 </div>
               </div>
             </div>

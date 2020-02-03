@@ -1,4 +1,4 @@
-import validate from 'client_utils/validate';
+import validation from '@src/public/js/utils/validation';
 import { toggleQuickTipImg } from 'client_utils/global';
 
 function checkFormForClass(elm) {
@@ -24,10 +24,12 @@ $('.collapsible').collapsible('open', 0);
 // adds a class to the label when a selection is made on select input
 $('#state').change(function(e) {
   const selectedState = e.target.value;
+  const stateLabel = $('label[for="state"]');
+  
   if(selectedState) {
-    $('label[for="state"]').addClass('valid');
+    stateLabel.addClass('valid');
   } else {
-    $('label[for="state"]').removeClass('valid');
+    stateLabel.removeClass('valid');
   }
 });
 // ---------------------
@@ -48,16 +50,16 @@ $('.collapsible input[type="radio"]').change(function() {
 // makes user date of birth input friendlier. i.e. If user on input for month adds 9 it
 // autocompletes the month input as 09. Applies to day of the month and year.
 $('input#dob').on('keyup keydown',function(e) {
-  if(validate.onlyDigits(e.target.value)) {
+  if(validation.onlyDigits(e.target.value)) {
     let date = e.target.value.split('/');
     // uses validate for regex to help validate the user keys when typed.
     switch(date.length) {
       case 1: 
-        return validate.twoDigitMonth(e.which, date, 'input#dob');
+        return validation.twoDigitMonth(e.which, date, 'input#dob');
       case 2:
-        return validate.twoDigitDay(e.which, date, 'input#dob');
+        return validation.twoDigitDay(e.which, date, 'input#dob');
       case 3:
-        return validate.fourDigitYear(e.which, date);
+        return validation.fourDigitYear(e.which, date);
       default:
         return;
     }
@@ -65,3 +67,15 @@ $('input#dob').on('keyup keydown',function(e) {
     return false;
   }
 });
+
+$(document).ready(function() {
+  if(sessionStorage.silverEmail) {
+    let email = $('#su-email');
+
+    email.addClass('valid');
+    email.siblings('label').addClass('active');
+    email.val(sessionStorage.silverEmail);
+
+    delete sessionStorage.silverEmail;
+  }
+})

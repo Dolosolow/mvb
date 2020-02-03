@@ -1,0 +1,24 @@
+.btn-transparent {
+  display: inline-block;
+  background-color: transparent;
+  border: none;
+  color: $muted-light;
+  cursor: pointer;
+  font-family: $primary-font;
+  font-size: 5.2rem;
+  height: 50px;
+  line-height: 1;
+  text-align: left;
+
+  &:focus {
+    background-color: transparent;
+    outline: none;
+  }
+}
+// *************************
+// Media Queries
+@include respond-to-breakpoint(phone) {
+  .btn-transparent {
+    font-size: 4.2rem;
+  }
+}

@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import * as authController from '@src/controllers/api/auth.controller';
 import * as siteController from '@src/controllers/site.controller';
 
 const router = Router();
@@ -9,9 +10,9 @@ router.get('/events', siteController.getEvents);
 
 router.get('/membership', siteController.getMemberships);
 
-router.get('/membership/gold', siteController.getGoldSignup);
+router.get('/membership/gold', authController.getGoldSignup);
 
-router.get('/membership/silver', siteController.getSilverSignup);
+router.get('/membership/silver', authController.getSilverSignup);
 
 router.get('/location', siteController.getLocations);
 

@@ -1,0 +1,58 @@
+.owl-nav {
+  .owl-prev,
+  .owl-next {
+    background-color: rgba(black, 0.6) !important;
+    border: 1px solid rgba(black, 0.25) !important;
+    border-radius: 50% !important;
+    color: white !important;
+    font-size: 5rem !important;
+    font-weight: 100 !important;
+    height: 5rem !important;
+    outline: none !important;
+    position: absolute !important;
+    top: 40%;
+    width: 5rem !important;
+
+    span {
+      position: absolute;
+      top: -1.8rem;
+      left: 1.6rem;
+    }
+  }
+
+  .owl-prev {
+    left: 0;
+  }
+
+  .owl-next {
+    right: 0;
+  }
+}
+// ********************
+// Media Queries
+@include respond-to-breakpoint(phone) {
+  .owl-nav {
+    .owl-prev,
+    .owl-next {
+      font-size: 4rem !important;
+      height: 4rem !important;
+      width: 4rem !important;
+
+      span {
+        top: -1.3rem;
+      }
+    }
+
+    .owl-prev {
+      span {
+        left: 1.1rem;
+      }
+    }
+
+    .owl-next {
+      span {
+        left: 1.3rem;
+      }
+    }
+  }
+}

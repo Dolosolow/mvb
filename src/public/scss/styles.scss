@@ -7,19 +7,20 @@
 @import "./base/typography";
 @import "./base/utilities";
 
-@import "./components/buttons";
-@import "./components/card";
-@import "./components/cart";
-@import "./components/data-tablesaw.scss";
+@import "./components/buttons/buttons";
+@import "./components/cards/cards";
+@import "./components/carts/carts";
 @import "./components/dropdowns/dropdown.scss";
-@import "./components/flash-msg";
 @import "./components/forms/form";
-@import "./components/inputs";
-@import "./components/loader";
-@import "./components/modals/modal";
-@import "./components/progress-bar";
-@import "./components/switch";
 @import "./components/forms/tos-form";
+@import "./components/inputs/inputs";
+@import "./components/loaders/loaders";
+@import "./components/messages/messages";
+@import "./components/modals/modal";
+@import "./components/progressBars/progress-bar";
+@import "./components/switches/switches";
+@import "./components/tables/data-tablesaw";
+@import "./components/utils/utils";
 
 @import "./layouts/containers";
 @import "./layouts/footer";
