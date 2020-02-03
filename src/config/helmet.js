@@ -16,7 +16,7 @@ export default helmet({
         "https://m.media-amazon.com",
         "https://www.seekpng.com",
         "https://cdn.vox-cdn.com/",
-        "https://meredithannemillerdotcom.files.wordpress.com/",
+        "https://dmn-dallas-news-prod.cdn.arcpublishing.com/",
         "https://www.gannett-cdn.com/",
         "https://kit.fontawesome.com",
         "http://www.omdbapi.com/",
