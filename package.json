@@ -5,10 +5,11 @@
   "description": "",
   "main": "./src/server/server.js",
   "scripts": {
-    "build": "NODE_ENV=production webpack --mode production",
     "clean-up": "rimraf dist",
-    "start": "npm run clean-up",
-    "poststart": "NODE_ENV=development nodemon --watch src/server --exec babel-node src/server/server.js --ignore dist"
+    "build": "npm run clean-up && NODE_ENV=production webpack --config webpack.prod.js",
+    "dev": "npm run clean-up && NODE_ENV=development nodemon --watch src/server --exec babel-node src/server/server.js --ignore dist",
+    "build:start": "npm run clean-up && NODE_ENV=production webpack --config webpack.prod.js && npm run start",
+    "start": "babel-node src/server/server.js"
   },
   "keywords": [],
   "author": "",
@@ -63,6 +64,7 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "^2.25.0",
+    "webpack-merge": "^5.8.0",
     "write-file-webpack-plugin": "^4.5.1"
   }
 }
