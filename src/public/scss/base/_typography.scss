@@ -188,3 +188,16 @@ h4 {
     padding-right: 0;
   }
 }
+
+@include respond-to-breakpoint(450) {
+  .t-nav {
+    &::before,
+    &::after {
+      height: 50%;
+    }
+
+    h2 {
+      font-size: 3.8rem;
+    }
+  }
+}

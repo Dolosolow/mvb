@@ -22,7 +22,7 @@
 
   .form-container-row {
     display: flex;
-    margin-top: 2rem;
+    margin-top: 1rem;
     width: 100%;
 
     &:nth-of-type(2) {
@@ -48,9 +48,7 @@
   }
 
   .form-container-row {
-    flex-direction: column;
     margin-top: 0;
-    width: 100%;
 
     &:first-of-type {
       margin-top: 2rem;
