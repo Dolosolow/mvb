@@ -8,54 +8,53 @@
 | This utilizes sessionStorage for storing both one time message and status.
 |--------------------------------------------------
 */
-import materialize from 'client_utils/materialize-components';
-import * as render from 'client_utils/markup/messages';
-
+import materialize from "client_utils/materialize-components";
+import { errorMessage, successMessage } from "client_utils/markup/messages";
 
 export default class Messenger {
   static clearMessageBoard = () => {
     delete sessionStorage.messageAfterReload;
     delete sessionStorage.messageStatus;
-  }
+  };
 
   static displayMessage = (msgModal, insertAfterElm) => {
-    if(sessionStorage.messageAfterReload && sessionStorage.messageStatus) {
+    if (sessionStorage.messageAfterReload && sessionStorage.messageStatus) {
       const msg = sessionStorage.messageAfterReload;
-      
-      if(sessionStorage.messageStatus === "true") {
-        $(render.successMessage(msg)).insertAfter(insertAfterElm);
+
+      if (sessionStorage.messageStatus === "true") {
+        $(successMessage(msg)).insertAfter(insertAfterElm);
       } else {
-        $(render.errorMessage(msg)).insertAfter(insertAfterElm);
+        $(errorMessage(msg)).insertAfter(insertAfterElm);
       }
-      
+
       materialize.init.modals(msgModal);
-      $(msgModal).modal('open');
-  
+      $(msgModal).modal("open");
+
       this.clearMessageBoard();
     }
-  }
+  };
 
   static setNewMessage = (msg, status) => {
     sessionStorage.messageAfterReload = msg;
     sessionStorage.messageStatus = status;
-  }
+  };
 
   static promptWarningMessage = (url) => {
-    $(render
-      .promptMessage('Are you sure you want to cancel your order? Your items will be lost.'))
-      .insertAfter('#modal-login');
+    $(
+      render.promptMessage("Are you sure you want to cancel your order? Your items will be lost.")
+    ).insertAfter("#modal-login");
 
-    materialize.init.modals('#modal-msg--prompt');
+    materialize.init.modals("#modal-msg--prompt");
 
-    $('#modal-msg--prompt').modal('open');
-    $('#btn-prompt-yes').attr('data-url', url);
-  }
+    $("#modal-msg--prompt").modal("open");
+    $("#btn-prompt-yes").attr("data-url", url);
+  };
 
   static removePromptMessage = () => {
-    $('#modal-msg--prompt').modal('close');
+    $("#modal-msg--prompt").modal("close");
 
     setTimeout(() => {
-      $('#modal-msg--prompt').remove();
+      $("#modal-msg--prompt").remove();
     }, 1000);
-  }
+  };
 }
