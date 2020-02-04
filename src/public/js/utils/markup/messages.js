@@ -1,8 +1,8 @@
 export function errorMessage() {
   return `
     <div class="alert-error" role="alert">{msg}</div>
-  `
-};
+  `;
+}
 
 export function successMessage(msg) {
   return `

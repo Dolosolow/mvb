@@ -1,19 +1,32 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const cartSchema = new mongoose.Schema({
-  userId: { type: String, required: true },
-  email: { type: String },
-  totalPrice: { type: Number, default: 0, required: true },
-  items: [{
-    _id: false,
-    screenId: { type: mongoose.Schema.Types.ObjectId, ref: 'Screen' },
-    itemId: { type: String },
-    type: { type: String },
-    seat_type: { type: String },
-    unit_price: { type: String },
-    qty: { type: Number, default: 0 }
-  }]
-}, { timestamps: true });
+const cartSchema = new mongoose.Schema(
+  {
+    userId: { type: String, required: true },
+    email: { type: String },
+    totalPrice: { type: Number, default: 0 },
+    items: [
+      {
+        _id: false,
+        screenId: { type: mongoose.Schema.Types.ObjectId, ref: "Screen" },
+        itemId: { type: String },
+        type: { type: String },
+        seat_type: { type: String },
+        unit_price: { type: String },
+        qty: { type: Number, default: 0 },
+      },
+    ],
+  },
+  { timestamps: true }
+);
+
+cartSchema.methods.getItemsId = async function () {
+  if (this.items.length) {
+    return this.items.map((item) => item.itemId);
+  } else {
+    return [];
+  }
+};
 
 cartSchema.statics.addItem = async function (newItem, userId) {
   const foundCart = await this.findOne({ userId });
@@ -23,9 +36,10 @@ cartSchema.statics.addItem = async function (newItem, userId) {
     cart = foundCart;
   } else {
     cart = new this({ userId });
+    console.log(`!no cart found!. Created a new cart: ${cart._id}....`);
   }
 
-  const existingItemIdx = cart.items.findIndex(item => item.seat_type === newItem.seat_type);
+  const existingItemIdx = cart.items.findIndex((item) => item.seat_type === newItem.seat_type);
   const existingItem = cart.items[existingItemIdx];
 
   if (existingItem) {
@@ -42,23 +56,26 @@ cartSchema.statics.addItem = async function (newItem, userId) {
 
   await cart.save();
   return cart;
-}
+};
 
 cartSchema.statics.deleteItem = async function (itemId, userId) {
   const cart = await this.findOne({ userId });
-  const selectedItemIdx = cart.items.findIndex(item => item.itemId.includes(itemId));
+  const selectedItemIdx = cart.items.findIndex((item) => item.itemId.includes(itemId));
 
   if (selectedItemIdx !== -1) {
     let selectedItem = cart.items[selectedItemIdx];
 
-    if (itemId.split('-').length === 1) {
-      selectedItem.itemId = selectedItem.itemId.split('-').filter(selectedId => selectedId !== itemId).join('-');
+    if (itemId.split("-").length === 1) {
+      selectedItem.itemId = selectedItem.itemId
+        .split("-")
+        .filter((selectedId) => selectedId !== itemId)
+        .join("-");
       --selectedItem.qty;
     } else {
       selectedItem.qty = 0;
     }
-    cart.items = cart.items.filter(item => item.qty !== 0);
-    cart.totalPrice -= selectedItem.unit_price * itemId.split('-').length;
+    cart.items = cart.items.filter((item) => item.qty !== 0);
+    cart.totalPrice -= selectedItem.unit_price * itemId.split("-").length;
 
     if (cart.totalPrice < 0) {
       cart.totalPrice = 0;
@@ -67,6 +84,6 @@ cartSchema.statics.deleteItem = async function (itemId, userId) {
     await cart.save();
     return cart;
   }
-}
+};
 
-export default mongoose.model('Cart', cartSchema);
+export default mongoose.model("Cart", cartSchema);
