@@ -41,10 +41,20 @@ export const postSilverSignup = async (req, res, next) => {
   if (foundUser) {
     return res.status(401).json({ msg: "Email already exists." }).redirect("/membership/silver");
   } else {
-    const newUser = new User({ ...req.body.data, verified: false });
-    // for now this is ok, but later after silver auth is complete and ready other mem type
-    // add functionality for accepting both silver & gold memberships.
-    // divide both under given condition i.e. by type.
+    const newUser = new User({ ...req.body.data, type: "silver", verified: false });
+    await newUser.save();
+  }
+};
+// -------------------
+// gold signup post
+export const postGoldSignup = async (req, res, next) => {
+  const { email } = req.body.data;
+
+  const foundUser = await User.findOne({ email });
+  if (foundUser) {
+    return res.status(401).json({ msg: "Email already exists." }).redirect("/membership/gold");
+  } else {
+    const newUser = new User({ ...req.body.data, type: "gold", verified: false });
     await newUser.save();
   }
 };
