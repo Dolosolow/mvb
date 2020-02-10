@@ -8,9 +8,14 @@ import { clearCart } from "./seat-reservations";
 
 // ---------------------
 // socket initial handshake with server
-let socket = io("localhost:5001", {
-  query: `screenId=${$("#screen-avl__times-list .time").eq(0).data("id")}`,
-});
+let socket = io(
+  process.env.NODE_ENV === "development"
+    ? "localhost:5001"
+    : "https://flix-movie-ticket-booking-site.herokuapp.com",
+  {
+    query: `screenId=${$("#screen-avl__times-list .time").eq(0).data("id")}`,
+  }
+);
 // --------------------------
 // A timer where if it reaches 0:00 will cancel any reservations created by that visitor; If they have not
 // reached the checkout phase of the transaction.

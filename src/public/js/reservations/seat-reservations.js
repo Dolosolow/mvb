@@ -5,9 +5,14 @@ import * as render from "client_utils/markup/cartMarkup";
 
 // ---------------------
 // socket initial handshake with server
-let socket = io("localhost:5001", {
-  query: `screenId=${$("#screen-avl__times-list .time").eq(0).data("id")}`,
-});
+let socket = io(
+  process.env.NODE_ENV === "development"
+    ? "localhost:5001"
+    : "https://flix-movie-ticket-booking-site.herokuapp.com",
+  {
+    query: `screenId=${$("#screen-avl__times-list .time").eq(0).data("id")}`,
+  }
+);
 // ---------------------
 // Removes active class using the ids fround in the cart item
 function removeActiveClass(seatItemId) {

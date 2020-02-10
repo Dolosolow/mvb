@@ -21,6 +21,7 @@ export default helmet({
         "https://kit.fontawesome.com",
         "http://www.omdbapi.com/",
         "https://maxst.icons8.com/",
+        "https://flix-movie-ticket-booking-site.herokuapp.com",
       ],
     },
   },
