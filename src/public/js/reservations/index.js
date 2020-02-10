@@ -137,7 +137,7 @@ async function changeStartTime() {
 $(function () {
   // ------------------------
   // reservation timer starts once everything has been rendered.
-  time.startTimer(5, setTimer);
+  time.startTimer(900, setTimer);
   // ------------------------
   // helps render page with most current information
   updateScreenInfo(
