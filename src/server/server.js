@@ -63,5 +63,5 @@ server.use((req, res) => {
 server.use(errorController.get404);
 
 mongoDB.connect(() => {
-  http.listen(5001, () => console.log("🚀-lift off"));
+  http.listen(process.env.PORT || 5001, () => console.log("🚀-lift off"));
 });
