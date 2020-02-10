@@ -8,12 +8,7 @@ const common = require("./webpack.common");
 module.exports = merge(common, {
   mode: "development",
   entry: {
-    main: [
-      "webpack-hot-middleware/client?reload=true&timeout=1000",
-      "./src/public/js/forms/reset-password-form.js",
-      "./src/public/js/forms/login-forms.js",
-      "./src/public/js/pages/index.js",
-    ],
+    main: ["webpack-hot-middleware/client?reload=true&timeout=1000"],
   },
   module: {
     rules: [

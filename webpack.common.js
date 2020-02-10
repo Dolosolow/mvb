@@ -8,6 +8,11 @@ const path = require("path");
 
 module.exports = {
   entry: {
+    main: [
+      "./src/public/js/forms/reset-password-form.js",
+      "./src/public/js/forms/login-forms.js",
+      "./src/public/js/pages/index.js",
+    ],
     admin_acct: [
       "./src/public/js/accounts/adminAcct/movieList.js",
       "./src/public/js/accounts/adminAcct/searchMovie.js",
