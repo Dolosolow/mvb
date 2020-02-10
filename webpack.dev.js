@@ -10,6 +10,7 @@ module.exports = merge(common, {
   entry: {
     main: [
       "webpack-hot-middleware/client?reload=true&timeout=1000",
+      "./src/public/js/forms/reset-password-form.js",
       "./src/public/js/forms/login-forms.js",
       "./src/public/js/pages/index.js",
     ],

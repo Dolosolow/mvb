@@ -9,9 +9,7 @@
   transition: all 0.3s ease;
   white-space: nowrap;
 
-  &:focus,
-  &:hover,
-  &:active {
+  &:hover {
     @include set-button-colors(#121212, white);
     border: 1px solid #121212;
   }

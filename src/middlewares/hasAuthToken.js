@@ -7,32 +7,31 @@
 | the token under evaluation, otherwise continues(next).
 |--------------------------------------------------
 */
-import AuthToken from '@src/models/authToken';
-import User from '@src/models/user';
+import AuthToken from "@src/models/authToken";
+import User from "@src/models/user";
 
 export default async (req, res, next) => {
-  res.locals.resetToken = '';
+  res.locals.resetToken = "";
 
-  if (req.originalUrl.includes('token')) {
-    const token = req.originalUrl.split('=')[1];
+  if (req.originalUrl.includes("token")) {
+    const token = req.originalUrl.split("=")[1];
 
     try {
       const rsttoken = await AuthToken.findOne({ token });
-
-      if (req.originalUrl.includes('reset')) res.locals.resetToken = rsttoken.token;
-
+      if (req.originalUrl.includes("reset")) res.locals.resetToken = rsttoken.token;
     } catch (err) {
-      console.log('Error: Token not found, reset token time exceeded');
+      console.log("Error: Token not found, reset token time exceeded");
 
       const user = await User.findOne({ authToken: token });
+
       if (user) {
         user.authToken = undefined;
         await user.save();
       }
 
-      return res.redirect('/');
+      return res.redirect("/");
     }
   }
 
   next();
-}
+};

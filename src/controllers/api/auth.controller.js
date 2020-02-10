@@ -1,4 +1,7 @@
 import User from "@src/models/user";
+import UserService from "@src/services/UserService";
+
+import context from "@src/lang/en.json";
 
 // -------------------
 // login post
@@ -23,14 +26,63 @@ export const postlogout = (req, res, next) => {
   res.status(200).json({ msg: "You are now logged out. We hope to see you again soon." });
 };
 // -------------------
-// gold signup get
-export const getGoldSignup = (req, res, next) => {
-  res.render("signup-gold", { transNav: false, path: "/membership", user: req.session.user });
+// get reset password
+export const getResetPwd = async (req, res, next) => {
+  const qryToken = req.query.token;
+  const movies = await Movie.find();
+
+  try {
+    const userEmail = await AuthToken.getUserEmailByToken(qryToken);
+    return res.render("index", {
+      transNav: true,
+      path: "/",
+      currentMovies: movies,
+      userEmail: userEmail,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ status: false, msg: context.email.resetPwdMail.fail });
+  }
 };
 // -------------------
-// silver signup get
-export const getSilverSignup = (req, res, next) => {
-  res.render("signup-silver", { transNav: false, path: "/membership", user: req.session.user });
+// verify email
+export const postVerifyEmail = async (req, res, next) => {
+  try {
+    const user = await UserService.verifyEmailAccount(req.body.token);
+    if (user) {
+      return res.status(200).send({ status: true, msg: context.account.success.signup_verified });
+    }
+  } catch (err) {
+    console.log(err);
+    res.redirect("/");
+  }
+};
+// -------------------
+// post reset password
+export const postResetPwd = async (req, res, next) => {
+  try {
+    await UserService.resetAccountPwd(req.body.email);
+  } catch (err) {
+    console.log(err);
+  }
+
+  return res.status(200).send({
+    status: true,
+    msg: context.email.resetPwdMail.success,
+  });
+};
+// -------------------
+// post new password
+export const postNewPwd = async (req, res, next) => {
+  try {
+    const user = await UserService.updateAccountPwd(req.body);
+    if (user) {
+      return res.status(200).send({ status: true, msg: "Password was successfully changed." });
+    }
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send({ status: false, error: "Password was not changed." });
+  }
 };
 // -------------------
 // silver signup post

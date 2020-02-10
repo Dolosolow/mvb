@@ -39,4 +39,29 @@ $(function () {
       $("html").removeClass("no-scroll");
     }
   });
+  // ----------------------
+  // Displays the change/new password modal when query is found in url
+  if (window.location.href.includes("reset?token=")) {
+    console.log("found something in the href");
+    materialize.init.modals("#modal-newPwd");
+    $("#modal-newPwd").modal("open");
+  }
+  // ----------------------
+  // Waits for the animation classes, if added previously, to finish 1before removing them.
+  // ** This is important as if not removed the materialize modal will not close on button click.
+  $(".modal-content").on("animationend", function () {
+    $(this).removeClass("fade-in--d fade-out");
+  });
+  // REMOVE THIS IF NOT NEEDED
+  // // ---------------------
+  // // controls/toggles the content being shown in the login-modal
+  // $("#fg-pwd").on("click", function () {
+  //   $("#modal-content--login").css({ display: "none" });
+  //   $("#modal-content--pwdReset").css({ display: "block" });
+  // });
+
+  // $("#bck-si").on("click", function () {
+  //   $("#modal-content--login").css({ display: "block" });
+  //   $("#modal-content--pwdReset").css({ display: "none" });
+  // });
 });

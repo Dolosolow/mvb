@@ -42,9 +42,7 @@
           <a href="#">FLIX Sweepstakes</a>
         </li>
       </ul>
-      <p class="footer__copy-rht">
-        &copy; All Rights Reserved, FLIX Theaters 2020
-      </p>
+      <p class="footer__copy-rht">&copy; All Rights Reserved, FLIX Theaters 2020</p>
     </div>
   </footer>
 </div>
@@ -57,7 +55,7 @@
     <h2>Log In</h2>
     <form id="login-form">
       <div class="input-field">
-        <input 
+        <input
           type="email"
           id="si-email"
           name="email"
@@ -69,7 +67,7 @@
         <span class="helper-text" data-error="This field is required."></span>
       </div>
       <div class="input-field">
-        <input 
+        <input
           type="password"
           id="si-password"
           name="password"
@@ -81,15 +79,13 @@
         <span class="helper-text" data-error="This field is required."></span>
         <div><i class="fas fa-lock fa-lg"></i></div>
       </div>
-      <button id="fg-pwd" type="button" class="color-text color-text__btn">
-        Forgot Password?
-      </button>
-      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <button id="fg-pwd" type="button" class="color-text color-text__btn">Forgot Password?</button>
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
       <button type="submit" class="btn-prim btn-block">Log In</button>
     </form>
     <p>
-      Receive member-only ticket pricing, 10% off food and beverage, and
-      more.&nbsp; <a href="/membership/gold" class="color-text color-text__link">Sign Up</a>.
+      Receive member-only ticket pricing, 10% off food and beverage, and more.&nbsp;
+      <a href="/membership/gold" class="color-text color-text__link">Sign Up</a>.
     </p>
   </div>
   <!-- -------------------------- -->
@@ -97,12 +93,12 @@
   <div class="modal-content modal-content--pwdReset" id="modal-content--pwdReset">
     <h2>Reset Password</h2>
     <p>
-      Please enter the email address associated with your account, an email link to reset
-      your password will be sent there.
+      Please enter the email address associated with your account, an email link to reset your
+      password will be sent there.
     </p>
     <form id="reset-pwd-form">
       <div class="input-field">
-        <input 
+        <input
           type="email"
           id="rpwd-email"
           name="email"
@@ -113,52 +109,44 @@
         <label for="rpwd-email">Email</label>
         <span class="helper-text" data-error="This field is required."></span>
       </div>
-      <button id="bck-si" type="button" class="color-text color-text__btn">
-        Back to Sign in
-      </button>
-      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-      <button type="submit" class="btn-prim btn-block">Send Reset Link</button>
+      <button id="bck-si" type="button" class="color-text color-text__btn">Back to Sign in</button>
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+      <button id="btn-submit" type="submit" class="btn-prim btn-block">Send Reset Link</button>
     </form>
   </div>
 </div>
 <!-- RESET FORM -->
-<% if(resetToken !== '') { %> 
-  <div class="modal modal-login" id="modal-newPwd">
-    <button class="modal-close btn-worded-only">&times;</button>
-    <!-- login content -->
-    <div class="modal-content modal-content--pwdReset show">
-      <h2>New Password</h2>
-      <p class="text-center">Enter a new password for <%= userEmail %></p>
-      <form id="update-pwd-form">
-        <div class="input-field">
-          <input 
-            type="password"
-            id="nw-password"
-            name="password"
-            autocomplete="off"
-            required
-          />
-          <label for="nw-password">New Password</label>
-          <span class="helper-text" data-error="This field is required."></span>
-          <div><i class="fas fa-lock fa-lg"></i></div>
-        </div>
-        <div class="input-field">
-          <input
-            type="password"
-            id="nw-confirmPassword"
-            name="confirmPassword"
-            autocomplete="off"
-            required
-          />
-          <label for="nw-confirmPassword">Confirm New Password</label>
-          <span class="helper-text" data-error="This field is required."></span>
-          <div><i class="fas fa-lock fa-lg"></i></div>
-        </div>
-        <input type="hidden" name="_email" value="<%=  userEmail %>">
-        <input type="hidden" name="_rstt" value="<%=  resetToken %>">
-        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-        <button type="submit" class="btn-prim btn-block">Update Password</button>
-      </form>
-    </div>
+<% if(resetToken !== '') { %>
+<div class="modal modal-login" id="modal-newPwd">
+  <button class="modal-close btn-worded-only">&times;</button>
+  <!-- login content -->
+  <div class="modal-content modal-content--pwdReset show">
+    <h2>New Password</h2>
+    <p class="text-center">Enter a new password for <%= userEmail %></p>
+    <form id="update-pwd-form">
+      <div class="input-field">
+        <input type="password" id="nw-password" name="password" autocomplete="off" required />
+        <label for="nw-password">New Password</label>
+        <span class="helper-text" data-error="This field is required."></span>
+        <div><i class="fas fa-lock fa-lg"></i></div>
+      </div>
+      <div class="input-field">
+        <input
+          type="password"
+          id="nw-confirmPassword"
+          name="confirmPassword"
+          autocomplete="off"
+          required
+        />
+        <label for="nw-confirmPassword">Confirm New Password</label>
+        <span class="helper-text" data-error="This field is required."></span>
+        <div><i class="fas fa-lock fa-lg"></i></div>
+      </div>
+      <input type="hidden" name="_email" value="<%=  userEmail %>" />
+      <input type="hidden" name="_rstt" value="<%=  resetToken %>" />
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+      <button type="submit" class="btn-prim btn-block">Update Password</button>
+    </form>
   </div>
+</div>
 <% } %>

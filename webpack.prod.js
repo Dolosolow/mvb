@@ -8,7 +8,12 @@ module.exports = merge(common, {
   mode: "production",
   devtool: "source-map",
   entry: {
-    main: ["./src/public/js/forms/login-forms.js", "./src/public/js/pages/index.js"],
+    main: [
+      "./src/public/js/forms/reset-password-form.js",
+      ,
+      "./src/public/js/forms/login-forms.js",
+      "./src/public/js/pages/index.js",
+    ],
   },
   module: {
     rules: [

@@ -1,31 +1,31 @@
-import crypto from 'crypto';
+import crypto from "crypto";
 
-import User from '@src/models/user';
-import AuthToken from '@src/models/authToken';
+import User from "@src/models/user";
+import AuthToken from "@src/models/authToken";
 
-import EmailService from '@src/services/EmailService';
+import EmailService from "@src/services/EmailService";
 
-const clearAuthTokens = async user => {
+const clearAuthTokens = async (user) => {
   const token = user.authToken;
 
   user.authToken = undefined;
   await user.save();
   await AuthToken.findOneAndRemove({ token });
-}
+};
 
 const createRandomBytes = () => {
   return new Promise((resolve, reject) => {
     crypto.randomBytes(32, (err, buffer) => {
-      if(err) {
-        const error = new Error('Random bytes was not created');
+      if (err) {
+        const error = new Error("Random bytes was not created");
         console.log(error);
         reject(error);
       }
-      const bytes = buffer.toString('hex');
+      const bytes = buffer.toString("hex");
       resolve(bytes);
     });
   });
-}
+};
 
 export default class UserService {
   static login = async (userData) => {
@@ -39,11 +39,11 @@ export default class UserService {
     } catch (err) {
       throw {
         statusCode: 401,
-        msg: err.response.body.errors[0].message
+        msg: err.response.body.errors[0].message,
       };
     }
-  }
-  
+  };
+
   static signup = async (userData) => {
     const token = await createRandomBytes();
     const newUser = new User({ ...userData, verified: false });
@@ -56,7 +56,7 @@ export default class UserService {
     } catch (err) {
       throw err;
     }
-  }
+  };
 
   static resetAccountPwd = async (email) => {
     const token = await createRandomBytes();
@@ -65,12 +65,14 @@ export default class UserService {
     await user.applyAuthToken(token);
     await user.save();
 
+    console.log("sending reset account");
+
     try {
       await EmailService.sendResetPwdMail(user.email, token);
     } catch (err) {
       throw err;
     }
-  }
+  };
 
   static updateAccountPwd = async (userData) => {
     const { email, nwPassword } = userData;
@@ -80,7 +82,7 @@ export default class UserService {
     await clearAuthTokens(user);
 
     return user;
-  }
+  };
 
   static verifyEmailAccount = async (token) => {
     const user = await User.findOne({ authToken: token });
@@ -89,9 +91,7 @@ export default class UserService {
     await clearAuthTokens(user);
 
     return user;
-  }
+  };
 
-  static completePurchase = async () => {
-    
-  }
+  static completePurchase = async () => {};
 }
