@@ -23,7 +23,7 @@
     }
 
     i {
-      font-size: 2.8rem;
+      font-size: 2.5rem;
     }
   }
 
@@ -51,19 +51,24 @@
     }
 
     &-content {
+      padding-bottom: 1rem;
       width: 100%;
     }
 
     &.show {
-      max-height: 21rem;
+      max-height: 20rem;
     }
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
   }
 
   &__total {
     font-family: $primary-font;
-    font-size: 3.6rem;
-    margin: 0.5rem 2.5rem 0.5rem 2.5rem;
-    display: inline;
+    font-size: 2.6rem;
 
     &:last-of-type {
       float: right;
@@ -72,19 +77,12 @@
 
   &__ctrl {
     justify-content: space-between;
-    padding: 0.25rem 1.2rem;
+    padding: 0 1.2rem;
     width: 100%;
 
     a {
       color: #fff;
-      font: 400 3.6rem $primary-font;
+      font: 400 2.3rem $primary-font;
     }
-  }
-}
-// ********************
-// Media Queries
-@include respond-to-breakpoint(1024) {
-  .mobi-cart {
-    visibility: visible;
   }
 }

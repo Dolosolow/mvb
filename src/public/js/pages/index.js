@@ -6,7 +6,6 @@ import { successMessage } from "client_utils/markup/messages";
 import materialize from "client_utils/materialize-components";
 
 import "src/public/scss/styles.scss";
-
 // ----------------------
 // Using sessionStorage, if obj messageAfterReload is stored after an event. On
 // reload a one time message will displayed coming from connect-flash afterwards
@@ -52,16 +51,4 @@ $(function () {
   $(".modal-content").on("animationend", function () {
     $(this).removeClass("fade-in--d fade-out");
   });
-  // REMOVE THIS IF NOT NEEDED
-  // // ---------------------
-  // // controls/toggles the content being shown in the login-modal
-  // $("#fg-pwd").on("click", function () {
-  //   $("#modal-content--login").css({ display: "none" });
-  //   $("#modal-content--pwdReset").css({ display: "block" });
-  // });
-
-  // $("#bck-si").on("click", function () {
-  //   $("#modal-content--login").css({ display: "block" });
-  //   $("#modal-content--pwdReset").css({ display: "none" });
-  // });
 });

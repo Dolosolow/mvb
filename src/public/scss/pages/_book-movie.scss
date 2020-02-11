@@ -59,6 +59,7 @@
       display: inline-flex;
       font-family: $primary-font;
       margin-top: 6rem;
+      border: 2px solid blue;
 
       h3 {
         font-size: 2.4rem;
@@ -129,6 +130,7 @@
         padding-bottom: 0.5rem;
         scroll-snap-align: center;
         scroll-snap-stop: normal;
+        float: none;
 
         .mth {
           font-size: 2rem;
@@ -524,6 +526,25 @@
   .header-poster {
     img {
       top: -20rem;
+    }
+  }
+}
+
+@include respond-to-breakpoint(750) {
+  .theater-headline {
+    &__content {
+      padding-bottom: 1rem;
+
+      .screen-avl {
+        &__dates {
+          &-list {
+            &::before,
+            &::after {
+              height: 50%;
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -46,3 +46,15 @@
     font-size: 1.3rem;
   }
 }
+
+// *******************
+// Media Queries
+@include respond-to-breakpoint(750) {
+  .card {
+    width: 32rem;
+
+    img {
+      height: 50rem;
+    }
+  }
+}
