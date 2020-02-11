@@ -8,6 +8,8 @@
     line-height: 0;
     padding: 2rem 2rem 0 0;
     text-align: center;
+    width: max-content;
+    z-index: 100;
   }
 
   .modal-content {
@@ -22,7 +24,7 @@
 @include respond-to-breakpoint(tab-port) {
   .modal {
     button.btn-worded-only {
-      font-size: 6rem;
+      height: 50px;
     }
   }
 

@@ -3,7 +3,7 @@
   border: none;
   color: #fff;
   cursor: pointer;
-  font: 400 3.6rem $primary-font;
+  font: 400 3.8rem $primary-font;
   height: max-content;
 
   &:disabled {
@@ -18,6 +18,6 @@
 // Media Queries
 @include respond-to-breakpoint(750) {
   .btn-worded-only {
-    margin-top: 1.5rem;
+    z-index: 200;
   }
 }
