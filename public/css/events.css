@@ -1,0 +1,100 @@
+.ev {
+  position: relative;
+}
+
+.ev .t-nav {
+  position: absolute;
+}
+
+.ev.wd-option-txt:first-of-type {
+  margin-top: 95px;
+  padding-left: 8px;
+}
+
+.ev.wd-option-txt h2 {
+  font-size: 2.3rem;
+  font-weight: 400;
+}
+
+.ev.wd-options {
+  margin-top: 135px;
+  padding: 60px 40px 60px 40px;
+}
+
+.ev.wd-options .ev.wd-option-txt {
+  margin-top: 0;
+}
+
+.contact-info {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.contact-info h2 {
+  text-transform: uppercase;
+  font-size: 1.2rem !important;
+  font-weight: 300 !important;
+  margin-bottom: 12px;
+}
+
+.contact-info h1,
+.contact-info a {
+  font-size: 1.7rem !important;
+  font-weight: 400;
+  padding: 0;
+}
+
+@media only screen and (max-width: 500px) {
+  .ev.wd-options {
+    margin-top: 0;
+    padding: 0;
+  }
+
+  .ev.wd-option-txt.title {
+    padding-top: 60px !important;
+  }
+
+  .ev.wd-option-txt {
+    margin: 0 !important;
+    padding: 0 12px !important;
+  }
+
+  .ev.wd-option-txt p {
+    padding: 0 !important;
+    padding-top: 12px;
+  }
+
+  .ev.wd-option-txt h1 {
+    padding: 0 !important;
+    padding-top: 12px !important;
+  }
+
+  .ev.wd-option-img {
+    padding: 0 !important;
+    width: 100%;
+  }
+
+  .ev.wd-options-btn {
+    margin: 0;
+    padding: 12px;
+  }
+
+  .contact-info {
+    margin: 0;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .contact-info .info {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .row:nth-of-type(2) {
+    padding: 0 !important;
+  }
+}

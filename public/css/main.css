@@ -1,7 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Oswald:300,400,500&display=swap");
+:root {
+  --primary-color: #f1675d;
+}
 
 * {
-  font-family: Oswald;
+  font-family: "Lato", sans-serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -9,23 +11,114 @@
 
 html,
 body {
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   height: max-content;
-  /* overflow-x: hidden; */
+  position: relative;
+  font-size: 1rem;
 }
 
 section {
   margin-bottom: 30px;
 }
 
+/* 404 page */
+.four-o-four {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+.four-o-four img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+/* 404 page */
+
+.btn-outline {
+  width: max-content;
+  padding: 10px 80px;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: all 0.4s ease;
+}
+
+.btn-outline:hover {
+  background-color: #000;
+  border: 1px solid #000;
+}
+
+.btn-outline-dark {
+  width: max-content;
+  padding: 10px 80px;
+  background-color: transparent;
+  color: #000;
+  border: 1px solid #000;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: all 0.4s ease;
+}
+
+.btn-outline-dark:hover {
+  background-color: #000;
+  border: 1px solid #000;
+}
+
+.landing-body > .btn-outline {
+  margin: 30px 0;
+}
+
 .active a {
-  color: #e8736b;
+  color: var(--primary-color);
+}
+
+.landing {
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  position: absolute;
+  z-index: 0;
+}
+
+.landing img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+  object-fit: cover;
+}
+
+.landing-body {
+  width: 100vw;
+  height: 95vh;
+  padding: 120px 30px 80px 30px;
+  color: #fff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.landing-body__title {
+  font-size: 4rem;
+  margin: 0;
+}
+
+.landing-body__desc {
+  width: 50%;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .main {
   width: 100%;
   height: max-content;
-  padding: 30px 37px 37px 37px;
+  padding: 30px 37px 0 37px;
 }
 
 .t-nav {
@@ -42,6 +135,7 @@ section {
 
 .t-nav h1 {
   font-weight: 400;
+  font-size: 3rem;
 }
 
 .t-nav ul {
@@ -92,7 +186,11 @@ footer a {
 }
 
 footer a:hover {
-  color: #e8736b;
+  color: var(--primary-color);
+}
+
+.footer-info .navbar-brand {
+  color: var(--primary-color);
 }
 
 .footer-att {
@@ -137,7 +235,7 @@ footer a:hover {
 
 .footer-cr {
   margin-top: 8px;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   font-weight: 300;
   letter-spacing: 0.5px;
   color: rgb(148, 148, 148);
@@ -164,7 +262,7 @@ footer a:hover {
   }
 
   footer a:hover {
-    color: #e8736b;
+    color: var(--primary-color);
   }
 
   .footer-att {
@@ -189,10 +287,6 @@ footer a:hover {
   .footer-links li a {
     font-size: 1.05rem;
   }
-
-  .footer-cr {
-    font-size: 0.75rem;
-  }
 }
 
 @media only screen and (max-width: 500px) {
@@ -200,9 +294,43 @@ footer a:hover {
     margin-bottom: 8px;
   }
 
+  .landing-body {
+    width: 100vw;
+    height: 95vh;
+    padding: 120px 16px;
+    color: #fff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .landing-body__title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+
+  .landing-body__desc {
+    width: 100%;
+    font-size: 1rem;
+    line-height: 24px;
+  }
+
+  .btn-outline {
+    width: 100%;
+
+    padding: 10px 80px;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
   .t-nav .active {
     padding-bottom: 5px;
-    border-bottom: 4px solid #e8736b;
+    border-bottom: 4px solid var(--primary-color);
   }
 
   .main {
@@ -236,7 +364,7 @@ footer a:hover {
   .t-nav li > a,
   .t-nav h1 {
     font-size: 30px;
-    font-weight: 300;
+    font-weight: 400;
   }
 
   footer {
@@ -251,7 +379,7 @@ footer a:hover {
   }
 
   footer a:hover {
-    color: #e8736b;
+    color: var(--primary-color);
   }
 
   .footer-att {
@@ -291,9 +419,5 @@ footer a:hover {
 
   .footer-links li a {
     font-size: 0.9rem;
-  }
-
-  .footer-cr {
-    font-size: 0.75rem;
   }
 }
