@@ -1,41 +1,30 @@
-$(document).ready(() => {
-  $('.t-nav').css('width', '100%');
+require('dotenv').config();
+const express = require('express');
+const path = require('path');
 
-  $('.owl-carousel').owlCarousel({
-    loop: true,
-    nav: true,
-    dots: false,
-    navSpeed: 700,
-    margin: 10,
-    center: false,
-    autoWidth: true,
-    autoHeight: true,
-    responsiveClass: true,
-    responsive: {
-      0: {
-        items: 1,
-        center: true,
-      },
-      700: {
-        items: 2,
-      },
-      2000: {
-        items: 4,
-      },
-    },
-  });
+const app = express();
+
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+const adminRoutes = require('./routes/admin');
+const mainRoutes = require('./routes/main');
+
+app.use('/admin', adminRoutes);
+app.use('/', mainRoutes);
+
+app.use((req, res) => {
+  const error = new Error('Page Not Found');
+  error.status = 404;
+  next(error);
 });
 
-$('.hamburger').click(function() {
-  $(this).toggleClass('show');
-  $('.navigation-collapse').toggleClass('show');
-  $('.navigation-wrapper').toggleClass('show');
-  $('body').toggleClass('show');
+app.use((err, req, res, next) => {
+  res.status(err.status || 500).render('404', { pageTitle: 'Page Not Found' });
+  // res.redirect('/');
 });
 
-$('.navigation-wrapper').click(function() {
-  $(this).toggleClass('show');
-  $('.hamburger').toggleClass('show');
-  $('.navigation-collapse').toggleClass('show');
-  $('body').toggleClass('show');
-});
+app.listen(5000, () => console.log('🚀-lift off'));
