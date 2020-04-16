@@ -1,0 +1,18 @@
+$primary-color: #f1675d;
+$section-background-color: #f8f9fa;
+$muted: rgb(155, 155, 155);
+
+// *************
+// utils >> functions, mixins
+// *************
+@import "utils";
+
+@import "owl-carosuel";
+@import "buttons";
+@import "navbar";
+@import "footer";
+@import "card";
+@import "add-movie";
+@import "movie-details";
+@import "four-o-four";
+@import "pages";

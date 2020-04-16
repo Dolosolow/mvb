@@ -1,0 +1,67 @@
+%btn-outlined {
+  font-size: 1.8rem;
+  line-height: 0.5;
+  padding: 10px 80px;
+  text-align: center;
+  text-transform: uppercase !important;
+  transition: all 0.4s ease;
+  white-space: nowrap;
+  width: max-content;
+
+  &:hover {
+    background-color: #000;
+    border: 1px solid #000;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.btn-outline {
+  @extend %btn-outlined;
+  @include set-button-colors(transparent, #fff);
+  border: 1px solid #fff;
+}
+
+.btn-outline-dark {
+  @extend %btn-outlined;
+  @include set-button-colors(transparent, #000);
+  border: 1px solid #000;
+}
+
+.btn-prim {
+  @extend %btn-outlined;
+  @include set-button-colors($primary-color, #fff);
+  border: none;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+// media queries change later to seperate file "mobile/tablet"
+
+@media only screen and (max-width: 1000px) and (min-width: 520px) {
+  .btn-outline {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 1.3rem;
+    padding: 10px 80px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  .btn-add {
+    align-self: center;
+    margin-bottom: 120px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .btn-add {
+    align-self: center;
+  }
+}

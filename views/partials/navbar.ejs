@@ -1,0 +1,140 @@
+<nav class="main-nav">
+  <div class="navbar-brand <%= transNav && 'nav-light' %>">FLIX</div>
+  <div class="container-fluid">
+    <ul class="navigation">
+      <li>
+        <a class="<%= transNav && 'nav-light' %>" href="./index.html">Movies</a>
+      </li>
+      <li>
+        <a class="<%= transNav && 'nav-light' %>" href="./wine_dine.html">Wine & Dine</a>
+      </li>
+      <li>
+        <a class="<%= transNav && 'nav-light' %>" href="./events.html">Events</a>
+      </li>
+      <li>
+        <a class="<%= transNav && 'nav-light' %>" href="#">Membership</a>
+      </li>
+      <li>
+        <a class="<%= transNav && 'nav-light' %>" href="#">Locations</a>
+      </li>
+      <li>
+        <a class="<%= transNav && 'nav-light' %>" href="#">Sign in</a>
+      </li>
+      <li>
+        <a class="<%= transNav && 'nav-light' %>" href="#">Sign up</a>
+      </li>
+    </ul>
+  </div>
+  
+    <div class="navigation-wrapper"></div>
+    <ul class="navigation-collapse">
+      <span></span>
+      <li class="hide">
+        <a href="./index.html">Movies</a>
+      </li>
+      <li class="hide">
+        <a href="./wine_dine.html">Wine & Dine</a>
+      </li>
+      <li class="hide">
+        <a href="./events.html">Events</a>
+      </li>
+      <li class="hide">
+        <a href="#">Membership</a>
+      </li>
+      <li class="hide">
+        <a href="#">Locations</a>
+      </li>
+      <li class="hide">
+        <a href="#">Sign in</a>
+      </li>
+      <li class="hide">
+        <a href="#">Sign up</a>
+      </li>
+      <h5 class="hide">MORE</h5>
+      <li>
+        <a href="#">flix life</a>
+      </li>
+      <li>
+        <a href="#">shop</a>
+      </li>
+      <li>
+        <a href="#">careers</a>
+      </li>
+      <li>
+        <a href="#">in the news</a>
+      </li>
+      <li>
+        <a href="#">about us</a>
+      </li>
+      <li>
+        <a href="#">contact us</a>
+      </li>
+      <li style="margin-left: 60px;">
+        <img
+          src="https://conference.ccra-acrc.ca/wp-content/uploads/2019/10/app-store-300x200.png"
+          alt="download on store"
+          width="180px"
+        />
+      </li>
+      <li>
+        <div class="small footer-att">
+          <p>FLIX Int</p>
+          <p>1099 Flix Place, Flixville NJ 07100</p>
+          <p>800-345-FLIX</p>
+        </div>
+      </li>
+      <li>
+        <a href=""><i class="fab fa-facebook-f fa-xs mr-4"></i></a>
+        <a href=""><i class="fab fa-instagram fa-xs mr-4"></i></a>
+        <a href=""><i class="fab fa-twitter fa-xs mr-4"></i></a>
+        <a href=""><i class="fab fa-linkedin fa-xs mr-4"></i></a>
+        <a href=""><i class="fab fa-youtube fa-xs mr-4"></i></a>
+        <a href=""><i class="fab fa-yelp fa-xs"></i></a>
+      </li>
+    </ul>
+  </div>
+  <div class="hamburger" style="color: gold;">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="60"
+      height="60"
+      viewBox="0 0 200 200"
+    >
+      <g stroke-width="5" stroke-linecap="round">
+        <path
+          d="M72 82.286h28.75"
+          fill="#009100"
+          fill-rule="evenodd"
+          stroke="<%= transNav ? '#fff' : '#000' %>"
+        />
+        <path
+          d="M100.75 103.714l72.482-.143c.043 39.398-32.284 71.434-72.16 71.434-39.878 0-72.204-32.036-72.204-71.554"
+          fill="none"
+          stroke="<%= transNav ? '#fff' : '#000' %>"
+        />
+        <path
+          d="M72 125.143h28.75"
+          fill="#009100"
+          fill-rule="evenodd"
+          stroke="<%= transNav ? '#fff' : '#000' %>"
+        />
+        <path
+          d="M100.75 103.714l-71.908-.143c.026-39.638 32.352-71.674 72.23-71.674 39.876 0 72.203 32.036 72.203 71.554"
+          fill="none"
+          stroke="<%= transNav ? '#fff' : '#000' %>"
+        />
+        <path
+          d="M100.75 82.286h28.75"
+          fill="#009100"
+          fill-rule="evenodd"
+          stroke="<%= transNav ? '#fff' : '#000' %>"
+        />
+        <path
+          d="M100.75 125.143h28.75"
+          fill="#009100"
+          fill-rule="evenodd"
+          stroke="<%= transNav ? '#fff' : '#000' %>"
+        />
+      </g>
+    </svg>
+</nav>
