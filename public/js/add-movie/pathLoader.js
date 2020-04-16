@@ -1,4 +1,4 @@
-function PathLoader(el) {
+export default function PathLoader(el) {
 	this.el = el;
     this.strokeLength = el.getTotalLength();
 	

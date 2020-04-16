@@ -1,0 +1,170 @@
+iframe {
+  border: none;
+  height: 100%;
+  opacity: 0.9;
+  width: 100%;
+}
+
+input {
+  &:focus + label {
+    color: black;
+    font-size: 0.8rem;
+    transform: translateY(-24px);
+  }
+}
+
+.trailer {
+  background-color: #121212;
+  height: 500px;
+  position: relative;
+  width: 100%;
+}
+
+.md {
+  background-color: $section-background-color;
+  height: 100%;
+  padding: 30px;
+  width: 100%;
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  img {
+    width: 380px;
+  }
+
+  &-body {
+    display: flex;
+    flex-wrap: nowrap;
+
+    div {
+      margin-right: 25px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &__text {
+      line-height: 1.75;
+      width: 55%;
+
+      h5 {
+        text-transform: uppercase;
+      }
+
+      h6 {
+        margin-top: 20px;
+      }
+
+      span {
+        color: $muted;
+      }
+    }
+  }
+}
+
+.inline-form {
+  margin-top: 60px;
+  position: relative;
+  width: 100%;
+
+  i {
+    position: absolute;
+    right: 0;
+  }
+
+  label {
+    bottom: -7px;
+    color: rgb(168, 168, 168);
+    font-size: 1.1rem;
+    left: 0;
+    position: absolute;
+    transition: 0.4s ease-in-out;
+    width: max-content;
+  }
+
+  input {
+    background-color: $section-background-color;
+    border: none;
+    border-bottom: 1px solid #222222;
+    font-size: 1.1rem;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &:first-child {
+    margin-top: 40px;
+  }
+}
+
+.dm-body__mbox {
+  box-shadow: 0 7px 20px 4px rgba(0, 0, 0, 0.15);
+  height: max-content;
+  padding: 24px;
+  width: 500px;
+
+  h1 {
+    color: $primary-color;
+    font-size: 4rem;
+    white-space: nowrap;
+  }
+
+  p {
+    margin-top: 16px;
+  }
+
+  a {
+    color: $primary-color;
+    font-family: "Lato", sans-serif;
+    font-size: 1rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    position: relative;
+    width: 100%;
+  }
+
+  form a {
+    font-size: 0.8rem;
+    margin-top: 25px;
+  }
+
+  button {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+}
+
+.md-showtime {
+  display: flex;
+  height: 125px;
+  margin-top: 20px;
+  margin-left: 30px;
+  overflow-x: scroll;
+  width: 70%;
+}
+
+.showtime-item {
+  color: rgb(122, 107, 107);
+  cursor: pointer;
+  letter-spacing: -1px;
+  min-width: 180px;
+  text-align: center;
+  width: 180px;
+
+  &-item:hover {
+    color: #000;
+  }
+
+  &.active {
+    color: $primary-color;
+  }
+}
