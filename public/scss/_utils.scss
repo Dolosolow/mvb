@@ -1,10 +1,4 @@
 // *************
-// gets values from its corresponding keys that are in nested maps.
-// *************
-@function get-deep-map($path, $key, $deep-key) {
-  @return map-get(map-get($path, $key), $deep-key);
-}
-// *************
 // mixins for setting svg attributes.
 // *************
 @mixin set-transform-origin($val) {
@@ -48,4 +42,10 @@
 @mixin set-button-colors($background, $color) {
   background-color: $background;
   color: $color;
+}
+// *************
+// gets values from its corresponding keys that are in nested maps.
+// *************
+@function get-deep-map($path, $key, $deep-key) {
+  @return map-get(map-get($path, $key), $deep-key);
 }

@@ -33,10 +33,10 @@ module.exports = {
         Genre: <span>${data.Genre}</span>
       </li>
       <li>
-        Plot: <span>${data.Plot}</span>
+        Actors: <span>${data.Actors}</span>
       </li>
       <li>
-        Actors: <span>${data.Actors}</span>
+        Plot: <span>${data.Plot}</span>
       </li>
     </ul>
   `

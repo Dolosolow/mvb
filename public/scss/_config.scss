@@ -1,6 +1,9 @@
 $primary-color: #f1675d;
-$section-background-color: #f8f9fa;
-$muted: rgb(155, 155, 155);
+$section-background-color: #fafafa;
+$muted: #9b9c9e;
+$muted-light: #d8d8d8;
+$primary-font: "Copyright Klim Type Foundry";
+$secondary-font: "Lato", sans-serif;
 
 // *************
 // utils >> functions, mixins
@@ -12,7 +15,4 @@ $muted: rgb(155, 155, 155);
 @import "navbar";
 @import "footer";
 @import "card";
-@import "add-movie";
-@import "movie-details";
-@import "four-o-four";
-@import "pages";
+@import "pages/pages";
