@@ -2,7 +2,7 @@ const router = require('express').Router();
 const axios = require('axios');
 
 router.get('/', (req, res, next) => { 
-  res.render('add-movie', { transNav: false });
+  res.render('add-movie', { transNav: false, isAdmin: true, currentPg: 'admin' });
 })
 
 router.post('/add',(req, res, next) => {

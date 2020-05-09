@@ -15,7 +15,7 @@ footer {
   }
 }
 
-.footer-info {
+#footer-info {
   min-width: 20%;
 
   .navbar-brand {
@@ -25,13 +25,13 @@ footer {
   }
 }
 // *********************** change line-height to actual number 8px === ? 1.2 | 1 | 2
-.footer-att {
+#footer-att {
   line-height: 1.8;
   margin-top: 20px;
   width: max-content;
 }
 
-.footer-links {
+#footer-links {
   align-items: center;
   border-left: 4px solid black;
   border-right: 4px solid black;
@@ -68,7 +68,7 @@ footer {
   }
 }
 
-.footer-cr {
+#footer-cr {
   color: rgb(148, 148, 148);
   font-size: 0.7rem;
   font-weight: 400;
@@ -86,20 +86,21 @@ footer {
     padding: 12px 24px;
   }
 
-  .footer-info {
+  #footer-info {
     padding: 0;
     width: 45%;
   }
 
-  .footer-att {
+  #footer-att {
     align-self: flex-start;
+    color: #fff;
     font-size: 0.75rem;
     line-height: 1.8;
     padding-bottom: 0;
     width: 160px;
   }
 
-  .footer-links {
+  #footer-links {
     border-right: none;
 
     ul {
@@ -115,11 +116,12 @@ footer {
     width: 100%;
   }
 
-  .footer-att {
+  #footer-att {
     font-size: 0.75rem;
+    color: #fff;
   }
 
-  .footer-info {
+  #footer-info {
     align-items: center !important;
     display: flex;
     height: 100%;
@@ -132,7 +134,7 @@ footer {
     }
   }
 
-  .footer-links {
+  #footer-links {
     border: none;
     border-top: 2px solid black;
     padding: 10px 0;

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="#" />
+    <!-- booststrap - fonts - font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="//db.onlinewebfonts.com/c/0ecca429d3d3616f3407879f72ee874a?family=Copyright+Klim+Type+Foundry"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://kit.fontawesome.com/e9063b30c3.js"></script>
+    <title>FLIX</title>
+  </head>
+  <body>
+    <%- include('partials/navbar.ejs') %>
+    <div class="wd">
+      <section class="wd-main">
+        <div class="wd-main__wrapper">
+          <header class="t-nav">
+            <h1>Wine & Dine with Us</h1>
+          </header>
+          <div class="wd__title">
+            <p>
+              Elevate your theater experience and expectations with
+              dine-in-the-dark cuisine of the finest quality. Excite your senses
+              while you watch with selections from our chef-driven menu made
+              fresh when you order. Savor the joy of your favorite candies,
+              custom treats and gourmet takes on classic popcorn flavors. Carry
+              in beer, wine or one of our exclusive cocktails, or pamper
+              yourself with Premium Plus seating and In Theater Dining.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="wd-options">
+        <div class="container-fluid p-0 pl-lg-3 pr-lg-3">
+          <div class="row m-0 pb-xl-5 pb-lg-3 pb-0">
+            <div class="col-lg-6 wd-options__txt pr-xl-5 pr-lg-4">
+              <h1>In Theatre Dining</h1>
+              <p>
+                Guests enjoy elevated food and beverage service seat-side, for a
+                premium dine in the dark theater experience. Indulge in a
+                chef-driven menu of thoughtfully prepared and seasonally
+                inspired dishes, along with wine, beer and signature cocktails
+                deliver...
+              </p>
+              <div class="wd-options__btn">
+                <button class="btn-prim">View Menu</button>
+              </div>
+            </div>
+            <div class="col-lg-6 wd-options__img p-0">
+              <img
+                src="https://images.unsplash.com/photo-1457460866886-40ef8d4b42a0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                alt="burger sliders"
+              />
+            </div>
+          </div>
+          <div class="row m-0 pt-xl-5 pt-0">
+            <div class="col-lg-6 wd-options__txt order-2 pl-xl-5 pl-lg-4">
+              <h1>The Dine Room</h1>
+              <p>
+                Drinking and dining den. We feature craveable American fare and
+                offer a lively and whimsical atmosphere. The dining room is
+                wrapped around an energetic bar, flowing local and favorite
+                brews from our taps.
+              </p>
+              <div class="wd-options__btn">
+                <button class="btn-prim">Reserve a Table</button>
+                <button class="btn-outline-dark">View Menu</button>
+              </div>
+            </div>
+            <div class="col-lg-6 wd-options__img p-0 order-1">
+              <img
+                src="https://static1.squarespace.com/static/55521cc5e4b0e3bbbdd84a3a/555853e9e4b02d567e711f1d/5cdc8da536585d000196dbd1/1558034960740/Seasoned+Garlic+Crab+Fries+with+Aioli-11.jpg?format=1500w"
+                alt="burger sliders"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="wd-giftcard">
+        <div class="wd-giftcard__title">
+          <span><i class="fas fa-gift fa-lg"></i> Gift Card</span>
+          <p>
+            Physical Gift Cards may be used anywhere at IPIC. They may also be
+            used at ipic.com if the balance on the gift card is greater than the
+            purchase total.
+          </p>
+        </div>
+        <div class="wd-options__txt">
+          <button class="btn-outline">Buy a Gift Card</button>
+        </div>
+      </section>
+    </div>
+    <%- include('partials/footer.ejs') %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+  </body>
+</html>

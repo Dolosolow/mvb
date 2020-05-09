@@ -36,7 +36,7 @@ $('#search_input').keyup(() => {
 
   if($('#search_input').val() === '') {
     $('.search_sug').addClass('hide');
-    resetFields(optimizedResults, results);
+    resetFields(results);
   } else {
     $('.search_sug').removeClass('hide');
 

@@ -9,11 +9,15 @@ module.exports = {
   mode: 'development',
   entry: {
     main: ['./public/js'],
-    dashboardAM: './public/js/add-movie/forms.js'
+    movies: ['./public/js/main/movies.js'],
+    dashboardAM: './public/js/add-movie/forms.js',
+    memberships: './public/js/main/main-membership.js',
+    signup: './public/js/main/signup.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'assets/js/[name]-[hash]-bundle.js',
+    publicPath: '/'
   },
   devtool: 'inline-source-map',
   devServer: {
@@ -65,7 +69,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: '!!raw-loader!./views/main.template.ejs',
       filename: 'main.ejs',
-      chunks: ['main']
+      chunks: ['main', 'movies']
     }),
     new HtmlWebpackPlugin({
       template: '!!raw-loader!./views/add-movie.template.ejs',
@@ -76,5 +80,30 @@ module.exports = {
       template: '!!raw-loader!./views/404.template.ejs',
       filename: '404.ejs',
     }),
+    new HtmlWebpackPlugin({
+      template: '!!raw-loader!./views/wine-dine.template.ejs',
+      filename: 'wine-dine.ejs',
+      chunks: ['main']
+    }),
+    new HtmlWebpackPlugin({
+      template: '!!raw-loader!./views/events.template.ejs',
+      filename: 'events.ejs',
+      chunks: ['main']
+    }),
+    new HtmlWebpackPlugin({
+      template: '!!raw-loader!./views/membership.template.ejs',
+      filename: 'membership.ejs',
+      chunks: ['main', 'memberships']
+    }),
+    new HtmlWebpackPlugin({
+      template: '!!raw-loader!./views/locations.template.ejs',
+      filename: 'locations.ejs',
+      chunks: ['main']
+    }),
+    new HtmlWebpackPlugin({
+      template: '!!raw-loader!./views/signup.template.ejs',
+      filename: 'signup.ejs',
+      chunks: ['main', 'signup']
+    })
   ]
 }
