@@ -1,25 +1,42 @@
 require('dotenv').config();
-const express = require('express');
 const path = require('path');
-const webpack = require('webpack');
-const config = require('../webpack.config');
-const compiler = webpack(config);
-const webpackDevMiddleware = require('webpack-dev-middleware')(compiler, config.devServer);
-
+const express = require('express');
 const server = express();
 
-server.use(webpackDevMiddleware);
+const config = require('../webpack.config');
+const webpack = require('webpack');
+const webpackDM = require('webpack-dev-middleware');
+const webpackHM = require('webpack-hot-middleware');
+
+const isDevServer = true;
+
+if(isDevServer) {
+  const compiler = webpack(config);
+  
+  server.use(webpackDM(compiler, {
+    contentBase: path.resolve(__dirname, 'dist'),
+    hot: true,
+    host: `localhost`,
+    publicPath: config.output.publicPath
+  }))
+
+  server.use(webpackHM(compiler));
+}
+
+
+server.use(express.static(path.resolve(__dirname, 'dist')));
+server.use(express.urlencoded({ extended: false }));
+server.use(express.json());
 server.set('view engine', 'ejs');
 server.set('views', 'dist');
-server.use(express.json());
-server.use(express.urlencoded({ extended: false }));
-server.use(express.static(path.join(__dirname, 'dist/')));
+
+const errorController = require('../controllers/error.controller');
 
 const adminRoutes = require('../routes/admin');
-const mainRoutes = require('../routes/main');
+const storeRoutes = require('../routes/store');
 
 server.use('/admin', adminRoutes);
-server.use('/', mainRoutes);
+server.use('/', storeRoutes);
 
 server.use((req, res) => {
   const error = new Error('Page Not Found');
@@ -27,8 +44,6 @@ server.use((req, res) => {
   next(error);
 });
 
-server.use((err, req, res, next) => {
-  res.status(err.status || 500).render('404', { pageTitle: 'Page Not Found' });
-});
+server.use(errorController.get404);
 
-server.listen(5000, () => console.log('🚀-lift off'));
+server.listen(5001, () => console.log('🚀-lift off'));

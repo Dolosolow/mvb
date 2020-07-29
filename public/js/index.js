@@ -1,93 +1,58 @@
-require('../scss/style.scss');
-
-$(document).ready(() => {
-  $('.t-nav').css('width', '100%');
-  // *************
-  // owl-carousel is used to display the movies now playing cards.
-  // *************
-  $('.owl-carousel').owlCarousel({
-    loop: true,
-    nav: true,
-    dots: false,
-    navSpeed: 900,
-    margin: 6,
-    center: false,
-    autoWidth: true,
-    autoHeight: true,
-    responsiveClass: true,
-    responsive: {
-      0: {
-        items: 1,
-        center: true,
-      },
-      700: {
-        items: 2,
-      },
-      2000: {
-        items: 4,
-      },
-    },
-  });
-});
+import '../scss/styles.scss';
 // *************
-// responsible for the navigation hamburger animation and
-// the black wrapper when navigation sidebar is open/showing.
+// functions for screen resveration - temp spot
 // *************
-$('.hamburger').click(function() {
-  $(this).toggleClass('show');
-  $('.navigation-collapse').toggleClass('show');
-  $('.navigation-bg-wrapper').toggleClass('show');
-  $('body').toggleClass('show');
-
-  if($(window).width() <= 1200) {
-    $('.navigation-collapse .col').toggleClass('hide');
+$('.layout .seat-wrapper').on('click', function() {
+  if(!$(this).children().hasClass('disable')) {
+    $(this).children().toggleClass('active');
   }
-});
+})
+// *******************
+//
+$('.toggle-info-btn').click(function() {
+  if($('.cvc-loc-img').hasClass('scale-in-right')) {
 
-$('.navigation-bg-wrapper').click(function() {
-  $(this).toggleClass('show');
-  $('.hamburger').toggleClass('show');
-  $('.navigation-collapse').toggleClass('show');
-  $('body').toggleClass('show');
+    $('.cvc-loc-img').removeClass('scale-in-right');
+    $('.cvc-loc-img').addClass('scale-out-right');
+  } else {
+    $('.cvc-loc-img').removeClass('scale-out-right');
+    $('.cvc-loc-img').addClass('scale-in-right');
+  }
 });
 // *************
 // few conditions for transition effects on inputs with the type
 // that is not radio.
 // *************
-$('form').find(':input').not('[type=radio]').each(function() {
-  $(this).focus(function() {
-    $(`label[for=${$(this).attr('id')}]`).addClass('focus-visible');
-  })
+// $('form').find(':input').not('[type=radio]').each(function() {
+//   $(this).focus(function() {
+//     $(`label[for=${$(this).attr('id')}]`).addClass('focus-visible');
+//   })
   
-  $(this).focusout(function() {
-    $(`label[for=${$(this).attr('id')}]`).removeClass('focus-visible');
-  })
+//   $(this).focusout(function() {
+//     $(`label[for=${$(this).attr('id')}]`).removeClass('focus-visible');
+//   })
 
-  $(this).keyup(function() {
-    if($(this).val() !== '') {
-      $(`label[for=${$(this).attr('id')}]`).addClass('complete');
-    } else {
-      $(`label[for=${$(this).attr('id')}]`).removeClass('complete');
-    }
-  })
-})
-// *************
-// signin buttons >> pop-up modal
-// *************
-$('#signin-btn').on('click', function() {
-  $('body').toggleClass('show');
-  $('.si-modal').css('visibility', 'visible');
-  $('.modal-form').removeClass('slide-out-top');
-  $('.modal-form').addClass('slide-in-top');
-  $('.modal-form #email').focus();
+//   $(this).keyup(function() {
+//     if($(this).val() !== '') {
+//       $(`label[for=${$(this).attr('id')}]`).addClass('complete');
+//     } else {
+//       $(`label[for=${$(this).attr('id')}]`).removeClass('complete');
+//     }
+//   })
+// })
+
+$('#signin-btn').click(function() {
+  $('body').addClass('no-scroll');
 })
 
-$('#close-modal').on('click', function() {
-  $('body').toggleClass('show');
-  $('.modal-form').addClass('slide-out-top');
-
+$('#si-close-btn').click(function() {
+  $('#popup__content').addClass('slide-out-top');
+  $('body').removeClass('no-scroll');
   setTimeout(() => {
-    $('.si-modal').css('visibility', 'hidden');
-    $('.modal-form').removeClass('slide-in-top');
-  }, 400);
+    $('#popup__content').removeClass('slide-out-top');
+  }, 500);
+})
+
+$('#popup__bg').click(function() {
+  $('#si-close-btn')[0].click();
 })

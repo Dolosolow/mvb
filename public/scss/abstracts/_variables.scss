@@ -1,0 +1,45 @@
+// *************
+// COLORS
+$primary-color: #f8655b;
+$section-bg-color: #fafafa;
+$secondary-section-bg-color: #2c0f31;
+$misc-box-color: rgb(230, 230, 230);
+$muted: #9b9c9e;
+$muted-light: #d8d8d8;
+// *************
+// TYPOGRAPHY
+$default-font-size: 1.65rem;
+$primary-font: "Founders Grotesque X-Cond", sans-serif;
+$secondary-font: "Lato", sans-serif;
+// *************
+// SCREEN WIDTHS IN PX
+$big-desktop: 2000;
+$tab-land: 1200;
+$tab-port: 950;
+$phone: 600;
+// *************
+// NAV HAMBURGER
+$paths: (
+  "hidden": (
+    1: 36% 40%,
+    2: 29 299,
+    3: 35% 63%,
+    4: 29 299,
+    5: 61% 52%,
+    6: 61% 52%,
+  ),
+  "show": (
+    1: translateX(9px) translateY(1px) rotate(45deg),
+    2: (
+      "array": 225 299,
+      "offset": -72px,
+    ),
+    3: translateX(9px) translateY(1px) rotate(-45deg),
+    4: (
+      "array": 225 299,
+      "offset": -72px,
+    ),
+    5: translateX(9px) translateY(1px) rotate(-45deg),
+    6: translateX(9px) translateY(1px) rotate(45deg),
+  ),
+);

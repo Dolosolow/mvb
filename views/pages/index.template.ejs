@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- *************** -->
+    <!-- owl-carosuel -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    />
+    <!-- *************** -->
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/e9063b30c3.js"></script>
+    <!-- *************** -->
+    <!-- facvicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/images/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/images/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/images/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/assets/images/favicons/site.webmanifest" />
+    <title>FLIX Theater | Dine in theater</title>
+  </head>
+  <body>
+    <%- include('partials/navbar.ejs') %>
+    <header class="headline flex-column">
+      <div class="container-layout fluid">
+        <h2 class="headline__title fluid">Snack . Sip . Socialize</h2>
+        <p class="headline__desc mb-lg">
+          C'mon get happy. Join us for Happy Hour. Monday - Friday from 4pm to
+          7pm. Enjoy $4 beers and wines, $6 handcrafted cocktails and a new menu
+          with great dishes. Have them up by the bar, at a table, or while
+          watching a movie.
+        </p>
+        <button class="btn-outline btn-block--sc">View Menu</button>
+      </div>
+    </header>
+    <article class="article-banner">
+      <div class="container-layout container-layout--limiter-lg">
+        <h2 class="article-banner__title mb-sm">
+          Become a FLIX Premium Member
+        </h2>
+        <div class="article-banner__content">
+          <ul class="article-banner__amenities">
+            <li class="article-banner__item flex-column flex-center">
+              <img
+                src="/assets/images/illustrations/dine-eat.png"
+                alt="dine and drink"
+              />
+              <span class="article-banner__text text-center"
+                >10% OFF FOOD & BEVERAGE</span
+              >
+            </li>
+            <li class="article-banner__item flex-column flex-center">
+              <img
+                src="/assets/images/illustrations/tickets.png"
+                alt="dine and drink"
+              />
+              <span class="article-banner__text text-center"
+                >MEMBER-ONLY TICKET PRICING</span
+              >
+            </li>
+            <li class="article-banner__item flex-column flex-center">
+              <img
+                src="/assets/images/illustrations/present.png"
+                alt="dine and drink"
+              />
+              <span class="article-banner__text text-center"
+                >PREMIUM PLUS B-DAY TICKET</span
+              >
+            </li>
+          </ul>
+          <div class="article-banner__btn-container flex-column flex-center">
+            <a href="/membership" class="btn-outline btn-block mb-md">Join now</a href="/membership">
+            <p class="login-inline text-center">
+              Already a Member?&nbsp;
+              <button class="color-text color-text__btn">Log In</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+    <main class="now-playing container-layout">
+      <div class="t-nav__wrapper">
+        <div class="t-nav mt-sm">
+          <h2>Now Playing at FLIX</h2>
+        </div>
+      </div>
+      <div class="section-layout flex-column">
+        <% if(currentMovies.length > 0) { %>
+          <section
+          id="showtimes"
+          class="owl-carousel owl-theme owl-loaded"
+          data-ct="<%= currentMovies.length %>"
+          >
+          <% for(let movie of currentMovies) { %>
+            <div class="card">
+              <img
+                src="<%= movie.poster %>"
+                class="card-img-top"
+                alt="<%= movie.title %>"
+              />
+              <div class="card__body">
+                <p class="card__title text-uppercase"><%= movie.title %></p>
+                <p class="card__text">
+                  <span class="text-uppercase">R | 114 min</span>
+                  <br />Accessiblity devices available
+                </p>
+                <a href="/movies/<%= movie.id %>" class="btn-outline-dark btn-block">Buy Ticket</a>
+              </div>
+            </div>
+          <% } %>
+          </section>
+        <% } %>
+      </div>
+      <div class="t-nav__wrapper">
+        <div class="t-nav mt-sm">
+          <h2>FLIX Classics</h2>
+        </div>
+      </div>
+      <div class="section-layout flex-column">
+        <section id="classics" class="owl-carousel owl-theme" data-ct="5">
+          <!-- <div class="card">
+            <img
+              src="https://img1.hulu.com/user/v3/artwork/df471734-b23c-4d66-9124-960173810541?base_image_bucket_name=image_manager&base_image=4fc91f18-26ba-4738-82f1-d12c4be6889b&size=400x600&format=jpeg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card__body">
+              <button class="btn-outline-dark btn-block">Buy Ticket</button>
+            </div>
+          </div> -->
+        </section>
+      </div>
+    </main>
+    <%- include('partials/footer.ejs') %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+  </body>
+</html>

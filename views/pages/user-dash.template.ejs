@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- *************** -->
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css"
+    />
+    <!-- *************** -->
+    <!-- facvicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/flix-theater-server/public/images/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/flix-theater-server/public/images/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/flix-theater-server/public/images/favicons/favicon-16x16.png"
+    />
+    <link
+      rel="manifest"
+      href="/flix-theater-server/public/images/favicons/site.webmanifest"
+    />
+    <title>FLIX Theater | Dine in theater</title>
+  </head>
+  <body>
+    <%- include('partials/navbar.ejs') %>
+    <div class="container-layout container-layout--ua-header">
+      <header class="t-nav t-nav--md">
+        <h2>Account</h2>
+      </header>
+      <section class="account__card flex-row">
+        <div>
+          <h4 class="account__card-name">Jose Munoz</h4>
+          <span class="account__card-note">
+            As a member you earn reward points with every purchase
+          </span>
+        </div>
+        <ul class="flex-row">
+          <li class="info-item flex-column text-uppercase">
+            <span class="info-item__label">
+              flix access points
+            </span>
+            <span class="info-item__val">
+              53
+            </span>
+          </li>
+          <li class="info-item flex-column text-uppercase">
+            <span class="info-item__label">
+              member id
+            </span>
+            <span class="info-item__val">
+              p483382267
+            </span>
+          </li>
+          <li class="info-item flex-column text-uppercase">
+            <span class="info-item__label">
+              member acct
+            </span>
+            <span class="info-item__val">
+              137493402544
+            </span>
+          </li>
+          <li class="info-item flex-column text-uppercase">
+            <span class="info-item__label">
+              member since
+            </span>
+            <span class="info-item__val">
+              04/10/2020
+            </span>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <div class="container-layout bg-smoked flex-row">
+      <nav class="account__tabs">
+        <ul class="nav-tabs fluid">
+          <li
+            class="nav-tabs__item flex-row align-center active"
+            data-target="bookings"
+          >
+            <i class="fas fa-ticket-alt"></i>
+            <div class="tab__desc">
+              <p class="text-uppercase">activity & bookings</p>
+              <p class="muted">View booking history & upcoming bookings</p>
+            </div>
+          </li>
+          <li
+            class="nav-tabs__item flex-row align-center"
+            data-target="personal-info"
+          >
+            <i class="fas fa-user-circle"></i>
+            <div class="tab__desc">
+              <p class="text-uppercase">personal info</p>
+              <p class="muted">
+                Edit your personal information & booking address
+              </p>
+            </div>
+          </li>
+          <li
+            class="nav-tabs__item flex-row align-center"
+            data-target="mem-status"
+          >
+            <i class="fas fa-id-card"></i>
+            <div class="tab__desc">
+              <p class="text-uppercase">flix membership status</p>
+              <p class="muted">View membership details</p>
+            </div>
+          </li>
+          <li
+            class="nav-tabs__item flex-row align-center"
+            data-target="mem-rewards"
+          >
+            <i class="fas fa-gem"></i>
+            <div class="tab__desc">
+              <p class="text-uppercase">flix premium rewards</p>
+              <p class="muted">View rewards & points earned</p>
+            </div>
+          </li>
+          <li
+            class="nav-tabs__item flex-row align-center"
+            data-target="mem-wallet"
+          >
+            <i class="fas fa-credit-card"></i>
+            <div class="tab__desc">
+              <p class="text-uppercase">digital wallet</p>
+              <p class="muted">Edit or add cards to your Digital Wallet</p>
+            </div>
+          </li>
+          <li
+            class="nav-tabs__item flex-row align-center"
+            data-target="gift-card"
+          >
+            <i class="fas fa-gift"></i>
+            <div class="tab__desc">
+              <p class="text-uppercase">gift cards</p>
+              <p class="muted">View purchased gift cards</p>
+            </div>
+          </li>
+          <li
+            class="nav-tabs__item flex-row align-center"
+            data-target="settings"
+          >
+            <i class="fas fa-cog"></i>
+            <div class="tab__desc">
+              <p class="text-uppercase">settings</p>
+              <p class="muted">Update your password & notifications</p>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="sections-container">
+        <section class="acct-page acct-page__orders mb-md" id="bookings">
+          <div class="acct-page__headeline-container">
+            <h2 class="acct-page__headline">Upcoming Bookings</h2>
+            <p>You have no upcoming bookings.</p>
+            <a href="./index.html" class="btn-prim">Book now</a>
+          </div>
+          <div class="acct-page__book-history">
+            <h2 class="acct-page__headline">Past Bookings</h2>
+            <p class="quick-note">
+              All rewards tickets appear in your rewards list during the checout
+              process. To use them select your seat and then the applicable
+              reward ticket.
+            </p>
+            <ul class="book-history__list">
+              <li class="book-history__item flex-row">
+                <div>
+                  <span class="purchase-title"
+                    >Once upon a Time in... Hollywood</span
+                  >
+                  <br />
+                  <span class="booking-location"
+                    >FLIX Jersey city: F13, F14</span
+                  >
+                </div>
+                <div>
+                  <span class="booking-date"
+                    >7:15 pm, Thursday, July 25, 2019</span
+                  >
+                  <br />
+                  <span class="booking-id">Booking ID: JM061819AF</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section
+          class="acct-page acct-page__per-info mb-md"
+          id="personal-info"
+          style="display: none;"
+        >
+          <div class="acct-page__headeline-container">
+            <h2 class="acct-page__headline">Personal Information</h2>
+            <p class="side-note">
+              Keep your profile as up to date as possible to not miss out on any
+              offers.
+            </p>
+          </div>
+          <form action="#">
+            <article>
+              <div class="flex-row fluid">
+                <div class="inline-form">
+                  <input
+                    type="text"
+                    name="fname"
+                    id="fname"
+                    autocomplete="off"
+                    placeholder="First Name"
+                    value="Jose"
+                    required
+                  />
+                  <label for="fname">First Name</label>
+                </div>
+                <div class="inline-form">
+                  <input
+                    type="text"
+                    name="lname"
+                    id="lname"
+                    autocomplete="off"
+                    placeholder="Last Name"
+                    value="Munoz"
+                    required
+                  />
+                  <label for="lname">Last Name</label>
+                </div>
+              </div>
+              <div class="flex-row fluid">
+                <div class="inline-form">
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    autocomplete="email"
+                    placeholder="Email"
+                    value="Jose.Munoz07c@gmail.com"
+                    required
+                  />
+                  <label for="email">Email</label>
+                </div>
+                <div class="inline-form">
+                  <input
+                    type="tel"
+                    name="phone"
+                    id="phone"
+                    autocomplete="tel"
+                    placeholder="Phone"
+                    value="5512213223"
+                    required
+                  />
+                  <label for="phone">Phone</label>
+                </div>
+              </div>
+              <div class="flex-row fluid">
+                <div class="inline-form">
+                  <input
+                    type="text"
+                    name="dob"
+                    id="dob"
+                    autocomplete="bday"
+                    placeholder="Birth Date"
+                    value="04/07/1992"
+                    required
+                    disabled
+                  />
+                  <label for="dob">Birth Date</label>
+                </div>
+                <div class="inline-form">
+                  <div class="radio-wrapper">
+                    <label class="inline-form__radio"
+                      >Male
+                      <input id="gender-male" type="radio" name="gender" />
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="inline-form__radio"
+                      >Female
+                      <input id="gender-female" type="radio" name="gender" />
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article>
+              <div class="acct-page__headeline-container">
+                <h2 class="acct-page__headline">Address Information</h2>
+              </div>
+              <div class="flex-row fluid">
+                <div class="inline-form">
+                  <input
+                    type="text"
+                    name="streetAddress"
+                    id="streetAddress"
+                    autocomplete="street-address"
+                    placeholder="Street Address"
+                    value="42 Sherman Ave"
+                    required
+                  />
+                  <label for="streetAddress">Street Address</label>
+                </div>
+                <div class="inline-form">
+                  <input
+                    type="text"
+                    name="city"
+                    id="city"
+                    autocomplete="off"
+                    placeholder="City"
+                    value="Munoz"
+                    required
+                  />
+                  <label for="city">City</label>
+                </div>
+              </div>
+              <div class="flex-row fluid">
+                <div class="inline-form">
+                  <select name="state" id="state">
+                    <option value="new jersey">New Jersey</option>
+                  </select>
+                  <label for="state">State</label>
+                  <i class="fas fa-caret-down fa-lg"></i>
+                </div>
+                <div class="inline-form">
+                  <input
+                    type="number"
+                    name="zipcode"
+                    id="zipcode"
+                    autocomplete="postal-code"
+                    placeholder="Zip Code"
+                    value="07307"
+                    required
+                  />
+                  <label for="phone">Zip Code</label>
+                </div>
+              </div>
+            </article>
+            <div class="flex-row fluid mt-sm">
+              <div class="btn-prim btn-prim--disabled">Save</div>
+            </div>
+          </form>
+        </section>
+        <section
+          class="acct-page acct-page__status mb-md"
+          id="mem-status"
+          style="display: none;"
+        >
+          <div class="acct-page__headeline-container flex-row align-center">
+            <h2 class="acct-page__headline">Membership Status</h2>
+            <h2 class="acct-status__rank text-uppercase text-red">gold</h2>
+          </div>
+          <p class="acct-status__desc">
+            Your Membership expires September 25, 2020
+          </p>
+          <div class="acct-progress fluid">
+            <div class="acct-page__headeline-container">
+              <h2 class="acct-page__headline">Qualifying Tickets</h2>
+            </div>
+            <p class="acct-progress__points">
+              23 Tickets until you reach Platinum
+            </p>
+            <div class="acct-progress__bar-container">
+              <div class="acct-progress__points--current text-red">2</div>
+              <div class="red-progress__bar">
+                <div class="red-progress__bar-indicator"></div>
+              </div>
+              <span class="starter-value">0</span>
+              <span class="completed-value">25</span>
+            </div>
+            <div class="switch-form-container flex-row align-center mt-md">
+              <label class="switch">
+                <input id="auto-renew-membership" type="checkbox" />
+                <span class="slider round"></span>
+              </label>
+              <span>Auto Renew My Membership</span>
+            </div>
+          </div>
+        </section>
+        <section
+          class="acct-page acct-page__rewards mb-md"
+          id="mem-rewards"
+          style="display: none;"
+        >
+          <div class="acct-page__headeline-container">
+            <h2 class="acct-page__headline">Rewards Tickets</h2>
+          </div>
+          <p class="side-note">
+            All reward tickets appear in your rewards list during the checkout
+            process. To use them select your seat and then the applicable reward
+            ticket.
+          </p>
+          <div class="rewards__list fluid mt-xs">
+            <p class="no-rewards-msg">
+              You have no rewards yet.
+            </p>
+          </div>
+          <div class="reward-point-counter">
+            <div class="acct-page__headeline-container">
+              <h2 class="acct-page__headline">FLIX Premium Points Earned</h2>
+            </div>
+            <span>46 ($0.46 Redeemable Dollars)</span>
+          </div>
+          <div class="refer-a-friend">
+            <div class="acct-page__headeline-container">
+              <h2 class="acct-page__headline">Refer a Friend</h2>
+            </div>
+            <p class="side-note">
+              Earn $10 (1,000 FLIX Premium Points) for every friend you refer
+              that signs up for an FLIX Premium Gold Membership. Your friend
+              will also get $10 (1,000 points) added to their account.
+            </p>
+            <p class="invite-link__label muted">Invite Link</p>
+            <p class="invite-link__url">
+              https://www.ipic.com/membership/gold?code=Q27DLLTRS6
+            </p>
+            <button class="btn-prim">Copy link</button>
+          </div>
+        </section>
+        <section
+          class="acct-page acct-page__wallet mb-md"
+          id="mem-wallet"
+          style="display: none;"
+        >
+          <div class="acct-page__headeline-container">
+            <h2 class="acct-page__headline">Digital Wallet</h2>
+          </div>
+          <p class="side-note">
+            Below are all credit cards saved on your profile for fast checkout.
+            You can add a new card and remove any exsiting ones by clicking on
+            it.
+          </p>
+          <div class="wallet__list fluid mt-xs">
+            <p class="no-cards-msg text-center">
+              You have no saved credit cards
+            </p>
+          </div>
+          <h3 class="text-uppercase">add new card</h3>
+          <form action="#">
+            <div class="flex-row fluid">
+              <div class="inline-form">
+                <input
+                  inputmode="numeric"
+                  type="text"
+                  name="cc-number"
+                  id="cc-number"
+                  autocomplete="cc-number"
+                  placeholder="Payment Card number"
+                  required
+                />
+                <label for="cc-number">Payment Card number</label>
+              </div>
+            </div>
+            <div class="flex-row fluid">
+              <div class="inline-form">
+                <input
+                  inputmode="numeric"
+                  type="text"
+                  name="cc-exp-date"
+                  id="cc-exp-date"
+                  autocomplete="cc-exp-month"
+                  placeholder="Exp Date"
+                  required
+                />
+                <label for="cc-exp-mth">Exp Date</label>
+              </div>
+              <div class="inline-form">
+                <div class="cvc-loc-img">
+                  <img
+                    src="/flix-theater-server/public/images/svg/cc-cvc.svg"
+                    alt="cvv/cvc location"
+                  />
+                </div>
+                <span class="toggle-info-btn"></span>
+                <input
+                  type="text"
+                  name="cc-cvv"
+                  id="cc-cvv"
+                  autocomplete="cc-csc"
+                  placeholder="CVV/CVC"
+                  required
+                />
+                <label for="cc-cvv">CVV/CVC</label>
+              </div>
+              <div class="inline-form">
+                <input
+                  type="text"
+                  name="zipcode"
+                  id="zipcode"
+                  autocomplete="postal-code"
+                  placeholder="Zip Code"
+                  required
+                />
+                <label for="cc-name">Zip Code</label>
+              </div>
+            </div>
+            <div class="flex-row fluid">
+              <div class="inline-form">
+                <input
+                  type="text"
+                  name="billing-address"
+                  id="billing-address"
+                  autocomplete="billing"
+                  placeholder="Billing Address"
+                  required
+                />
+                <label for="cc-cvv">Billing Address</label>
+              </div>
+            </div>
+            <label class="cb-liner flex-row mt-xs" for="e-subscription">
+              <input
+                type="checkbox"
+                name="e-subscription"
+                id="e-subscription"
+              />
+              <span class="checkmark"></span>
+              <p>Make this a default card</p>
+            </label>
+            <button type="submit" class="btn-prim">Add a Card</button>
+          </form>
+        </section>
+        <section
+          class="acct-page acct-page__orders mb-md"
+          id="gift-card"
+          style="display: none;"
+        >
+          <div class="acct-page__headeline-container">
+            <h2 class="acct-page__headline">My orders</h2>
+            <p>You have no purchased items.</p>
+            <a href="#" class="btn-prim">Go To Shop</a>
+          </div>
+          <div class="acct-page__book-history">
+            <h2 class="acct-page__headline">Past Orders</h2>
+            <p class="quick-note">
+              All girft cards appear in your rewards list during the checout
+              process. To use them select your seat and then select the gift
+              card.
+            </p>
+            <ul class="book-history__list">
+              <li class="book-history__item flex-row">
+                <div>
+                  <span class="purchase-title">FLIX Entertainment</span>
+                  <br />
+                  <span class="booking-location"
+                    ><span class="purchase-title">Balance</span>:
+                    $120&nbsp;/&nbsp;$250</span
+                  >
+                </div>
+                <div>
+                  <span class="booking-date"
+                    ><span class="purchase-title">Purchased</span>: Thursday,
+                    March 17, 2019</span
+                  >
+                  <br />
+                  <span class="booking-id"
+                    ><span class="purchase-title">Order ID</span>:
+                    GP061819AF</span
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section
+          class="acct-page acct-page__settings mb-md"
+          id="settings"
+          style="display: none;"
+        >
+          <div class="acct-page__headeline-container">
+            <h2 class="acct-page__headline">Change Password</h2>
+          </div>
+          <form action="#">
+            <div class="flex-row fluid">
+              <div class="inline-form">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  autocomplete="off"
+                  placeholder="Current Password"
+                  required
+                />
+                <label for="password">Current Password</label>
+                <i class="fas fa-lock fa-lg"></i>
+              </div>
+            </div>
+            <div class="flex-row fluid">
+              <div class="inline-form">
+                <div class="inline-form">
+                  <input
+                    type="password"
+                    name="newPassword"
+                    id="newPassword"
+                    autocomplete="off"
+                    placeholder="New Password"
+                    required
+                  />
+                  <label for="newPassword">New Password</label>
+                  <i class="fas fa-lock fa-lg"></i>
+                </div>
+              </div>
+            </div>
+            <div class="flex-row fluid">
+              <div class="inline-form">
+                <div class="inline-form">
+                  <input
+                    type="password"
+                    name="confirmNewPassword"
+                    id="confirmNewPassword"
+                    autocomplete="off"
+                    placeholder="Confirm New Password"
+                    required
+                  />
+                  <label for="confirmNewPassword">Confirm New Password</label>
+                  <i class="fas fa-lock fa-lg"></i>
+                </div>
+              </div>
+            </div>
+            <button class="btn-prim btn-prim--disabled mt-md">Change</button>
+          </form>
+          <div class="acct-page__headeline-container mt-xs">
+            <h2 class="acct-page__headline">Notifications</h2>
+          </div>
+          <div class="switch-form-container flex-column mt-md">
+            <div class="flex-row align-center">
+              <label class="switch mr-xs">
+                <input id="auto-renew-membership" type="checkbox" />
+                <span class="slider round"></span>
+              </label>
+              <p>
+                I agree to receive information about my account, invitations to
+                IPIC events, weekly showtimes emails, special offers and news
+              </p>
+            </div>
+            <div class="flex-row align-center mt-xs">
+              <label class="switch mr-xs">
+                <input id="auto-renew-membership" type="checkbox" />
+                <span class="slider round"></span>
+              </label>
+              <p>Wish to receive SMS Notification</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <%- include('partials/footer.ejs') %>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+  </body>
+</html>

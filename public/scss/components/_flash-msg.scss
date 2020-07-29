@@ -1,0 +1,19 @@
+.flash-msg {
+  background-color: $primary-color;
+  height: 5rem;
+  padding: 3rem 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  z-index: 200;
+
+  &--failure {
+    background-color: #121212 !important;
+  }
+
+  &__content {
+    color: #fff;
+    font-size: 4rem;
+  }
+}

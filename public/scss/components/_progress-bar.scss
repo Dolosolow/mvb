@@ -1,0 +1,15 @@
+.red-progress__bar {
+  border: 1px solid $muted-light;
+  border-radius: 10rem;
+  height: 1.2rem;
+  margin: 1.2rem 0;
+  position: relative;
+  width: 100%;
+
+  &-indicator {
+    background-color: $primary-color;
+    border-radius: 10rem;
+    height: 100%;
+    width: 8%;
+  }
+}

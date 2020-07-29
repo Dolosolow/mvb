@@ -1,0 +1,113 @@
+// ******************
+// MARGINS
+.mb-xs {
+  margin-bottom: 3rem !important;
+}
+
+.mb-sm {
+  margin-bottom: 4rem !important;
+
+  @include respond-to-breakpoint(tab-port) {
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+.mb-md {
+  margin-bottom: 5rem !important;
+}
+
+.mb-lg {
+  margin-bottom: 6rem !important;
+
+  @include respond-to-breakpoint(tab-port) {
+    margin-bottom: 5rem !important;
+  }
+}
+
+.mt-xs {
+  margin-top: 3rem !important;
+}
+
+.mt-sm {
+  margin-top: 4rem !important;
+}
+
+.mt-md {
+  margin-top: 5rem !important;
+}
+
+.mr-xs {
+  margin-right: 2rem !important;
+}
+// ******************
+// PADDINGS
+.p-sm {
+  padding: 1.2rem;
+}
+
+.p-md {
+  padding: 5rem;
+}
+
+.pl-xs {
+  padding-left: 2.5rem;
+}
+
+.p-sm--screen-sm {
+  @include respond-to-breakpoint(phone) {
+    padding: 1.2rem;
+  }
+}
+// ******************
+// FLEX
+.align-center {
+  align-items: center;
+}
+
+.flex-row {
+  display: flex;
+}
+
+.flex-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.fluid {
+  width: 100%;
+}
+
+.justify-center {
+  justify-content: center;
+}
+// ******************
+// FLOATS
+.float-right {
+  float: right !important;
+}
+
+.float-left {
+  float: left !important;
+}
+// ******************
+// TEXT
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}

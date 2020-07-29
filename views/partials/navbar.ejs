@@ -1,93 +1,159 @@
-<nav class="main-nav <%= transNav && 'nav-trans' %>">
-  <a class="navbar-brand <%= transNav && 'nav-light' %>" href="/">FLIX</a>
-  <div class="container-fluid">
-    <ul class="navigation">
-      <li>
-        <a class="<%= transNav && 'nav-light' %> <%= currentPg === 'mov' && 'active' %>" href="/">Movies</a>
+<div id="navbar" class="bg-smoked <%= transNav && 'container-layout' %>">
+  <nav
+    class="main-nav flex-row align-center fluid <%= !transNav && 'container-layout' %> <%= transNav && 'nav-trans' %>"
+  >
+    <a href="/" class="navbar-brand">FLIX<br /><span>the experience</span></a>
+    <ul class="navigation flex-row">
+      <li class="navigation__item">
+        <a
+          class="navigation__link <%= transNav && 'nav-light' %> <%= path === '/' && 'active' %>"
+          href="/"
+          >Movies</a
+        >
       </li>
-      <li>
-        <a class="<%= transNav && 'nav-light' %> <%= currentPg === 'wd' && 'active' %>" href="/dining">Wine & Dine</a>
+      <li class="navigation__item">
+        <a
+          class="navigation__link <%= transNav && 'nav-light' %> <%= path === '/dining' && 'active' %>"
+          href="/dining"
+          >Wine & Dine</a
+        >
       </li>
-      <li>
-        <a class="<%= transNav && 'nav-light' %> <%= currentPg === 'ev' && 'active' %>" href="/events">Events</a>
+      <li class="navigation__item">
+        <a
+          class="navigation__link <%= transNav && 'nav-light' %> <%= path === '/events' && 'active' %>"
+          href="/events"
+          >Events</a
+        >
       </li>
-      <li>
-        <a class="<%= transNav && 'nav-light' %> <%= currentPg === 'mbs' && 'active' %>" href="/membership">Membership</a>
+      <li class="navigation__item">
+        <a
+          class="navigation__link <%= transNav && 'nav-light' %> <%= path === '/membership' && 'active' %>"
+          href="/membership"
+          >Membership</a
+        >
       </li>
-      <li>
-        <a class="<%= transNav && 'nav-light' %> <%= currentPg === 'loc' && 'active' %>" href="/location">Location</a>
+      <li class="navigation__item">
+        <a
+          class="navigation__link <%= transNav && 'nav-light' %> <%= path === '/location' && 'active' %>"
+          href="/location"
+          >Location</a
+        >
       </li>
-      <% if(isAdmin) { %>
-        <li>
-          <a href="#">Setup</a>
-        </li>
-      <% } %>
-      <li>
-        <a id='signin-btn' class="<%= transNav && 'nav-light' %>">Sign in</a>
+      <li class="navigation__item">
+        <a class="navigation__link" id="signin-btn" href="#si-popup">Sign in</a>
       </li>
-      <li>
-        <a class="<%= transNav && 'nav-light' %>" href="/membership/gold">Sign up</a>
+      <li class="navigation__item navigation__item--btn">
+        <a class="btn-prim navigation__link" href="/membership/gold">Sign up</a>
       </li>
     </ul>
-  </div>
-  <div class="navigation-bg-wrapper"></div>
-    <ul class="navigation-collapse">
-      <span></span>
-      <li class="col hide">
-        <a href="/">Movies</a>
+    <input
+      type="checkbox"
+      class="navigation__checkbox"
+      id="navigation-toggle"
+      name="navigation-toggle"
+    />
+    <label for="navigation-toggle" class="hamburger">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="55"
+        height="55"
+        viewBox="0 0 200 200"
+      >
+        <g stroke-width="6" stroke-linecap="round">
+          <path
+            d="M72 82.286h28.75"
+            fill="#009100"
+            fill-rule="evenodd"
+            stroke="#000"
+          />
+          <path
+            d="M100.75 103.714l72.482-.143c.043 39.398-32.284 71.434-72.16 71.434-39.878 0-72.204-32.036-72.204-71.554"
+            fill="none"
+            stroke="#000"
+          />
+          <path
+            d="M72 125.143h28.75"
+            fill="#009100"
+            fill-rule="evenodd"
+            stroke="#000"
+          />
+          <path
+            d="M100.75 103.714l-71.908-.143c.026-39.638 32.352-71.674 72.23-71.674 39.876 0 72.203 32.036 72.203 71.554"
+            fill="none"
+            stroke="#000"
+          />
+          <path
+            d="M100.75 82.286h28.75"
+            fill="#009100"
+            fill-rule="evenodd"
+            stroke="#000"
+          />
+          <path
+            d="M100.75 125.143h28.75"
+            fill="#009100"
+            fill-rule="evenodd"
+            stroke="#000"
+          />
+        </g>
+      </svg>
+    </label>
+    <div class="navigation__bg-wrapper fluid"></div>
+    <ul class="navigation__collapse flex-column">
+      <div class="navigation__user-opt navigation__toggle">
+        <a class="navigation__link" id="signin-btn" href="#">Sign in</a>
+        <span class="navigation__item--btn">
+          <a class="navigation__link" href="/membership/gold">Sign up</a>
+        </span>
+      </div>
+      <li class="navigation__item navigation__toggle">
+        <a class="navigation__link" href="/">Movies</a>
       </li>
-      <li class="col hide">
-        <a href="/dining">Wine & Dine</a>
+      <li class="navigation__item navigation__toggle">
+        <a class="navigation__link" href="/dining">Wine & Dine</a>
       </li>
-      <li class="col hide">
-        <a href="/events">Events</a>
+      <li class="navigation__item navigation__toggle">
+        <a class="navigation__link" href="/events">Events</a>
       </li>
-      <li class="col hide">
-        <a href="/membership">Membership</a>
+      <li class="navigation__item navigation__toggle">
+        <a class="navigation__link" href="/membership">Membership</a>
       </li>
-      <li class="col hide">
-        <a href="/location">Location</a>
+      <li class="navigation__item navigation__toggle">
+        <a class="navigation__link" href="/location">Locations</a>
       </li>
-      <li class="col hide">
-        <a id='signin-btn' href="#">Sign in</a>
+      <span class="navigation__item navigation__toggle">MORE</span>
+      <li class="navigation__item">
+        <a class="navigation__link" href="#">flix life</a>
       </li>
-      <li class="col hide">
-        <a href="/membership/gold">Sign up</a>
+      <li class="navigation__item">
+        <a class="navigation__link" href="#">shop</a>
       </li>
-      <h5 class="col hide">MORE</h5>
-      <li>
-        <a href="#">flix life</a>
+      <li class="navigation__item">
+        <a class="navigation__link" href="#">careers</a>
       </li>
-      <li>
-        <a href="#">shop</a>
+      <li class="navigation__item">
+        <a class="navigation__link" href="#">in the news</a>
       </li>
-      <li>
-        <a href="#">careers</a>
+      <li class="navigation__item">
+        <a class="navigation__link" href="#">about us</a>
       </li>
-      <li>
-        <a href="#">in the news</a>
+      <li class="navigation__item">
+        <a class="navigation__link" href="#">contact us</a>
       </li>
-      <li>
-        <a href="#">about us</a>
-      </li>
-      <li>
-        <a href="#">contact us</a>
-      </li>
-      <li style="margin-left: 60px;">
+      <li class="navigation__store-logos">
         <img
-          src="https://conference.ccra-acrc.ca/wp-content/uploads/2019/10/app-store-300x200.png"
+          src="https://www.seekpng.com/png/full/34-349265_app-store-google-play-svg.png"
           alt="download on store"
-          width="180px"
+          width="150px"
         />
       </li>
-      <li>
-        <div id='footer-att' class="small">
+      <li class="navigation__footer">
+        <div class="footer__adr">
           <p>FLIX Int</p>
           <p>1099 Flix Place, Flixville NJ 07100</p>
           <p>800-345-FLIX</p>
         </div>
       </li>
-      <li>
+      <li class="navigation__social">
         <a href=""><i class="fab fa-facebook-f fa-xs mr-4"></i></a>
         <a href=""><i class="fab fa-instagram fa-xs mr-4"></i></a>
         <a href=""><i class="fab fa-twitter fa-xs mr-4"></i></a>
@@ -96,71 +162,5 @@
         <a href=""><i class="fab fa-yelp fa-xs"></i></a>
       </li>
     </ul>
-  </div>
-  <div class="hamburger" style="color: gold;">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="60"
-      height="60"
-      viewBox="0 0 200 200"
-    >
-      <g stroke-width="5" stroke-linecap="round">
-        <path
-          d="M72 82.286h28.75"
-          fill="#009100"
-          fill-rule="evenodd"
-          stroke="<%= transNav ? '#fff' : '#000' %>"
-        />
-        <path
-          d="M100.75 103.714l72.482-.143c.043 39.398-32.284 71.434-72.16 71.434-39.878 0-72.204-32.036-72.204-71.554"
-          fill="none"
-          stroke="<%= transNav ? '#fff' : '#000' %>"
-        />
-        <path
-          d="M72 125.143h28.75"
-          fill="#009100"
-          fill-rule="evenodd"
-          stroke="<%= transNav ? '#fff' : '#000' %>"
-        />
-        <path
-          d="M100.75 103.714l-71.908-.143c.026-39.638 32.352-71.674 72.23-71.674 39.876 0 72.203 32.036 72.203 71.554"
-          fill="none"
-          stroke="<%= transNav ? '#fff' : '#000' %>"
-        />
-        <path
-          d="M100.75 82.286h28.75"
-          fill="#009100"
-          fill-rule="evenodd"
-          stroke="<%= transNav ? '#fff' : '#000' %>"
-        />
-        <path
-          d="M100.75 125.143h28.75"
-          fill="#009100"
-          fill-rule="evenodd"
-          stroke="<%= transNav ? '#fff' : '#000' %>"
-        />
-      </g>
-    </svg>
-</nav>
-<div class="si-modal">
-  <div class="dm-body__mbox modal-form">
-    <i id='close-modal' class="fas fa-times fa-2x"></i>
-    <h1>Log In</h1>
-    <form action="#">
-      <div class="inline-form">
-        <input type="email" name='email' id='email' autocomplete="off" required>
-        <label for="email">Email</label>
-      </div>
-      <div class="inline-form">
-        <input type="password" name='password' id='password' required>
-        <label for="password">Password</label>
-        <i class="fas fa-lock fa-lg"></i>
-      </div>
-      <a href="#" class="r-link ml-auto">Forgot Password?</a>
-      <button class="btn-prim btn-block mt-3">Log In</button>
-    </form>
-    <p>
-      Receive member-only ticket pricing, 10% off food and beverage, and more. <a href="#">Sign Up</a>.
-    </p>
-  </div>
+  </nav>
 </div>

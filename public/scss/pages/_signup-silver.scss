@@ -1,0 +1,33 @@
+// ******************
+// SIGNUP SILVER MEMBERSHIP
+.section-layout--signup-silver {
+  justify-content: flex-start;
+
+  .form-container {
+    float: left;
+    max-width: 100%;
+    padding: 0 3rem;
+    width: 100%;
+  }
+
+  .collapsible-form--show {
+    margin-left: 0;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .act-tos-form {
+    margin: 2rem 0 0 0;
+
+    .btn-prim {
+      width: 30rem;
+
+      @include respond-to-breakpoint(phone) {
+        margin-top: 5rem;
+        width: 100%;
+      }
+    }
+  }
+}

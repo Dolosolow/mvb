@@ -1,305 +1,169 @@
-// *************
-// wine & dine
-// *************
+// ******************
+// WINE & DINE HEADER
+.dine-header {
+  .container-layout {
+    @include respond-to-breakpoint(1400) {
+      padding: 0 3rem;
+    }
 
-.wd {
-  height: max-content;
-  width: 100%;
-  z-index: 0;
-
-  &-main {
-    height: 300px;
-    margin: 0;
-    padding: 16px 30px;
-    width: 100%;
-
-    &__wrapper {
-      p {
-        line-height: 1.6;
-      }
+    @include respond-to-breakpoint(tab-port) {
+      padding: 0 1.2rem;
     }
   }
 
-  &__title {
-    font-size: 1rem;
-    font-weight: 400;
-    padding: 0 24px;
-    padding-right: 70px;
-  }
+  + .bg-smoked .container-layout-padded {
+    padding: 0 3rem;
 
-  &-options {
-    background: $section-background-color;
-    height: max-content;
-    margin: 0;
-    padding: 80px;
-    padding-bottom: 100px;
-    width: 100%;
-
-    p {
-      line-height: 1.6;
-      width: 100%;
+    @include respond-to-breakpoint(1400) {
+      padding-left: 0;
     }
 
-    h1 {
-      color: $primary-color;
-      font-size: 4rem;
-      margin-bottom: 30px;
-    }
-
-    &__txt {
-      display: flex;
-      flex-direction: column;
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 1.5;
+    @include respond-to-breakpoint(tab-port) {
       padding: 0;
+    }
+  }
+}
+// ******************
+// SECTION LAYOUT + SECTION CONTENT
+.section-layout--dine {
+  margin-top: 4rem;
+  padding-top: 7.5rem;
+
+  @include respond-to-breakpoint(tab-port) {
+    flex-direction: column;
+    padding-top: 2rem;
+  }
+
+  &:nth-of-type(2) {
+    padding-bottom: 10rem;
+    margin-bottom: 0;
+
+    @include respond-to-breakpoint(tab-port) {
+      padding-bottom: 5rem;
+    }
+
+    @include respond-to-breakpoint(phone) {
+      margin-top: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  .section-content {
+    padding: 0 6rem;
+
+    @include respond-to-breakpoint(tab-port) {
+      order: 2;
+      padding: 1.2rem 2rem 0 1.2rem;
       width: 100%;
+    }
 
-      strong {
-        font-family: $primary-font;
-        font-size: 1.8rem;
-        font-weight: 300;
+    @include respond-to-breakpoint(phone) {
+      padding: 1.2rem 2rem 5rem 1.2rem;
+    }
+
+    &__title {
+      @include respond-to-breakpoint(1000) {
+        font-size: 5rem;
+      }
+
+      @include respond-to-breakpoint(phone) {
+        font-size: 4rem;
       }
     }
 
-    &__img {
-      z-index: 0;
+    &__body {
+      margin: 3rem 0 5rem 0;
 
-      img {
-        width: 100%;
-        height: 360px;
-      }
-    }
-
-    &__txt button,
-    &__img button {
-      font-size: 1.6rem;
-      margin: 12px;
-      transition: all 0.3s ease-in;
-      width: 260px;
-
-      &:hover {
-        background: black;
-        color: #fff;
+      @include respond-to-breakpoint(tab-port) {
+        margin: 1.5rem 0 4rem 0;
       }
     }
 
     &__btn {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      margin-top: 50px;
+      @include respond-to-breakpoint(1400) {
+        flex-direction: column;
+      }
 
       button {
-        font-size: 2.3rem;
-      }
-    }
-
-    .row {
-      &.pt-5 div:nth-child(1) {
-        padding-left: 5%;
-      }
-
-      &.pb-5 div:nth-child(1) {
-        padding-right: 5%;
-      }
-    }
-  }
-
-  &-giftcard {
-    align-items: center;
-    background-color: rgb(22, 1, 22);
-    color: white;
-    display: flex;
-    height: 200px;
-    margin: 0;
-    padding: 24px 32px;
-
-    &__title {
-      align-self: center;
-      display: flex;
-      flex-direction: column;
-      font-size: 1rem;
-      font-weight: 400;
-      height: 90%;
-      justify-content: space-evenly;
-      padding-left: 0;
-      width: 50%;
-
-      span {
-        font-size: 1.5rem;
-        text-transform: uppercase;
-      }
-
-      i {
-        margin-right: 8px;
-        margin-bottom: 26px;
-      }
-
-      p {
-        font-weight: 300;
-        line-height: 1.5;
-        margin: 0;
-        width: 95%;
-      }
-    }
-
-    .wd-options__txt {
-      margin: 0 auto;
-      width: 50%;
-    }
-
-    .btn-outline {
-      align-self: center;
-      font-size: 2.2rem;
-      height: 50px;
-
-      &:hover {
-        background-color: #fff;
-        color: rgb(39, 0, 39);
-      }
-    }
-  }
-}
-// *************
-// media quieries
-// *************
-@media only screen and (max-width: 1200px) {
-  .wd-main {
-    height: max-content;
-    padding: 12px;
-    padding-bottom: 28px;
-  }
-
-  .wd__title {
-    font-size: 1rem;
-    width: 95%;
-    padding: 0;
-  }
-
-  .wd-options {
-    padding: 0;
-    width: 100%;
-
-    &__txt {
-      padding: 0 12px 26px 12px;
-      width: 100%;
-
-      p {
-        width: 100%;
-      }
-    }
-
-    &__img {
-      width: 100%;
-
-      img {
-        height: 300px;
-        object-fit: cover;
-      }
-    }
-
-    &__btn {
-      flex-direction: column;
-      margin-top: 20px;
-
-      button {
-        margin-left: 0;
-      }
-    }
-  }
-
-  .wd-giftcard {
-    align-self: flex-start;
-    height: max-content;
-    margin: 0;
-    padding: 40px 12px !important;
-    width: 100%;
-
-    &__title {
-      font-size: 1;
-      font-weight: 400;
-      padding-left: 0;
-      width: 100%;
-
-      p {
-        width: 100%;
-      }
-    }
-
-    .wd-options__txt {
-      button {
-        font-size: 2rem;
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 840px) {
-  .wd {
-    &__title {
-      width: 100%;
-    }
-
-    &-options {
-      h1 {
-        font-size: 2.6rem;
-        margin-bottom: 20px;
-      }
-
-      &__txt,
-      &__img {
-        padding: 12px;
-        width: 100%;
-
-        p {
-          font-size: 1rem !important;
-        }
-
-        button {
-          font-size: 2.3rem;
-          margin-bottom: 24px;
+        @include respond-to-breakpoint(phone) {
           width: 100%;
         }
-
-        .wd-options__btn {
-          margin: 0;
-          padding: 0;
-
-          button:last-of-type {
-            margin-bottom: 0;
-          }
-        }
       }
+    }
 
-      &__txt {
-        order: 2;
-        padding-bottom: 35px;
+    &__img {
+      max-width: 64rem;
+
+      @include respond-to-breakpoint(tab-port) {
+        max-width: 100%;
         width: 100%;
-
-        button {
-          margin: 0;
-          margin-top: 20px;
-        }
       }
 
-      &__img {
-        order: 1;
-
-        .wd-options__btn {
-          margin-left: 12px;
-          margin-right: 12px;
+      img {
+        min-height: 100%;
+        @include respond-to-breakpoint(tab-port) {
+          height: 30rem;
         }
       }
     }
 
-    &-giftcard {
-      flex-direction: column;
-      margin-bottom: 16px;
-      padding: 12px;
+    &:nth-of-type(even) {
+      @include respond-to-breakpoint(1000) {
+        padding-right: 2rem;
+      }
+    }
+  }
+}
+// ******************
+// GIFT CARD BANNER
+.article-banner--giftcard {
+  .container-layout {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
 
-      .wd-options__txt {
-        padding: 12px 0 26px 0;
+    @include respond-to-breakpoint(tab-land) {
+      padding: 0 1.2rem;
+    }
+
+    @include respond-to-breakpoint(750) {
+      flex-direction: column;
+    }
+  }
+
+  .article-banner__content--giftcard {
+    min-width: 50%;
+    width: 50%;
+
+    @include respond-to-breakpoint(750) {
+      width: 100%;
+    }
+  }
+
+  .article-banner__title--giftcard {
+    font: 400 2.6rem $secondary-font;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+
+    i {
+      margin-right: 1.2rem;
+    }
+  }
+
+  .article-banner__desc {
+    @include respond-to-breakpoint(750) {
+      margin-bottom: 3rem;
+    }
+  }
+
+  .article-banner__btn-giftcard {
+    width: 100%;
+
+    button {
+      text-transform: none;
+      width: 30rem;
+
+      @include respond-to-breakpoint(750) {
+        margin-bottom: 1rem;
         width: 100%;
       }
     }

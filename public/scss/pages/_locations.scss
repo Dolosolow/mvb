@@ -1,259 +1,359 @@
-.map {
-  height: 400px;
-}
-
-.loc-main {
-  height: 500px;
-  margin: 0 auto;
-  padding: 55px 50px 0 50px;
+// ******************
+// LOCATION HEADER/HEADLINE
+.location-headline {
+  color: #fff;
   position: relative;
-  width: 95%;
 
-  .btn-outline {
-    border-width: 2px;
-    font-size: 2.2rem;
-    position: absolute;
-    left: 35px;
-    bottom: 100px;
-    text-transform: capitalize !important;
-    height: 60px;
-    width: 280px;
-  }
-
-  .loc-landing {
+  &__banner {
+    padding: 5rem;
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 2;
     width: 100%;
 
-    img {
-      filter: brightness(70%);
-      height: 500px;
-      object-fit: cover;
-      opacity: 1;
-      width: 100%;
+    @include respond-to-breakpoint(1000) {
+      padding: 3rem;
     }
-  }
 
-  .loc-landing__body {
-    position: relative;
-
-    p {
-      color: #fff;
-      font-size: 1.15rem;
-      margin-left: 30px;
-      position: absolute;
+    @include respond-to-breakpoint(phone) {
+      padding: 3rem 1.5rem;
     }
 
     .t-nav {
-      color: #fff;
-      font-size: 4.4rem;
-      margin-bottom: 16px;
+      margin-bottom: 1.2rem;
 
-      &::before,
-      &::after {
-        background-color: white;
+      @include respond-to-breakpoint(1000) {
+        padding-left: 1.5rem;
       }
-    }
-  }
-}
 
-.loc {
-  &.wd {
-    .wd-options {
-      h1 {
-        color: black;
-        font-size: 4.4rem;
-
-        &#city {
-          color: $primary-color;
+      h2 {
+        @include respond-to-breakpoint(1000) {
+          font-size: 6rem;
         }
       }
-
-      aside {
-        line-height: 1;
-        margin: 0 auto;
-        max-width: max-content;
-
-        span,
-        a {
-          font-family: $primary-font;
-          font-size: 2rem;
-          font-weight: 500;
-          letter-spacing: 2px;
-        }
-
-        a {
-          align-self: flex-start;
-          color: $primary-color;
-        }
-
-        .btn-outline-dark {
-          border-width: 2px;
-          font-size: 2.2rem;
-          margin: 16px 0;
-          text-transform: capitalize !important;
-        }
-      }
-
-      &__txt {
-        button {
-          margin: 0;
-        }
-      }
-
-      &__img {
-        img {
-          height: 360px;
-        }
-      }
-
-      .row {
-        height: 360px;
-      }
-    }
-  }
-}
-
-.dine-area {
-  height: 90px;
-  margin: 50px 0;
-  position: relative;
-  width: 100%;
-
-  i {
-    opacity: 0.1;
-  }
-
-  hr {
-    margin: 0;
-    margin-bottom: 10px;
-  }
-
-  span {
-    a {
-      color: $primary-color;
-      font-family: $secondary-font;
-      font-size: 1rem;
-    }
-  }
-
-  strong {
-    font-family: $primary-font;
-    font-size: 2.3rem;
-    font-weight: 500;
-  }
-}
-// *************
-// media quieries
-// *************
-@media only screen and (max-width: 1200px) {
-  .loc-main {
-    width: 100%;
-  }
-}
-@media only screen and (max-width: 840px) {
-  .loc-main {
-    padding: 30px 16px 0 16px;
-
-    .btn-outline {
-      left: 16px;
-      width: 96%;
-    }
-
-    .loc-landing__body {
-      p {
-        margin-left: 15px;
-      }
-
-      .t-nav {
-        font-size: 3.5rem;
-        margin-bottom: 16px;
-      }
-    }
-  }
-
-  .loc.wd {
-    .wd-options {
-      height: max-content;
-      padding-top: 0 !important;
-
-      aside {
-        margin-left: 0;
-        padding: 0;
-        width: 100%;
-
-        .btn-outline-dark {
-          width: 320px;
-        }
-      }
-
-      &__txt {
-        order: 1;
-
-        h1 {
-          font-size: 4.4rem !important;
-        }
-
-        .wd-options__btn {
-          margin: 0;
-        }
-      }
-
-      &__img {
-        order: 2;
-      }
-
-      .row {
-        height: max-content;
-        padding: 12px;
-      }
-    }
-  }
-
-  .dine-area {
-    height: 250px;
-    margin: 40px 0;
-
-    hr {
-      display: none;
     }
 
     span {
-      font-size: 0.95rem;
+      color: currentColor;
+      font-size: 1.8rem;
+      margin-left: 3rem;
 
-      a {
-        font-size: 0.95rem;
+      @include respond-to-breakpoint(1000) {
+        margin-left: 1.5rem;
+      }
+    }
+  }
+
+  &__show-more {
+    max-width: 50rem;
+    padding: 0 3rem;
+    position: absolute;
+    bottom: 10rem;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+
+    @include respond-to-breakpoint(1000) {
+      padding: 0 1.5rem;
+    }
+
+    .btn-outline {
+      color: currentColor;
+      display: inline-block;
+      padding: 0.8rem 0;
+      text-transform: capitalize;
+      width: 28rem;
+
+      @include respond-to-breakpoint(750) {
+        width: 100%;
+      }
+    }
+  }
+}
+// ******************
+// LOCATION HEADER/HEADLINE CAROUSEL
+#location-headline {
+  img {
+    filter: brightness(70%);
+    height: 50rem;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .owl-dots {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .owl-dot {
+      span {
+        background-color: $muted-light;
+        opacity: 0.6;
       }
 
-      &:nth-child(2) {
-        margin-top: 10px;
-
-        &::before {
-          background-color: rgba(0, 0, 0, 0.1);
-          content: "";
-          height: 1px;
-          position: absolute;
-          top: 50%;
-          left: 12px;
-          width: 38%;
-        }
-
-        &::after {
-          background-color: rgba(0, 0, 0, 0.1);
-          content: "";
-          height: 1px;
-          position: absolute;
-          top: 50%;
-          right: 12px;
-          width: 38%;
+      &.active {
+        span {
+          background-color: #fff;
+          opacity: 1;
         }
       }
     }
+  }
+}
+// ******************
+// LOCATION DINING AVAILABILITY BANNER
+.dining-avl {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 5rem 0;
 
-    .col-md-3 {
+  @include respond-to-breakpoint(1000) {
+    flex-direction: column;
+    padding: 3rem 0;
+  }
+
+  &__in {
+    display: flex;
+    flex-direction: column;
+    width: 35rem;
+    text-align: center;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    padding: 0 2.5rem;
+    position: relative;
+
+    @include respond-to-breakpoint(1000) {
+      padding: 1rem 1.2rem;
+      width: 100%;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 45%;
+        height: 1px;
+        background-color: rgba($muted-light, 0.5);
+
+        @include respond-to-breakpoint(tab-port) {
+          width: 43%;
+        }
+
+        @include respond-to-breakpoint(750) {
+          width: 40%;
+        }
+      }
+
+      &::before {
+        left: 1.5rem;
+      }
+
+      &::after {
+        right: 1.5rem;
+      }
+    }
+
+    i {
+      color: rgba($muted-light, 0.5);
+    }
+  }
+
+  &__title {
+    border-bottom: 1px solid rgba($muted-light, 0.5);
+    font-size: 3.8rem;
+    font-family: $primary-font;
+    font-weight: 400;
+
+    @include respond-to-breakpoint(1000) {
+      border-bottom: none;
+    }
+  }
+
+  &__service {
+    font-size: 1.6rem;
+    margin-top: 1rem;
+    text-transform: uppercase;
+
+    @include respond-to-breakpoint(1000) {
+      margin-top: 1rem;
+    }
+
+    a {
+      color: $primary-color;
+      font-family: $secondary-font;
+    }
+  }
+}
+// ******************
+// LOCATION ABOUT/CONTACT SECTION
+.section-layout--location__about {
+  padding: 3rem 0;
+  padding-bottom: 6rem;
+
+  @include respond-to-breakpoint(1000) {
+    flex-direction: column;
+  }
+
+  .section-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include respond-to-breakpoint(1400) {
+      &:not(:last-of-type) {
+        padding: 3rem;
+      }
+    }
+
+    @include respond-to-breakpoint(1000) {
+      width: 100%;
+    }
+
+    &__title {
+      color: currentColor;
+      margin-bottom: 5rem;
+    }
+
+    &__body {
+      line-height: 1.8;
+      padding-right: 5rem;
+
+      @include respond-to-breakpoint(1000) {
+        padding-right: 0;
+      }
+    }
+
+    .location__info {
+      align-self: center;
       display: flex;
       flex-direction: column;
+      font-family: $primary-font;
+      margin-top: auto;
+      max-width: 31rem;
+
+      @include respond-to-breakpoint(1000) {
+        align-self: flex-start;
+        padding-left: 3rem;
+        max-width: 100%;
+      }
+
+      span {
+        font-size: 3.2rem;
+        letter-spacing: 1px;
+        line-height: 1;
+
+        a {
+          color: $primary-color;
+        }
+      }
+
+      .btn-outline-dark {
+        text-transform: capitalize;
+        margin-top: 2rem;
+      }
+    }
+  }
+}
+// ******************
+// LOCATION EMBEDDED GOOGLE MAPS
+.location__map {
+  iframe {
+    height: 40rem;
+    width: 100%;
+  }
+}
+
+.section-layout--location__reserve {
+  padding: 6rem 0;
+
+  @include respond-to-breakpoint(1400) {
+    padding: 6rem 3rem;
+  }
+
+  @include respond-to-breakpoint(tab-port) {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .section-content {
+    padding-right: 6rem;
+
+    @include respond-to-breakpoint(tab-port) {
+      padding: 3rem;
+      width: 100%;
+    }
+
+    .section-content__title {
+      margin-bottom: 0;
+    }
+
+    span {
+      color: $primary-color;
+    }
+
+    .section-content__body {
+      margin: 4rem 0;
+      max-width: 98%;
+    }
+
+    .btn-prim {
+      display: inline-block;
+      text-transform: capitalize;
+      width: 28rem;
+
+      @include respond-to-breakpoint(phone) {
+        width: 100%;
+      }
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  .section-content__img {
+    height: 35rem;
+    max-width: 64rem;
+
+    @include respond-to-breakpoint(tab-port) {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+}
+
+#location-reserve {
+  img {
+    filter: brightness(70%);
+    height: 35rem;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .owl-dots {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .owl-dot {
+      span {
+        background-color: $muted-light;
+        opacity: 0.6;
+      }
+
+      &.active {
+        span {
+          background-color: #fff;
+          opacity: 1;
+        }
+      }
     }
   }
 }

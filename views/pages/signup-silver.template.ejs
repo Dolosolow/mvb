@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- *************** -->
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/e9063b30c3.js"></script>
+    <!-- *************** -->
+    <!-- facvicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/flix-theater-server/public/images/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/flix-theater-server/public/images/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/flix-theater-server/public/images/favicons/favicon-16x16.png"
+    />
+    <link
+      rel="manifest"
+      href="/flix-theater-server/public/images/favicons/site.webmanifest"
+    />
+    <title>FLIX Theater | Dine in theater</title>
+  </head>
+  <body>
+    <%- include('partials/navbar.ejs') %>
+    <header class="container-layout signup-headline">
+      <div class="t-nav">
+        <h2>Sign up as Silver</h2>
+      </div>
+      <span class="t-subline t-subline--text"
+        >Sign up for Silver Membership</span
+      >
+    </header>
+    <main class="bg-smoked">
+      <div class="container-layout">
+        <div
+          class="section-layout section-layout--signup section-layout--signup-silver"
+        >
+          <!-- left half of signup (account sign up forms) -->
+          <div class="section-content section-content--form-steps">
+            <div class="form-container">
+              <div class="collapsible-form collapsible-form--show">
+                <form id="act-personal__form" action="#">
+                  <div class="form-container-row">
+                    <div class="inline-form">
+                      <input
+                        type="text"
+                        name="fname"
+                        id="fname"
+                        autocomplete="off"
+                        placeholder="First Name"
+                        required
+                      />
+                      <label for="fname">First Name</label>
+                    </div>
+                    <div class="inline-form">
+                      <input
+                        type="text"
+                        name="lname"
+                        id="lname"
+                        autocomplete="off"
+                        placeholder="Last Name"
+                        required
+                      />
+                      <label for="lname">Last Name</label>
+                    </div>
+                  </div>
+                  <div class="form-container-row">
+                    <div class="inline-form">
+                      <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        autocomplete="email"
+                        placeholder="Email"
+                        required
+                      />
+                      <label for="email">Email</label>
+                    </div>
+                    <div class="inline-form">
+                      <input
+                        type="tel"
+                        name="phone"
+                        id="phone"
+                        autocomplete="tel"
+                        placeholder="Phone"
+                        required
+                      />
+                      <label for="phone">Phone</label>
+                    </div>
+                  </div>
+                  <div class="form-container-row">
+                    <div class="inline-form">
+                      <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        autocomplete="off"
+                        placeholder="Password"
+                        required
+                      />
+                      <label for="password">Password</label>
+                      <i class="fas fa-lock fa-lg"></i>
+                    </div>
+                    <div class="inline-form">
+                      <input
+                        type="password"
+                        name="confirmPassword"
+                        id="confirmPassword"
+                        autocomplete="off"
+                        placeholder="Confirm Password"
+                        required
+                      />
+                      <label for="confirmPassword">Confirm Password</label>
+                      <i class="fas fa-lock fa-lg"></i>
+                    </div>
+                  </div>
+                  <div class="form-container-row">
+                    <div class="inline-form">
+                      <input
+                        type="text"
+                        name="referralCode"
+                        id="referralCode"
+                        autocomplete="off"
+                        placeholder="Referral Code"
+                        required
+                      />
+                      <label for="referralCode">Referral Code</label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <form class="act-tos-form flex-column" action="#">
+                <label class="cb-liner" for="tcm-policy">
+                  <input
+                    type="checkbox"
+                    name="tcm-policy"
+                    id="tcm-policy"
+                    required
+                  />
+                  <span class="checkmark"></span>
+                  I agree to the
+                  <a href="#" class="color-text color-text__link"
+                    >Terms & Conditions</a
+                  >
+                  and
+                  <a href="#" class="color-text color-text__link"
+                    >Membership policies</a
+                  >
+                </label>
+                <label class="cb-liner" for="e-subscription">
+                  <input
+                    type="checkbox"
+                    name="e-subscription"
+                    id="e-subscription"
+                  />
+                  <span class="checkmark"></span>
+                  <p>
+                    I agree to receive information about my account, invitations
+                    to FLIX events, weekly showtimes emails, special offers and
+                    news
+                  </p>
+                </label>
+                <button class="btn-prim">Sign up</button>
+                <p>
+                  Already have an account?
+                  <a href="#" class="color-text color-text__link"
+                    >&nbsp; Sign in</a
+                  >
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <%- include('partials/footer.ejs') %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+  </body>
+</html>

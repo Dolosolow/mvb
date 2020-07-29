@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- *************** -->
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/e9063b30c3.js"></script>
+    <!-- *************** -->
+    <!-- facvicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/images/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/images/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/images/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/assets/images/favicons/site.webmanifest" />
+    <title>FLIX Theater | Dine in theater</title>
+  </head>
+  <body>
+    <%- include('partials/navbar.ejs') %>
+    <!-- dynamic movie cover background -->
+    <div class="header-poster fluid">
+      <img
+        class="fluid"
+        src="<%= movie.poster_xl %>"
+        alt="interstellar"
+      />
+    </div>
+    <header class="theater-headline">
+      <div class="container-layout flex-row">
+        <!-- dynamic movie cover card img -->
+        <img
+          src="<%= movie.poster %>"
+          alt="movie"
+        />
+        <div class="theater-headline__content flex-column fluid">
+          <div class="t-nav t-nav--light">
+            <h2><%= movie.title %></h2>
+          </div>
+          <!-- container for date & time selection -->
+          <div class="screen-avl flex-row">
+            <div class="screen-avl__dates flex-column">
+              <h3 class="text-uppercase">Dates</h3>
+              <!-- movie date list -->
+              <div class="screen-avl__dates-list">
+                <i class="fas fa-angle-left text-red"></i>
+                <div class="screen-avl__date text-center">
+                  <p class="mth muted">JUN 1nd</p>
+                  <p class="day">Tue</p>
+                </div>
+                <div class="screen-avl__date text-center active">
+                  <p class="mth muted">JUN 2nd</p>
+                  <p class="day">Wed</p>
+                </div>
+                <div class="screen-avl__date text-center">
+                  <p class="mth muted">JUN 3rd</p>
+                  <p class="day">Thu</p>
+                </div>
+                <div class="screen-avl__date text-center">
+                  <p class="mth muted">JUN 4th</p>
+                  <p class="day">Fri</p>
+                </div>
+                <div class="screen-avl__date text-center">
+                  <p class="mth muted">JUN 5th</p>
+                  <p class="day">Sat</p>
+                </div>
+                <div class="screen-avl__date text-center">
+                  <p class="mth muted">JUN 6th</p>
+                  <p class="day">Sun</p>
+                </div>
+                <div class="screen-avl__date text-center">
+                  <p class="mth muted">JUN 7th</p>
+                  <p class="day">Mon</p>
+                </div>
+                <i class="fas fa-angle-right text-red"></i>
+              </div>
+            </div>
+            <div class="screen-avl__times flex-column">
+              <h3 class="text-uppercase">Available Times</h3>
+              <!-- movie play time list -->
+              <div class="screen-avl__times-list">
+                <i class="fas fa-angle-left text-red"></i>
+                <p class="time">07:11p</p>
+                <p class="time">06:11p</p>
+                <p class="time">05:11p</p>
+                <p class="time">04:11p</p>
+                <p class="time">03:11p</p>
+                <p class="time">02:11p</p>
+                <p class="time">01:11p</p>
+                <p class="time">00:11p</p>
+                <p class="time">00:11p</p>
+                <p class="time">00:11p</p>
+                <p class="time">00:11p</p>
+                <i class="fas fa-angle-right text-red"></i>
+              </div>
+            </div>
+            <!-- OTHER SECTION OF SCREEN DATES -->
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="bg-smoked">
+      <main class="seat-selection container-layout flex-row">
+        <div class="seat-selection__chart">
+          <header class="seat-selection__header flex-row">
+            <!-- theater name, dynamic number corresponding to the theater room moving being played -->
+            <div class="theater-name">
+              <p class="muted text-uppercase">Movie Theater No.</p>
+              <h2>FLIX Theater <%= movie.theater %></h2>
+            </div>
+            <div class="seat-selection__legend-wrapper">
+              <!-- seating legend -->
+              <div class="seat-selection__legend flex-row">
+                <div class="seat-wrapper">
+                  <div class="seat-cple"></div>
+                  <p>Couple Seat</p>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-vip"></div>
+                  <p>VIP Seat</p>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                  <p>Regular seat</p>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-acc"></div>
+                  <p>Accessible</p>
+                </div>
+              </div>
+              <!-- seating legend user interaction guide -->
+              <div class="seat-selection__legend flex-row">
+                <div class="seat-wrapper">
+                  <div class="seat-vip"></div>
+                  <p>Available</p>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-vip disable"></div>
+                  <p>Taken</p>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg active"></div>
+                  <p>Selected</p>
+                </div>
+              </div>
+            </div>
+          </header>
+          <!-- illustration of the theater screen in the room -->
+          <span class="seat-selection__screen text-center">SCREEN</span>
+          <div class="seat-selection__layout">
+            <p class="small-note text-center muted">
+              Click seats to add the to cart
+            </p>
+            <div class="seat-selection__layout-grid">
+              <div class="flex-row justify-center">
+                <span class="row-char" data-row="i">&nbsp;I</span>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <span class="row-char" data-row="i">&nbsp;I</span>
+              </div>
+              <div class="flex-row justify-center">
+                <span class="row-char" data-row="h">&nbsp;H</span>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <span class="row-char" data-row="h">&nbsp;H</span>
+              </div>
+              <div class="flex-row justify-center">
+                <span class="row-char" data-row="g">&nbsp;G</span>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <span class="row-char" data-row="g">&nbsp;G</span>
+              </div>
+              <div class="flex-row justify-center">
+                <span class="row-char" data-row="f">&nbsp;F</span>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <span class="row-char" data-row="f">&nbsp;F</span>
+              </div>
+              <!-- EMPTY ROW -->
+              <div class="empty-row flex-row justify-center">
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+              </div>
+              <div class="flex-row justify-center">
+                <span class="row-char" data-row="e">&nbsp;E</span>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <span class="row-char" data-row="e">&nbsp;E</span>
+              </div>
+              <div class="flex-row justify-center">
+                <span class="row-char" data-row="d">&nbsp;D</span>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <span class="row-char" data-row="d">&nbsp;D</span>
+              </div>
+              <div class="flex-row justify-center">
+                <span class="row-char" data-row="c">&nbsp;C</span>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <span class="row-char" data-row="c">&nbsp;C</span>
+              </div>
+              <div class="flex-row justify-center">
+                <span class="row-char" data-row="b">&nbsp;B</span>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <span class="row-char" data-row="b">&nbsp;B</span>
+              </div>
+              <div class="flex-row justify-center">
+                <span class="row-char" data-row="a">&nbsp;A</span>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                </div>
+                <span class="row-char" data-row="a">&nbsp;A</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="seat-selection__cart">
+          <b class="seat-selection__cart-title text-uppercase">
+            Selected Seats
+          </b>
+          <ul class="seat-selection__cart-mycart">
+            <li class="mycart__item">
+              <div class="seat-wrapper">
+                <div class="seat-cple"></div>
+              </div>
+              <span class="seat-id">F3&nbsp;/F4</span>
+              <span class="seat-price">$22</span>
+              <span class="btn-remove-item">&times;</span>
+            </li>
+            <li class="mycart__item">
+              <div class="seat-wrapper">
+                <div class="seat-reg"></div>
+              </div>
+              <span class="seat-id">F5</span>
+              <span class="seat-price">$10</span>
+              <span class="btn-remove-item">&times;</span>
+            </li>
+            <li class="mycart__item">
+              <div class="seat-wrapper">
+                <div class="seat-reg"></div>
+              </div>
+              <span class="seat-id">F6</span>
+              <span class="seat-price">$10</span>
+              <span class="btn-remove-item">&times;</span>
+            </li>
+          </ul>
+          <button class="btn-prim btn-block mt-xs">Purchase&nbsp;($42)</button>
+          <p class="mycart__timer text-center muted">
+            Time left to purchase: &nbsp;<span>10:11</span>
+          </p>
+        </div>
+        <div class="mobi-cart align-center">
+          <div class="mobi-cart__total">
+            <p>Selected 2 seats</p>
+            <h5>TOTAL: &nbsp;$42.00</h5>
+          </div>
+          <a href="#" class="text-uppercase">submit</a>
+        </div>
+      </main>
+    </div>
+    <%- include('partials/footer.ejs') %>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+  </body>
+</html>

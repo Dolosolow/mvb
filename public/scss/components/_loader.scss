@@ -1,0 +1,15 @@
+.loader {
+  animation: load4 1.3s infinite linear;
+  border-radius: 50%;
+  color: $primary-color;
+  display: none;
+  font-size: 2rem;
+  height: 1em;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  text-indent: -9999em;
+  transform: translateZ(0);
+  width: 2rem;
+  z-index: 100;
+}

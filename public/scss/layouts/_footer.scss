@@ -1,0 +1,140 @@
+.footer {
+  height: 23rem;
+
+  @include respond-to-breakpoint(tab-land) {
+    padding: 1.2rem 0 1.2rem 0;
+  }
+
+  @include respond-to-breakpoint(660) {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  a {
+    color: currentColor;
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__info {
+    padding-right: 2.5rem;
+    width: max-content;
+
+    @include respond-to-breakpoint(660) {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      padding: 0 5rem;
+      width: 100%;
+    }
+
+    .navbar-brand {
+      color: $primary-color;
+      font-size: 4rem;
+
+      @include respond-to-breakpoint(660) {
+        align-self: flex-end;
+        padding-bottom: 1rem;
+      }
+    }
+  }
+
+  &__adr {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    line-height: 1.8;
+    white-space: nowrap;
+
+    @include respond-to-breakpoint(tab-land) {
+      align-self: flex-start;
+    }
+  }
+
+  &__links {
+    border-left: 4px solid #000;
+    border-right: 4px solid #000;
+    width: 100%;
+
+    @include respond-to-breakpoint(tab-land) {
+      border-right: none;
+    }
+
+    @include respond-to-breakpoint(tab-port) {
+      width: 80%;
+    }
+
+    @include respond-to-breakpoint(660) {
+      border-left: none;
+      border-top: 2px solid #000;
+      padding: 0 5rem;
+      width: 100%;
+    }
+
+    &-social {
+      font-size: 1.6rem;
+
+      @include respond-to-breakpoint(660) {
+        margin-top: 2rem;
+      }
+
+      a {
+        &:not(:last-child) {
+          margin-right: 3rem;
+        }
+      }
+    }
+
+    &-list {
+      flex-wrap: wrap;
+      font-family: $primary-font;
+      margin-top: 2rem;
+
+      @include respond-to-breakpoint(tab-land) {
+        margin-top: 8px;
+      }
+
+      li {
+        &:not(:first-of-type) a {
+          position: relative;
+
+          &::after {
+            content: "";
+            background-color: #000;
+            position: absolute;
+            top: 70%;
+            left: 0;
+            transform: translateY(-70%);
+            height: 65%;
+            width: 2px;
+
+            @include respond-to-breakpoint(660) {
+              width: 1px;
+            }
+          }
+        }
+
+        a {
+          font-size: 3rem;
+          padding: 0 1rem;
+
+          @include respond-to-breakpoint(tab-port) {
+            font-size: 2.5rem;
+          }
+
+          @include respond-to-breakpoint(660) {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+
+  &__copy-rht {
+    color: $muted;
+    font-size: 1.3rem;
+    margin-top: 2rem;
+  }
+}

@@ -1,21 +1,12 @@
+const moviesController = require('../controllers/movies.controller');
 const router = require('express').Router();
-const axios = require('axios');
 
-router.get('/', (req, res, next) => { 
-  res.render('add-movie', { transNav: false, isAdmin: true, currentPg: 'admin' });
-})
+router.post('/add-movie', moviesController.postAddMovie);
 
-router.post('/add',(req, res, next) => {
-  const apiKey = process.env.APIKEY;
-  const movieId = req.body.movieId;
-  
-  axios.get(`http://www.omdbapi.com/?apikey=${apiKey}&i=${movieId}&plot=full`)
-  .catch(err => {
-    next(err);
-  })
+router.get('/nowplaying', moviesController.getCurrentMoviesData);
 
-  return res.status(200).json({ msg: 'movie added successfully' });
-})
+router.get('/', moviesController.getAdminDash);
+
 
 module.exports = router;
 
