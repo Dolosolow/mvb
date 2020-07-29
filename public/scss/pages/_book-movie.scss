@@ -1,0 +1,668 @@
+.header-poster {
+  background-color: #000;
+  height: 40rem;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  @include respond-to-breakpoint(phone) {
+    height: 45rem;
+  }
+
+  img {
+    opacity: 0.6;
+    object-fit: cover;
+    position: absolute;
+    top: -45rem;
+    left: 0;
+
+    // @include respond-to-breakpoint(1200) {
+    //   top: -45rem;
+    // }
+
+    @include respond-to-breakpoint(900) {
+      top: -35rem;
+    }
+
+    @include respond-to-breakpoint(790) {
+      top: -20rem;
+    }
+
+    @include respond-to-breakpoint(phone) {
+      height: 45rem;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+
+.theater-headline {
+  padding-top: 11rem;
+  position: relative;
+  width: 100%;
+
+  .container-layout {
+    @include respond-to-breakpoint(1366) {
+      padding: 0 3rem;
+    }
+
+    @include respond-to-breakpoint(phone) {
+      margin-top: 3.5rem;
+    }
+  }
+
+  &::after {
+    content: "";
+    background-color: #121212;
+    height: 36%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+
+    @include respond-to-breakpoint(700) {
+      height: 45%;
+    }
+
+    @include respond-to-breakpoint(phone) {
+      height: 42%;
+    }
+  }
+
+  img {
+    box-shadow: 0 2px 9px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 5rem;
+    width: 28rem;
+    z-index: 1;
+
+    @include respond-to-breakpoint(700) {
+      display: none;
+    }
+  }
+
+  &__content {
+    align-self: flex-end;
+    overflow: hidden;
+    padding-bottom: 5rem;
+    padding-left: 5rem;
+    width: 100%;
+
+    @include respond-to-breakpoint(1090) {
+      padding-bottom: 1rem;
+    }
+
+    @include respond-to-breakpoint(700) {
+      margin-top: 6rem;
+      padding-left: 0;
+    }
+
+    .t-nav {
+      margin: 0;
+    }
+
+    .screen-avl {
+      color: #fff;
+      display: inline-flex;
+      font-family: $primary-font;
+      margin-top: 6rem;
+
+      @include respond-to-breakpoint(1090) {
+        flex-direction: column;
+        margin-top: 3rem;
+      }
+
+      h3 {
+        font-size: 2.4rem;
+        letter-spacing: 3px;
+        margin-bottom: 2rem;
+
+        @include respond-to-breakpoint(1090) {
+          margin-bottom: 0;
+        }
+      }
+
+      p {
+        font-size: 3.2rem;
+        margin: 0;
+
+        @include respond-to-breakpoint(700) {
+          font-size: 2.4rem;
+        }
+      }
+
+      &__dates {
+        position: relative;
+        width: 30%;
+
+        @include respond-to-breakpoint(1090) {
+          min-width: 27rem;
+        }
+
+        &-list {
+          overflow: auto;
+          scroll-snap-type: x mandatory;
+          padding: 0 100px;
+          white-space: nowrap;
+          width: 100%;
+
+          &::-webkit-scrollbar {
+            display: none;
+          }
+
+          &::before,
+          &::after {
+            content: "";
+            height: 60%;
+            position: absolute;
+            bottom: 0;
+            width: 50%;
+          }
+
+          &::before {
+            background-image: linear-gradient(
+              to right,
+              #121212 25%,
+              transparent 75%
+            );
+            left: 0;
+          }
+
+          &::after {
+            background-image: linear-gradient(
+              to left,
+              #121212 25%,
+              transparent 75%
+            );
+            right: 0;
+          }
+
+          i {
+            cursor: pointer;
+            position: absolute;
+            bottom: 1.5rem;
+            z-index: 100;
+
+            &:first-of-type {
+              left: 0;
+            }
+
+            &:last-of-type {
+              right: 0;
+            }
+          }
+        }
+      }
+
+      &__date {
+        display: inline-block;
+        line-height: 1;
+        min-width: 10rem;
+        padding-bottom: 0.5rem;
+        scroll-snap-align: center;
+        scroll-snap-stop: normal;
+
+        .mth {
+          font-size: 2rem;
+
+          @include respond-to-breakpoint(700) {
+            font-size: 1.6rem;
+          }
+        }
+      }
+
+      &__times {
+        margin-left: 3rem;
+        position: relative;
+        width: 65%;
+
+        @include respond-to-breakpoint(1090) {
+          margin-left: 0;
+          width: 100%;
+        }
+
+        &::before,
+        &::after {
+          content: "";
+          background-color: #121212;
+          height: 50%;
+          position: absolute;
+          bottom: 0;
+          width: 2rem;
+          z-index: 0;
+        }
+
+        &::after {
+          right: 0;
+        }
+
+        &-list {
+          overflow-x: scroll;
+          padding: 0 4rem;
+          white-space: nowrap;
+          width: 100%;
+
+          &::-webkit-scrollbar {
+            display: none;
+          }
+
+          i {
+            cursor: pointer;
+            position: absolute;
+            bottom: 15px;
+            z-index: 1;
+
+            &:first-of-type {
+              left: 0;
+            }
+
+            &:nth-of-type(2) {
+              right: 0;
+            }
+          }
+        }
+      }
+
+      .time {
+        cursor: pointer;
+        display: inline-block;
+        letter-spacing: 2px;
+        line-height: 2;
+        margin-right: 2rem;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+.seat-wrapper {
+  position: relative;
+
+  &:not(:last-child) {
+    margin-right: 1.2rem;
+  }
+
+  div {
+    border: 3px solid $muted;
+    border-radius: 5px;
+    margin: auto;
+    margin-bottom: 4px;
+    position: relative;
+
+    &::after {
+      content: "";
+      background-color: $muted;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+
+    &.disable {
+      background-color: #7b7c7e;
+      border-color: #7b7c7e;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    &.active {
+      border-color: $primary-color;
+
+      &:not(.seat-vip)::after {
+        background-color: $primary-color;
+      }
+    }
+  }
+
+  .seat {
+    &-acc,
+    &-cple,
+    &-reg,
+    &-vip {
+      height: 2rem;
+      position: relative;
+      overflow: hidden;
+      width: 2rem;
+      // box-shadow: 0 1px 1px 1px rgba($muted, 0.4);
+
+      &::after {
+        content: "";
+        height: 4px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+    }
+
+    &-acc {
+      &::after {
+        height: 60%;
+        top: 0;
+      }
+    }
+
+    &-cple {
+      width: 4.5rem;
+
+      &::after {
+        height: 50%;
+      }
+    }
+
+    &-vip {
+      &::after {
+        background-color: transparent;
+        border-bottom: 1.4rem solid $muted;
+        border-right: 1.4rem solid transparent;
+        top: -4px;
+        left: -13px;
+      }
+
+      &.active::after {
+        border-bottom: 14px solid $primary-color;
+      }
+    }
+  }
+}
+
+.seat-selection {
+  justify-content: space-between;
+  padding: 4rem 1.2rem;
+  position: relative;
+  max-width: 120.4rem;
+
+  @include respond-to-breakpoint(1024) {
+    justify-content: center;
+  }
+
+  @include respond-to-breakpoint(620) {
+    height: 75rem;
+  }
+
+  &__chart {
+    min-width: 64rem;
+    width: 65%;
+
+    @include respond-to-breakpoint(680) {
+      min-width: auto;
+      width: 100%;
+    }
+  }
+
+  &__header {
+    align-items: flex-end;
+    margin-bottom: 5rem;
+    z-index: 1;
+
+    @include respond-to-breakpoint(1100) {
+      flex-direction: column;
+      margin-bottom: 3rem;
+    }
+
+    p {
+      color: #151515a2;
+      font-size: 1.3rem;
+      white-space: nowrap;
+    }
+
+    .theater-name {
+      line-height: 1;
+      margin-right: auto;
+      white-space: nowrap;
+      width: 100%;
+
+      > * {
+        @include respond-to-breakpoint(1100) {
+          display: inline;
+        }
+      }
+
+      p {
+        font: 500 2.08rem $primary-font;
+        letter-spacing: 1px;
+
+        @include respond-to-breakpoint(1100) {
+          line-height: 3;
+        }
+      }
+
+      h2 {
+        font-size: 4rem;
+
+        @include respond-to-breakpoint(1100) {
+          float: right;
+        }
+      }
+    }
+  }
+
+  &__legend-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    @include respond-to-breakpoint(1100) {
+      margin-top: 2rem;
+      justify-content: center;
+    }
+  }
+
+  &__legend {
+    width: max-content;
+
+    &:nth-of-type(1) {
+      padding-right: 8rem;
+      position: relative;
+
+      @include respond-to-breakpoint(620) {
+        padding-right: 0;
+      }
+
+      &::after {
+        content: "";
+        background-color: $secondary-section-bg-color;
+        height: 100%;
+        opacity: 0.5;
+        position: absolute;
+        top: 0;
+        right: 4rem;
+        width: 1px;
+
+        @include respond-to-breakpoint(620) {
+          display: none;
+        }
+      }
+    }
+
+    &:nth-of-type(2) {
+      @include respond-to-breakpoint(620) {
+        position: absolute;
+        bottom: 3.5rem;
+      }
+    }
+  }
+
+  &__screen {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    z-index: 0;
+
+    &::before {
+      background-color: $section-bg-color;
+      content: "";
+      height: 100%;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8rem;
+      z-index: -1;
+    }
+
+    &::after {
+      content: "";
+      background-color: $secondary-section-bg-color;
+      height: 3px;
+      position: absolute;
+      top: 1.1rem;
+      left: 0;
+      width: 100%;
+      z-index: -2;
+    }
+  }
+
+  &__layout {
+    margin-top: 1rem;
+
+    .small-note {
+      color: #7b7c7e;
+    }
+
+    &-grid {
+      margin-top: 4rem;
+
+      div {
+        margin-bottom: 0.35rem;
+      }
+
+      .empty-row {
+        visibility: hidden;
+      }
+
+      .row-char {
+        @include respond-to-breakpoint(500) {
+          font-size: 1.3rem;
+        }
+
+        @include respond-to-breakpoint(370) {
+          display: none;
+        }
+
+        &:first-of-type {
+          margin-right: auto;
+        }
+
+        &:last-of-type {
+          margin-left: auto;
+
+          @include respond-to-breakpoint(500) {
+            display: none;
+          }
+        }
+      }
+
+      .seat-wrapper {
+        cursor: pointer;
+
+        &:not(:last-child) {
+          margin-right: 1rem;
+
+          @include respond-to-breakpoint(500) {
+            margin-right: 0.75rem;
+          }
+
+          @include respond-to-breakpoint(370) {
+            margin-right: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  &__cart {
+    font: 400 2.1rem $primary-font;
+    width: 25%;
+
+    @include respond-to-breakpoint(1024) {
+      display: none;
+    }
+
+    &-title {
+      letter-spacing: 1px;
+    }
+
+    &-mycart {
+      color: #151515a2;
+      letter-spacing: 1px;
+      width: 100%;
+    }
+
+    .mycart__item {
+      display: flex;
+      align-items: center;
+      height: max-content;
+
+      .seat-wrapper {
+        div {
+          margin-bottom: 0;
+        }
+      }
+
+      .seat-id {
+        margin-left: 0;
+      }
+
+      .seat-price {
+        color: black;
+        font-size: 2.4rem;
+        font-weight: bold;
+        margin-left: auto;
+      }
+
+      .btn-remove-item {
+        cursor: pointer;
+        margin-left: 15px;
+        padding-bottom: 5px;
+        font-size: 4rem;
+      }
+    }
+
+    .mycart__timer {
+      font: 700 1.4rem $secondary-font;
+      margin-top: 2rem;
+
+      span {
+        color: #121212;
+        font-size: 1.8rem;
+      }
+    }
+  }
+}
+
+.mobi-cart {
+  background-color: $primary-color;
+  color: #fff;
+  display: none;
+  justify-content: space-between;
+  padding: 1rem 1.6rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
+
+  @include respond-to-breakpoint(1024) {
+    display: flex;
+  }
+
+  &__total {
+    h5 {
+      font: 500 2rem $secondary-font;
+    }
+
+    p {
+      margin-bottom: 2px;
+    }
+  }
+
+  a {
+    color: #fff;
+    font: 400 3rem $primary-font;
+  }
+}

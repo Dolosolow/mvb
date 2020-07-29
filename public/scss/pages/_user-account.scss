@@ -1,0 +1,430 @@
+.container-layout--ua-header {
+  padding-top: 3rem;
+
+  @include respond-to-breakpoint(1366) {
+    padding: 3rem 1.2rem 0 1.2rem;
+  }
+
+  @include respond-to-breakpoint(950) {
+    padding-top: 1.2rem;
+  }
+}
+
+.account__card {
+  padding: 3.5rem 2rem;
+  justify-content: space-between;
+
+  @include respond-to-breakpoint(950) {
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  @include respond-to-breakpoint(750) {
+    padding: 2rem 0 0 0;
+  }
+
+  &-name {
+    font: 400 3.6rem $primary-font;
+  }
+
+  &-note {
+    display: block;
+    color: $muted;
+  }
+
+  ul {
+    justify-content: space-between;
+    min-width: 65rem;
+
+    @include respond-to-breakpoint(950) {
+      margin-top: 2rem;
+    }
+
+    @include respond-to-breakpoint(750) {
+      flex-wrap: wrap;
+      min-width: auto;
+    }
+  }
+
+  .info-item {
+    padding: 4px;
+
+    @include respond-to-breakpoint(750) {
+      width: 50%;
+    }
+
+    &:nth-child(even) {
+      @include respond-to-breakpoint(750) {
+        text-align: right;
+      }
+    }
+
+    &__label {
+      color: $muted;
+      white-space: nowrap;
+    }
+
+    &__val {
+      font: 400 3.6rem $primary-font;
+
+      @include respond-to-breakpoint(750) {
+        font-size: 2.8rem;
+      }
+    }
+  }
+}
+
+.account__tabs {
+  background-color: #ebeaea;
+  font-size: 1.6rem;
+  width: 52rem;
+
+  @include respond-to-breakpoint(1000) {
+    display: none;
+  }
+
+  .nav-tabs {
+    &__item {
+      cursor: pointer;
+      padding: 1.2rem 0;
+      position: relative;
+      transition: all 0.2s;
+      will-change: background-color, color;
+
+      i {
+        color: black;
+        font-size: 5rem;
+        margin: 2.8rem;
+      }
+
+      &.active {
+        background-color: $section-bg-color;
+        color: $primary-color;
+
+        i {
+          color: currentColor;
+        }
+      }
+    }
+  }
+}
+
+.sections-container {
+  padding: 0 5rem;
+  width: 62%;
+
+  @include respond-to-breakpoint(1000) {
+    width: 100%;
+  }
+
+  @include respond-to-breakpoint(650) {
+    padding: 0 2.5rem;
+  }
+}
+
+.acct-page {
+  height: max-content;
+
+  &__headline {
+    font-size: 6.4rem;
+    padding-top: 1.2rem;
+
+    @include respond-to-breakpoint(1000) {
+      font-size: 4.8rem;
+    }
+  }
+
+  &__orders {
+    .acct-page__headeline-container {
+      p {
+        margin: 3rem 0;
+      }
+
+      .btn-prim {
+        display: inline-block;
+        margin-bottom: 8rem;
+        width: 30rem;
+
+        @include respond-to-breakpoint(750) {
+          margin-bottom: 3rem;
+        }
+      }
+    }
+
+    .acct-page__book-history {
+      padding-bottom: 2rem;
+
+      .quick-note {
+        margin-bottom: 3rem;
+      }
+
+      .book-history__item {
+        font-size: 1.8rem;
+        justify-content: space-between;
+        width: 100%;
+
+        @include respond-to-breakpoint(750) {
+          flex-direction: column;
+        }
+
+        &:not(:last-child) {
+          margin-bottom: 3rem;
+        }
+
+        div:nth-child(even) {
+          text-align: right;
+
+          @include respond-to-breakpoint(750) {
+            text-align: left;
+          }
+        }
+
+        .purchase-title {
+          font-weight: bold;
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+
+  &__per-info {
+    width: 94%;
+
+    @include respond-to-breakpoint(950) {
+      width: 100%;
+    }
+
+    .acct-page__headeline-container {
+      .side-note {
+        margin-bottom: 5rem;
+      }
+    }
+
+    article {
+      > div {
+        justify-content: space-between;
+
+        @include respond-to-breakpoint(phone) {
+          flex-direction: column;
+        }
+
+        &:not(:last-child) {
+          margin-bottom: 3rem;
+        }
+      }
+
+      .inline-form {
+        width: 48%;
+
+        @include respond-to-breakpoint(phone) {
+          width: 100%;
+
+          &:nth-child(even) {
+            margin-top: 3rem;
+          }
+        }
+      }
+    }
+
+    .btn-prim {
+      width: 25rem;
+    }
+  }
+
+  &__status {
+    .acct-page__headeline-container {
+      justify-content: space-between;
+    }
+
+    .acct-status__rank {
+      float: right;
+      font-size: 6.4rem;
+
+      @include respond-to-breakpoint(750) {
+        font-size: 3.6rem;
+      }
+    }
+
+    .acct-status__desc {
+      margin: 3rem 0 8rem 0;
+    }
+
+    .acct-progress {
+      &__points {
+        margin: 3rem 0 0.5rem 0;
+      }
+
+      &__points--current {
+        font: 400 4rem $primary-font;
+        margin-left: 3rem;
+      }
+
+      .starter-value,
+      .completed-value {
+        font: 400 3rem $primary-font;
+
+        &:last-of-type {
+          float: right;
+        }
+      }
+
+      .switch-form-container {
+        span {
+          padding-left: 2rem;
+        }
+      }
+    }
+  }
+
+  &__rewards {
+    .side-note {
+      margin: 2rem 0;
+    }
+
+    .rewards__list {
+      margin-bottom: 5rem;
+
+      @include respond-to-breakpoint(750) {
+        margin-bottom: 2rem;
+      }
+    }
+
+    .reward-point-counter {
+      line-height: 1;
+      margin-bottom: 5rem;
+
+      @include respond-to-breakpoint(750) {
+        margin-bottom: 0;
+      }
+
+      span {
+        font: 400 3.8rem $primary-font;
+
+        @include respond-to-breakpoint(750) {
+          font-size: 2.8rem;
+        }
+      }
+    }
+
+    .refer-a-friend {
+      .side-note {
+        margin-top: 0;
+      }
+
+      .invite-link__label {
+        font-size: 1.4rem;
+        opacity: 0.8;
+      }
+
+      .invite-link__url {
+        font-size: 2rem;
+        margin: 1.2rem 0 3.5rem 0;
+      }
+
+      .btn-prim {
+        width: 32rem;
+      }
+    }
+  }
+
+  &__wallet {
+    .side-note {
+      margin: 2rem 0 4.5rem 0;
+    }
+
+    .wallet__list {
+      margin-bottom: 8rem;
+    }
+
+    h3 {
+      font-weight: 400;
+    }
+
+    form {
+      margin-top: 2.5rem;
+      width: 100%;
+
+      > div {
+        width: 75%;
+
+        &:not(:last-of-type) {
+          margin-bottom: 5rem;
+        }
+
+        .inline-form {
+          @include respond-to-breakpoint(600) {
+            width: 90%;
+          }
+        }
+
+        &:nth-child(2) {
+          justify-content: space-between;
+
+          @include respond-to-breakpoint(600) {
+            flex-direction: column;
+          }
+
+          .inline-form {
+            width: 31%;
+
+            @include respond-to-breakpoint(600) {
+              width: 90%;
+
+              &:not(:last-child) {
+                margin-bottom: 5rem;
+              }
+            }
+          }
+        }
+      }
+
+      .btn-prim {
+        margin-top: 1rem;
+        width: 22rem;
+      }
+    }
+  }
+
+  &__settings {
+    form {
+      margin-top: 2rem;
+
+      > div {
+        &:not(:last-of-type) {
+          margin-bottom: 4rem;
+        }
+      }
+
+      .btn-prim {
+        width: 22rem;
+      }
+    }
+
+    .switch-form-container {
+      @include respond-to-breakpoint(650) {
+        margin-top: 2rem !important;
+      }
+    }
+  }
+}
+
+.cvc-loc-img {
+  background-color: #fff;
+  border: 1px solid rgba($muted, 0.5);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  padding: 1.6rem 1rem 1rem 1.6rem;
+  position: absolute;
+  bottom: 5.5rem;
+  left: -6.5rem;
+  min-width: 25rem;
+
+  @include respond-to-breakpoint(1000) {
+    left: -3rem;
+  }
+
+  @include respond-to-breakpoint(600) {
+    bottom: 4rem;
+    left: 0rem;
+  }
+}

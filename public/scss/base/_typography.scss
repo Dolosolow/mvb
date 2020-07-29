@@ -1,0 +1,200 @@
+@font-face {
+  font-family: "Founders Grotesque X-Cond";
+  src: url("../fonts/Founders\ Grotesque\ X-Cond/0ecca429d3d3616f3407879f72ee874a.eot");
+  src: url("../fonts/Founders\ Grotesque\ X-Cond/0ecca429d3d3616f3407879f72ee874a.eot")
+      format("embedded-opentype"),
+    url("../fonts/Founders\ Grotesque\ X-Cond/0ecca429d3d3616f3407879f72ee874a.woff2")
+      format("woff2"),
+    url("../fonts/Founders\ Grotesque\ X-Cond/0ecca429d3d3616f3407879f72ee874a.woff")
+      format("woff"),
+    url("../fonts/Founders\ Grotesque\ X-Cond/0ecca429d3d3616f3407879f72ee874a.ttf")
+      format("truetype"),
+    url("../fonts/Founders\ Grotesque\ X-Cond/0ecca429d3d3616f3407879f72ee874a.svg#Founders Grotesque X-Cond")
+      format("svg");
+}
+// *************
+// LATO 300
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/lato/lato-v16-latin-300.eot");
+  src: local("Lato Light"), local("Lato-Light"),
+    url("../fonts/lato/lato-v16-latin-300.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/lato/lato-v16-latin-300.woff2") format("woff2"),
+    url("../fonts/lato/lato-v16-latin-300.woff") format("woff"),
+    url("../fonts/lato/lato-v16-latin-300.ttf") format("truetype"),
+    url("../fonts/lato/lato-v16-latin-300.svg#Lato") format("svg");
+}
+// *************
+// LATO 400
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/lato/lato-v16-latin-regular.eot");
+  src: local("Lato Regular"), local("Lato-Regular"),
+    url("../fonts/lato/lato-v16-latin-regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/lato/lato-v16-latin-regular.woff2") format("woff2"),
+    url("../fonts/lato/lato-v16-latin-regular.woff") format("woff"),
+    url("../fonts/lato/lato-v16-latin-regular.ttf") format("truetype"),
+    url("../fonts/lato/lato-v16-latin-regular.svg#Lato") format("svg");
+}
+// *************
+// LATO 700
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/lato/lato-v16-latin-700.eot");
+  src: local("Lato Bold"), local("Lato-Bold"),
+    url("../fonts/lato/lato-v16-latin-700.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/lato/lato-v16-latin-700.woff2") format("woff2"),
+    url("../fonts/lato/lato-v16-latin-700.woff") format("woff"),
+    url("../fonts/lato/lato-v16-latin-700.ttf") format("truetype"),
+    url("../fonts/lato/lato-v16-latin-700.svg#Lato") format("svg");
+}
+
+body {
+  font: 400 $default-font-size $secondary-font;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $primary-font;
+  font-weight: 300;
+}
+
+h1,
+h2 {
+  @include respond-to-breakpoint(tab-port) {
+    font-size: 5rem;
+  }
+}
+
+.t-nav {
+  animation: expand-out 0.7s linear forwards;
+  line-height: 1.1;
+  margin-bottom: 4rem;
+  overflow: hidden;
+  padding-left: 2.5rem;
+  position: relative;
+  white-space: nowrap;
+  will-change: width;
+  width: 0;
+
+  @include respond-to-breakpoint(tab-port) {
+    margin-bottom: 2.5rem;
+  }
+
+  @include respond-to-breakpoint(660) {
+    padding-left: 1.2rem;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    background-color: black;
+    height: 70%;
+    width: 4px;
+    position: absolute;
+    bottom: 1rem;
+
+    @include respond-to-breakpoint(tab-port) {
+      bottom: 0.5rem;
+    }
+
+    @include respond-to-breakpoint(660) {
+      width: 2px;
+    }
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+  }
+
+  h2 {
+    animation: slide-in-side 0.6s linear forwards;
+    font-size: 7rem;
+    margin-bottom: 0;
+
+    @include respond-to-breakpoint(tab-port) {
+      font-size: 4.8rem;
+    }
+
+    @include respond-to-breakpoint(650) {
+      font-size: 4.2rem;
+    }
+  }
+}
+
+.t-nav--md {
+  h2 {
+    font-size: 6.4rem;
+
+    @include respond-to-breakpoint(tab-port) {
+      font-size: 4.4rem;
+    }
+  }
+}
+
+.t-nav--light {
+  color: #fff;
+
+  &::before,
+  &::after {
+    background-color: #fff;
+  }
+}
+
+.t-nav__wrapper {
+  @include respond-to-breakpoint(1366) {
+    padding: 0 3rem;
+  }
+}
+
+.description-text {
+  margin-left: 3rem;
+  padding-right: 8rem;
+
+  @include respond-to-breakpoint(tab-port) {
+    margin-left: 0;
+  }
+
+  @include respond-to-breakpoint(phone) {
+    padding-right: 0;
+  }
+}
+
+.color-text {
+  font: 400 $default-font-size $secondary-font;
+  color: $primary-color;
+  cursor: pointer;
+
+  &__link {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &.color-text__btn {
+    background-color: transparent;
+    border: none;
+    white-space: normal;
+
+    &--underline:hover {
+      color: currentColor;
+      text-decoration: underline;
+    }
+  }
+}

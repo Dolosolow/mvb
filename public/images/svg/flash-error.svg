@@ -1,0 +1,42 @@
+<svg width="300" height="137" viewBox="0 0 300 137" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="flash-error">
+<g id="light-clouds-lg">
+<path id="Rectangle 3" d="M80 54C80 49.0294 84.0294 45 89 45H261C265.971 45 270 49.0294 270 54C270 58.9706 265.971 63 261 63H89C84.0294 63 80 58.9706 80 54Z" fill="#FF8080" fill-opacity="0.31"/>
+<rect id="Rectangle 4" x="45" y="81" width="209" height="18" rx="9" fill="#FF8080" fill-opacity="0.31"/>
+<rect id="Rectangle 5" y="117" width="184" height="18" rx="9" fill="#FF8080" fill-opacity="0.31"/>
+<path id="Vector 5" d="M225 63C210.366 63 208.6 81 225 81H184V63H225Z" fill="#FF8080" fill-opacity="0.31"/>
+<path id="Vector 6" d="M50 99C61.6 99 62.9999 117 50 117H82.4999V99H50Z" fill="#FF8080" fill-opacity="0.31"/>
+<path id="Vector 7" d="M117 99C104.508 99 103 117 117 117H82V99H117Z" fill="#FF8080" fill-opacity="0.31"/>
+</g>
+<g id="light-clouds-sm">
+<rect id="Rectangle 6" x="188" y="20" width="59" height="10" rx="5" fill="#F8655B" fill-opacity="0.31"/>
+<rect id="Rectangle 7" x="188" width="59" height="10" rx="5" fill="#F8655B" fill-opacity="0.31"/>
+<rect id="Rectangle 8" x="256" y="5" width="13" height="10" rx="5" fill="#F8655B" fill-opacity="0.31"/>
+<rect id="Rectangle 9" x="281" y="56" width="13" height="10" rx="5" fill="#F8655B" fill-opacity="0.31"/>
+<path id="Vector 8" d="M217 10C212.717 10 212.2 20 217 20H205V10H217Z" fill="#F8655B" fill-opacity="0.31"/>
+<path id="Vector 9" d="M193 10C197.283 10 197.8 20 193 20H205V10H193Z" fill="#F8655B" fill-opacity="0.31"/>
+</g>
+<g id="misc-addons">
+<circle id="Ellipse 1" cx="94.5" cy="25.5" r="6.5" stroke="#F8655B" stroke-width="2"/>
+<circle id="Ellipse 2" cx="223" cy="108" r="5" stroke="#F8655B" stroke-opacity="0.4" stroke-width="2"/>
+<g id="times">
+<path id="Line 1" d="M294.273 44.6364H287" stroke="#F8655B" stroke-width="2"/>
+<line id="Line 2" y1="-1" x2="8" y2="-1" transform="matrix(0 -1 -1 0 289.909 49)" stroke="#F8655B" stroke-width="2"/>
+</g>
+</g>
+<g id="circle">
+<ellipse id="checkmark__circle-bg--1" cx="149" cy="90" rx="48" ry="46" fill="#C87670"/>
+<circle id="checkmark__circle" cx="145.5" cy="83.5" r="47.5" fill="#F79C9C"/>
+<g id="outer-border-circle">
+<path id="Vector 1" d="M127 40C115.5 43.5 98 60 98 82" stroke="#F8655B" stroke-opacity="0.94" stroke-width="3"/>
+<path id="Vector 2" d="M132 37.8774C167.5 27.8773 207 58.8773 189.5 105.877" stroke="#F8655B" stroke-opacity="0.94" stroke-width="3"/>
+<path id="Vector 3" d="M187 111C185.333 113.833 180.5 120 174.5 124" stroke="#F8655B" stroke-opacity="0.94" stroke-width="3"/>
+<path id="Vector 4" d="M170.5 126.5C159 137.5 118 141 103 110.5" stroke="#F8655B" stroke-opacity="0.94" stroke-width="3"/>
+</g>
+</g>
+<g id="backslash">
+<line id="back-slash" x1="129.781" y1="110.126" x2="167.781" y2="57.126" stroke="white" stroke-width="3"/>
+<line id="front-slash" x1="129.781" y1="111.126" x2="167.781" y2="58.126" stroke="#F8655B" stroke-width="3"/>
+</g>
+</g>
+</svg>

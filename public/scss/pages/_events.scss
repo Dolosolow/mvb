@@ -1,109 +1,260 @@
-.ev {
-  height: 460px;
+// ******************
+// EVENT HEADER
+.event-header {
   position: relative;
 
-  .wd-main__wrapper {
-    display: flex;
-  }
-
-  .wd__title {
-    width: 50%;
-  }
-
-  .wd__body {
-    margin-top: -120px;
-    width: 50%;
-    z-index: 1;
-
-    h2 {
-      font-size: 3.1rem;
-      margin: 0;
+  .container-layout {
+    @include respond-to-breakpoint(tab-port) {
+      padding: 0 2.5rem;
     }
 
-    > p {
-      color: $muted;
-      font-size: 1.15rem;
+    @include respond-to-breakpoint(750) {
+      padding: 0 1.2rem;
+    }
+  }
+
+  .description-text {
+    @include respond-to-breakpoint(750) {
+      padding-right: 0;
     }
   }
 }
+// ******************
+// DESCRIPTION TEXT
+.description-text--events {
+  width: 100%;
 
-.contact-info {
-  align-items: flex-start;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 40px;
-  width: 95%;
-
-  h2 {
-    font-size: 1.2rem !important;
-    font-weight: 300 !important;
-    margin-bottom: 12px;
-    text-transform: uppercase;
+  @include respond-to-breakpoint(750) {
+    flex-direction: column;
+    width: 100%;
   }
 
-  p {
+  > p {
+    line-height: 1.6;
+    width: 48%;
+
+    @include respond-to-breakpoint(tab-port) {
+      margin: 0 2.5rem;
+      font-size: 1.6rem;
+    }
+
+    @include respond-to-breakpoint(750) {
+      margin: 0;
+      width: 100%;
+    }
+  }
+}
+// ******************
+// CONTACT BOX
+.contact__box {
+  max-width: 70rem;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 48%;
+  z-index: 1;
+
+  @include respond-to-breakpoint(750) {
+    position: static;
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  &-title {
+    font-size: 5rem;
+    margin-bottom: 0;
+  }
+
+  &-role {
     color: $muted;
-    font-size: 1.15rem;
-    margin: 0;
+    font-size: 1.8rem;
+  }
+
+  &-title,
+  &-role {
+    background-color: #fff;
+    max-width: 60rem;
+  }
+
+  &-info {
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 4.5rem;
+    width: 95%;
+
+    @include respond-to-breakpoint(tab-port) {
+      justify-content: space-between;
+    }
+
+    @include respond-to-breakpoint(700) {
+      flex-wrap: nowrap;
+      margin-top: 1.5rem;
+      width: 100%;
+    }
+
+    @include respond-to-breakpoint(445) {
+      flex-wrap: wrap;
+    }
+  }
+}
+// ******************
+// CONTACT BOX INFO ITEMS
+.info-item {
+  padding: 0 1rem;
+
+  @include respond-to-breakpoint(tab-port) {
+    padding: 0 0.8rem;
+  }
+
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &__type {
+    display: block;
+    color: $muted;
+    font-size: 1.7rem;
+    margin-bottom: 0;
     text-transform: uppercase;
   }
 
   a {
     color: $primary-color;
-    font-size: 2.25rem;
+    font: 400 3.8rem $primary-font;
+
+    @include respond-to-breakpoint(tab-port) {
+      font-size: 2.8rem;
+    }
   }
 }
-// *************
-// media quieries
-// *************
-@media only screen and (max-width: 1200px) {
-  .contact-info {
-    margin-left: 30px;
-  }
-}
+// ******************
+// EVENTS SECTION LAYOUT W/ CONTAINER-LAYOUT-PADDED
+.section-layout--events-plan {
+  flex-direction: column;
+  margin-top: 8rem;
 
-@media only screen and (max-width: 840px) {
-  .btn-prim {
-    margin-bottom: 10px !important;
+  @include respond-to-breakpoint(750) {
+    margin-top: 4rem;
   }
 
-  .ev {
-    height: max-content;
-    padding-bottom: 40px;
-
-    p:first-child {
-      margin-bottom: 0;
+  .container-layout-padded {
+    @include respond-to-breakpoint(tab-land) {
+      padding: 5rem 0;
     }
 
-    .wd-main__wrapper {
+    @include respond-to-breakpoint(tab-port) {
+      padding-top: 2rem;
+      flex-direction: row;
+    }
+
+    @include respond-to-breakpoint(700) {
+      padding-top: 0;
       flex-direction: column;
     }
+  }
+}
+// ******************
+// EVENTS SECTION CONTENT
+.section-content--event-plan {
+  padding: 0 6rem 0 0;
 
-    .wd__title {
-      width: 100%;
-    }
+  @include respond-to-breakpoint(tab-land) {
+    padding: 0 2rem 0 2rem;
+  }
 
-    .wd__body {
-      margin-top: 5px;
-      width: 100%;
+  @include respond-to-breakpoint(700) {
+    order: 2;
+    padding: 1.2rem;
+    width: 100%;
+  }
+
+  &:nth-of-type(2) {
+    padding-left: 4rem;
+
+    @include respond-to-breakpoint(700) {
+      padding-left: 1.2rem;
     }
   }
 
-  .contact-info {
-    margin-top: 0;
-    margin-left: 0;
-
-    p {
-      margin: 0;
+  .section-content__title {
+    @include respond-to-breakpoint(tab-port) {
+      font-size: 5rem;
     }
 
-    a {
-      font-size: 1.8rem;
+    @include respond-to-breakpoint(700) {
+      font-size: 4rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .section-content__body {
+    line-height: 1.6;
+
+    &-secondary {
+      line-height: 1.2;
+
+      strong {
+        font: 400 2.8rem $primary-font;
+      }
+    }
+  }
+}
+// ******************
+// EVENTS SECTION CONTENT IMG
+.section-content__img--event-plan {
+  @include respond-to-breakpoint(tab-land) {
+    padding: 0 2rem 0 0;
+  }
+
+  @include respond-to-breakpoint(700) {
+    padding: 0;
+    width: 100%;
+  }
+
+  .section-content__btn {
+    justify-content: space-evenly;
+    margin-top: 5rem;
+
+    @include respond-to-breakpoint(1400) {
+      flex-direction: row;
+      padding: 0 1.2rem;
     }
 
-    .info:last-of-type {
-      margin-top: 8px;
+    @include respond-to-breakpoint(tab-port) {
+      flex-direction: column;
+      margin-top: 3rem;
     }
+
+    @include respond-to-breakpoint(700) {
+      width: 100%;
+    }
+
+    button {
+      width: 40%;
+
+      @include respond-to-breakpoint(tab-port) {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.section-content__img--tours {
+  padding-right: 4rem;
+
+  @include respond-to-breakpoint(tab-land) {
+    padding-left: 4rem;
+  }
+
+  @include respond-to-breakpoint(tab-port) {
+    padding-right: 2rem;
+  }
+
+  @include respond-to-breakpoint(700) {
+    padding: 0;
+    max-width: none;
+    width: 100%;
   }
 }

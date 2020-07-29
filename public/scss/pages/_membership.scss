@@ -1,0 +1,499 @@
+// ******************
+// MEMBERSHIP HEADER/HEADLINE
+.headline--mem {
+  background-image: url("https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80");
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  min-height: 50rem;
+  padding-top: 12rem;
+  position: relative;
+  width: 100%;
+
+  @include respond-to-breakpoint(tab-port) {
+    min-height: auto;
+    padding: 8rem 0 2rem;
+  }
+
+  @include respond-to-breakpoint(750) {
+    padding-top: 5rem;
+  }
+
+  .container-layout {
+    @include respond-to-breakpoint(1400) {
+      padding: 0 1.2rem;
+    }
+  }
+
+  &::before {
+    backdrop-filter: grayscale(70%) brightness(30%);
+    content: "";
+    height: 100%;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 0;
+  }
+
+  .t-nav {
+    @include respond-to-breakpoint(750) {
+      margin-bottom: 0;
+    }
+
+    h2 {
+      font-size: 6.4rem;
+
+      @include respond-to-breakpoint(tab-port) {
+        font-size: 4.8rem;
+      }
+
+      @include respond-to-breakpoint(phone) {
+        font-size: 4.5rem;
+      }
+    }
+  }
+
+  &__content {
+    border: 2px solid transparent;
+    padding-left: 3rem;
+    position: relative;
+
+    @include respond-to-breakpoint(750) {
+      padding: 0 1.2rem;
+    }
+
+    .promo {
+      font: 400 4rem $primary-font;
+      letter-spacing: 4px;
+      margin-top: 5rem;
+      text-transform: uppercase;
+
+      @include respond-to-breakpoint(750) {
+        font-size: 2.8rem;
+        margin-top: 1rem;
+        text-align: center;
+      }
+    }
+
+    .btn-prim {
+      display: inline-block;
+      padding: 6px 0;
+      text-transform: capitalize;
+      margin-top: 2.5rem;
+      width: 31rem;
+
+      @include respond-to-breakpoint(750) {
+        width: 100%;
+      }
+    }
+
+    .login-prompt {
+      margin-top: 5rem;
+
+      @include respond-to-breakpoint(750) {
+        margin-top: 1.5rem;
+      }
+
+      @include respond-to-breakpoint(phone) {
+        flex-direction: column;
+      }
+
+      p:first-of-type {
+        margin-right: 2rem;
+      }
+    }
+  }
+}
+// ******************
+// MEMBERSHIP CONTAINER-LAYOUT-PADDED
+.headline--mem + .bg-smoked .container-layout-padded {
+  @include respond-to-breakpoint(tab-land) {
+    padding: 3rem 1.2rem;
+  }
+}
+// ******************
+// MEMBERSHIP SECTION LAYOUT
+.section-layout--mem {
+  padding: 0;
+  margin: 0;
+
+  &:not(:last-of-type) {
+    margin-bottom: 10rem;
+  }
+
+  @include respond-to-breakpoint(750) {
+    display: flex;
+    flex-direction: column;
+
+    &:not(:last-of-type) {
+      margin-bottom: 3rem;
+    }
+  }
+}
+// ******************
+// MEMBERSHIP SECTION CONTENT
+.section-content--mem {
+  @include respond-to-breakpoint(750) {
+    order: 2;
+    padding-top: 1rem;
+    width: 100%;
+  }
+
+  &:nth-of-type(odd) {
+    padding-right: 4rem;
+
+    @include respond-to-breakpoint(750) {
+      padding-right: 0;
+    }
+  }
+
+  &:nth-of-type(even) {
+    padding-left: 4rem;
+
+    @include respond-to-breakpoint(750) {
+      padding-left: 0;
+    }
+  }
+
+  .section-content__title {
+    @include respond-to-breakpoint(1000) {
+      font-size: 5rem;
+    }
+
+    @include respond-to-breakpoint(750) {
+      font-size: 4rem;
+    }
+  }
+
+  .section-content__body {
+    margin: 2rem 0;
+
+    @include respond-to-breakpoint(750) {
+      margin: 1.5rem 0;
+    }
+  }
+
+  .section-content__mem-offers {
+    list-style: circle;
+    margin-left: 1.4rem;
+
+    li {
+      &:not(:last-of-type) {
+        margin-bottom: 2rem;
+
+        @include respond-to-breakpoint(750) {
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+}
+
+.section-content__img--mem {
+  @include respond-to-breakpoint(750) {
+    max-width: 100%;
+    padding: 0 !important;
+    width: 100%;
+  }
+
+  &:nth-of-type(odd) {
+    padding-right: 2rem;
+  }
+
+  &:nth-of-type(even) {
+    padding-left: 2rem;
+  }
+}
+// ******************
+// MEMBERSHIP ARTICLE GOLD TRIAL BANNER
+.article-banner--gold-trial {
+  .container-layout {
+    padding: 0 1.2rem;
+  }
+
+  .article-banner__title {
+    font: 400 6.4rem $primary-font;
+    letter-spacing: 0.7rem;
+    margin-top: 2rem;
+
+    @include respond-to-breakpoint(tab-port) {
+      font-size: 4.8rem;
+    }
+  }
+
+  .btn-prim {
+    margin: 3rem 0 7rem;
+    padding: 1.2rem 0;
+    text-transform: capitalize;
+    width: 30rem;
+
+    @include respond-to-breakpoint(750) {
+      margin: 3rem 0;
+    }
+
+    &:hover {
+      background-color: #fff;
+      color: $secondary-section-bg-color;
+    }
+  }
+
+  .article-banner__body {
+    padding-bottom: 5rem;
+
+    @include respond-to-breakpoint(750) {
+      padding-bottom: 1.2rem;
+      width: 100%;
+    }
+
+    form {
+      min-width: 38rem;
+
+      @include respond-to-breakpoint(750) {
+        flex-direction: column;
+      }
+
+      input {
+        width: 90%;
+      }
+    }
+  }
+
+  .article-banner__desc {
+    font-size: 1.8rem;
+    margin-bottom: 4rem;
+  }
+
+  .btn-worded-only {
+    background-color: transparent;
+    border: none;
+    color: rgba(#fff, 0.5);
+    font: 400 3.6rem $primary-font;
+    height: max-content;
+
+    @include respond-to-breakpoint(750) {
+      margin-top: 1.5rem;
+    }
+  }
+}
+// ******************
+// MEMBERSHIP OFFER TABLE
+.mem-benefits {
+  width: 100%;
+
+  &.container-layout {
+    @include respond-to-breakpoint(1400) {
+      padding: 0;
+    }
+  }
+  // tablesaw
+  .tablesaw {
+    border-collapse: collapse;
+    empty-cells: show;
+    max-width: 100%;
+    padding: 0;
+    width: 100%;
+
+    * {
+      box-sizing: border-box;
+    }
+  }
+
+  // tablesaw controls
+  .tablesaw-bar {
+    margin-right: 1.2rem;
+    display: none;
+
+    @include respond-to-breakpoint(1000) {
+      display: block;
+    }
+  }
+  // removes ugly right border on the first column that, added by default via tablesaw library
+  .tablesaw-swipe-cellpersist {
+    border-right: none;
+  }
+
+  &__table {
+    margin: auto;
+    width: 100%;
+
+    thead {
+      display: table-header-group;
+      vertical-align: middle;
+    }
+
+    tbody {
+      display: table-row-group;
+      vertical-align: middle;
+    }
+
+    tr {
+      display: table-row;
+      vertical-align: inherit;
+      // general table head setup
+      th {
+        font: 400 5rem $primary-font;
+        line-height: 0.8;
+        padding: 4.5rem 1.4rem 2.8rem 2.4rem;
+
+        @include respond-to-breakpoint(1000) {
+          padding-left: 1.2rem;
+          padding-right: 1.2rem;
+          font-size: 3rem;
+        }
+
+        &:first-child {
+          p {
+            text-align: left;
+          }
+        }
+
+        p {
+          font-weight: 300;
+          margin-bottom: 0;
+          text-align: center;
+
+          &:first-child {
+            margin-bottom: 1rem;
+          }
+        }
+        // secondary header text
+        .mem-price {
+          color: $muted;
+          font-size: 2rem;
+          text-transform: uppercase;
+        }
+      }
+
+      td {
+        font-size: 1.8rem;
+        padding: 2rem 1.2rem;
+
+        @include respond-to-breakpoint(1000) {
+          padding: 1.2rem 1.2rem 1.2rem 1.2rem;
+        }
+
+        @include respond-to-breakpoint(phone) {
+          font-size: 1.5rem;
+        }
+
+        &:not(:first-child) {
+          min-width: 20rem;
+        }
+
+        .c-sel {
+          background-color: #121212;
+          border-radius: 50%;
+          height: 1.5rem;
+          margin: 0 auto;
+          width: 1.5rem;
+        }
+
+        p {
+          font-size: 1.8rem;
+          margin-top: 1.5rem;
+        }
+      }
+
+      td,
+      th {
+        position: relative;
+
+        &:first-child {
+          min-width: 20rem;
+          width: auto !important;
+
+          @include respond-to-breakpoint(1000) {
+            width: 20rem !important;
+          }
+        }
+        // set background color for the first and last column
+        &:nth-child(odd) {
+          background-color: $section-bg-color;
+        }
+        // box shadow style for the gold column
+        &:nth-child(3) {
+          // adds a white box in between to give shadow appear only on the sides of the column
+          box-shadow: -1px 0 20px -2px rgba(0, 0, 0, 0.15);
+
+          @include respond-to-breakpoint(1000) {
+            box-shadow: -0px 0 8px -2px rgba(0, 0, 0, 0.15);
+          }
+
+          &::after {
+            border: 3px;
+            background-color: $section-bg-color;
+            content: "";
+            height: 5rem;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+
+            @include respond-to-breakpoint(1000) {
+              height: 5.5rem;
+            }
+
+            @include respond-to-breakpoint(phone) {
+              height: 4rem;
+            }
+          }
+        }
+        // color for misc in the table -> active, circle, secondary header texts
+        &.active {
+          color: $primary-color;
+
+          .c-sel {
+            background-color: currentColor;
+          }
+
+          .mem-price {
+            color: currentColor;
+          }
+        }
+      }
+    }
+
+    .mem-reward-pts {
+      td {
+        padding-bottom: 5rem !important;
+
+        p {
+          color: $muted;
+          margin: 0;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+// ******************
+// MEMBERSHIP SMALL PRINT
+.mem-small-print {
+  background-color: $misc-box-color;
+  padding: 25px 0;
+  position: relative;
+  width: 100%;
+  z-index: 3;
+
+  p {
+    font-size: 1.4rem;
+    margin: 30px auto;
+    width: 95%;
+
+    @include respond-to-breakpoint(tab-land) {
+      margin: 1.6rem auto;
+    }
+
+    &:first-child,
+    &:last-child {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    &.title {
+      font: 400 3rem $primary-font;
+    }
+  }
+}

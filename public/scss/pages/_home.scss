@@ -1,0 +1,159 @@
+.headline {
+  background-image: url("https://images.unsplash.com/photo-1574879948818-1cfda7aa5b1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80");
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  height: 100vh;
+  justify-content: flex-end;
+  position: relative;
+
+  .container-layout {
+    position: relative;
+    margin-bottom: 0;
+    padding: 3.5rem 0 6rem 0;
+
+    @include respond-to-breakpoint(1366) {
+      padding: 3.5rem 2rem 6rem 2rem;
+    }
+  }
+
+  &::before {
+    background-color: black;
+    content: "";
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__title {
+    font-size: 7rem;
+    margin: 0;
+    z-index: 1;
+  }
+
+  &__desc {
+    font-size: $default-font-size;
+    line-height: 1.5;
+    max-width: 80rem;
+    z-index: 1;
+  }
+
+  .btn-outline {
+    margin-bottom: 2rem;
+    min-width: 28rem;
+    z-index: 1;
+  }
+}
+
+.article-banner {
+  background-color: $secondary-section-bg-color;
+  color: #fff;
+  padding: 2rem 0;
+
+  @include respond-to-breakpoint(tab-port) {
+    padding-bottom: 2rem;
+  }
+
+  &__title {
+    font-size: 7rem;
+
+    @include respond-to-breakpoint(tab-port) {
+      font-size: 4rem;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+
+    @include respond-to-breakpoint(phone) {
+      flex-direction: column;
+    }
+  }
+
+  &__amenities {
+    align-items: baseline;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    width: 70%;
+
+    @include respond-to-breakpoint(phone) {
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  &__item {
+    margin-bottom: 3.5rem;
+    width: max-content;
+
+    @include respond-to-breakpoint(tab-port) {
+      margin-bottom: 0;
+    }
+
+    @include respond-to-breakpoint(phone) {
+      margin-bottom: 5.5rem;
+    }
+
+    img {
+      max-width: 200px;
+      width: 85%;
+    }
+  }
+
+  &__text {
+    color: $primary-color;
+    font-family: $primary-font;
+    font-size: 2.8rem;
+    line-height: 1;
+    margin-top: 1.6rem;
+    white-space: nowrap;
+
+    @include respond-to-breakpoint(980) {
+      font-size: 2.5rem;
+    }
+
+    @include respond-to-breakpoint(tab-port) {
+      font-size: 2.5rem;
+      margin-top: 2rem;
+      white-space: normal;
+    }
+
+    @include respond-to-breakpoint(phone) {
+      font-size: 3.5rem;
+    }
+  }
+
+  &__btn-container {
+    margin-left: auto;
+    width: 26%;
+
+    @include respond-to-breakpoint(600) {
+      margin-left: auto;
+      width: 100%;
+    }
+
+    .btn-outline {
+      align-self: flex-end;
+      text-transform: capitalize;
+
+      @include respond-to-breakpoint(tab-port) {
+        font-size: 3.5rem;
+      }
+
+      @include respond-to-breakpoint(phone) {
+        font-size: 4.5rem;
+      }
+
+      &:hover {
+        border-color: #fff;
+      }
+    }
+  }
+}

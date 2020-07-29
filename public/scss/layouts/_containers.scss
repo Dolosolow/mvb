@@ -1,0 +1,85 @@
+.container-layout {
+  margin: auto;
+  max-width: 136.6rem;
+  width: 100%;
+}
+
+.container-layout--limiter {
+  @include respond-to-breakpoint(1366) {
+    padding: 0 1.2rem;
+  }
+}
+
+.container-layout--limiter-lg {
+  @include respond-to-breakpoint(1366) {
+    padding: 0 3rem;
+  }
+}
+
+.container-layout-padded {
+  max-width: 136.6rem;
+  padding: 5.5rem 4rem;
+
+  @include respond-to-breakpoint(big-desktop) {
+    margin: auto;
+  }
+
+  @include respond-to-breakpoint(tab-land) {
+    padding: 6rem 0;
+  }
+
+  @include respond-to-breakpoint(tab-port) {
+    flex-direction: column;
+    padding: 0 0 4rem 0;
+  }
+
+  @include respond-to-breakpoint(phone) {
+    padding: 0;
+  }
+}
+
+.section-layout {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.section-content {
+  display: block;
+  width: 50%;
+
+  &__title {
+    color: $primary-color;
+    font-size: 7rem;
+    line-height: 1;
+  }
+
+  &__btn {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      margin: 0;
+      text-transform: capitalize;
+      width: 26rem;
+
+      &:not(:last-of-type) {
+        margin-bottom: 1.2rem;
+      }
+    }
+  }
+
+  &__img {
+    margin: auto;
+    max-width: 660px;
+    width: 50%;
+
+    img {
+      max-height: 100%;
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+    }
+  }
+}
