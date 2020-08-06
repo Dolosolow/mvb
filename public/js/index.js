@@ -1,14 +1,7 @@
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 import '../scss/styles.scss';
-// *************
-// functions for screen resveration - temp spot
-// *************
-$('.layout .seat-wrapper').on('click', function() {
-  if(!$(this).children().hasClass('disable')) {
-    $(this).children().toggleClass('active');
-  }
-})
-// *******************
-//
+
 $('.toggle-info-btn').click(function() {
   if($('.cvc-loc-img').hasClass('scale-in-right')) {
 

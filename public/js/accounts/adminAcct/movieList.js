@@ -1,6 +1,6 @@
 const { hasAttribute } = require('./utils/helpers');
 const { updateTemplate } = require('../../utils/ejsupdate');
-const render = require('./utils/tableMarkup');
+const render = require('../../utils/markup/tableMarkup');
 
 function resetTableview() {
   $('#overview #now-playing-table').remove();
