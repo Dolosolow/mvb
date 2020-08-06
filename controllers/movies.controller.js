@@ -1,6 +1,5 @@
 const Movie = require('../models/movie');
 const apiCall = require('../utils/api');
-const { v4: uuidv4 } = require('uuid');
 
 function customImgResize(url, size) {
   const newUrl = url.split('_');
@@ -15,21 +14,23 @@ exports.getAdminDash = (req, res, next) => {
 // ALTER THIS LATER, ADMIN NOT RELATING TO MOVIES ^^^^
 
 exports.getCurrentMovies = (req, res, next) => {
-  const currentMovies = Movie.fetchAllMovies();
-  res.render('index', { transNav: true, path: '/', currentMovies });
+  Movie.fetchAllMovies(currentMovies => {
+    res.render('index', { transNav: true, path: '/', currentMovies });
+  });
 }
 
 exports.getCurrentMoviesData = (req, res, next) => {
-  const currentMovies = Movie.fetchAllMovies();
-  res.status(200).json({ currentMovies });
+  Movie.fetchAllMovies(currentMovies => {
+    res.status(200).json({ currentMovies });
+  });
 }
 
-exports.getMovieDetails = (req, res, next) => {
+exports.getMovie = (req, res, next) => {
   const movieId = req.params.id;
-  const currentMovies = Movie.fetchAllMovies();
-  const foundMovie = currentMovies.find(mov => mov.id == movieId);
-  
-  res.render('seat-booking', { transNav: true, path: '/', movie: foundMovie })
+
+  Movie.getById(movieId, foundMovie => {
+    res.render('seat-booking', { transNav: true, path: '/', movie: foundMovie });
+  });
 }
 
 exports.postAddMovie = async (req, res, next) => {
@@ -49,7 +50,6 @@ exports.postAddMovie = async (req, res, next) => {
   const randomTheaterRoom = Math.floor(Math.random() * Math.floor(10)) + 1;
 
   const newMovie = new Movie(
-    uuidv4(),
     randomTheaterRoom,
     Title,
     Rated,

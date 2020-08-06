@@ -1,4 +1,4 @@
-import render from './utils/searchMarkup';
+import render from '../../utils/markup/searchMarkup';
 const apiKey = process.env.APIKEY;
 const baseUrl = `http://www.omdbapi.com/?apikey=${apiKey}&`;
 const { hasAttribute } = require('./utils/helpers');

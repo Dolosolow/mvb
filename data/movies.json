@@ -1,0 +1,38 @@
+[
+  {
+    "theater": 9,
+    "title": "Baby Driver",
+    "rated": "R",
+    "runtime": "113 min",
+    "genre": "Action, Crime, Drama, Music, Thriller",
+    "actors": "Ansel Elgort, Jon Bernthal, Jon Hamm, Eiza González",
+    "plot": "After being coerced into working for a crime boss, a young getaway driver finds himself taking part in a heist doomed to fail.",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjM3MjQ1MzkxNl5BMl5BanBnXkFtZTgwODk1ODgyMjI@._V1_SX600.jpg",
+    "poster_xl": "https://m.media-amazon.com/images/M/MV5BMjM3MjQ1MzkxNl5BMl5BanBnXkFtZTgwODk1ODgyMjI@._V1_SX1500.jpg",
+    "id": "66bc29b8-79ac-4d63-aa31-e7724d8bbcc2"
+  },
+  {
+    "theater": 5,
+    "title": "Jojo Rabbit",
+    "rated": "PG-13",
+    "runtime": "108 min",
+    "genre": "Comedy, Drama, War",
+    "actors": "Roman Griffin Davis, Thomasin McKenzie, Scarlett Johansson, Taika Waititi",
+    "plot": "A young boy in Hitler's army finds out his mother is hiding a Jewish girl in their home.",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZjU0Yzk2MzEtMjAzYy00MzY0LTg2YmItM2RkNzdkY2ZhN2JkXkEyXkFqcGdeQXVyNDg4NjY5OTQ@._V1_SX600.jpg",
+    "poster_xl": "https://m.media-amazon.com/images/M/MV5BZjU0Yzk2MzEtMjAzYy00MzY0LTg2YmItM2RkNzdkY2ZhN2JkXkEyXkFqcGdeQXVyNDg4NjY5OTQ@._V1_SX1500.jpg",
+    "id": "8e9b1527-7864-4411-bf8e-ba8e5b7842cd"
+  },
+  {
+    "theater": 8,
+    "title": "Bad Boys for Life",
+    "rated": "R",
+    "runtime": "124 min",
+    "genre": "Action, Comedy, Crime, Thriller",
+    "actors": "Will Smith, Martin Lawrence, Vanessa Hudgens, Alexander Ludwig",
+    "plot": "Miami detectives Mike Lowrey and Marcus Burnett must face off against a mother-and-son pair of drug lords who wreak vengeful havoc on their city.",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMWU0MGYwZWQtMzcwYS00NWVhLTlkZTAtYWVjOTYwZTBhZTBiXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX600.jpg",
+    "poster_xl": "https://m.media-amazon.com/images/M/MV5BMWU0MGYwZWQtMzcwYS00NWVhLTlkZTAtYWVjOTYwZTBhZTBiXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX1500.jpg",
+    "id": "9a970990-9d52-4495-af82-72cb6f2ed71b"
+  }
+]
