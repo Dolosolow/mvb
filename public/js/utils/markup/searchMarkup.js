@@ -59,7 +59,7 @@ const searchItem = data => (
 
 const successMessage = title => (
   `
-  <div id="flash-msg" class="flash-msg flex-row flex-center bounce-in-bottom">
+  <div id="flash-msg" class="flash-msg flex-row flex-center slide-in-bottom">
     <div class="flash-msg__content">
       <h4>Success! &nbsp;${title} added</h4>
     </div>

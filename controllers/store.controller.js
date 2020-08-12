@@ -26,7 +26,7 @@ const getSeatingPrice = seat_type => {
 }
 
 exports.getCart = (req, res, next) => {
-  Cart.getAllItems(cart => {
+  Cart.getItems(cart => {
     res.status(200).json({ cart });
   });
 }
@@ -44,5 +44,6 @@ exports.postCart = (req, res, next) => {
 exports.deleteCartItem = (req, res, next) => {
   const { id } = req.params;
   Cart.deleteItem(id);
+  
   res.status(200).json({ msg: `${id} removed from cart` });
 }

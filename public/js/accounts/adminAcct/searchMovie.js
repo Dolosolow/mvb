@@ -70,7 +70,6 @@ $('#search__sugg').on('click', '.list-group__item', function() {
     $('#loader').css('display', 'none');
     $('.srh-results').append(render.searchData(res.data));
   })
-  .catch(err => console.log(err));
 });
 
 $('#add-mov-btn').on('click', function() {
@@ -87,15 +86,13 @@ $('#add-mov-btn').on('click', function() {
       $('.btn-prim').attr('disabled', true);
       $('#account__card')[0].scrollIntoView({ behavior: 'smooth' });
       $('body').append(render.successMessage(res.data.Title));
-      // data-nma => data-newMovieUpdate
       $('#add-movie').attr('data-nmu', '');
       setTimeout(() => {
-        $('body #flash-msg').removeClass('bounce-in-bottom');
+        $('body #flash-msg').removeClass('slide-in-bottom');
         $('body #flash-msg').addClass('slide-out-bottom');
       }, 3000);
 
       return true;
     })
-    .catch(err => console.log(err));
   }
 });

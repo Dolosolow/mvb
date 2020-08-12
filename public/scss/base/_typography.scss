@@ -42,21 +42,6 @@
     url("../fonts/lato/lato-v16-latin-regular.ttf") format("truetype"),
     url("../fonts/lato/lato-v16-latin-regular.svg#Lato") format("svg");
 }
-// *************
-// LATO 700
-@font-face {
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 700;
-  src: url("../fonts/lato/lato-v16-latin-700.eot");
-  src: local("Lato Bold"), local("Lato-Bold"),
-    url("../fonts/lato/lato-v16-latin-700.eot?#iefix")
-      format("embedded-opentype"),
-    url("../fonts/lato/lato-v16-latin-700.woff2") format("woff2"),
-    url("../fonts/lato/lato-v16-latin-700.woff") format("woff"),
-    url("../fonts/lato/lato-v16-latin-700.ttf") format("truetype"),
-    url("../fonts/lato/lato-v16-latin-700.svg#Lato") format("svg");
-}
 
 body {
   font: 400 $default-font-size $secondary-font;

@@ -47,10 +47,7 @@ exports.postAddMovie = async (req, res, next) => {
     Poster 
   } = foundMovie;
 
-  const randomTheaterRoom = Math.floor(Math.random() * Math.floor(10)) + 1;
-
   const newMovie = new Movie(
-    randomTheaterRoom,
     Title,
     Rated,
     Runtime,

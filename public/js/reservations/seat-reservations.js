@@ -1,18 +1,77 @@
-const { startTimer, stopTimer } = require('../utils/stopwatch');
+const { startTimer } = require('../utils/stopwatch');
 const { updateTemplate } = require('../utils/ejsupdate');
 const render = require('../utils/markup/cartMarkup');
 const axios = require('axios');
+const socket = io('localhost:5001', { query: `movieId=${window.location.pathname.split("/")[2]}` });
 
-// *************
-// reservation timer for selecting seats and completing the reservation
-// *************
 const setTimer = timeLeft => {
   $('#mycart__timer span').text(timeLeft);
 }
 
-// *************
-// seating grid, seat clicked
-// *************
+const setSeatingGrid = seats => {
+  seats.forEach(reservation => {
+    reservation.reserved.forEach(seat => {
+      if(!$(`.seat-wrapper[data-id="${seat}"]`).children().hasClass('active')) {
+        $(`.seat-wrapper[data-id="${seat}"]`).children().prop('disabled', true);
+      }
+    })
+  })
+}
+
+const adjustCart = (cartItems, cartTotalPrice) => {
+  $('#cart').remove();
+  $('#cart-btn').removeAttr('disabled');
+  $('#cart-btn').html(`Purchase&nbsp;($${Number(cartTotalPrice).toFixed(2)})`);
+  $('#seat-selection_list-wrapper').append(updateTemplate(render.seatingCartlist(), { cartItems, cartTotalPrice } ));
+
+  if(cartTotalPrice === 0) {
+    $('#cart-btn').html('Purchase');
+    $('#cart-btn').attr('disabled', '');
+  }
+}
+
+const adjustMobileCart = (cartItems, cartTotalPrice) => {
+  let totalItems = cartItems.reduce((acc, item) => acc + item.qty, 0);
+  $('#mobi-cart__total h5').html(`TOTAL: &nbsp;$${Number(cartTotalPrice).toFixed(2)}`);
+  $('#mobi-cart__total p').html(`Selected ${totalItems} seats`);
+
+  if(totalItems === 0) {
+    $('#mobi-cart').removeClass('slide-in-bottom');
+    $('#mobi-cart').addClass('slide-out-bottom');
+  } else {
+    $('#mobi-cart').removeClass('slide-out-bottom');
+    $('#mobi-cart').css('visibility', 'visible');
+    $('#mobi-cart').addClass('slide-in-bottom');
+  }
+}
+
+const updateCart = ({ cart }) => {
+  const cartItems = cart.products;
+  const cartTotalPrice = cart.totalPrice;
+
+  if($(window).width() > 1024) {
+    adjustCart(cartItems, cartTotalPrice);
+  } else {
+    adjustMobileCart(cartItems, cartTotalPrice);
+  }
+}
+
+const addItemToCart = async (id, seat_type) => {
+  await axios.post('/cart', { id, seat_type });
+  const res = await axios.get('/cart');
+
+  socket.emit('reserve seat', { seat: id });
+  updateCart(res.data);
+}
+
+const removeItemFromCart = async id => {
+  await axios.delete(`/cart/${id}`);
+  const res = await axios.get('/cart');
+
+  socket.emit('cancel reservation', { seat: id });
+  updateCart(res.data);
+}
+
 $('.seat-selection__layout-grid .seat-wrapper').on('click', async function() {
   if(!$(this).children().hasClass('disable')) {
     $(this).children().toggleClass('active');
@@ -21,80 +80,33 @@ $('.seat-selection__layout-grid .seat-wrapper').on('click', async function() {
     const seat_type = $(this).data('type');
 
     if($(this).children().hasClass('active')) {
-    await axios.post('/cart', { id, seat_type });
-
-    const res = await axios.get('/cart');
-    const cartItems = res.data.cart.products;
-    const cartTotalPrice = res.data.cart.totalPrice;
-    if($(window).width() > 1024) {
-      if(cartItems.length > 0) {
-        $('#cart').remove();
-        $('#cart-btn').removeAttr('disabled');
-        $('#cart-btn').html(`Purchase&nbsp;($${Number(cartTotalPrice).toFixed(2)})`);
-        $('#seat-selection_list-wrapper').append(updateTemplate(render.cartList(), { cartItems, cartTotalPrice } ));
-      } else {
-        $('#cart-btn').attr('disabled', '');
-      }
+      addItemToCart(id, seat_type);
     } else {
-      if(cartItems.length > 0) {
-        const numOfItemsSelected = cartItems.reduce((acc, item) => acc + item.qty, 0);
-        $('#mobi-cart').css('display', 'flex');
-        $('#mobi-cart').removeClass('slide-out-bottom');
-        $('#mobi-cart').addClass('bounce-in-bottom');
-        $('#mobi-cart__total h5').html(`TOTAL: &nbsp;$${Number(cartTotalPrice).toFixed(2)})`);
-        $('#mobi-cart__total p').html(`Selected ${numOfItemsSelected} seats`);
-      }
-    }
-
-    } else {
-      await axios.delete(`/cart/${id}`);
-
-      const res = await axios.get('/cart');
-      const cartItems = res.data.cart.products;
-      const cartTotalPrice = res.data.cart.totalPrice;
-
-      if($(window).width() > 1024) {
-        $('#cart').remove();
-        $('#cart-btn').removeAttr('disabled');
-        $('#cart-btn').html(`Purchase&nbsp;($${Number(cartTotalPrice).toFixed(2)})`);
-        $('#seat-selection_list-wrapper').append(updateTemplate(render.cartList(), { cartItems, cartTotalPrice } ));
-  
-        if(cartTotalPrice === 0) {
-          $('#cart-btn').html('Purchase');
-          $('#cart-btn').attr('disabled', '');
-        }
-      } else {
-        const numOfItemsSelected = cartItems.reduce((acc, item) => acc + item.qty, 0);
-
-        $('#mobi-cart__total h5').html(`TOTAL: &nbsp;$${Number(cartTotalPrice).toFixed(2)})`);
-        $('#mobi-cart__total p').html(`Selected ${numOfItemsSelected} seats`);
-
-        if(numOfItemsSelected === 0) {
-          $('#mobi-cart').removeClass('bounce-in-bottom');
-          $('#mobi-cart').addClass('slide-out-bottom');
-        }
-      }
+      removeItemFromCart(id);
     }
   }
 })
 
+$('#seat-selection__cart').on('click', '#remove-cart-btn', function() {
+  const cartItem = $(this).parent();
+  const id = cartItem.data('id');
+  id.split('-').map(seat => {
+    $(`.seat-wrapper[data-id="${seat}"]`).children().removeClass('active');
+  })
+  removeItemFromCart(id);
+  cartItem.remove();  
+})
+
+$('#cart-btn').click(function() {
+  // functionality to either complete purchase or redirect to 
+  // checkout page where transaction is completed
+  alert('clicked purchased')
+})
 
 $(document).ready(() => {
+  socket.on('check reserved seats', ({ seats }) => {
+    setSeatingGrid(seats);
+  });
+
   startTimer(900, setTimer);
-  // *************
-  // assign seat-type and seat-id(seating number)
-  // *************
-  $('.seat-row').each((idx, row) => {
-    let rowchar = $(row).children('.row-char')[0];
-    let rowId = $(rowchar).data('row').toUpperCase();
-
-    $(row).children().each(function(idx, seat) {
-      if($(seat).hasClass('seat-wrapper')) {
-        let seatType = $(this).children()[0];
-
-        $(this).attr('data-id', `${rowId}${idx}`);
-        $(this).attr('data-type', `${$(seatType).attr('class')}`);
-      }
-    })
-  })
 })
