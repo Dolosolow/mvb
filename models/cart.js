@@ -39,7 +39,7 @@ module.exports = class Cart {
     })
   }
 
-  static getAllItems(cb) {
+  static getItems(cb) {
     fs.readFile(filePath, (err, fileContent) => {
       if(err) {
         cb({ msg: 'empty' });
@@ -60,12 +60,16 @@ module.exports = class Cart {
       if(foundItem) {
         updatedCart.products.map(item => {
           if(item.id.includes(id)) {
-            item.id = item.id.split('-').filter(itemId => itemId !== id).join('-');
-            --item.qty;
+            if(id.split('-').length === 1) {
+              item.id = item.id.split('-').filter(itemId => itemId !== id).join('-');
+              --item.qty;
+            } else {
+              item.qty = 0;
+            }
           }
         });
         updatedCart.products = updatedCart.products.filter(item => item.qty !== 0);
-        updatedCart.totalPrice -= foundItem.unit_price;
+        updatedCart.totalPrice -= foundItem.unit_price * id.split('-').length;
         if(updatedCart.totalPrice <= 0) {
           updatedCart.totalPrice = 0;
         }

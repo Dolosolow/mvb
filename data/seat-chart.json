@@ -1,0 +1,600 @@
+[
+  {
+    "row_id": "a",
+    "seats": [
+      {
+        "id": "a1",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "a2",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "a3",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "a4",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "a5",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "a6",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "a7",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "a8",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "a9",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "a10",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "a11",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "a12",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "a13",
+        "type": "seat-reg",
+        "reserved": false
+      }
+    ]
+  },
+  {
+    "row_id": "b",
+    "seats": [
+      {
+        "id": "b1",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "b2",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "b3",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "b4",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "b5",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "b6",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "b7",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "b8",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "b9",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "b10",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "b11",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "b12",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "b13",
+        "type": "seat-reg",
+        "reserved": false
+      }
+    ]
+  },
+  {
+    "row_id": "c",
+    "seats": [
+      {
+        "id": "c1",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "c2",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "c3",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "c4",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "c5",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "c6",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "c7",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "c8",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "c9",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "c10",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "c11",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "c12",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "c13",
+        "type": "seat-reg",
+        "reserved": false
+      }
+    ]
+  },
+  {
+    "row_id": "d",
+    "seats": [
+      {
+        "id": "d1",
+        "type": "seat-cple",
+        "reserved": false
+      },
+      {
+        "id": "d2",
+        "type": "seat-cple",
+        "reserved": false
+      },
+      {
+        "id": "d3",
+        "type": "seat-cple",
+        "reserved": false
+      },
+      {
+        "id": "d4",
+        "type": "seat-cple",
+        "reserved": false
+      },
+      {
+        "id": "d5",
+        "type": "seat-cple",
+        "reserved": false
+      },
+      {
+        "id": "d6",
+        "type": "seat-cple",
+        "reserved": false
+      },
+      {
+        "id": "d7",
+        "type": "seat-cple",
+        "reserved": false
+      },
+      {
+        "id": "d8",
+        "type": "seat-cple",
+        "reserved": false
+      }
+    ]
+  },
+  {
+    "row_id": "e",
+    "seats": [
+      {
+        "id": "e1",
+        "type": "seat-acc",
+        "reserved": false
+      },
+      {
+        "id": "e2",
+        "type": "seat-acc",
+        "reserved": false
+      },
+      {
+        "id": "e3",
+        "type": "seat-vip",
+        "reserved": false
+      },
+      {
+        "id": "e4",
+        "type": "seat-vip",
+        "reserved": false
+      },
+      {
+        "id": "e5",
+        "type": "seat-vip",
+        "reserved": false
+      },
+      {
+        "id": "e6",
+        "type": "seat-vip",
+        "reserved": false
+      },
+      {
+        "id": "e7",
+        "type": "seat-vip",
+        "reserved": false
+      },
+      {
+        "id": "e8",
+        "type": "seat-vip",
+        "reserved": false
+      },
+      {
+        "id": "e9",
+        "type": "seat-vip",
+        "reserved": false
+      },
+      {
+        "id": "e10",
+        "type": "seat-vip",
+        "reserved": false
+      },
+      {
+        "id": "e11",
+        "type": "seat-vip",
+        "reserved": false
+      },
+      {
+        "id": "e12",
+        "type": "seat-acc",
+        "reserved": false
+      },
+      {
+        "id": "e13",
+        "type": "seat-acc",
+        "reserved": false
+      }
+    ]
+  },
+  {
+    "row_id": "empty-row"
+  },
+  {
+    "row_id": "f",
+    "seats": [
+      {
+        "id": "f1",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "f2",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "f3",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "f4",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "f5",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "f6",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "f7",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "f8",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "f9",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "f10",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "f11",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "f12",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "f13",
+        "type": "seat-reg",
+        "reserved": false
+      }
+    ]
+  },
+  {
+    "row_id": "g",
+    "seats": [
+      {
+        "id": "g1",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "g2",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "g3",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "g4",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "g5",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "g6",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "g7",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "g8",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "g9",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "g10",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "g11",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "g12",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "g13",
+        "type": "seat-reg",
+        "reserved": false
+      }
+    ]
+  },
+  {
+    "row_id": "h",
+    "seats": [
+      {
+        "id": "h1",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "h2",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "h3",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "h4",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "h5",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "h6",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "h7",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "h8",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "h9",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "h10",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "h11",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "h12",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "h13",
+        "type": "seat-reg",
+        "reserved": false
+      }
+    ]
+  },
+  {
+    "row_id": "i",
+    "seats": [
+      {
+        "id": "i1",
+        "type": "seat-cple",
+        "reserved": false
+      },
+      {
+        "id": "i2",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "i3",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "i4",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "i5",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "i6",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "i7",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "i8",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "i9",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "i10",
+        "type": "seat-reg",
+        "reserved": false
+      },
+      {
+        "id": "i11",
+        "type": "seat-cple",
+        "reserved": false
+      }
+    ]
+  }
+]

@@ -32,14 +32,32 @@ module.exports = {
         use: 'babel-loader'
       },
       {
-        test: /\.(svg|png|jpg?e)$/,
+        test: /\.(svg|png|jpg)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: 'assets/images/svg/[name].[ext]'
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'assets/images/[ext]/[name].[ext]'
+            }
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 65
+              },
+              optipng: {
+                enabled: false,
+              },
+              pngquant: {
+                quality: [0.65, 0.90],
+                speed: 4
+              }
+            }
           }
-        }
+        ]
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -83,14 +101,12 @@ module.exports = {
     new MiniCssExtractPlugin({ filename: 'assets/css/styles.css' }),
     new Dotenv(),
     new CleanWebpackPlugin(),
-    new CopyWebpackPlugin([
-      { 
-        from: './public/images', to: 'assets/images'
-      },
-      {
-        from: './views/partials', to: 'partials'
-      }
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: './public/images/favicons', to: 'assets/images/favicons' },
+        { from: './views/partials', to: 'partials' }
+      ]
+    }),
     new HtmlWebpackPlugin({
       template: '!!raw-loader!./views/pages/404.template.ejs',
       filename: '404.ejs',

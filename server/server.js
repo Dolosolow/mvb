@@ -44,6 +44,9 @@ server.use((req, res) => {
   next(error);
 });
 
+const http = require('http').createServer(server);
+require('../utils/socket')(http);
+
 server.use(errorController.get404);
 
-server.listen(5001, () => console.log('🚀-lift off'));
+http.listen(5001, () => console.log('🚀-lift off'));
