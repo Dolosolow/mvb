@@ -79,7 +79,7 @@ $('#add-mov-btn').on('click', function() {
     const sendData = { movieId: $('#srh-results__list').data('id') };
 
     axios
-    .post('/admin/add-movie', sendData)
+    .post('/api/movies/add-movie', sendData)
     .then(res => {
       clearSearchResults();
       $('.no-results-msg').css('display', 'block');

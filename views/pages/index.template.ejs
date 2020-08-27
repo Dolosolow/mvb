@@ -118,7 +118,7 @@
                   <span class="text-uppercase">R | 114 min</span>
                   <br />Accessiblity devices available
                 </p>
-                <a href="/movies/<%= movie.id %>" class="btn-outline-dark btn-block">Buy Ticket</a>
+                <a href="/movies/<%= movie.id %>?date=<%=  movie.screens[0].numerical_isodate %>" class="btn-outline-dark btn-block">Buy Ticket</a>
               </div>
             </div>
           <% } %>

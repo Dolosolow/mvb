@@ -201,7 +201,8 @@
   background-color: $secondary-section-bg-color;
   height: 100vh;
   min-width: 36rem;
-  overflow-y: scroll;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
   padding: 8.8rem 0 3rem 7rem;
   position: fixed;
   top: 0;
@@ -226,6 +227,7 @@
   }
 
   .navigation__item {
+    flex-shrink: 0;
     margin: 0 0 0.8rem 0;
 
     .navigation__link {
@@ -237,6 +239,15 @@
       &:hover {
         color: $primary-color;
       }
+    }
+  }
+
+  .navigation__toggle {
+    display: none;
+
+    @include respond-to-breakpoint(tab-land) {
+      display: flex;
+      align-items: flex-start;
     }
   }
 }
@@ -280,15 +291,6 @@
     &:not(.btn-prim) {
       padding-left: 0;
     }
-  }
-}
-
-.navigation__toggle {
-  display: none;
-
-  @include respond-to-breakpoint(tab-land) {
-    display: flex;
-    align-items: flex-start;
   }
 }
 

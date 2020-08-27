@@ -1,5 +1,4 @@
-const Movie = require('./movies.controller');
-const Cart = require('../models/cart');
+const Cart = require('../../models/cart');
 
 const priceCatelog = {
   seats: {

@@ -131,11 +131,7 @@
 
       &__dates {
         position: relative;
-        width: 30%;
-
-        @include respond-to-breakpoint(1090) {
-          min-width: 27rem;
-        }
+        width: 31rem;
 
         &-list {
           overflow: auto;
@@ -268,7 +264,8 @@
         line-height: 2;
         margin-right: 2rem;
 
-        &:hover {
+        &:hover,
+        &.active {
           color: $primary-color;
         }
       }
