@@ -1,22 +1,23 @@
-const { startTimer } = require('../utils/stopwatch');
+// const { startTimer } = require('../utils/stopwatch');
 const { updateTemplate } = require('../utils/ejsupdate');
 const render = require('../utils/markup/cartMarkup');
 const axios = require('axios');
-const socket = io('localhost:5001', { query: `movieId=${window.location.pathname.split("/")[2]}` });
+// let socket = io('localhost:5001', { query: `screenId=${$('#screen-avl__times-list .time').eq(0).data('id')}` });
+const socket = require('./index').connectedSocket;
 
-const setTimer = timeLeft => {
-  $('#mycart__timer span').text(timeLeft);
-}
+// const setTimer = timeLeft => {
+//   $('#mycart__timer span').text(timeLeft);
+// }
 
-const setSeatingGrid = seats => {
-  seats.forEach(reservation => {
-    reservation.reserved.forEach(seat => {
-      if(!$(`.seat-wrapper[data-id="${seat}"]`).children().hasClass('active')) {
-        $(`.seat-wrapper[data-id="${seat}"]`).children().prop('disabled', true);
-      }
-    })
-  })
-}
+// const setSeatingGrid = seats => {
+//   seats.forEach(reservation => {
+//     reservation.reserved.forEach(seat => {
+//       if(!$(`.seat-wrapper[data-id="${seat}"]`).children().hasClass('active')) {
+//         $(`.seat-wrapper[data-id="${seat}"]`).children().prop('disabled', true);
+//       }
+//     })
+//   })
+// }
 
 const adjustCart = (cartItems, cartTotalPrice) => {
   $('#cart').remove();
@@ -31,7 +32,7 @@ const adjustCart = (cartItems, cartTotalPrice) => {
 }
 
 const adjustMobileCart = (cartItems, cartTotalPrice) => {
-  let totalItems = cartItems.reduce((acc, item) => acc + item.qty, 0);
+  let totalItems = cartItems.reduce((total, item) => total + item.qty, 0);
   $('#mobi-cart__total h5').html(`TOTAL: &nbsp;$${Number(cartTotalPrice).toFixed(2)}`);
   $('#mobi-cart__total p').html(`Selected ${totalItems} seats`);
 
@@ -57,16 +58,16 @@ const updateCart = ({ cart }) => {
 }
 
 const addItemToCart = async (id, seat_type) => {
-  await axios.post('/cart', { id, seat_type });
-  const res = await axios.get('/cart');
+  await axios.post('/api/cart', { id, seat_type });
+  const res = await axios.get('/api/cart');
 
   socket.emit('reserve seat', { seat: id });
   updateCart(res.data);
 }
 
 const removeItemFromCart = async id => {
-  await axios.delete(`/cart/${id}`);
-  const res = await axios.get('/cart');
+  await axios.delete(`/api/cart/${id}`);
+  const res = await axios.get('/api/cart');
 
   socket.emit('cancel reservation', { seat: id });
   updateCart(res.data);
@@ -103,10 +104,10 @@ $('#cart-btn').click(function() {
   alert('clicked purchased')
 })
 
-$(document).ready(() => {
-  socket.on('check reserved seats', ({ seats }) => {
-    setSeatingGrid(seats);
-  });
+// $(document).ready(() => {
+//   socket.on('check reserved seats', ({ seats }) => {
+//     setSeatingGrid(seats);
+//   });
 
-  startTimer(900, setTimer);
-})
+//   startTimer(900, setTimer);
+// })
