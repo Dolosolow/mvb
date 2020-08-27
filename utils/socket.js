@@ -3,60 +3,63 @@ let io = null;
 
 let activeReservations = [];
 
-const addReservation = (socket, movieId, seat) => {
-  const movieIdx = activeReservations.findIndex(mov => mov.id === movieId);
-  const movie = activeReservations[movieIdx];
+const addReservation = (socket, screenId, seat) => {
+  const screenIdx = activeReservations.findIndex(screen => screen.id === screenId);
+  const screen = activeReservations[screenIdx];
   let newMovie;
 
-  if(movie) {
-    let userIdx = movie.seats.findIndex(customer => customer.user === socket.id);
-    let user = movie.seats[userIdx];
+  if(screen) {
+    let userIdx = screen.seats.findIndex(customer => customer.user === socket.id);
+    let user = screen.seats[userIdx];
+
 
     if(user) {
       user.reserved.push(seat);
-      movie.seats[userIdx] = user;
+      screen.seats[userIdx] = user;
     } else {
-      movie.seats.push({ user: socket.id, reserved: [seat] });
+      screen.seats.push({ user: socket.id, reserved: [seat] });
     }
-    activeReservations[movieIdx] = movie;
+    activeReservations[screenIdx] = screen;
   } else {
-    newMovie = { id: movieId, seats: [] };
+    newMovie = { id: screenId, seats: [] };
     newMovie.seats.push({ user: socket.id, reserved: [seat] });
     activeReservations.push(newMovie);
   }
 }
 
-const cancelReservation = (socket, movieId) => {
-  const movieIdx = activeReservations.findIndex(mov => mov.id === movieId);
-  const movie = activeReservations[movieIdx];
+const cancelReservation = (socket, screenId) => {
+  const screenIdx = activeReservations.findIndex(screen => screen.id === screenId);
+  const screen = activeReservations[screenIdx];
 
-  if(movie) {
-    activeReservations[movieIdx].seats = movie.seats.filter(user => user.user !== socket.id);
+  if(screen) {
+    activeReservations[screenIdx].seats = screen.seats.filter(user => user.user !== socket.id);
   }
 }
 
-const cancelReservationBySeat = (socket, movieId, seat) => {
-  const movieIdx = activeReservations.findIndex(mov => mov.id === movieId);
-  const movie = activeReservations[movieIdx];
+const cancelReservationBySeat = (socket, screenId, seat) => {
+  const screenIdx = activeReservations.findIndex(screen => screen.id === screenId);
+  const screen = activeReservations[screenIdx];
 
-  if(movie) {
-    let userIdx = movie.seats.findIndex(customer => customer.user === socket.id);
-    let user = movie.seats[userIdx];
+  if(screen) {
+    let userIdx = screen.seats.findIndex(customer => customer.user === socket.id);
+    let user = screen.seats[userIdx];
 
     if(user) {
       let updatedUser = { ...user };
       updatedUser.reserved = user.reserved.filter(currentSeat => currentSeat !== seat);
-      movie.seats[userIdx] = updatedUser;
-      activeReservations[movieIdx] = movie;
+      screen.seats[userIdx] = updatedUser;
+      activeReservations[screenIdx] = screen;
     } else {
       return;
     }
   }
 }
 
-const getReservations = (socket, reservations) => {
+const getReservations = (event, socket, reservations) => {
   if(reservations) {
-    socket.emit('check reserved seats', { seats: reservations.seats });
+    socket.emit(event, { seats: reservations.seats });
+  } else {
+    socket.emit(event, { seats: [] });
   }
 }
 
@@ -64,23 +67,29 @@ module.exports = server => {
   io = socketio(server);
 
   io.on('connection', socket => {
-    const movieId = socket.handshake.query.movieId;
+    let screenId = socket.handshake.query.screenId;
 
-    const reservedSeats = activeReservations.find(currentMovie => currentMovie.id === movieId);
-    getReservations(socket, reservedSeats);
-
-    socket.on('disconnect', () => {
-      cancelReservation(socket, movieId);
-    });
+    const reservedSeats = activeReservations.find(currentScreen => currentScreen.id === screenId);
+    getReservations('find reserved seats', socket, reservedSeats);
 
     socket.on('reserve seat', ({ seat }) => {
-      addReservation(socket, movieId, seat);
+      addReservation(socket, screenId, seat);
     });
 
     socket.on('cancel reservation', ({ seat }) => {
       seat.split('-').forEach(resSeat => {
-        cancelReservationBySeat(socket, movieId, resSeat);
+        cancelReservationBySeat(socket, screenId, resSeat);
       })
+    });
+
+    socket.on('change screen', screenTestId => {
+      screenId = screenTestId;
+      const reservedSeats = activeReservations.find(currentScreen => currentScreen.id === screenId);
+      getReservations('update reserved seats', socket, reservedSeats);
+    })
+
+    socket.on('disconnect', () => {
+      cancelReservation(socket, screenId);
     });
   });
 }

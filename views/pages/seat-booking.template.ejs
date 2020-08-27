@@ -49,55 +49,25 @@
             <div class="screen-avl__dates flex-column">
               <h3 class="text-uppercase">Dates</h3>
               <!-- movie date list -->
-              <div class="screen-avl__dates-list">
+              <div class="screen-avl__dates-list" id="screen-dates-list">
                 <i class="fas fa-angle-left text-red"></i>
-                <div class="screen-avl__date text-center">
-                  <p class="mth muted">JUN 1nd</p>
-                  <p class="day">Tue</p>
-                </div>
-                <div class="screen-avl__date text-center active">
-                  <p class="mth muted">JUN 2nd</p>
-                  <p class="day">Wed</p>
-                </div>
-                <div class="screen-avl__date text-center">
-                  <p class="mth muted">JUN 3rd</p>
-                  <p class="day">Thu</p>
-                </div>
-                <div class="screen-avl__date text-center">
-                  <p class="mth muted">JUN 4th</p>
-                  <p class="day">Fri</p>
-                </div>
-                <div class="screen-avl__date text-center">
-                  <p class="mth muted">JUN 5th</p>
-                  <p class="day">Sat</p>
-                </div>
-                <div class="screen-avl__date text-center">
-                  <p class="mth muted">JUN 6th</p>
-                  <p class="day">Sun</p>
-                </div>
-                <div class="screen-avl__date text-center">
-                  <p class="mth muted">JUN 7th</p>
-                  <p class="day">Mon</p>
-                </div>
+                <% for(let day of movie.screens) { %>
+                  <div class="screen-avl__date text-center" data-date="<%= day.numerical_isodate %>">
+                    <p class="mth muted"><%= day.date.split(' ')[1].toUpperCase() %> <%= day.date.split(' ')[2] %></p>
+                    <p class="day"><%= day.date.split(' ')[0] %></p>
+                  </div>
+                <% } %>
                 <i class="fas fa-angle-right text-red"></i>
               </div>
             </div>
-            <div class="screen-avl__times flex-column">
+            <div class="screen-avl__times flex-column" id='screen-avl__times'>
               <h3 class="text-uppercase">Available Times</h3>
               <!-- movie play time list -->
-              <div class="screen-avl__times-list">
+              <div class="screen-avl__times-list" id='screen-avl__times-list'>
                 <i class="fas fa-angle-left text-red"></i>
-                <p class="time">07:11p</p>
-                <p class="time">06:11p</p>
-                <p class="time">05:11p</p>
-                <p class="time">04:11p</p>
-                <p class="time">03:11p</p>
-                <p class="time">02:11p</p>
-                <p class="time">01:11p</p>
-                <p class="time">00:11p</p>
-                <p class="time">00:11p</p>
-                <p class="time">00:11p</p>
-                <p class="time">00:11p</p>
+                <% for(let startTime of movie.screens[0].times) { %>
+                  <p class="time<%= movie.screens[0].times[0].id === startTime.id ? ' active' : ''  %>" data-id="<%= startTime.id %>" ><%= startTime.time %></p>
+                <% } %> 
                 <i class="fas fa-angle-right text-red"></i>
               </div>
             </div>
@@ -113,7 +83,7 @@
             <!-- theater name, dynamic number corresponding to the theater room moving being played -->
             <div class="theater-name">
               <p class="muted text-uppercase">Movie Theater No.</p>
-              <h2>FLIX Theater <%= movie.theater %></h2>
+              <h2>FLIX Theater <%= screen.screenRoom %></h2>
             </div>
             <div class="seat-selection__legend-wrapper">
               <!-- seating legend -->
@@ -159,7 +129,7 @@
               Click seats to add the to cart
             </p>
             <div class="seat-selection__layout-grid">
-              <% for(let row of movie.seating_chart.reverse()) { %>
+              <% for(let row of screen.seating_chart.reverse()) { %>
                 <% if(row.row_id !== 'empty-row') { %>
                   <div class="seat-row flex-row justify-center">
                     <span class="row-char">&nbsp;<%= row.row_id.toUpperCase() %></span>

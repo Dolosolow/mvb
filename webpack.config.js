@@ -17,7 +17,7 @@ module.exports = {
     admin_acct: ['./public/js/accounts/adminAcct/movieList', './public/js/accounts/adminAcct/searchMovie'],
     memberships: ['./public/js/main-membership.js'],
     signup: ['./public/js/signup.js'],
-    reservations: ['./public/js/reservations/seat-reservations.js']
+    reservations: ['./public/js/reservations/index.js', './public/js/reservations/seat-reservations.js']
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
