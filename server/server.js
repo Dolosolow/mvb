@@ -16,11 +16,15 @@ const errorController = require('../controllers/error.controller');
 const adminRoutes = require('../routes/admin');
 const storeRoutes = require('../routes/store');
 
-const User = require('. ./models/user');
+const User = require('../models/user');
 
 server.use(async (req, res, next) => {
-  const foundUser = await User.findById('00');
-  req.user = foundUser;
+  try {
+    const foundUser = await User.findById('00');
+    req.user = foundUser;
+  } catch (err) {
+    console.log('something went wrong, call to db was not reached');
+  }
   next();
 })
 server.use('/api', apiRoutes);
