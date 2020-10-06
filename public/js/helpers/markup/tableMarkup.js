@@ -36,8 +36,16 @@ const tablesawTable = (isEditable) => {
           data-tablesaw-priority="persist"
           data-tablesaw-sortable-numeric
         >
-          Start Time
+          Date
         </th>
+        <th
+        scope="col"
+        data-tablesaw-sortable-col
+        data-tablesaw-priority="persist"
+        data-tablesaw-sortable-numeric
+      >
+        Start Time
+      </th>
         <th
           scope="col"
           data-tablesaw-sortable-col
@@ -49,13 +57,18 @@ const tablesawTable = (isEditable) => {
       </tr>
     </thead>
     <tbody>
-      <% for(let movie of currentlyPlaying) { %>
-        <tr id="mov-row" ${isEditable && 'data-remove-icon=\"&#xf2ed;\" data-id=\"<%= movie.id %>\"'}>
-          <td class="title"><%= movie.title %></td>
-          <td class="theater-screen"><%= movie.theater %></td>
-          <td class="strt-date">06:15p</td>
-          <td class="end-date">0/22</td>
-        </tr>
+      <% for(let movie of movies) { %>
+        <% for(let screen of screens) { %>
+          <tr id="mov-row" ${isEditable && 'data-remove-icon=\"&#xf2ed;\" data-id=\"<%= movie.id %>\"'}>
+            <% if(screen.movieId === movie.id) { %>
+              <td class="title"><%= movie.title %></td>
+              <td class="theater-screen"><%= screen.screenRoom %></td>
+              <td class="strt-date"><%= screen.date %></td>
+              <td class="strt-date"><%= screen.startTime %>p</td>
+              <td class="seat-avl"><%= screen.avl %></td>
+            <% } %>
+            </tr>
+        <% } %>
       <% } %>
     </tbody>
   </table>

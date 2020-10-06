@@ -1,6 +1,8 @@
 const Movie = require('../../models/movie');
+const Screen = require('../../models/screen');
 const axios = require('axios');
 const apiKey = process.env.APIKEY;
+const time = require('../../utils/lib/time');
 
 function customImgResize(url, size) {
   const newUrl = url.split('_');
@@ -8,33 +10,31 @@ function customImgResize(url, size) {
   return newUrl.join('_');
 }
 
+exports.getAllScreens = async (req, res, next) => {
+  const allScreens = await Screen.getAllScreens();
+  res.status(200).json({ screens: allScreens });
+}
+
+exports.getScreenById = async (req, res, next) => {
+  const screenId = req.params.id;
+  const foundScreen = await Screen.getScreenById(screenId);
+  res.status(200).json({ screen: foundScreen });
+}
+
+exports.getAllMovies = async (req, res, next) => {
+  const movies = await Movie.getAllMovies();
+  res.status(200).json({ movies });
+}
+
 exports.getMovieTimes = async (req, res, next) => {
-  const moment = require('moment');
   const movieId = req.params.id;
   const dateQuery = req.query.date;
 
   let foundMovie = await Movie.getById(movieId);
-  // ********************
-  // refactor this into a function and add it to utils folder. Other implemintation located in regualr movies.controller
-  foundMovie.screens = foundMovie.screens.map(screen => {
-    screen.times.sort((a, b) => {
-      return moment(a.time, 'hh:mm').hour() - moment(b.time, 'hh:mm').hour()
-    });
-
-    const hasVariation = screen.times.findIndex(startTime => startTime.time !== '12:00' );
-
-    if(hasVariation !== -1) {
-      while(screen.times[screen.times.length - 1].time === '12:00') {
-        screen.times.unshift(screen.times.pop());
-      }
-    }
-
-    return screen;
-  })
-  // ********************
+  foundMovie.screens = time.sortScreenTime(foundMovie.screens);
 
   if(dateQuery !== undefined) {
-    const screenDateRequested = foundMovie.screens.find(screen => screen.numerical_isodate === dateQuery);
+    let screenDateRequested = foundMovie.screens.find(screen => screen.numerical_isodate === dateQuery);
     return res.status(200).json({ schedule: screenDateRequested });
   }
 }

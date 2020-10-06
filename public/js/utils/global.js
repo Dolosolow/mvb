@@ -1,4 +1,4 @@
-exports.hasAttribute = (el) => {
+export const hasAttribute = (el) => {
   if(typeof el === typeof undefined || el === false) {
     return false;
   }

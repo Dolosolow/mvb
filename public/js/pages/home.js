@@ -1,7 +1,7 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
-require.context("../images", true, /\.(png|svg|jpg)$/);
-import '../scss/styles.scss';
+require.context("../../images", true, /\.(png|svg|jpg)$/);
+import '../../scss/styles.scss';
 
 $('.toggle-info-btn').click(function() {
   if($('.cvc-loc-img').hasClass('scale-in-right')) {

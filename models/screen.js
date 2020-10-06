@@ -1,3 +1,4 @@
+const getDb = require('../utils/database').getDatabase;
 const moment = require('moment');
 const fs = require('fs');
 const path = require('path');
@@ -5,14 +6,14 @@ const { v4: uuidv4 } = require('uuid');
 const seatingData = path.join(path.dirname('data'), 'data/seat-chart.json');
 const dateFormat = 'ddd MMM D YYYY hh:mm:ss GMT';
 
-const setStartTime = schedule => {
+function setStartTime(schedule) {
   const lastMoviePlaying = schedule[schedule.length - 1];
   const cleanRoomInMin = 15;
   return moment(lastMoviePlaying.endTime, dateFormat).add(cleanRoomInMin, 'm');
 }
 
-const getScreensByRoom = async (room, date) => {
-  const db = require('../utils/database').getDatabase();
+async function getScreensByRoom(room, date) {
+  const db = getDb();
   const screens = await db.collection('screens').find({ screenRoom: room }).toArray();
 
   const daySchedule = screens.filter(screen => { 
@@ -25,7 +26,7 @@ const getScreensByRoom = async (room, date) => {
   return daySchedule;
 }
 
-const getMovieTimes = async runtime => {
+async function getMovieTimes(runtime) {
   let screenRoom = Math.floor(Math.random() * 3) + 1;
   let randomDay = Math.floor(Math.random() * 5) + 1;
   const scheduledDate = moment().add(randomDay, 'd');
@@ -43,12 +44,12 @@ const getMovieTimes = async runtime => {
 }
 
 module.exports = class Screen {
-  static getDateFormat = () => {
+  static getDateFormat() {
     return dateFormat;
   }
 
   async addMovie(movieId, runtime, cb) {
-    const db = require('../utils/database').getDatabase();
+    const db = getDb();
     this.id = uuidv4();
 
     const movieTimes = await getMovieTimes(runtime);
@@ -60,23 +61,30 @@ module.exports = class Screen {
     this.seating_chart = JSON.parse(fs.readFileSync(seatingData));
 
     await db.collection('screens').insertOne(this);
-    cb({ 
+    
+    return { 
       id: this.id, 
       date: moment(this.startTime, dateFormat).format('ddd MMM Do YYYY'),
       numerical_isodate: moment(this.startTime,  dateFormat).format('YYYYMMDD'),
       startTime: moment(this.startTime, dateFormat).format('hh:mm') 
-    });
+    };
+  }
+
+  static async getAllScreens() {
+    const db = getDb();
+    const allScreens = await db.collection('screens').find().toArray();
+    return allScreens;
   }
 
   static async getScreenById(id) {
-    const db = require('../utils/database').getDatabase();
+    const db = getDb();
     const screen = await db.collection('screens').findOne({ id });
 
     return screen;
   }
 
   static async getScreensByDate(date) {
-    const db = require('../utils/database').getDatabase();
+    const db = getDb();
     const screen = await db.collection('screens').find({ date });
 
     console.log(screen)
