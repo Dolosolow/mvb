@@ -1,4 +1,4 @@
-const getDB = require('../utils/database').getDatabase;
+const getDb = require('../utils/database').getDatabase;
 const { v4: uuidv4 } = require('uuid'); 
 
 class User {
