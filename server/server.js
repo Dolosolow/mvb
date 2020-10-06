@@ -3,25 +3,7 @@ const path = require('path');
 const express = require('express');
 const server = express();
 
-const config = require('../webpack.config');
-const webpack = require('webpack');
-const webpackDM = require('webpack-dev-middleware');
-const webpackHM = require('webpack-hot-middleware');
-
-const isDevServer = true;
-
-if(isDevServer) {
-  const compiler = webpack(config);
-  
-  server.use(webpackDM(compiler, {
-    contentBase: path.resolve(__dirname, 'dist'),
-    hot: true,
-    host: `localhost`,
-    publicPath: config.output.publicPath
-  }))
-
-  server.use(webpackHM(compiler));
-}
+require('../utils/wpServer').webpackServerConnect(server, true);
 
 server.use(express.static(path.resolve(__dirname, 'dist')));
 server.use(express.urlencoded({ extended: false }));
@@ -34,6 +16,13 @@ const errorController = require('../controllers/error.controller');
 const adminRoutes = require('../routes/admin');
 const storeRoutes = require('../routes/store');
 
+const User = require('. ./models/user');
+
+server.use(async (req, res, next) => {
+  const foundUser = await User.findById('00');
+  req.user = foundUser;
+  next();
+})
 server.use('/api', apiRoutes);
 server.use('/admin', adminRoutes);
 server.use('/', storeRoutes);

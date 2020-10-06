@@ -1,14 +1,14 @@
-import render from '../../utils/markup/searchMarkup';
+const { hasAttribute } = require('../../utils/global');
 const apiKey = process.env.APIKEY;
 const baseUrl = `http://www.omdbapi.com/?apikey=${apiKey}&`;
-const { hasAttribute } = require('./utils/helpers');
+const render = require('../../helpers/markup/searchMarkup');
 
-const clearSearchResults = () => {
+function clearSearchResults() {
   $('#srh-results__list').remove();
   $('#srh-results__poster').remove();
 };
 
-const filterSearchResults = (list) => {
+function filterSearchResults(list) {
   let results = new Set([]);
   let optimizedResults = [];
 
@@ -25,20 +25,18 @@ const filterSearchResults = (list) => {
   return optimizedResults;
 };
 
-const searchMovie = title => {
-  axios.get(`${baseUrl}s=${title}`)
-  .then(res => {
-    $('#search__sugg').addClass('collapse');
-    getSearchResults(res.data);
-  })
+async function searchMovie(title) {
+  const foundMovie = await axios.get(`${baseUrl}s=${title}`);
+  $('#search__sugg').addClass('collapse');
+  getSearchResults(foundMovie.data);
 };
 
-const getSearchResults = response => {
+function getSearchResults(response) {
+  $('.list-group__item').remove();
+
   if(response.Error === 'Movie not found!') {
-    $('.list-group__item').remove();
     $('#search__sugg').append(render.noSearchResults(`No results found for "${$('#search__input').val()}"`));
   }else {
-    $('.list-group__item').remove();
     filterSearchResults(response.Search).map(mov => {
       $('#search__sugg').append(render.searchItem(mov));
     });
@@ -46,7 +44,6 @@ const getSearchResults = response => {
 };
 
 $('#search__input').keyup(() => {
-  // if search input is not empty api call is made requesting movies matching the value
   if($('#search__input').val() === '') {
     $('#search__sugg').removeClass('collapse');
   } else {
@@ -54,45 +51,39 @@ $('#search__input').keyup(() => {
   }
 });
 
-$('#search__sugg').on('click', '.list-group__item', function() {
+$('#search__sugg').on('click', '.list-group__item', async function() {
   $('#search__sugg').removeClass('collapse');
   $('#loader').css('display', 'block');
   $('#search__input').val('');
   clearSearchResults();
 
   const movieId = $(this).data('id');
+  const foundMovie = await axios.get(`${baseUrl}i=${movieId}&plot=full`);
 
-  axios.get(`${baseUrl}i=${movieId}&plot=full`)
-  .then(res => {
-    $('.no-results-msg').css('display', 'none');
-    $('#add-mov-btn').removeAttr('disabled');
-    $('#add-mov-btn')[0].scrollIntoView({ behavior: 'smooth' });
-    $('#loader').css('display', 'none');
-    $('.srh-results').append(render.searchData(res.data));
-  })
+  $('.no-results-msg').css('display', 'none');
+  $('#add-mov-btn').removeAttr('disabled');
+  $('#add-mov-btn')[0].scrollIntoView({ behavior: 'smooth' });
+  $('#loader').css('display', 'none');
+  $('.srh-results').append(render.searchData(foundMovie.data));
 });
 
-$('#add-mov-btn').on('click', function() {
+$('#add-mov-btn').on('click', async function() {
   const isBtnDisabled = $(this).attr('disabled');
 
   if(!hasAttribute(isBtnDisabled)) {
     const sendData = { movieId: $('#srh-results__list').data('id') };
 
-    axios
-    .post('/api/movies/add-movie', sendData)
-    .then(res => {
-      clearSearchResults();
-      $('.no-results-msg').css('display', 'block');
-      $('.btn-prim').attr('disabled', true);
-      $('#account__card')[0].scrollIntoView({ behavior: 'smooth' });
-      $('body').append(render.successMessage(res.data.Title));
-      $('#add-movie').attr('data-nmu', '');
-      setTimeout(() => {
-        $('body #flash-msg').removeClass('slide-in-bottom');
-        $('body #flash-msg').addClass('slide-out-bottom');
-      }, 3000);
+    const response = await axios.post('/api/movies/add-movie', sendData);
+    clearSearchResults();
+    $('.no-results-msg').css('display', 'block');
+    $('.btn-prim').attr('disabled', true);
+    $('#account__card')[0].scrollIntoView({ behavior: 'smooth' });
+    $('body').append(render.successMessage(response.data.Title));
+    $('#add-movie').attr('data-nmu', '');
 
-      return true;
-    })
+    setTimeout(() => {
+      $('body #flash-msg').removeClass('slide-in-bottom');
+      $('body #flash-msg').addClass('slide-out-bottom');
+    }, 3000);
   }
 });
