@@ -1,29 +1,13 @@
-// const { startTimer } = require('../utils/stopwatch');
-const { updateTemplate } = require('../utils/ejsupdate');
-const render = require('../utils/markup/cartMarkup');
 const axios = require('axios');
-// let socket = io('localhost:5001', { query: `screenId=${$('#screen-avl__times-list .time').eq(0).data('id')}` });
+const render = require('../helpers/markup/cartMarkup');
 const socket = require('./index').connectedSocket;
+const updateEJStemplate = require('../helpers/ejsupdate');
 
-// const setTimer = timeLeft => {
-//   $('#mycart__timer span').text(timeLeft);
-// }
-
-// const setSeatingGrid = seats => {
-//   seats.forEach(reservation => {
-//     reservation.reserved.forEach(seat => {
-//       if(!$(`.seat-wrapper[data-id="${seat}"]`).children().hasClass('active')) {
-//         $(`.seat-wrapper[data-id="${seat}"]`).children().prop('disabled', true);
-//       }
-//     })
-//   })
-// }
-
-const adjustCart = (cartItems, cartTotalPrice) => {
+function adjustCart(cartItems, cartTotalPrice) {
   $('#cart').remove();
   $('#cart-btn').removeAttr('disabled');
   $('#cart-btn').html(`Purchase&nbsp;($${Number(cartTotalPrice).toFixed(2)})`);
-  $('#seat-selection_list-wrapper').append(updateTemplate(render.seatingCartlist(), { cartItems, cartTotalPrice } ));
+  $('#seat-selection_list-wrapper').append(updateEJStemplate(render.seatingCartlist(), { cartItems, cartTotalPrice } ));
 
   if(cartTotalPrice === 0) {
     $('#cart-btn').html('Purchase');
@@ -31,7 +15,7 @@ const adjustCart = (cartItems, cartTotalPrice) => {
   }
 }
 
-const adjustMobileCart = (cartItems, cartTotalPrice) => {
+function adjustMobileCart(cartItems, cartTotalPrice) {
   let totalItems = cartItems.reduce((total, item) => total + item.qty, 0);
   $('#mobi-cart__total h5').html(`TOTAL: &nbsp;$${Number(cartTotalPrice).toFixed(2)}`);
   $('#mobi-cart__total p').html(`Selected ${totalItems} seats`);
@@ -46,7 +30,7 @@ const adjustMobileCart = (cartItems, cartTotalPrice) => {
   }
 }
 
-const updateCart = ({ cart }) => {
+function updateCart({ cart }) {
   const cartItems = cart.products;
   const cartTotalPrice = cart.totalPrice;
 
@@ -57,7 +41,7 @@ const updateCart = ({ cart }) => {
   }
 }
 
-const addItemToCart = async (id, seat_type) => {
+async function addItemToCart(id, seat_type) {
   await axios.post('/api/cart', { id, seat_type });
   const res = await axios.get('/api/cart');
 
@@ -65,7 +49,7 @@ const addItemToCart = async (id, seat_type) => {
   updateCart(res.data);
 }
 
-const removeItemFromCart = async id => {
+async function removeItemFromCart(id) {
   await axios.delete(`/api/cart/${id}`);
   const res = await axios.get('/api/cart');
 
@@ -103,11 +87,3 @@ $('#cart-btn').click(function() {
   // checkout page where transaction is completed
   alert('clicked purchased')
 })
-
-// $(document).ready(() => {
-//   socket.on('check reserved seats', ({ seats }) => {
-//     setSeatingGrid(seats);
-//   });
-
-//   startTimer(900, setTimer);
-// })

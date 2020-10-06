@@ -3,7 +3,7 @@ let io = null;
 
 let activeReservations = [];
 
-const addReservation = (socket, screenId, seat) => {
+function addReservation(socket, screenId, seat) {
   const screenIdx = activeReservations.findIndex(screen => screen.id === screenId);
   const screen = activeReservations[screenIdx];
   let newMovie;
@@ -27,7 +27,7 @@ const addReservation = (socket, screenId, seat) => {
   }
 }
 
-const cancelReservation = (socket, screenId) => {
+function cancelReservation(socket, screenId) {
   const screenIdx = activeReservations.findIndex(screen => screen.id === screenId);
   const screen = activeReservations[screenIdx];
 
@@ -36,7 +36,7 @@ const cancelReservation = (socket, screenId) => {
   }
 }
 
-const cancelReservationBySeat = (socket, screenId, seat) => {
+function cancelReservationBySeat(socket, screenId, seat) {
   const screenIdx = activeReservations.findIndex(screen => screen.id === screenId);
   const screen = activeReservations[screenIdx];
 
@@ -55,11 +55,13 @@ const cancelReservationBySeat = (socket, screenId, seat) => {
   }
 }
 
-const getReservations = (event, socket, reservations) => {
-  if(reservations) {
-    socket.emit(event, { seats: reservations.seats });
+function getReservations(socket, screenId) {
+  const reservedSeats = activeReservations.find(currentScreen => currentScreen.id === screenId);
+
+  if(reservedSeats) {
+    socket.emit('update reserved seats', { seats: reservedSeats.seats });
   } else {
-    socket.emit(event, { seats: [] });
+    socket.emit('update reserved seats', { seats: [] });
   }
 }
 
@@ -68,9 +70,7 @@ module.exports = server => {
 
   io.on('connection', socket => {
     let screenId = socket.handshake.query.screenId;
-
-    const reservedSeats = activeReservations.find(currentScreen => currentScreen.id === screenId);
-    getReservations('find reserved seats', socket, reservedSeats);
+    getReservations(socket, screenId);
 
     socket.on('reserve seat', ({ seat }) => {
       addReservation(socket, screenId, seat);
@@ -82,10 +82,9 @@ module.exports = server => {
       })
     });
 
-    socket.on('change screen', screenTestId => {
+    socket.on('update seats', screenTestId => {
       screenId = screenTestId;
-      const reservedSeats = activeReservations.find(currentScreen => currentScreen.id === screenId);
-      getReservations('update reserved seats', socket, reservedSeats);
+      getReservations(socket, screenId);
     })
 
     socket.on('disconnect', () => {

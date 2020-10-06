@@ -1,9 +1,10 @@
+const getDb = require('../utils/database').getDatabase;
 const { v4: uuidv4 } = require('uuid');
 const Screen = require('./screen');
 const moment = require('moment');
 
-const isAlreadyCreated = async title => {
-  const db = require('../utils/database').getDatabase();
+async function isAlreadyCreated(title) {
+  const db = getDb();
   const movie = await db.collection('movies').findOne({ title });
 
   if(movie) {
@@ -11,6 +12,27 @@ const isAlreadyCreated = async title => {
   } else {
     return false;
   }
+}
+
+async function updateMovie(movie, newScreen) {
+  const db = getDb();
+  const currentDate = moment();
+  const dateFormat = Screen.getDateFormat();
+  const dateIndex = movie.screens.findIndex(screen => screen.date === newScreen.date);
+
+  console.log(`index: ${dateIndex}`)
+
+  if(dateIndex !== -1) {
+    movie.screens[dateIndex].times = [...movie.screens[dateIndex].times, { id: newScreen.id, time: newScreen.startTime }];
+  } else {
+    movie.screens.push({ date: newScreen.date, numerical_isodate: newScreen.numerical_isodate, times: new Array({ id: newScreen.id, time: newScreen.startTime }) });
+  }
+
+  movie.screens.sort((a, b) => {
+    return moment(a.date, dateFormat).diff(currentDate) - moment(b.date, dateFormat).diff(currentDate)
+  })
+
+  await db.collection('movies').updateOne({ id: movie.id }, { $set: { screens: movie.screens } });
 }
 
 module.exports = class Movie {
@@ -36,67 +58,34 @@ module.exports = class Movie {
   }
 
   async save() {
-    const db = require('../utils/database').getDatabase();
+    const db = getDb();
+    const screen = new Screen();
     
-    try {
-      const screen = new Screen();
-      let currentDate = moment();
-      const dateFormat = Screen.getDateFormat();
-      let movie = await isAlreadyCreated(this.title);
+    let movie = await isAlreadyCreated(this.title);
 
-      this.id = movie ? movie.id : uuidv4();
+    this.id = movie ? movie.id : uuidv4();
 
-      let newScreen = {};
-      await screen.addMovie(this.id, this.runtime.split(' ')[0], nScreen => {
-        newScreen = nScreen;
-      });
+    let newScreen = {};
+    newScreen = await screen.addMovie(this.id, this.runtime.split(' ')[0]);
 
-      if(movie) {
-        const dateIndex = movie.screens.findIndex(screen => screen.date === newScreen.date);
-
-        if(dateIndex !== -1) {
-          movie.screens[dateIndex].times = [...movie.screens[dateIndex].times, { id: newScreen.id, time: newScreen.startTime }];
-        } else {
-          movie.screens.push({ date: newScreen.date, numerical_isodate: newScreen.numerical_isodate, times: new Array({ id: newScreen.id, time: newScreen.startTime }) });
-        }
-
-        movie.screens.sort((a, b) => {
-          return moment(a.date, dateFormat).diff(currentDate) - moment(b.date, dateFormat).diff(currentDate)
-        })
-
-        await db.collection('movies').updateOne({ title: this.title }, { $set: { screens: movie.screens } });
-      } else {
-        this.screens.push({ date: newScreen.date, numerical_isodate: newScreen.numerical_isodate, times: new Array({ id: newScreen.id, time: newScreen.startTime }) });
-        await db.collection('movies').insertOne(this);
-      }
-
-      console.log(this);
-    } catch (err) {
-      console.log(err);
+    if(movie) {
+      updateMovie(movie, newScreen);
+    } else {
+      this.screens.push({ date: newScreen.date, numerical_isodate: newScreen.numerical_isodate, times: new Array({ id: newScreen.id, time: newScreen.startTime }) });
+      await db.collection('movies').insertOne(this);
     }
   }
 
-  static async fetchAllMovies(cb) {
-    const db = require('../utils/database').getDatabase();
-    
-    try {
-      const cursor = db.collection('movies').find({});
-      const movies = await cursor.toArray();
-      cb(movies);
-    } catch (err) {
-      console.log(err);
-    }
+  static async getAllMovies() {
+    const db = getDb();
+    const movies = await db.collection('movies').find().toArray();
+    return movies;
   }
 
   static async getById(id) {
-    const db = require('../utils/database').getDatabase();
-
-    try {
-      const foundMovie = await db.collection('movies').findOne({ id });
-      return foundMovie;
-    } catch (err) {
-      console.log('err');
-    }
+    const db = getDb();
+    const foundMovie = await db.collection('movies').findOne({ id });
+    return foundMovie;
   }
 
   static updateSeat(movieId, seat, reserve) {

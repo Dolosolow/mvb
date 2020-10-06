@@ -3,11 +3,16 @@
 
   thead {
     th {
+      text-align: center;
       white-space: nowrap;
     }
   }
 
   tbody {
+    td {
+      text-align: center;
+    }
+
     tr {
       background-color: #fff;
       border-bottom: 1px solid $muted-light;

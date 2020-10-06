@@ -1,0 +1,17 @@
+.content-ph {
+  animation: blink 0.5s ease-in-out alternate infinite;
+  background-color: $muted-light;
+  color: transparent;
+  display: inline-block;
+  width: max-content;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}

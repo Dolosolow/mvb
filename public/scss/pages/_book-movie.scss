@@ -82,7 +82,7 @@
   &__content {
     align-self: flex-end;
     overflow: hidden;
-    padding-bottom: 5rem;
+    padding-bottom: 4rem;
     padding-left: 5rem;
     width: 100%;
 
@@ -174,7 +174,7 @@
           i {
             cursor: pointer;
             position: absolute;
-            bottom: 1.5rem;
+            bottom: 2rem;
             z-index: 100;
 
             &:first-of-type {
@@ -231,6 +231,10 @@
         }
 
         &-list {
+          display: flex;
+          align-items: center;
+          // ^^^^ change above
+          height: 6.4rem;
           overflow-x: scroll;
           padding: 0 4rem;
           white-space: nowrap;
@@ -243,8 +247,8 @@
           i {
             cursor: pointer;
             position: absolute;
-            bottom: 15px;
-            z-index: 1;
+            bottom: 2rem;
+            z-index: 100;
 
             &:first-of-type {
               left: 0;
@@ -261,7 +265,7 @@
         cursor: pointer;
         display: inline-block;
         letter-spacing: 2px;
-        line-height: 2;
+        line-height: 1;
         margin-right: 2rem;
 
         &:hover,

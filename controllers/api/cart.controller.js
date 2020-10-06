@@ -9,7 +9,7 @@ const priceCatelog = {
   },
 };
 
-const getSeatingPrice = seat_type => {
+function getSeatingPrice(seat_type) {
   switch (seat_type) {
     case 'seat-reg':
       return priceCatelog.seats.SEAT_REG;

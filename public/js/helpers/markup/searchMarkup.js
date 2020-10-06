@@ -54,8 +54,8 @@ const searchItem = data => (
       <h6>${data.Year}</h6>
     </div>
   </li>
-`
-  );
+  `
+);
 
 const successMessage = title => (
   `
