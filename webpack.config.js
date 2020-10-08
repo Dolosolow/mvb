@@ -11,13 +11,13 @@ const path = require('path');
 module.exports = {
   mode: 'development',
   entry: {
-    main: ['webpack-hot-middleware/client?reload=true&timeout=1000', './public/js'],
-    owl_carousel: ['./public/js/owl-carousel.js'],
-    gen_acct: ['./public/js/accounts'],
-    admin_acct: ['./public/js/accounts/adminAcct/movieList', './public/js/accounts/adminAcct/searchMovie'],
-    memberships: ['./public/js/main-membership.js'],
-    signup: ['./public/js/signup.js'],
-    reservations: ['./public/js/reservations/seat-reservations.js']
+    main: ['webpack-hot-middleware/client?reload=true&timeout=1000', './public/js/pages/index.js'],
+    owl_carousel: ['./public/js/pages/owl-carousel.js'],
+    gen_acct: ['./public/js/pages/accounts-dash.js'],
+    admin_acct: ['./public/js/accounts/adminAcct/movieList.js', './public/js/accounts/adminAcct/searchMovie.js'],
+    memberships: ['./public/js/pages/main-membership.js'],
+    signup: ['./public/js/pages/signup.js'],
+    reservations: ['./public/js/reservations/index.js', './public/js/reservations/seat-reservations.js']
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

@@ -1,6 +1,7 @@
 node_modules/
 
-# OS generated files #
-######################
+.env
+
 .DS_Store
 .DS_Store?
+**/.DS_Store

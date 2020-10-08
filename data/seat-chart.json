@@ -56,16 +56,6 @@
         "id": "a11",
         "type": "seat-reg",
         "reserved": false
-      },
-      {
-        "id": "a12",
-        "type": "seat-reg",
-        "reserved": false
-      },
-      {
-        "id": "a13",
-        "type": "seat-reg",
-        "reserved": false
       }
     ]
   },
@@ -124,16 +114,6 @@
       },
       {
         "id": "b11",
-        "type": "seat-reg",
-        "reserved": false
-      },
-      {
-        "id": "b12",
-        "type": "seat-reg",
-        "reserved": false
-      },
-      {
-        "id": "b13",
         "type": "seat-reg",
         "reserved": false
       }
@@ -196,16 +176,6 @@
         "id": "c11",
         "type": "seat-reg",
         "reserved": false
-      },
-      {
-        "id": "c12",
-        "type": "seat-reg",
-        "reserved": false
-      },
-      {
-        "id": "c13",
-        "type": "seat-reg",
-        "reserved": false
       }
     ]
   },
@@ -244,11 +214,6 @@
       },
       {
         "id": "d7",
-        "type": "seat-cple",
-        "reserved": false
-      },
-      {
-        "id": "d8",
         "type": "seat-cple",
         "reserved": false
       }
@@ -310,16 +275,6 @@
       {
         "id": "e11",
         "type": "seat-vip",
-        "reserved": false
-      },
-      {
-        "id": "e12",
-        "type": "seat-acc",
-        "reserved": false
-      },
-      {
-        "id": "e13",
-        "type": "seat-acc",
         "reserved": false
       }
     ]
@@ -384,16 +339,6 @@
         "id": "f11",
         "type": "seat-reg",
         "reserved": false
-      },
-      {
-        "id": "f12",
-        "type": "seat-reg",
-        "reserved": false
-      },
-      {
-        "id": "f13",
-        "type": "seat-reg",
-        "reserved": false
       }
     ]
   },
@@ -452,16 +397,6 @@
       },
       {
         "id": "g11",
-        "type": "seat-reg",
-        "reserved": false
-      },
-      {
-        "id": "g12",
-        "type": "seat-reg",
-        "reserved": false
-      },
-      {
-        "id": "g13",
         "type": "seat-reg",
         "reserved": false
       }
@@ -524,16 +459,6 @@
         "id": "h11",
         "type": "seat-reg",
         "reserved": false
-      },
-      {
-        "id": "h12",
-        "type": "seat-reg",
-        "reserved": false
-      },
-      {
-        "id": "h13",
-        "type": "seat-reg",
-        "reserved": false
       }
     ]
   },
@@ -587,11 +512,6 @@
       },
       {
         "id": "i10",
-        "type": "seat-reg",
-        "reserved": false
-      },
-      {
-        "id": "i11",
         "type": "seat-cple",
         "reserved": false
       }

@@ -31,6 +31,12 @@
       href="/assets/images/favicons/favicon-16x16.png"
     />
     <link rel="manifest" href="/assets/images/favicons/site.webmanifest" />
+    <!-- *************** -->
+    <!-- materializecss -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
     <title>FLIX Theater | Dine in theater</title>
   </head>
   <body>
@@ -55,38 +61,31 @@
         <div class="article-banner__content">
           <ul class="article-banner__amenities">
             <li class="article-banner__item flex-column flex-center">
-              <img
-                src="/assets/images/png/dine-eat.png"
-                alt="dine and drink"
-              />
+              <img src="/assets/images/png/dine-eat.png" alt="dine and drink" />
               <span class="article-banner__text text-center"
                 >10% OFF FOOD & BEVERAGE</span
               >
             </li>
             <li class="article-banner__item flex-column flex-center">
-              <img
-                src="/assets/images/png/tickets.png"
-                alt="dine and drink"
-              />
+              <img src="/assets/images/png/tickets.png" alt="dine and drink" />
               <span class="article-banner__text text-center"
                 >MEMBER-ONLY TICKET PRICING</span
               >
             </li>
             <li class="article-banner__item flex-column flex-center">
-              <img
-                src="/assets/images/png/present.png"
-                alt="dine and drink"
-              />
+              <img src="/assets/images/png/present.png" alt="dine and drink" />
               <span class="article-banner__text text-center"
                 >PREMIUM PLUS B-DAY TICKET</span
               >
             </li>
           </ul>
           <div class="article-banner__btn-container flex-column flex-center">
-            <a href="/membership" class="btn-outline btn-block mb-md">Join now</a href="/membership">
+            <a href="/membership" class="btn-outline btn-block mb-md"
+              >Join now</a
+            >
             <p class="login-inline text-center">
               Already a Member?&nbsp;
-              <button class="color-text color-text__btn">Log In</button>
+              <a class="color-text color-text__btn" href="#si-popup">Log In</a>
             </p>
           </div>
         </div>
@@ -100,29 +99,33 @@
       </div>
       <div class="section-layout flex-column">
         <% if(currentMovies.length > 0) { %>
-          <section
+        <section
           id="showtimes"
           class="owl-carousel owl-theme owl-loaded"
           data-ct="<%= currentMovies.length %>"
-          >
+        >
           <% for(let movie of currentMovies) { %>
-            <div class="card">
-              <img
-                src="<%= movie.poster %>"
-                class="card-img-top"
-                alt="<%= movie.title %>"
-              />
-              <div class="card__body">
-                <p class="card__title text-uppercase"><%= movie.title %></p>
-                <p class="card__text">
-                  <span class="text-uppercase">R | 114 min</span>
-                  <br />Accessiblity devices available
-                </p>
-                <a href="/movies/<%= movie.id %>" class="btn-outline-dark btn-block">Buy Ticket</a>
-              </div>
+          <div class="card">
+            <img
+              src="<%= movie.poster %>"
+              class="card-img-top"
+              alt="<%= movie.title %>"
+            />
+            <div class="card__body">
+              <p class="card__title text-uppercase"><%= movie.title %></p>
+              <p class="card__text">
+                <span class="text-uppercase">R | 114 min</span>
+                <br />Accessiblity devices available
+              </p>
+              <a
+                href="/movies/<%= movie.id %>?date=<%=  movie.screens[0].numerical_isodate %>"
+                class="btn-outline-dark btn-block"
+                >Buy Ticket</a
+              >
             </div>
+          </div>
           <% } %>
-          </section>
+        </section>
         <% } %>
       </div>
       <div class="t-nav__wrapper">
@@ -131,7 +134,11 @@
         </div>
       </div>
       <div class="section-layout flex-column">
-        <section id="classics" class="owl-carousel owl-theme" data-ct="5"></section>
+        <section
+          id="classics"
+          class="owl-carousel owl-theme"
+          data-ct="5"
+        ></section>
       </div>
     </main>
     <%- include('partials/footer.ejs') %>
@@ -139,5 +146,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>

@@ -24,6 +24,12 @@
       rel="manifest"
       href="/flix-theater-server/public/images/favicons/site.webmanifest"
     />
+    <!-- *************** -->
+    <!-- materializecss -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
     <title>FLIX Theater | Dine in theater</title>
   </head>
   <body>
@@ -40,319 +46,358 @@
           <!-- left half of signup (account sign up forms) -->
           <div class="section-content section-content--form-steps">
             <div class="form-container">
-              <div class="collapsible-form">
-                <h3>
-                  <button id="act-personal" class="btn-transparent">
-                    Personal Information
-                  </button>
-                </h3>
-                <form id="act-personal__form" class="form__hidden" action="#">
-                  <div class="form-container-row">
-                    <div class="inline-form">
-                      <input
-                        type="text"
-                        name="fname"
-                        id="fname"
-                        autocomplete="off"
-                        placeholder="First Name"
-                        required
-                      />
-                      <label for="fname">First Name</label>
-                    </div>
-                    <div class="inline-form">
-                      <input
-                        type="text"
-                        name="lname"
-                        id="lname"
-                        autocomplete="off"
-                        placeholder="Last Name"
-                        required
-                      />
-                      <label for="lname">Last Name</label>
-                    </div>
-                  </div>
-                  <div class="form-container-row">
-                    <div class="inline-form">
-                      <input
-                        type="tel"
-                        name="phone"
-                        id="phone"
-                        autocomplete="tel"
-                        placeholder="Phone Number"
-                        required
-                      />
-                      <label for="phone">Phone Number</label>
-                    </div>
-                    <div class="inline-form">
-                      <input
-                        type="text"
-                        name="dob"
-                        id="dob"
-                        autocomplete="bday-day"
-                        placeholder="Birth Date"
-                        required
-                      />
-                      <label for="dob">Birth Date</label>
-                    </div>
-                  </div>
-                  <div class="radio-wrapper mt-sm">
-                    <label for="male" class="inline-form__radio"
-                      >Male
-                      <input id="gender-male" type="radio" name="male" />
-                      <span class="checkmark"></span>
-                    </label>
-                    <label for="female" class="inline-form__radio"
-                      >Female
-                      <input id="gender-female" type="radio" name="female" />
-                      <span class="checkmark"></span>
-                    </label>
-                  </div>
-                  <div class="form-container-row">
-                    <div class="inline-form">
-                      <input
-                        type="text"
-                        name="referralCode"
-                        id="referralCode"
-                        autocomplete="off"
-                        placeholder="Referral Code"
-                        required
-                      />
-                      <label for="referralCode">Referral Code</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div class="collapsible-form">
-                <h3>
-                  <button id="act-login" class="btn-transparent">
-                    Login Information
-                  </button>
-                </h3>
-                <form id="act-login__form" class="form__hidden" action="#">
-                  <div class="form-container-row">
-                    <div class="inline-form">
-                      <input
-                        type="email"
-                        name="email"
-                        id="email"
-                        autocomplete="email"
-                        placeholder="Email"
-                        required
-                      />
-                      <label for="email">Email</label>
-                    </div>
-                  </div>
-                  <div class="form-container-row">
-                    <div class="inline-form">
-                      <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        autocomplete="off"
-                        placeholder="Password"
-                        required
-                      />
-                      <label for="password">Password</label>
-                      <i class="fas fa-lock fa-lg"></i>
-                    </div>
-                  </div>
-                  <div class="form-container-row">
-                    <div class="inline-form">
-                      <input
-                        type="password"
-                        name="confirmPassword"
-                        id="confirmPassword"
-                        autocomplete="off"
-                        placeholder="Confirm Password"
-                        required
-                      />
-                      <label for="confirmPassword">Confirm Password</label>
-                      <i class="fas fa-lock fa-lg"></i>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div class="collapsible-form">
-                <h3>
-                  <button id="act-address" class="btn-transparent">
-                    Address Information
-                  </button>
-                </h3>
-                <form id="act-address__form" class="form__hidden" action="#">
-                  <div class="form-container-row">
-                    <div class="inline-form">
-                      <input
-                        type="text"
-                        name="streetAddress"
-                        id="streetAddress"
-                        autocomplete="street-address"
-                        placeholder="Street Address"
-                        required
-                      />
-                      <label for="streetAddress">Street Address</label>
-                    </div>
-                    <div class="inline-form">
-                      <input
-                        type="text"
-                        name="city"
-                        id="city"
-                        autocomplete="off"
-                        placeholder="City"
-                        required
-                      />
-                      <label for="city">City</label>
-                    </div>
-                  </div>
-                  <div class="form-container-row">
-                    <div class="inline-form">
-                      <select name="state" id="state">
-                        <option value=""></option>
-                        <option value="new jersey">New Jersey</option>
-                      </select>
-                      <label for="state">State</label>
-                      <i class="fas fa-caret-down fa-lg"></i>
-                    </div>
-                    <div class="inline-form">
-                      <input
-                        type="number"
-                        name="zipcode"
-                        id="zipcode"
-                        autocomplete="postal-code"
-                        placeholder="Zip Code"
-                        required
-                      />
-                      <label for="zipcode">Zip Code</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div class="collapsible-form">
-                <h3>
-                  <button id="act-cc" class="btn-transparent">
-                    Card Information
-                  </button>
-                </h3>
-                <form id="act-cc__form" class="form__hidden" action="#">
-                  <p class="pay-note">
-                    Payment with FLIX is always secure
-                  </p>
-                  <h2 class="pay-sum">Current Charge $0</h2>
-                  <p class="pay-details">Annual Fee $45 + Tax $3.99</p>
-                  <p class="note">
-                    Your card will be charged $45 plus tax after your 30 day
-                    free trial expires
-                  </p>
-                  <div class="form-container-row">
-                    <div class="inline-form">
-                      <input
-                        inputmode="numeric"
-                        type="text"
-                        name="cc-number"
-                        id="cc-number"
-                        autocomplete="cc-number"
-                        placeholder="Payment Card number"
-                        required
-                      />
-                      <label for="cc-number">Payment Card number</label>
-                    </div>
-                  </div>
-                  <div class="form-container-row">
-                    <div class="inline-form">
-                      <input
-                        inputmode="numeric"
-                        type="text"
-                        name="cc-exp-date"
-                        id="cc-exp-date"
-                        autocomplete="cc-exp-month"
-                        placeholder="Exp Date"
-                        required
-                      />
-                      <label for="cc-exp-date">Exp Date</label>
-                    </div>
-                    <div class="inline-form">
-                      <input
-                        type="text"
-                        name="cc-cvv"
-                        id="cc-cvv"
-                        autocomplete="cc-csc"
-                        placeholder="CVV/CVC"
-                        required
-                      />
-                      <label for="cc-cvv">CVV/CVC</label>
-                      <div class="cvc-loc-img">
-                        <img
-                          src="/assets/images/svg/cc-cvc.svg"
-                          alt="cvv/cvc location"
+              <ul class="collapsible">
+                <li>
+                  <h3 class="collapsible-header">
+                    <button id="act-personal" class="btn-transparent">
+                      Personal Information
+                    </button>
+                  </h3>
+                  <form
+                    id="act-personal__form"
+                    class="collapsible-body"
+                    action="#"
+                  >
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <input
+                          type="text"
+                          id="fName"
+                          name="fName"
+                          class="validate"
+                          autocomplete="off"
+                          required
                         />
+                        <label for="fName">First Name</label>
                       </div>
-                      <span class="toggle-info-btn"></span>
+                      <div class="input-field">
+                        <input
+                          type="text"
+                          id="lName"
+                          name="lName"
+                          class="validate"
+                          autocomplete="off"
+                          required
+                        />
+                        <label for="lName">Last Name</label>
+                      </div>
                     </div>
-                    <div class="inline-form">
-                      <input
-                        type="text"
-                        name="zipcode"
-                        id="zipcode"
-                        autocomplete="postal-code"
-                        placeholder="Zip Code"
-                        required
-                      />
-                      <label for="zipcode">Zip Code</label>
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <input
+                          type="tel"
+                          id="phone"
+                          name="phone"
+                          class="validate"
+                          autocomplete="off"
+                          required
+                        />
+                        <label for="phone">Phone</label>
+                      </div>
+                      <div class="input-field">
+                        <input
+                          type="text"
+                          id="dob"
+                          name="dob"
+                          class="validate"
+                          maxlength="10"
+                          autocomplete="bday-day"
+                          required
+                        />
+                        <label for="dob">Birth Date</label>
+                      </div>
                     </div>
-                  </div>
-                  <div class="form-container-row">
-                    <div class="inline-form">
-                      <input
-                        type="text"
-                        name="billing-address"
-                        id="billing-address"
-                        autocomplete="billing"
-                        placeholder="Billing Address"
-                        required
-                      />
-                      <label for="billing-address">Billing Address</label>
+                    <div class="radio-wrapper mt-sm">
+                      <label>
+                        <input
+                          class="with-gap"
+                          name="gender"
+                          type="radio"
+                          required
+                        />
+                        <span>Male</span>
+                      </label>
+                      <label>
+                        <input
+                          class="with-gap"
+                          name="gender"
+                          type="radio"
+                          required
+                        />
+                        <span>Female</span>
+                      </label>
+                      <label>
+                        <input
+                          class="with-gap"
+                          name="gender"
+                          type="radio"
+                          required
+                        />
+                        <span>Undefined</span>
+                      </label>
                     </div>
-                  </div>
-                </form>
-              </div>
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <input
+                          type="text"
+                          id="referralCode"
+                          name="referralCode"
+                          class="validate"
+                          autocomplete="off"
+                        />
+                        <label for="referralCode">Referral Code</label>
+                      </div>
+                    </div>
+                  </form>
+                </li>
+                <li>
+                  <h3 class="collapsible-header">
+                    <button id="act-login" class="btn-transparent">
+                      Login Information
+                    </button>
+                  </h3>
+                  <form
+                    id="act-login__form"
+                    class="collapsible-body"
+                    action="#"
+                  >
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <input
+                          type="email"
+                          id="email"
+                          name="email"
+                          class="validate"
+                          autocomplete="email"
+                          required
+                        />
+                        <label for="email">Email</label>
+                      </div>
+                    </div>
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <input
+                          type="password"
+                          id="password"
+                          name="password"
+                          class="validate"
+                          autocomplete="off"
+                          required
+                        />
+                        <label for="password">Password</label>
+                        <div><i class="fas fa-lock fa-lg"></i></div>
+                      </div>
+                    </div>
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <input
+                          type="password"
+                          id="confirmPassword"
+                          name="confirmPassword"
+                          class="validate"
+                          autocomplete="off"
+                          required
+                        />
+                        <label for="confirmPassword">Confirm Password</label>
+                        <div><i class="fas fa-lock fa-lg"></i></div>
+                      </div>
+                    </div>
+                  </form>
+                </li>
+                <li>
+                  <h3 class="collapsible-header">
+                    <button id="act-address" class="btn-transparent">
+                      Address Information
+                    </button>
+                  </h3>
+                  <form
+                    id="act-address__form"
+                    class="collapsible-body"
+                    action="#"
+                  >
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <input
+                          type="text"
+                          id="streetAddress"
+                          name="streetAddress"
+                          class="validate"
+                          autocomplete="street-address"
+                          required
+                        />
+                        <label for="streetAddress">Street Address</label>
+                      </div>
+                      <div class="input-field">
+                        <input
+                          type="text"
+                          id="city"
+                          name="city"
+                          class="validate"
+                          autocomplete="off"
+                          required
+                        />
+                        <label for="city">City</label>
+                      </div>
+                    </div>
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <select id="state" name="state">
+                          <option value="" disabled selected></option>
+                          <option value="nj">NJ</option>
+                          <option value="ny">NY</option>
+                          <option value="fl">FL</option>
+                        </select>
+                        <label for="state">State</label>
+                      </div>
+                      <div class="input-field">
+                        <input
+                          type="text"
+                          id="zipcode"
+                          name="zipcode"
+                          class="validate"
+                          autocomplete="postal-code"
+                          required
+                        />
+                        <label for="zipcode">Zip Code</label>
+                      </div>
+                    </div>
+                  </form>
+                </li>
+                <li>
+                  <h3 class="collapsible-header">
+                    <button id="act-cc" class="btn-transparent">
+                      Card Information
+                    </button>
+                  </h3>
+                  <form id="act-cc__form" class="collapsible-body" action="#">
+                    <p class="pay-note">Payment with FLIX is always secure</p>
+                    <h2 class="pay-sum">Current Charge $0</h2>
+                    <p class="pay-details">Annual Fee $45 + Tax $3.99</p>
+                    <p class="pay-note">
+                      Your card will be charged $45 plus tax after your 30 day
+                      free trial expires
+                    </p>
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <input
+                          inputmode="numeric"
+                          type="text"
+                          id="ccNumber"
+                          name="ccNumber"
+                          class="validate"
+                          autocomplete="cc-number"
+                          required
+                        />
+                        <label for="ccNumber">Payment Card Number</label>
+                      </div>
+                    </div>
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <input
+                          inputmode="numeric"
+                          type="text"
+                          id="ccExpDate"
+                          name="ccExpDate"
+                          class="validate"
+                          autocomplete="cc-exp-month"
+                          required
+                        />
+                        <label for="ccExpDate">Exp Date</label>
+                      </div>
+                      <div class="input-field">
+                        <input
+                          inputmode="numeric"
+                          type="text"
+                          id="ccCVV"
+                          name="ccCVV"
+                          class="validate"
+                          autocomplete="cc-csc"
+                          required
+                        />
+                        <label for="ccCVV">CVV/CVC</label>
+                        <div class="cvc-loc-img">
+                          <img
+                            src="/assets/images/svg/cc-cvc.svg"
+                            alt="cvv/cvc location"
+                          />
+                        </div>
+                        <div>
+                          <button class="toggle-info-btn"></button>
+                        </div>
+                      </div>
+                      <div class="input-field">
+                        <input
+                          type="text"
+                          id="ccZipcode"
+                          name="ccZipcode"
+                          class="validate"
+                          autocomplete="postal-code"
+                          required
+                        />
+                        <label for="ccZipcode">Zip Code</label>
+                      </div>
+                    </div>
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <input
+                          type="text"
+                          id="billingAddress"
+                          name="billingAddress"
+                          class="validate"
+                          autocomplete="billing"
+                          required
+                        />
+                        <label for="billingAddress">Billing Address</label>
+                      </div>
+                    </div>
+                  </form>
+                </li>
+              </ul>
               <form class="act-tos-form flex-column" action="#">
-                <label class="cb-liner" for="tcm-policy">
+                <label for="tcmPolicy">
                   <input
                     type="checkbox"
-                    name="tcm-policy"
-                    id="tcm-policy"
+                    id="tcmPolicy"
+                    name="tcmPolicy"
+                    class="filled-in"
                     required
                   />
-                  <span class="checkmark"></span>
-                  I agree to the
-                  <a href="#" class="color-text color-text__link"
-                    >Terms & Conditions</a
-                  >
-                  and
-                  <a href="#" class="color-text color-text__link"
-                    >Membership policies</a
+                  <span
+                    >I agree to the
+                    <a href="#" class="color-text color-text__link"
+                      >Terms & Conditions</a
+                    >
+                    and
+                    <a href="#" class="color-text color-text__link"
+                      >Membership policies</a
+                    ></span
                   >
                 </label>
-                <label class="cb-liner" for="e-subscription">
+                <label for="eSubscription">
                   <input
                     type="checkbox"
-                    name="e-subscription"
-                    id="e-subscription"
+                    id="eSubscription"
+                    name="eSubscription"
+                    class="filled-in"
+                    required
+                    checked
                   />
-                  <span class="checkmark"></span>
-                  <p>
-                    I agree to receive information about my account, invitations
-                    to FLIX events, weekly showtimes emails, special offers and
-                    news
-                  </p>
+                  <span
+                    >I agree to receive information about my account,
+                    invitations to FLIX events, weekly showtimes emails, special
+                    offers and news</span
+                  >
                 </label>
                 <button class="btn-prim">Submit</button>
                 <p>
                   No thank you, sign me up for
-                  <a href="#" class="color-text color-text__link"
+                  <a
+                    href="/membership/silver"
+                    class="color-text color-text__link"
                     >Silver Membership</a
                   >
                 </p>
-                <div class="section-content--mem-desc__faq">
+                <div class="mem-desc__faq">
                   <p>
                     * Discount varies based on day of week and location. Pricing
                     is per ticket per visit. Subject to change without notice.
@@ -368,13 +413,11 @@
           </div>
           <!-- right half of signup (membership rewards/descriptions) -->
           <div class="section-content section-content--mem-desc">
-            <div class="section-content--mem-desc__content">
+            <div class="mem-desc__content">
               <h2 class="promo-text">
                 Try our FLIX Premium Gold Membership free for 30 days
               </h2>
-              <p class="rewards-text">
-                Rewards include:
-              </p>
+              <p class="rewards-text">Rewards include:</p>
               <ul class="mem-desc-list">
                 <li>10% off your Food & Beverage</li>
                 <li>Member-Only Ticket Pricing</li>
@@ -397,13 +440,13 @@
                 Anniversary.
               </p>
             </div>
-            <div class="section-content--mem-desc__img">
+            <div class="mem-desc__img">
               <img
                 src="https://images.unsplash.com/photo-1578404249989-0fcd5bd6eb7f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
                 alt="gold member"
               />
             </div>
-            <div class="section-content--mem-desc__faq">
+            <div class="mem-desc__faq">
               <p>
                 * Discount varies based on day of week and location. Pricing is
                 per ticket per visit. Subject to change without notice. Other
@@ -422,5 +465,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>

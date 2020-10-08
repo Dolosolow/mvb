@@ -2,46 +2,40 @@
   margin: auto;
   max-width: 136.6rem;
   width: 100%;
-}
 
-.container-layout--limiter {
-  @include respond-to-breakpoint(1366) {
-    padding: 0 1.2rem;
-  }
-}
-
-.container-layout--limiter-lg {
-  @include respond-to-breakpoint(1366) {
-    padding: 0 3rem;
-  }
-}
-
-.container-layout-padded {
-  max-width: 136.6rem;
-  padding: 5.5rem 4rem;
-
-  @include respond-to-breakpoint(big-desktop) {
-    margin: auto;
+  &--limiter {
+    @include respond-to-breakpoint(1366) {
+      padding: 0 1.2rem;
+    }
   }
 
-  @include respond-to-breakpoint(tab-land) {
-    padding: 6rem 0;
+  &--limiter-lg {
+    @include respond-to-breakpoint(1366) {
+      padding: 0 3rem;
+    }
   }
 
-  @include respond-to-breakpoint(tab-port) {
-    flex-direction: column;
-    padding: 0 0 4rem 0;
-  }
+  &-padded {
+    max-width: 136.6rem;
+    padding: 5.5rem 4rem;
 
-  @include respond-to-breakpoint(phone) {
-    padding: 0;
-  }
-}
+    @include respond-to-breakpoint(big-desktop) {
+      margin: auto;
+    }
 
-.section-layout {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
+    @include respond-to-breakpoint(tab-land) {
+      padding: 6rem 0;
+    }
+
+    @include respond-to-breakpoint(tab-port) {
+      flex-direction: column;
+      padding: 0 0 4rem 0;
+    }
+
+    @include respond-to-breakpoint(phone) {
+      padding: 0;
+    }
+  }
 }
 
 .section-content {

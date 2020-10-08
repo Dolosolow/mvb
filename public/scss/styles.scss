@@ -9,20 +9,22 @@
 
 @import "./components/buttons";
 @import "./components/card";
+@import "./components/content-placeholder";
 @import "./components/data-tablesaw";
 @import "./components/flash-msg";
-@import "./components/form";
+@import "./components/forms/form";
+@import "./components/inputs";
 @import "./components/loader";
 @import "./components/popup";
 @import "./components/progress-bar";
-@import "./components/radio";
-@import "./components/red-cm-checkbox";
 @import "./components/switch";
-@import "./components/tos-submit";
+@import "./components/forms/tos-form";
 
 @import "./layouts/containers";
 @import "./layouts/footer";
 @import "./layouts/navbar";
+@import "./layouts/section-content";
+@import "./layouts/section-layout";
 
 @import "./pages/admin-account.scss";
 @import "./pages/book-movie";

@@ -1,62 +1,24 @@
 const Movie = require('../models/movie');
-const apiCall = require('../utils/api');
-
-function customImgResize(url, size) {
-  const newUrl = url.split('_');
-  newUrl[2] = `SX${size}.jpg`;
-  return newUrl.join('_');
-}
+const Screen = require('../models/screen');
+const time = require('../utils/lib/time');
 
 exports.getAdminDash = (req, res, next) => { 
   res.render('admin-dash', { transNav: false, path: "/admin" });
 }
 
-// ALTER THIS LATER, ADMIN NOT RELATING TO MOVIES ^^^^
-
-exports.getCurrentMovies = (req, res, next) => {
-  Movie.fetchAllMovies(currentMovies => {
-    res.render('index', { transNav: true, path: '/', currentMovies });
-  });
+exports.getMovies = async (req, res, next) => {
+  const movies = await Movie.getAllMovies();
+  res.render('index', { transNav: true, path: '/', currentMovies: movies });
 }
 
-exports.getCurrentMoviesData = (req, res, next) => {
-  Movie.fetchAllMovies(currentMovies => {
-    res.status(200).json({ currentMovies });
-  });
-}
-
-exports.getMovie = (req, res, next) => {
+exports.getMovieById = async (req, res, next) => {
   const movieId = req.params.id;
+  let screen;
 
-  Movie.getById(movieId, foundMovie => {
-    res.render('seat-booking', { transNav: true, path: '/', movie: foundMovie });
-  });
-}
+  let foundMovie = await Movie.getById(movieId);
+  foundMovie.screens = time.sortScreenTime(foundMovie.screens);
 
-exports.postAddMovie = async (req, res, next) => {
-  const movieId = req.body.movieId;
-  const foundMovie = await apiCall.getMovieById(movieId);
+  screen = await Screen.getScreenById(foundMovie.screens[0].times[0].id);
 
-  const { 
-    Title, 
-    Rated, 
-    Runtime, 
-    Genre, 
-    Actors, 
-    Plot, 
-    Poster 
-  } = foundMovie;
-
-  const newMovie = new Movie(
-    Title,
-    Rated,
-    Runtime,
-    Genre,
-    Actors,
-    Plot,
-    customImgResize(Poster, 600),
-    customImgResize(Poster, 1500)
-  );
-  newMovie.save();
-  res.status(200).json({ Title });
+  res.render('seat-booking', { transNav: true, path: '/', movie: foundMovie, screen  });
 }

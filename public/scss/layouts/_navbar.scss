@@ -3,292 +3,317 @@
 // ************************************!!
 #navbar {
   position: relative;
-}
 
-.main-nav {
-  font-family: $primary-font;
-  justify-content: space-between;
-  padding: 0.5rem 0;
-  z-index: 100;
+  & > nav {
+    height: 8.4rem;
+    line-height: 1;
 
-  * > a {
-    text-transform: uppercase;
-  }
-}
+    &.main-nav {
+      background-color: transparent;
+      box-shadow: none;
+      color: #121212;
+      font-family: $primary-font;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      z-index: 100;
 
-.nav-trans {
-  background-color: transparent;
-  color: #fff;
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  @include respond-to-breakpoint(tab-land) {
-    background: linear-gradient(
-      to bottom,
-      rgba(#000, 0.5),
-      rgba(#000, 0.01)
-    ) !important;
-    position: fixed;
-  }
-
-  .navbar-brand {
-    color: currentColor;
-
-    &:hover {
-      color: currentColor;
-    }
-  }
-}
-
-.navbar-brand {
-  align-self: flex-start;
-  color: $primary-color;
-  cursor: pointer;
-  letter-spacing: -3px;
-  font: bold 5rem $secondary-font;
-
-  @include respond-to-breakpoint(tab-land) {
-    transform: scale(0.7);
-  }
-
-  &:hover {
-    color: $primary-color;
-  }
-
-  span {
-    display: block;
-    font-size: 1rem;
-    font-weight: 300;
-    letter-spacing: 3px;
-    margin-top: -1rem;
-  }
-}
-
-.hamburger {
-  cursor: pointer;
-  margin: 0.5rem 0 0 1.5rem;
-  z-index: 100;
-
-  @include respond-to-breakpoint(tab-land) {
-    margin: 0.5rem 1rem 0 0;
-  }
-
-  svg {
-    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  path {
-    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
-      stroke-dasharray 500ms cubic-bezier(0.4, 0, 0.2, 1),
-      stroke-dashoffset 500ms cubic-bezier(0.4, 0, 0.2, 1);
-    stroke: currentColor;
-
-    @each $key, $path in map-get($paths, "hidden") {
-      &:nth-child(#{$key}) {
-        @include create-hidden-path($key, $path);
+      * > a {
+        text-transform: uppercase;
       }
     }
-  }
-}
 
-.navigation__checkbox {
-  display: none;
-}
+    &.nav-trans {
+      background-color: transparent;
+      color: #fff;
+      position: absolute;
+      top: 0;
+      left: 0;
 
-.navigation__checkbox:checked {
-  + .hamburger {
-    svg {
-      transform: rotate(90deg);
-    }
-
-    path {
-      stroke: #fff;
-
-      @each $key, $path in map-get($paths, "show") {
-        &:nth-child(#{$key}) {
-          @include create-show-path($key, $path);
-        }
+      @include respond-to-breakpoint(tab-land) {
+        background: linear-gradient(
+          to bottom,
+          rgba(#000, 0.5),
+          rgba(#000, 0.01)
+        ) !important;
+        position: fixed;
       }
-    }
-  }
 
-  ~ .navigation__bg-wrapper {
-    height: 100vh;
-    opacity: 0.5;
-    z-index: 95;
-  }
-
-  ~ .navigation__collapse {
-    transform: translateX(0);
-  }
-}
-
-.navigation {
-  flex: 1 1 auto;
-  justify-content: space-between;
-  margin-left: auto;
-  max-width: 90rem;
-  min-width: 50rem;
-  position: relative;
-
-  @include respond-to-breakpoint(tab-land) {
-    display: none;
-  }
-
-  &::after {
-    background-color: currentColor;
-    content: "";
-    height: 2rem;
-    position: absolute;
-    top: 1rem;
-    right: 22rem;
-    width: 2px;
-  }
-
-  &__item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &:not(:last-child) {
-      margin-right: 2.4rem;
-
-      .navigation__link {
+      .navbar-brand {
         color: currentColor;
 
-        &:hover,
-        &.active {
-          color: $primary-color;
+        &:hover {
+          color: currentColor;
         }
       }
     }
 
-    &:nth-child(6) {
-      margin: 0 0.8rem 0 2.5rem;
-    }
+    .navbar-brand {
+      align-self: flex-start;
+      color: $primary-color;
+      cursor: pointer;
+      letter-spacing: -3px;
+      font: bold 5rem $secondary-font;
 
-    &.navigation__item--btn {
-      color: #fff;
-
-      .btn-prim {
-        width: 10rem;
+      @include respond-to-breakpoint(tab-land) {
+        transform: scale(0.7);
       }
-    }
-  }
-
-  &__link {
-    font-size: 2.4rem;
-    letter-spacing: 2px;
-    transition: color 0.2s ease-in;
-  }
-}
-
-.navigation__bg-wrapper {
-  background-color: black;
-  height: 0;
-  position: fixed;
-  top: 0;
-  right: 0;
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
-  will-change: opacity;
-  z-index: -1;
-}
-
-.navigation__collapse {
-  align-items: flex-start;
-  background-color: $secondary-section-bg-color;
-  height: 100vh;
-  min-width: 36rem;
-  overflow-y: scroll;
-  padding: 8.8rem 0 3rem 7rem;
-  position: fixed;
-  top: 0;
-  right: 0;
-  transform: translateX(100%);
-  transition: transform 0.3s;
-  white-space: nowrap;
-  width: 32vw;
-  z-index: 99;
-
-  @include respond-to-breakpoint(tab-land) {
-    padding-left: 5.5rem;
-  }
-
-  @include respond-to-breakpoint(tab-port) {
-    min-width: 45rem;
-  }
-
-  @include respond-to-breakpoint(phone) {
-    min-width: auto;
-    width: 100%;
-  }
-
-  .navigation__item {
-    margin: 0 0 0.8rem 0;
-
-    .navigation__link {
-      color: #fff;
-      font-size: 4.8rem;
-      letter-spacing: 0.5rem;
-      transition: color 0.3s ease-in-out;
 
       &:hover {
         color: $primary-color;
       }
+
+      span {
+        display: block;
+        font-size: 1rem;
+        font-weight: 300;
+        letter-spacing: 3px;
+        margin-top: -1rem;
+      }
     }
-  }
-}
 
-.navigation__store-logos {
-  margin: 2rem 0;
-}
+    label.hamburger {
+      color: currentColor;
+      cursor: pointer;
+      margin: 0.5rem 0 0 1.5rem;
+      z-index: 100;
 
-.navigation__footer {
-  .footer__adr {
-    font: 400 1.4rem $secondary-font;
+      @include respond-to-breakpoint(tab-land) {
+        margin: 0.5rem 1rem 0 0;
+      }
 
-    p:not(:last-child) {
-      margin-bottom: 0.5rem;
+      svg {
+        transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      path {
+        transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
+          stroke-dasharray 500ms cubic-bezier(0.4, 0, 0.2, 1),
+          stroke-dashoffset 500ms cubic-bezier(0.4, 0, 0.2, 1);
+        stroke: currentColor;
+
+        @each $key, $path in map-get($paths, "hidden") {
+          &:nth-child(#{$key}) {
+            @include create-hidden-path($key, $path);
+          }
+        }
+      }
     }
-  }
-}
 
-.navigation__social {
-  margin-top: 2rem;
-  a {
-    color: #fff;
-    font-size: 3rem;
+    .navigation__checkbox {
+      display: none;
 
-    &:not(:last-child) {
-      margin-right: 2.8rem;
+      &:checked {
+        + .hamburger {
+          svg {
+            transform: rotate(90deg);
+          }
+
+          path {
+            stroke: #fff;
+
+            @each $key, $path in map-get($paths, "show") {
+              &:nth-child(#{$key}) {
+                @include create-show-path($key, $path);
+              }
+            }
+          }
+        }
+
+        ~ .navigation__bg-wrapper {
+          height: 100vh;
+          opacity: 0.5;
+          z-index: 95;
+        }
+
+        ~ .navigation__collapse {
+          transform: translateX(0);
+        }
+      }
     }
-  }
-}
 
-.navigation__acct {
-  margin-bottom: 4.5rem;
-  margin-top: 0.5rem;
-  width: 100%;
+    .navigation {
+      flex: 1 1 auto;
+      justify-content: space-between;
+      margin-left: auto;
+      max-width: 90rem;
+      min-width: 50rem;
+      position: relative;
 
-  .navigation__link {
-    line-height: 1;
-    letter-spacing: 0;
-    padding: 7px 3rem;
+      @include respond-to-breakpoint(tab-land) {
+        display: none;
+      }
 
-    &:not(.btn-prim) {
-      padding-left: 0;
+      &::after {
+        background-color: currentColor;
+        content: "";
+        height: 2rem;
+        position: absolute;
+        top: 1rem;
+        right: 22rem;
+        width: 2px;
+      }
+
+      &__item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:not(:last-child) {
+          margin-right: 2.4rem;
+
+          .navigation__link {
+            color: currentColor;
+
+            &:hover,
+            &.active {
+              color: $primary-color;
+            }
+          }
+        }
+
+        &:nth-child(6) {
+          margin: 0 0.8rem 0 2.5rem;
+        }
+
+        &.navigation__item--btn {
+          color: #fff;
+
+          .btn-prim {
+            width: 10rem;
+          }
+        }
+      }
+
+      &__link {
+        font-size: 2.4rem;
+        letter-spacing: 2px;
+        transition: color 0.2s ease-in;
+      }
     }
-  }
-}
 
-.navigation__toggle {
-  display: none;
+    .navigation__bg-wrapper {
+      background-color: black;
+      height: 0;
+      position: fixed;
+      top: 0;
+      right: 0;
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+      will-change: opacity;
+      z-index: -1;
+    }
 
-  @include respond-to-breakpoint(tab-land) {
-    display: flex;
-    align-items: flex-start;
+    .navigation__collapse {
+      align-items: flex-start;
+      background-color: $secondary-section-bg-color;
+      color: #fff;
+      height: 100vh;
+      min-width: 36rem;
+      overflow: auto;
+      line-height: 1.5;
+      padding: 8.8rem 0 0 6rem;
+      position: fixed;
+      top: 0;
+      right: 0;
+      transform: translateX(100%);
+      transition: transform 0.3s;
+      white-space: nowrap;
+      width: 32vw;
+      z-index: 99;
+      -webkit-overflow-scrolling: touch;
+
+      @include respond-to-breakpoint(tab-land) {
+        padding-left: 5.5rem;
+      }
+
+      @include respond-to-breakpoint(tab-port) {
+        min-width: 45rem;
+      }
+
+      @include respond-to-breakpoint(phone) {
+        min-width: auto;
+        width: 100%;
+      }
+
+      span {
+        color: $muted;
+        font-size: 3rem;
+      }
+
+      .navigation__item {
+        flex-shrink: 0;
+        margin: 0 0 0.8rem 0;
+
+        .navigation__link {
+          font-size: 4.8rem;
+          letter-spacing: 0.5rem;
+          transition: color 0.3s ease-in-out;
+
+          &:hover {
+            color: $primary-color;
+          }
+        }
+      }
+
+      .navigation__toggle {
+        display: none;
+
+        @include respond-to-breakpoint(tab-land) {
+          display: flex;
+          align-items: flex-start;
+        }
+      }
+    }
+
+    .navigation__store-logos {
+      margin: 2rem 0;
+    }
+
+    .navigation__footer {
+      color: #fff;
+
+      .footer__adr {
+        font: 400 1.4rem $secondary-font;
+
+        p:not(:last-child) {
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+
+    .navigation__social {
+      display: flex;
+      margin-top: 3rem;
+
+      a {
+        color: #fff;
+        font-size: 3rem;
+
+        &:first-of-type {
+          padding-left: 0;
+        }
+
+        &:not(:last-child) {
+          margin-right: 1rem;
+        }
+      }
+    }
+
+    .navigation__acct {
+      margin-bottom: 4.5rem;
+      margin-top: 0.5rem;
+      width: 100%;
+
+      .navigation__link {
+        line-height: 1;
+        letter-spacing: 0;
+        padding: 7px 3rem;
+
+        &:not(.btn-prim) {
+          padding-left: 0;
+        }
+      }
+    }
   }
 }
 

@@ -1,17 +1,38 @@
-const fs = require('fs');
-const path = require('path');
+const getDb = require('../utils/database').getDatabase;
 const { v4: uuidv4 } = require('uuid');
-const movieData = path.join(path.dirname('data'), 'data/movies.json');
-const seatingData = path.join(path.dirname('data'), 'data/seat-chart.json');
+const Screen = require('./screen');
+const moment = require('moment');
 
-const getContentsFromFile = (filePath, cb) => {
-  fs.readFile(filePath, (err, fileContent) => {
-    if(err) {
-      cb([]);
-    } else {
-      cb(JSON.parse(fileContent));
-    }
-  });
+async function isAlreadyCreated(title) {
+  const db = getDb();
+  const movie = await db.collection('movies').findOne({ title });
+
+  if(movie) {
+    return movie;
+  } else {
+    return false;
+  }
+}
+
+async function updateMovie(movie, newScreen) {
+  const db = getDb();
+  const currentDate = moment();
+  const dateFormat = Screen.getDateFormat();
+  const dateIndex = movie.screens.findIndex(screen => screen.date === newScreen.date);
+
+  console.log(`index: ${dateIndex}`)
+
+  if(dateIndex !== -1) {
+    movie.screens[dateIndex].times = [...movie.screens[dateIndex].times, { id: newScreen.id, time: newScreen.startTime }];
+  } else {
+    movie.screens.push({ date: newScreen.date, numerical_isodate: newScreen.numerical_isodate, times: new Array({ id: newScreen.id, time: newScreen.startTime }) });
+  }
+
+  movie.screens.sort((a, b) => {
+    return moment(a.date, dateFormat).diff(currentDate) - moment(b.date, dateFormat).diff(currentDate)
+  })
+
+  await db.collection('movies').updateOne({ id: movie.id }, { $set: { screens: movie.screens } });
 }
 
 module.exports = class Movie {
@@ -33,46 +54,40 @@ module.exports = class Movie {
     this.plot = plot;
     this.poster = poster;
     this.poster_xl = poster_xl;
+    this.screens = []
   }
 
-  save() {
-    this.id = uuidv4();
-    this.theater = Math.floor(Math.random() * Math.floor(10)) + 1;
-    this.seating_chart = JSON.parse(fs.readFileSync(seatingData));
-    getContentsFromFile(movieData, movies => {
-      movies.push(this);
-      fs.writeFile(movieData, JSON.stringify(movies, null, 2), err => console.log(err));
-    })
+  async save() {
+    const db = getDb();
+    const screen = new Screen();
+    
+    let movie = await isAlreadyCreated(this.title);
+
+    this.id = movie ? movie.id : uuidv4();
+
+    let newScreen = {};
+    newScreen = await screen.addMovie(this.id, this.runtime.split(' ')[0]);
+
+    if(movie) {
+      updateMovie(movie, newScreen);
+    } else {
+      this.screens.push({ date: newScreen.date, numerical_isodate: newScreen.numerical_isodate, times: new Array({ id: newScreen.id, time: newScreen.startTime }) });
+      await db.collection('movies').insertOne(this);
+    }
   }
 
-  static fetchAllMovies(cb) {
-    getContentsFromFile(movieData, cb);
+  static async getAllMovies() {
+    const db = getDb();
+    const movies = await db.collection('movies').find().toArray();
+    return movies;
   }
 
-  static getById(id, cb) {
-    getContentsFromFile(movieData, movies => {
-      let movie = movies.find(mov => mov.id === id);
-      cb(movie);
-    })
+  static async getById(id) {
+    const db = getDb();
+    const foundMovie = await db.collection('movies').findOne({ id });
+    return foundMovie;
   }
 
   static updateSeat(movieId, seat, reserve) {
-    getContentsFromFile(movieData, movies => {
-      const movieIdx = movies.findIndex(mov => mov.id === movieId);
-      const movie = movies[movieIdx];
-      let rowIdx = movie.seating_chart.findIndex(row => row.row_id.toUpperCase() === seat.split('')[0]);
-      const row = movie.seating_chart[rowIdx];
-      let updatedRow;
-
-      if(row) {
-        updatedRow = { ...row };
-        let seatIdx = updatedRow.seats.findIndex(currentSeat => currentSeat.id === seat.toLowerCase());
-        updatedRow.seats[seatIdx].reserved = reserve;
-        movie.seating_chart[rowIdx] = updatedRow;
-        movies[movieIdx] = movie;
-
-        fs.writeFile(movieData, JSON.stringify(movies, null, 2), err => console.log(err));
-      }
-    })
   }
 }
