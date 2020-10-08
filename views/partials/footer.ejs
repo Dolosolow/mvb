@@ -55,29 +55,30 @@
     <a href="#" class="popup__close-btn" id="si-close-btn">&times;</a>
     <h2 class="popup__title">Log In</h2>
     <form action="#">
-      <div class="inline-form">
+      <div class="input-field">
         <input
           type="email"
-          name="email"
           id="email"
-          autocomplete="off"
-          placeholder="Email"
+          name="email"
+          class="validate"
+          autocomplete="email"
           required
         />
         <label for="email">Email</label>
       </div>
-      <div class="inline-form">
+      <div class="input-field">
         <input
           type="password"
-          name="password"
           id="password"
-          placeholder="Password"
+          name="password"
+          class="validate"
+          autocomplete="off"
           required
         />
         <label for="password">Password</label>
-        <i class="fas fa-lock fa-lg"></i>
+        <div><i class="fas fa-lock fa-lg"></i></div>
       </div>
-      <button class="color-text color-text__btn float-right mt-xs mb-xs">
+      <button class="color-text color-text__btn float-right">
         Forgot Password?
       </button>
       <button class="btn-prim">Log In</button>

@@ -27,7 +27,7 @@ body {
   }
 
   &.no-scroll {
-    overflow: hidden;
+    overflow: hidden !important;
   }
 }
 
@@ -54,7 +54,7 @@ button {
 }
 
 .bg-smoked {
-  background-color: $section-bg-color;
+  background-color: $section-bg-color !important;
 }
 
 .muted {

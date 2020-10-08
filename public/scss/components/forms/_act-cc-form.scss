@@ -1,0 +1,60 @@
+#act-cc__form {
+  padding-top: 1rem;
+
+  @include respond-to-breakpoint(750) {
+    margin-left: -45px;
+  }
+
+  @include respond-to-breakpoint(phone) {
+    width: 96vw;
+  }
+
+  p {
+    color: $muted;
+  }
+
+  .pay-sum {
+    color: $primary-color;
+    font-size: 4rem;
+    text-transform: uppercase;
+  }
+
+  .pay-details {
+    color: $primary-color;
+    text-transform: uppercase;
+  }
+
+  .pay-note {
+    font-size: 1.5rem;
+  }
+
+  .form-container-row {
+    display: flex;
+    margin-top: 2rem;
+    width: 100%;
+
+    @include respond-to-breakpoint(phone) {
+      flex-direction: column;
+      margin-top: 0;
+      width: 100%;
+    }
+
+    &:first-of-type {
+      @include respond-to-breakpoint(phone) {
+        margin-top: 2rem;
+      }
+    }
+
+    &:nth-of-type(2) {
+      justify-content: space-between;
+
+      .input-field {
+        width: 31%;
+
+        @include respond-to-breakpoint(phone) {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

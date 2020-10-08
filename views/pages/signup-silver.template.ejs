@@ -24,6 +24,12 @@
       rel="manifest"
       href="/flix-theater-server/public/images/favicons/site.webmanifest"
     />
+    <!-- *************** -->
+    <!-- materializecss -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
     <title>FLIX Theater | Dine in theater</title>
   </head>
   <body>
@@ -44,135 +50,155 @@
           <!-- left half of signup (account sign up forms) -->
           <div class="section-content section-content--form-steps">
             <div class="form-container">
-              <div class="collapsible-form collapsible-form--show">
-                <form id="act-personal__form" action="#">
-                  <div class="form-container-row">
-                    <div class="inline-form">
-                      <input
-                        type="text"
-                        name="fname"
-                        id="fname"
-                        autocomplete="off"
-                        placeholder="First Name"
-                        required
-                      />
-                      <label for="fname">First Name</label>
+              <ul class="collapsable">
+                <li>
+                  <form
+                    id="act-personal__form"
+                    class="collapsible-body"
+                    action="#"
+                  >
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <input
+                          type="text"
+                          id="fName"
+                          name="fName"
+                          class="validate"
+                          autocomplete="off"
+                          required
+                        />
+                        <label for="fName">First Name</label>
+                      </div>
+                      <div class="input-field">
+                        <input
+                          type="text"
+                          id="lName"
+                          name="lName"
+                          class="validate"
+                          autocomplete="off"
+                          required
+                        />
+                        <label for="lName">Last Name</label>
+                      </div>
                     </div>
-                    <div class="inline-form">
-                      <input
-                        type="text"
-                        name="lname"
-                        id="lname"
-                        autocomplete="off"
-                        placeholder="Last Name"
-                        required
-                      />
-                      <label for="lname">Last Name</label>
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <input
+                          type="email"
+                          id="email"
+                          name="email"
+                          class="validate"
+                          autocomplete="email"
+                          required
+                        />
+                        <label for="email">Email</label>
+                      </div>
+                      <div class="input-field">
+                        <input
+                          type="tel"
+                          id="phone"
+                          name="phone"
+                          class="validate"
+                          autocomplete="off"
+                          required
+                        />
+                        <label for="phone">Phone Number</label>
+                      </div>
                     </div>
-                  </div>
-                  <div class="form-container-row">
-                    <div class="inline-form">
-                      <input
-                        type="email"
-                        name="email"
-                        id="email"
-                        autocomplete="email"
-                        placeholder="Email"
-                        required
-                      />
-                      <label for="email">Email</label>
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <input
+                          type="password"
+                          id="password"
+                          name="password"
+                          class="validate"
+                          autocomplete="off"
+                          required
+                        />
+                        <label for="password">Password</label>
+                        <div><i class="fas fa-lock fa-lg"></i></div>
+                      </div>
+                      <div class="input-field">
+                        <input
+                          type="password"
+                          id="confirmPassword"
+                          name="confirmPassword"
+                          class="validate"
+                          autocomplete="off"
+                          required
+                        />
+                        <label for="confirmPassword">Confirm Password</label>
+                        <div><i class="fas fa-lock fa-lg"></i></div>
+                      </div>
                     </div>
-                    <div class="inline-form">
-                      <input
-                        type="tel"
-                        name="phone"
-                        id="phone"
-                        autocomplete="tel"
-                        placeholder="Phone"
-                        required
-                      />
-                      <label for="phone">Phone</label>
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <input
+                          type="text"
+                          id="referralCode"
+                          name="referralCode"
+                          class="validate"
+                          autocomplete="off"
+                        />
+                        <label for="referralCode">Referral Code</label>
+                      </div>
                     </div>
-                  </div>
-                  <div class="form-container-row">
-                    <div class="inline-form">
-                      <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        autocomplete="off"
-                        placeholder="Password"
-                        required
-                      />
-                      <label for="password">Password</label>
-                      <i class="fas fa-lock fa-lg"></i>
-                    </div>
-                    <div class="inline-form">
-                      <input
-                        type="password"
-                        name="confirmPassword"
-                        id="confirmPassword"
-                        autocomplete="off"
-                        placeholder="Confirm Password"
-                        required
-                      />
-                      <label for="confirmPassword">Confirm Password</label>
-                      <i class="fas fa-lock fa-lg"></i>
-                    </div>
-                  </div>
-                  <div class="form-container-row">
-                    <div class="inline-form">
-                      <input
-                        type="text"
-                        name="referralCode"
-                        id="referralCode"
-                        autocomplete="off"
-                        placeholder="Referral Code"
-                        required
-                      />
-                      <label for="referralCode">Referral Code</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
+                  </form>
+                </li>
+              </ul>
               <form class="act-tos-form flex-column" action="#">
-                <label class="cb-liner" for="tcm-policy">
+                <label for="tcmPolicy">
                   <input
                     type="checkbox"
-                    name="tcm-policy"
-                    id="tcm-policy"
+                    id="tcmPolicy"
+                    name="tcmPolicy"
+                    class="filled-in"
                     required
                   />
-                  <span class="checkmark"></span>
-                  I agree to the
-                  <a href="#" class="color-text color-text__link"
-                    >Terms & Conditions</a
-                  >
-                  and
-                  <a href="#" class="color-text color-text__link"
-                    >Membership policies</a
+                  <span
+                    >I agree to the
+                    <a href="#" class="color-text color-text__link"
+                      >Terms & Conditions</a
+                    >
+                    and
+                    <a href="#" class="color-text color-text__link"
+                      >Membership policies</a
+                    ></span
                   >
                 </label>
-                <label class="cb-liner" for="e-subscription">
+                <label for="eSubscription">
                   <input
                     type="checkbox"
-                    name="e-subscription"
-                    id="e-subscription"
+                    id="eSubscription"
+                    name="eSubscription"
+                    class="filled-in"
+                    checked
+                    required
                   />
-                  <span class="checkmark"></span>
-                  <p>
-                    I agree to receive information about my account, invitations
-                    to FLIX events, weekly showtimes emails, special offers and
-                    news
-                  </p>
+                  <span
+                    >I agree to receive information about my account,
+                    invitations to FLIX events, weekly showtimes emails, special
+                    offers and news</span
+                  >
                 </label>
-                <button class="btn-prim">Sign up</button>
+                <button class="btn-prim">Submit</button>
                 <p>
                   Already have an account?
-                  <a href="#" class="color-text color-text__link"
-                    >&nbsp; Sign in</a
+                  <a href="#si-popup" class="color-text color-text__link"
+                    >Sign in</a
                   >
                 </p>
+                <div class="mem-desc__faq">
+                  <p>
+                    * Discount varies based on day of week and location. Pricing
+                    is per ticket per visit. Subject to change without notice.
+                    Other restrictions may apply.
+                  </p>
+                  <p>
+                    * Only 5 tickets / day valid towards 25 Tickets Reward and
+                    Membership Level Upgrade
+                  </p>
+                </div>
               </form>
             </div>
           </div>
@@ -183,5 +209,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>

@@ -1,0 +1,9 @@
+#act-personal__form {
+  .radio-wrapper {
+    margin-bottom: 2rem;
+
+    label:not(:last-of-type) {
+      margin-right: 4rem;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+// ------------------------
+// imported scss files are located in the bottom of this file
+#act-personal__form,
+#act-address__form,
+#act-login__form {
+  .form-container-row {
+    position: relative;
+    display: flex;
+
+    @include respond-to-breakpoint(phone) {
+      flex-direction: column;
+    }
+
+    .input-field {
+      width: 48%;
+
+      @include respond-to-breakpoint(phone) {
+        width: 100%;
+      }
+
+      &:nth-child(even) {
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+@import "./act-personal-form";
+@import "./act-login-form";
+@import "./act-cc-form";
