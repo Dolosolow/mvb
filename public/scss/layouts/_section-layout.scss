@@ -1,0 +1,56 @@
+.section-layout {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  // ******************
+  // Section Layout + Section Content for gold signup
+  &--signup {
+    flex-shrink: 0;
+    padding: 4rem 0 5rem 0;
+
+    @include respond-to-breakpoint(tab-port) {
+      flex-direction: column;
+    }
+
+    .section-content {
+      @include respond-to-breakpoint(tab-port) {
+        width: 100%;
+      }
+      // ******************
+      // do not get this confused with other mem-desc__faq section found in the gold form section
+      .mem-desc__faq {
+        color: $muted;
+        font-size: 1.4rem;
+        margin: 3rem 0;
+
+        p {
+          margin: 2.2rem 0;
+        }
+
+        @include respond-to-breakpoint(750) {
+          display: none;
+        }
+
+        &:nth-child(1) {
+          border: 2px solid red;
+        }
+      }
+      // ******************
+      // do not get this confused with other mem-desc__faq section found in the gold form section
+      &:first-of-type .mem-desc__faq {
+        display: none;
+
+        @include respond-to-breakpoint(750) {
+          display: block;
+          margin-bottom: 0;
+        }
+
+        p {
+          @include respond-to-breakpoint(750) {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}

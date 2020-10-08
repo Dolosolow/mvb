@@ -1,9 +1,6 @@
 const router = require('express').Router();
 const moviesController = require('../../controllers/api/movies.controller');
 
-
-
-
 router.post('/add-movie', moviesController.postMovie);
 
 router.get('/screens/:id', moviesController.getScreenById);
