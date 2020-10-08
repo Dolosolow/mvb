@@ -33,6 +33,12 @@
       href="/assets/images/favicons/site.webmanifest"
     />
     <title>FLIX Theater | Dine in theater</title>
+    <!-- *************** -->
+    <!-- materializecss -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
   </head>
   <body>
     <%- include('partials/navbar.ejs') %>
@@ -47,7 +53,7 @@
           <div class="login-prompt flex-row">
             <p>
               Already a Member? &nbsp;
-              <button class="color-text color-text__btn">Log In</button>
+              <a class="color-text color-text__btn" href="#si-popup">Log In</a>
             </p>
             <p>
               Don't have an account? &nbsp;
@@ -166,13 +172,13 @@
           <div class="article-banner__body">
             <p class="article-banner__desc">Sign up for Silver Membership:</p>
             <form action="#" class="flex-row flex-center">
-              <div class="inline-form inline-form--light">
+              <div class="input-field input-field--light">
                 <input
                   type="email"
-                  name="email"
                   id="email"
-                  autocomplete="off"
-                  placeholder="Email"
+                  name="email"
+                  class="validate"
+                  autocomplete="email"
                   required
                 />
                 <label for="email">Email</label>
@@ -417,5 +423,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>

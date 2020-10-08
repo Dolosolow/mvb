@@ -2,7 +2,7 @@
 // ACCOUNT TERMS AND SERVICE FORM
 .act-tos-form {
   align-self: flex-end;
-  margin: 6rem 0 0 6rem;
+  margin: 8rem 0 0 6rem;
   max-width: 53.5rem;
 
   @include respond-to-breakpoint(tab-port) {
@@ -11,14 +11,14 @@
   }
 
   @include respond-to-breakpoint(750) {
-    margin: 2rem 0 0 0;
+    margin: 3rem 0 0 5px;
     max-width: 60rem;
   }
 
   .btn-prim {
     margin: 2rem 0 3rem 0;
     text-transform: capitalize;
-    width: 200px;
+    width: 20rem;
 
     @include respond-to-breakpoint(750) {
       width: 100%;

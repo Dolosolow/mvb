@@ -10,7 +10,7 @@ router.get('/events', (req, res, next) => {
 });
 
 router.get('/membership', (req, res, next) => {
-  res.render('membership', { transNav: false, path: '/membership' })
+  res.render('membership', { transNav: true, path: '/membership' })
 });
 
 router.get('/membership/gold', (req, res, next) => {

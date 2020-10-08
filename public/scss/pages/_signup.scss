@@ -1,4 +1,4 @@
-// ******************
+// ---------------------
 // SIGNUP HEADLINE/HEADER
 .signup-headline {
   padding: 3rem 0;
@@ -15,7 +15,7 @@
     margin-bottom: 0.5rem;
   }
 }
-// ******************
+// ---------------------
 // MEMBERSHIP PRICE COST/SECONDARY HEADLINE TEXT
 .t-subline {
   font: 400 3rem $primary-font;
@@ -34,22 +34,29 @@
     margin-left: 1.2rem;
   }
 }
-// ******************
+// ---------------------
 // FORM CONTAINER(UL) + COLLAPSIBLE FORM
 .form-container {
-  float: right;
-  max-width: 60rem;
-  padding: 0 1.2rem;
+  float: left;
+  max-width: 70rem;
+  padding: 0 9 0 8rem;
+  width: 100%;
 
   @include respond-to-breakpoint(tab-port) {
     float: left;
   }
 
-  .collapsible-form {
+  @include respond-to-breakpoint(750) {
+    padding: 0 1.2rem 0 1rem;
+  }
+
+  .collapsible {
+    background-color: $section-bg-color;
     backface-visibility: hidden;
+    border: none;
+    box-shadow: none;
     display: block;
     margin-left: 6.4rem;
-    padding-bottom: 3.2rem;
     position: relative;
     will-change: height;
 
@@ -57,325 +64,82 @@
       margin-left: 4.4rem;
     }
 
-    &::before {
-      backface-visibility: hidden;
-      background-color: $section-bg-color;
-      border: 2px solid rgba(0, 0, 0, 0.2);
-      border-radius: 50%;
-      content: "";
-      height: 2.3rem;
-      position: absolute;
-      top: 16px;
-      left: -58px;
-      width: 2.3rem;
-      will-change: background-color, border-color;
-      z-index: 2;
+    li {
+      min-height: 9rem;
+      position: relative;
 
-      @include respond-to-breakpoint(phone) {
-        height: 2rem;
-        width: 2rem;
-        top: 12px;
-        left: -40px;
-      }
-    }
-
-    &:not(:last-of-type) {
-      &::after {
-        backface-visibility: hidden;
-        background-color: rgba(black, 0.2);
-        content: "";
-        height: 100%;
-        position: absolute;
-        top: 27px;
-        left: -45px;
-        width: 2px;
-
-        @include respond-to-breakpoint(phone) {
-          left: -30px;
-        }
-      }
-    }
-
-    &.complete {
       &::before {
-        background-color: $primary-color;
-        border: 2px solid $primary-color;
-        transition: all 0.3s ease-in-out;
-      }
-    }
-
-    .btn-transparent {
-      display: inline-block;
-      background-color: transparent;
-      border: none;
-      color: $muted-light;
-      cursor: pointer;
-      font-family: $primary-font;
-      font-size: 5.2rem;
-      height: 50px;
-      line-height: 1;
-      text-align: left;
-
-      @include respond-to-breakpoint(phone) {
-        font-size: 4.2rem;
-      }
-
-      &--dark {
-        color: #000;
-      }
-
-      &:focus {
-        outline: none;
-      }
-    }
-
-    form {
-      max-height: 220rem;
-      opacity: 1;
-      overflow-y: visible;
-      transition: max-height 0.4s;
-      visibility: visible;
-      width: 100%;
-      will-change: height;
-
-      &:last-child {
-        max-height: 37rem;
+        backface-visibility: hidden;
+        background-color: $section-bg-color;
+        border: 2px solid rgba(0, 0, 0, 0.2);
+        border-radius: 50%;
+        content: "";
+        height: 2.5rem;
+        position: absolute;
+        top: 2rem;
+        left: -4.5rem;
+        width: 2.5rem;
+        will-change: background-color, border-color;
+        z-index: 2;
 
         @include respond-to-breakpoint(phone) {
-          max-height: none;
+          height: 2rem;
+          width: 2rem;
+          top: 12px;
+          left: -40px;
         }
       }
 
-      &.form__hidden {
-        max-height: 0;
-        opacity: 0;
-        overflow-y: hidden;
-        visibility: hidden;
-      }
+      &:not(:last-of-type) {
+        &::after {
+          backface-visibility: hidden;
+          background-color: rgba(black, 0.2);
+          content: "";
+          height: 100%;
+          position: absolute;
+          top: 27px;
+          left: -3.4rem;
+          width: 2px;
 
-      input,
-      select {
-        &:not([type="radio"]) {
-          margin-top: 2.4rem;
+          @include respond-to-breakpoint(phone) {
+            left: -30px;
+          }
         }
       }
-    }
-  }
-}
-// ******************
-// FORMS
-#act-personal__form,
-#act-address__form {
-  .form-container-row {
-    position: relative;
-    display: flex;
 
-    @include respond-to-breakpoint(phone) {
-      flex-direction: column;
-    }
+      &.complete {
+        &::before {
+          background-color: $primary-color;
+          border: 2px solid $primary-color;
+          transition: all 0.3s ease-in-out;
+        }
+      }
 
-    .inline-form {
-      width: 48%;
+      &.active .collapsible-header button {
+        color: #121212;
+      }
 
-      @include respond-to-breakpoint(phone) {
+      .collapsible-header {
+        background-color: $section-bg-color;
+        border: none;
+        margin: 0;
+        padding-top: 0;
+      }
+
+      .collapsible-body {
+        border-bottom: none;
+        padding: 5px 0 1rem 1rem;
+      }
+
+      form {
+        border-bottom: none !important;
+        max-height: 220rem;
+        opacity: 1;
+        overflow-y: visible;
+        transition: max-height 0.4s;
+        visibility: visible;
         width: 100%;
-      }
-
-      &:nth-child(even) {
-        margin-left: auto;
-      }
-    }
-  }
-}
-
-#act-login__form {
-  .form-container-row {
-    .inline-form {
-      width: 100%;
-    }
-  }
-}
-
-#act-cc__form {
-  padding-top: 1rem;
-
-  @include respond-to-breakpoint(750) {
-    margin-left: -45px;
-  }
-
-  p {
-    color: $muted;
-  }
-
-  .pay-sum {
-    color: $primary-color;
-    font-size: 4rem;
-    text-transform: uppercase;
-  }
-
-  .pay-details {
-    color: $primary-color;
-    text-transform: uppercase;
-  }
-
-  .form-container-row {
-    display: flex;
-    margin-top: 2rem;
-    width: 75%;
-
-    @include respond-to-breakpoint(phone) {
-      flex-direction: column;
-      width: 50%;
-    }
-
-    &:nth-of-type(2) {
-      justify-content: space-between;
-
-      @include respond-to-breakpoint(phone) {
-        margin-top: 0;
-      }
-
-      .inline-form {
-        width: 31%;
-
-        @include respond-to-breakpoint(phone) {
-          padding-top: 2rem;
-          width: 100%;
-        }
-      }
-    }
-  }
-}
-
-// ******************
-// SECTION LAYOUT + SECTION CONTENT FOR SIGNUP
-.section-layout--signup {
-  padding: 4rem 0;
-
-  @include respond-to-breakpoint(tab-port) {
-    flex-direction: column;
-  }
-
-  .section-content {
-    @include respond-to-breakpoint(tab-port) {
-      width: 100%;
-    }
-    // ******************
-    // LEFT SIDE MULTI STEP FORM
-    &--form-steps {
-      @include respond-to-breakpoint(tab-port) {
-        align-items: flex-start;
-        margin-top: 2rem;
-        order: 2;
-        width: 100%;
-      }
-
-      @include respond-to-breakpoint(750) {
-        margin-top: 0;
-      }
-    }
-    // ******************
-    // RIGHT SIDE MEMBERSHIP DESCRIPTION + PROMO
-    &--mem-desc {
-      padding: 0 1.5rem 0 4rem;
-      min-width: 50%;
-
-      @include respond-to-breakpoint(tab-port) {
-        padding: 0 3rem;
-      }
-
-      @include respond-to-breakpoint(750) {
-        padding-left: 2rem;
-      }
-
-      .section-content--mem-desc__content {
-        margin-bottom: 2rem;
-
-        @include respond-to-breakpoint(750) {
-          margin-bottom: 0;
-        }
-
-        > * {
-          margin-bottom: 2.5rem;
-        }
-
-        .promo-text {
-          color: $primary-color;
-          font-family: $primary-font;
-          font-size: 4rem;
-          letter-spacing: 3px;
-          line-height: 1;
-          max-width: 55rem;
-          text-transform: uppercase;
-
-          @include respond-to-breakpoint(750) {
-            max-width: 100%;
-          }
-        }
-
-        .rewards-text {
-          margin-bottom: 1rem;
-        }
-
-        .mem-desc-list {
-          margin-left: 2rem;
-        }
-
-        .rewards-sys-desc {
-          @include respond-to-breakpoint(750) {
-            display: none;
-          }
-        }
-      }
-
-      .section-content--mem-desc__img {
-        @include respond-to-breakpoint(750) {
-          display: none;
-        }
-
-        img {
-          max-height: 340px;
-          object-fit: cover;
-          object-position: center;
-          width: 100%;
-        }
-      }
-    }
-
-    // do not get this confused with other mem-desc__faq section found in the gold form section
-    .section-content--mem-desc__faq {
-      color: $muted;
-      font-size: 1.4rem;
-      margin: 3rem 0;
-
-      p {
-        margin: 2.2rem 0;
-      }
-
-      @include respond-to-breakpoint(750) {
-        display: none;
-      }
-
-      &:nth-child(1) {
-        border: 2px solid red;
-      }
-    }
-
-    &:first-of-type {
-      // do not get this confused with other mem-desc__faq section found in the gold form section
-      .section-content--mem-desc__faq {
-        display: none;
-
-        @include respond-to-breakpoint(750) {
-          display: block;
-          margin-bottom: 0;
-        }
-
-        p {
-          @include respond-to-breakpoint(750) {
-            margin-bottom: 0;
-          }
-        }
+        will-change: height;
       }
     }
   }
