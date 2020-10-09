@@ -5,7 +5,9 @@ class validate {
     }
     return false;
   }
-
+  // -----------------------
+  // 3 functions below receive a keycode, the current string input value as an array, and the element 
+  // to manipulate. If match is made it makes its way to next regex, else it disables keydown event.
   static twoDigitMonth = (keycode, date, elmSelector)  => {
     if(date[0].match(/^0/)) {
       if(date[0].match(/^0[1-9]/)) {
@@ -64,7 +66,6 @@ class validate {
     } else if(keycode === 8) {
       return;
     }
-    
     if(date[2].match(/^1/)) {
       if(date[2].match(/^19/)) {
         return;
@@ -72,7 +73,6 @@ class validate {
         return false;
       }
     }
-    
     if(date[2].match(/^2/)) {
       if(date[2].match(/^20/)) {
         if(date[2].match(/^20[012]/)) {

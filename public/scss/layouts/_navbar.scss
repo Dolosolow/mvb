@@ -166,6 +166,7 @@
 
             &:hover,
             &.active {
+              background-color: transparent;
               color: $primary-color;
             }
           }
@@ -250,6 +251,7 @@
           transition: color 0.3s ease-in-out;
 
           &:hover {
+            background-color: transparent;
             color: $primary-color;
           }
         }

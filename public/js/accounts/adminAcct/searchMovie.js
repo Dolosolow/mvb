@@ -1,13 +1,15 @@
 const { hasAttribute } = require('../../utils/global');
-const apiKey = process.env.APIKEY;
-const baseUrl = `http://www.omdbapi.com/?apikey=${apiKey}&`;
+const baseUrl = `http://www.omdbapi.com/?apikey=${process.env.APIKEY}&`;
 const render = require('../../helpers/markup/searchMarkup');
-
+// ------------------------
+// resets search results including movie poster.
 function clearSearchResults() {
   $('#srh-results__list').remove();
   $('#srh-results__poster').remove();
 };
-
+// ------------------------
+// limit set to 5. While opResults array length is < 5 using the list of users input on
+// keydown fitlers through data from api fetch and adds it to opResults.
 function filterSearchResults(list) {
   let results = new Set([]);
   let optimizedResults = [];
@@ -24,13 +26,9 @@ function filterSearchResults(list) {
 
   return optimizedResults;
 };
-
-async function searchMovie(title) {
-  const foundMovie = await axios.get(`${baseUrl}s=${title}`);
-  $('#search__sugg').addClass('collapse');
-  getSearchResults(foundMovie.data);
-};
-
+// ------------------------
+// Removes old search results and replaces them with new results if any. If movie is not found,
+// it will get populated with "no results found for <movie-title>".
 function getSearchResults(response) {
   $('.list-group__item').remove();
 
@@ -42,7 +40,15 @@ function getSearchResults(response) {
     });
   }
 };
-
+// ------------------------
+// makes call to api using the search input from the user.
+async function searchMovie(title) {
+  const foundMovie = await axios.get(`${baseUrl}s=${title}`);
+  $('#search__sugg').addClass('collapse');
+  getSearchResults(foundMovie.data);
+};
+// ------------------------
+// search input event handler and makes call to searchMovie populating it with the input value.
 $('#search__input').keyup(() => {
   if($('#search__input').val() === '') {
     $('#search__sugg').removeClass('collapse');
@@ -50,7 +56,8 @@ $('#search__input').keyup(() => {
     searchMovie($('#search__input').val());
   }
 });
-
+// ------------------------
+// fills out movie suggestions based on input values user typed. 
 $('#search__sugg').on('click', '.list-group__item', async function() {
   $('#search__sugg').removeClass('collapse');
   $('#loader').css('display', 'block');
@@ -66,7 +73,8 @@ $('#search__sugg').on('click', '.list-group__item', async function() {
   $('#loader').css('display', 'none');
   $('.srh-results').append(render.searchData(foundMovie.data));
 });
-
+// ------------------------
+// hanldes post when add-movie button is clicked
 $('#add-mov-btn').on('click', async function() {
   const isBtnDisabled = $(this).attr('disabled');
 

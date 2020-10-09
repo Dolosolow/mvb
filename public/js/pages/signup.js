@@ -17,7 +17,7 @@ $('.toggle-info-btn').click(function() {
 $('.collapsible').collapsible();
 $('#state').formSelect();
 // ---------------------
-// Acts like a :focus using jquery trigger() has one form open when
+// acts like a :focus using jquery trigger() has one form open when
 // visitor first visits signup page
 $('.collapsible').collapsible('open', 0);
 // ---------------------
@@ -31,7 +31,7 @@ $('#state').change(function(e) {
   }
 });
 // ---------------------
-// Checks for any change on the form inputs, if change, adds class to 
+// checks for any change on the form inputs, if change, adds class to 
 // corresponding li
 $('.collapsible input').keypress(function() {
   checkFormForClass($(this).closest('li'));
@@ -45,17 +45,17 @@ $('.collapsible input[type="radio"]').change(function() {
   checkFormForClass($(this).closest('li'));
 });
 // -----------------------
-// enter comment here for somehting
-$(elmSelector).on('keyup keydown',function(e) {
-  // value of input found in e.target.value
+// makes user date of birth input friendlier. i.e. If user on input for month adds 9 it
+// autocompletes the month input as 09. Applies to day of the month and year.
+$('input#dob').on('keyup keydown',function(e) {
   if(validate.onlyDigits(e.target.value)) {
     let date = e.target.value.split('/');
-    
+    // uses validate for regex to help validate the user keys when typed.
     switch(date.length) {
       case 1: 
-        return validate.twoDigitMonth(e.which, date, elmSelector);
+        return validate.twoDigitMonth(e.which, date, 'input#dob');
       case 2:
-        return validate.twoDigitDay(e.which, date, elmSelector);
+        return validate.twoDigitDay(e.which, date, 'input#dob');
       case 3:
         return validate.fourDigitYear(e.which, date);
       default:
