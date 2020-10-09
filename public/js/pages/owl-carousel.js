@@ -1,3 +1,6 @@
+// -----------------------------
+// changes boolean loop value to true when window sizes are met. 
+// This applies to the Movies playing cards.
 function shouldLoop(size) {
   if($(window).width() < 800 || $(window).width() < 1100 && size === 4) {
     return true;
@@ -6,9 +9,9 @@ function shouldLoop(size) {
 }
 
 $(document).ready(() => {
-  // *************
-  // owl-carousel is used to display the movies now playing cards applies to both IDs showtimes & classics
-  // *************
+  // -----------------------------
+  // owl-carousel is used to display the movies now playing cards applies
+  //  to both IDs showtimes & classics.
   $('#classics.owl-carousel').owlCarousel({
     loop: shouldLoop($('#classics').data('ct')),
     nav: true,

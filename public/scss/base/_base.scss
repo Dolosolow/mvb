@@ -16,6 +16,11 @@
 
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
+
+  &.no-scroll {
+    overflow: hidden !important;
+  }
 }
 
 body {
@@ -25,10 +30,13 @@ body {
   > .container-layout:first-child {
     padding: 0;
   }
+<<<<<<< HEAD
 
   &.no-scroll {
     overflow: hidden !important;
   }
+=======
+>>>>>>> master
 }
 
 a,

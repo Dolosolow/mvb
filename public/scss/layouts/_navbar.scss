@@ -166,6 +166,10 @@
 
             &:hover,
             &.active {
+<<<<<<< HEAD
+=======
+              background-color: transparent;
+>>>>>>> master
               color: $primary-color;
             }
           }
@@ -250,6 +254,10 @@
           transition: color 0.3s ease-in-out;
 
           &:hover {
+<<<<<<< HEAD
+=======
+            background-color: transparent;
+>>>>>>> master
             color: $primary-color;
           }
         }

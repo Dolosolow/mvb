@@ -2,4 +2,9 @@ node_modules/
 
 .env
 
+<<<<<<< HEAD
+=======
+.DS_Store
+.DS_Store?
+>>>>>>> master
 **/.DS_Store
