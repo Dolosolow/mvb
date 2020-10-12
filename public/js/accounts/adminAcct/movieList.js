@@ -56,14 +56,7 @@ $(document).ready(async function() {
           ++total;
         })
       }
-<<<<<<< HEAD
-    })
-
-    console.log(`reserved: ${reserved}`)
-    console.log(`total: ${total}`)
-=======
     });
->>>>>>> master
 
     return {
       ...screen, 
@@ -72,19 +65,9 @@ $(document).ready(async function() {
       avl: total - reserved
     }
   });
-<<<<<<< HEAD
-
-  console.log(allScreenTimes)
-=======
->>>>>>> master
   
   $('#overview').append(updateEJStemplate(render.tablesawTable(false), { 
     movies: movies.data.movies, 
     screens: allScreenTimes
-<<<<<<< HEAD
-  } 
-));
-=======
   }));
->>>>>>> master
 })

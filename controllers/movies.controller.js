@@ -8,7 +8,7 @@ exports.getAdminDash = (req, res, next) => {
 
 exports.getMovies = async (req, res, next) => {
   const movies = await Movie.getAllMovies();
-  res.render('index', { transNav: true, path: '/', currentMovies: movies });
+  res.render('index', { transNav: true, path: '/', currentMovies: movies, user: req.user ? req.user.id : null });
 }
 
 exports.getMovieById = async (req, res, next) => {
@@ -20,5 +20,5 @@ exports.getMovieById = async (req, res, next) => {
 
   screen = await Screen.getScreenById(foundMovie.screens[0].times[0].id);
 
-  res.render('seat-booking', { transNav: true, path: '/', movie: foundMovie, screen  });
+  res.render('seat-booking', { transNav: true, path: '/', movie: foundMovie, screen, user: req.user ? req.user.id : null  });
 }

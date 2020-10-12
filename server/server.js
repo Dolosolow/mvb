@@ -26,7 +26,7 @@ server.use(async (req, res, next) => {
     console.log('something went wrong, call to db was not reached');
   }
   next();
-})
+});
 server.use('/api', apiRoutes);
 server.use('/admin', adminRoutes);
 server.use('/', storeRoutes);

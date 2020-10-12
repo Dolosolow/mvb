@@ -25,13 +25,15 @@ button {
     width: 100% !important;
   }
 
-  &:hover {
+  &:hover,
+  &:active {
     background-color: #000;
     border: 1px solid #000;
     color: #fff;
   }
 
   &:focus {
+    background-color: $primary-color;
     outline: none;
   }
 }
@@ -74,15 +76,12 @@ button {
   line-height: 1;
   text-align: left;
 
-  &:focus {
-    background-color: transparent;
-  }
-
   @include respond-to-breakpoint(phone) {
     font-size: 4.2rem;
   }
 
   &:focus {
+    background-color: transparent;
     outline: none;
   }
 }

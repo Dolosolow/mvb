@@ -269,12 +269,12 @@
       },
       {
         "id": "e10",
-        "type": "seat-vip",
+        "type": "seat-acc",
         "reserved": false
       },
       {
         "id": "e11",
-        "type": "seat-vip",
+        "type": "seat-acc",
         "reserved": false
       }
     ]

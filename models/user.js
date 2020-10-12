@@ -1,8 +1,10 @@
 const getDb = require('../utils/database').getDatabase;
 const { v4: uuidv4 } = require('uuid'); 
+const moment = require('moment');
 
 class User {
   constructor(
+    type,
     email,
     fName, 
     lName, 
@@ -16,6 +18,8 @@ class User {
     zipcode,
     mailSubscription
     ) {
+    this.id = uuidv4();
+    this.type = type;
     this.email = email;
     this.fName = fName;
     this.lName = lName;
@@ -32,9 +36,11 @@ class User {
 
   async save() {
     const db = getDb();
-    this.id = uuidv4();
-    this.verified = false; 
-    await db.collection('users').insertOne(this);
+    this.dateCreated = moment().toString();
+    if(this.type !== 'guest') {
+      this.verified = false; 
+      await db.collection('users').insertOne(this);
+    }
   }
 
   static async findById(id) {

@@ -3,7 +3,7 @@
     class="main-nav flex-row align-center fluid <%= !transNav && 'container-layout' %> <%= transNav && 'nav-trans' %>"
   >
     <a href="/" class="navbar-brand">FLIX<br /><span>the experience</span></a>
-    <ul class="navigation flex-row">
+    <ul class="navigation<%= user && ' navigation-usr' %> flex-row">
       <li class="navigation__item">
         <a
           class="navigation__link <%= transNav && 'nav-light' %> <%= path === '/' && 'active' %>"
@@ -25,13 +25,15 @@
           >Events</a
         >
       </li>
-      <li class="navigation__item">
-        <a
-          class="navigation__link <%= transNav && 'nav-light' %> <%= path === '/membership' && 'active' %>"
-          href="/membership"
-          >Membership</a
-        >
-      </li>
+      <% if(!user) { %>
+        <li class="navigation__item">
+          <a
+            class="navigation__link <%= transNav && 'nav-light' %> <%= path === '/membership' && 'active' %>"
+            href="/membership"
+            >Membership</a
+          >
+        </li>
+      <% } %>
       <li class="navigation__item">
         <a
           class="navigation__link <%= transNav && 'nav-light' %> <%= path === '/location' && 'active' %>"
@@ -39,12 +41,20 @@
           >Location</a
         >
       </li>
+      <% if(user) { %>
+      <li class="navigation__item">
+        <a class="navigation__link <%= transNav && 'nav-light' %>" href="#">
+          <i class="far fa-user fa-sm"></i>
+        </a>
+      </li>
+      <% } else { %>
       <li class="navigation__item">
         <a class="navigation__link" id="signin-btn" href="#si-popup">Sign in</a>
       </li>
       <li class="navigation__item navigation__item--btn">
         <a class="btn-prim navigation__link" href="/membership/gold">Sign up</a>
       </li>
+      <% } %>
     </ul>
     <input
       type="checkbox"

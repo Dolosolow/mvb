@@ -1,26 +1,15 @@
 const { hasAttribute } = require('../../utils/global');
-<<<<<<< HEAD
-const apiKey = process.env.APIKEY;
-const baseUrl = `http://www.omdbapi.com/?apikey=${apiKey}&`;
-const render = require('../../helpers/markup/searchMarkup');
-
-=======
 const baseUrl = `http://www.omdbapi.com/?apikey=${process.env.APIKEY}&`;
 const render = require('../../helpers/markup/searchMarkup');
 // ------------------------
 // resets search results including movie poster.
->>>>>>> master
 function clearSearchResults() {
   $('#srh-results__list').remove();
   $('#srh-results__poster').remove();
 };
-<<<<<<< HEAD
-
-=======
 // ------------------------
 // limit set to 5. While opResults array length is < 5 using the list of users input on
 // keydown fitlers through data from api fetch and adds it to opResults.
->>>>>>> master
 function filterSearchResults(list) {
   let results = new Set([]);
   let optimizedResults = [];
@@ -43,18 +32,6 @@ function filterSearchResults(list) {
 function getSearchResults(response) {
   $('.list-group__item').remove();
 
-<<<<<<< HEAD
-async function searchMovie(title) {
-  const foundMovie = await axios.get(`${baseUrl}s=${title}`);
-  $('#search__sugg').addClass('collapse');
-  getSearchResults(foundMovie.data);
-};
-
-function getSearchResults(response) {
-  $('.list-group__item').remove();
-
-=======
->>>>>>> master
   if(response.Error === 'Movie not found!') {
     $('#search__sugg').append(render.noSearchResults(`No results found for "${$('#search__input').val()}"`));
   }else {
@@ -79,12 +56,8 @@ $('#search__input').keyup(() => {
     searchMovie($('#search__input').val());
   }
 });
-<<<<<<< HEAD
-
-=======
 // ------------------------
 // fills out movie suggestions based on input values user typed. 
->>>>>>> master
 $('#search__sugg').on('click', '.list-group__item', async function() {
   $('#search__sugg').removeClass('collapse');
   $('#loader').css('display', 'block');
@@ -100,12 +73,8 @@ $('#search__sugg').on('click', '.list-group__item', async function() {
   $('#loader').css('display', 'none');
   $('.srh-results').append(render.searchData(foundMovie.data));
 });
-<<<<<<< HEAD
-
-=======
 // ------------------------
 // hanldes post when add-movie button is clicked
->>>>>>> master
 $('#add-mov-btn').on('click', async function() {
   const isBtnDisabled = $(this).attr('disabled');
 
