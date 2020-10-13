@@ -11,13 +11,13 @@ const path = require('path');
 module.exports = {
   mode: 'development',
   entry: {
-    main: ['webpack-hot-middleware/client?reload=true&timeout=1000', './public/js/pages/index.js'],
-    owl_carousel: ['./public/js/pages/owl-carousel.js'],
-    gen_acct: ['./public/js/pages/accounts-dash.js'],
-    admin_acct: ['./public/js/accounts/adminAcct/movieList.js', './public/js/accounts/adminAcct/searchMovie.js'],
-    memberships: ['./public/js/pages/main-membership.js'],
-    signup: ['./public/js/pages/signup.js'],
-    reservations: ['./public/js/reservations/index.js', './public/js/reservations/seat-reservations.js']
+    main: ['webpack-hot-middleware/client?reload=true&timeout=1000', './src/public/js/pages/index.js'],
+    owl_carousel: ['./src/public/js/pages/owl-carousel.js'],
+    gen_acct: ['./src/public/js/pages/accounts-dash.js'],
+    admin_acct: ['./src/public/js/accounts/adminAcct/movieList.js', './src/public/js/accounts/adminAcct/searchMovie.js'],
+    memberships: ['./src/public/js/pages/main-membership.js'],
+    signup: ['./src/public/js/pages/signup.js'],
+    reservations: ['./src/public/js/reservations/index.js', './src/public/js/reservations/seat-reservations.js']
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -103,56 +103,61 @@ module.exports = {
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
-        { from: './public/images/favicons', to: 'assets/images/favicons' },
-        { from: './views/partials', to: 'partials' }
+        { from: './src/public/images/favicons', to: 'assets/images/favicons' },
+        { from: './src/views/partials', to: 'partials' }
       ]
     }),
     new HtmlWebpackPlugin({
-      template: '!!raw-loader!./views/pages/404.template.ejs',
+      template: '!!raw-loader!./src/views/pages/404.template.ejs',
       filename: '404.ejs',
     }),
     new HtmlWebpackPlugin({
-      template: '!!raw-loader!./views/pages/admin-dash.template.ejs',
+      template: '!!raw-loader!./src/views/pages/admin-dash.template.ejs',
       filename: 'admin-dash.ejs',
       chunks: ['main', 'gen_acct', 'admin_acct']
     }),
     new HtmlWebpackPlugin({
-      template: '!!raw-loader!./views/pages/seat-booking.template.ejs',
+      template: '!!raw-loader!./src/views/pages/seat-booking.template.ejs',
       filename: 'seat-booking.ejs',
       chunks: ['main', 'reservations']
     }),
     new HtmlWebpackPlugin({
-      template: '!!raw-loader!./views/pages/index.template.ejs',
+      template: '!!raw-loader!./src/views/pages/index.template.ejs',
       filename: 'index.ejs',
       chunks: ['main', 'owl_carousel']
     }),
     new HtmlWebpackPlugin({
-      template: '!!raw-loader!./views/pages/events.template.ejs',
+      template: '!!raw-loader!./src/views/pages/events.template.ejs',
       filename: 'events.ejs',
       chunks: ['main']
     }),
     new HtmlWebpackPlugin({
-      template: '!!raw-loader!./views/pages/membership.template.ejs',
+      template: '!!raw-loader!./src/views/pages/membership.template.ejs',
       filename: 'membership.ejs',
       chunks: ['main', 'memberships']
     }),
     new HtmlWebpackPlugin({
-      template: '!!raw-loader!./views/pages/locations.template.ejs',
+      template: '!!raw-loader!./src/views/pages/locations.template.ejs',
       filename: 'locations.ejs',
       chunks: ['main', 'owl_carousel']
     }),
     new HtmlWebpackPlugin({
-      template: '!!raw-loader!./views/pages/signup-gold.template.ejs',
+      template: '!!raw-loader!./src/views/pages/signup-gold.template.ejs',
       filename: 'signup-gold.ejs',
       chunks: ['main', 'signup']
     }),
     new HtmlWebpackPlugin({
-      template: '!!raw-loader!./views/pages/signup-silver.template.ejs',
+      template: '!!raw-loader!./src/views/pages/signup-silver.template.ejs',
       filename: 'signup-silver.ejs',
       chunks: ['main', 'signup']
     }),
     new HtmlWebpackPlugin({
-      template: '!!raw-loader!./views/pages/wine-dine.template.ejs',
+      template: '!!raw-loader!./src/views/pages/checkout.template.ejs',
+      filename: 'checkout.ejs',
+      chunks: ['main', 'signup']
+    }),
+    new HtmlWebpackPlugin({
+      template: '!!raw-loader!./src/views/pages/wine-dine.template.ejs',
       filename: 'wine-dine.ejs',
       chunks: ['main']
     }),
