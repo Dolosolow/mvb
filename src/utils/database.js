@@ -1,8 +1,8 @@
-require('dotenv').config();
-const { MongoClient } = require('mongodb');
+import { MongoClient } from 'mongodb';
+
 let db;
 
-const connect = async (cb) => {
+export const connect = async (cb) => {
   try {
     const client = await MongoClient.connect(
       `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@flix.qnebs.mongodb.net/flix?retryWrites=true&w=majority`,
@@ -17,12 +17,9 @@ const connect = async (cb) => {
   }
 }
 
-const getDatabase = () => {
+export const getDatabase = () => {
   if(db) {
     return db;
   }
   throw 'No database found';
 }
-
-exports.connect = connect;
-exports.getDatabase = getDatabase;

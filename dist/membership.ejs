@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- *************** -->
+    <!-- TABLESAW -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tablesaw/3.1.2/tablesaw.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesaw/3.1.2/tablesaw.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesaw/3.1.2/tablesaw-init.js"></script>
+    <!-- *************** -->
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/e9063b30c3.js"></script>
+    <!-- *************** -->
+    <!-- facvicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/images/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/images/favicons/favicon-16x16.png"
+    />
+    <link
+      rel="manifest"
+      href="/assets/images/favicons/site.webmanifest"
+    />
+    <title>FLIX Theater | Dine in theater</title>
+    <!-- *************** -->
+    <!-- materializecss -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+  <link href="/assets/css/styles.css" rel="stylesheet"></head>
+  <body>
+    <%- include('partials/navbar.ejs') %>
+    <header class="headline--mem">
+      <div class="container-layout">
+        <header class="t-nav t-nav--light">
+          <h2>FLIX Premium Membership</h2>
+        </header>
+        <div class="headline--mem__content">
+          <p class="promo">Free 30 day gold membership trial</p>
+          <a href="/membership/gold" class="btn-prim">Join Now</a>
+          <div class="login-prompt flex-row">
+            <p>
+              Already a Member? &nbsp;
+              <a class="color-text color-text__btn" href="#si-popup">Log In</a>
+            </p>
+            <p>
+              Don't have an account? &nbsp;
+              <a href="/membership/silver" class="color-text color-text__link"
+                >Sign up as Silver</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="bg-smoked">
+      <div class="container-layout-padded">
+        <div class="section-layout section-layout--mem">
+          <div
+            class="section-content section-content--mem flex-column justify-center"
+          >
+            <h2 class="section-content__title">Member Only Ticket Pricing</h2>
+            <p class="section-content__body">
+              At FLIX, the movies are always vary, but the experience is
+              Exclusively Yours. We value our members and are happy to extend
+              member only ticket pricing at our location. Members enjoy up to $6
+              off tickets and priority access to new releases.
+            </p>
+            <ul class="section-content__mem-offers">
+              <li>Enjoy up to $6 off tickets*</li>
+              <li>Priority access to new releases</li>
+              <li>Invitations To Early Screenings</li>
+            </ul>
+          </div>
+          <div class="section-content__img section-content__img--mem">
+            <img
+              src="/assets/images/jpg/mem-popcorn.jpg"
+              alt="enjoy a movie & popcorn"
+            />
+          </div>
+        </div>
+        <div class="section-layout section-layout--mem">
+          <div class="section-content__img section-content__img--mem">
+            <img
+              src="/assets/images/jpg/mem-dine.jpg"
+              alt="dine restaurant"
+            />
+          </div>
+          <div
+            class="section-content section-content--mem flex-column justify-center"
+          >
+            <h2 class="section-content__title">10% Off Food & Beverage</h2>
+            <p class="section-content__body">
+              Members enjoy 10% off food & beverage both in-theater and at FLIX
+              affiliated restaurants. Enjoy savings every visit, every time.
+            </p>
+            <ul class="section-content__mem-offers">
+              <li>10% off all food & beverage*</li>
+              <li>Available in-theater</li>
+              <li>Available at Tanzy, City Perch, Tuck Room & Tuck Tavern</li>
+            </ul>
+          </div>
+        </div>
+        <div class="section-layout section-layout--mem">
+          <div
+            class="section-content section-content--mem flex-column justify-center"
+          >
+            <h2 class="section-content__title">Birthday Rewards</h2>
+            <p class="section-content__body">
+              It's your birthday, let us indulge you! During your birthday month
+              enjoy a free Premium Plus ticket and a free choice of dessert, on
+              us.
+            </p>
+            <ul class="section-content__mem-offers">
+              <li>Premium Plus Ticket*</li>
+              <li>Redeemable all month long</li>
+            </ul>
+          </div>
+          <div class="section-content__img section-content__img--mem">
+            <img
+              src="/assets/images/jpg/mem-bday.jpg"
+              alt="birthday celebration"
+            />
+          </div>
+        </div>
+        <div class="section-layout section-layout--mem">
+          <div class="section-content__img section-content__img--mem">
+            <img
+              src="/assets/images/jpg/mem-events.jpg"
+              alt="membership events"
+            />
+          </div>
+          <div
+            class="section-content section-content--mem flex-column justify-center"
+          >
+            <h2 class="section-content__title">Member Only Events</h2>
+            <p class="section-content__body">
+              Recieve invites to private dining events, food & wine tastings and
+              special screenings only available to our members.
+            </p>
+            <ul class="section-content__mem-offers">
+              <li>Private Dining</li>
+              <li>Live Events & Shows</li>
+              <li>Special Screenings</li>
+              <li>Food & Wine Tastings</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <article class="article-banner article-banner--gold-trial">
+      <div class="container-layout">
+        <div
+          class="article-banner__content flex-column flex-center text-center"
+        >
+          <h4 class="article-banner__title text-uppercase">
+            Free 30 day gold membership trial
+          </h4>
+          <a href="/membership/gold" class="btn-prim">Join Now</a>
+          <div class="article-banner__body">
+            <p class="article-banner__desc">Sign up for Silver Membership:</p>
+            <form action="#" class="flex-row flex-center">
+              <div class="input-field input-field--light">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="validate"
+                  autocomplete="email"
+                  required
+                />
+                <label for="email">Email</label>
+              </div>
+              <button class="btn-worded-only">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </article>
+    <section class="mem-benefits container-layout">
+      <table
+        class="mem-benefits__table tablesaw"
+        data-tablesaw-minimap
+        data-tablesaw-mode="swipe"
+      >
+        <thead>
+          <tr>
+            <th data-tablesaw-priority="persist">
+              <p>Membership Yearly Benefits</p>
+            </th>
+            <th>
+              <p>Silver</p>
+              <p class="mem-price">Complimentary</p>
+            </th>
+            <th class="active">
+              <p>Gold</p>
+              <p class="mem-price">$45 Annual Membership</p>
+            </th>
+            <th>
+              <p>Platinum</p>
+              <p class="mem-price">Earned Tier</p>
+            </th>
+            <th data-tablesaw-priority="6">
+              <p>Platinum Elite</p>
+              <p class="mem-price">Earned Tier</p>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              Member Only Ticket Pricing
+            </td>
+            <td></td>
+            <td class="active">
+              <div class="c-sel" />
+            </td>
+            <td>
+              <div class="c-sel" />
+            </td>
+            <td>
+              <div class="c-sel" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              10% off Food & Beverage
+            </td>
+            <td></td>
+            <td class="active">
+              <div class="c-sel" />
+            </td>
+            <td>
+              <div class="c-sel" />
+            </td>
+            <td>
+              <div class="c-sel" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Birthday Gift: 1 Free Premium Plus Ticket
+            </td>
+            <td></td>
+            <td class="active">
+              <div class="c-sel" />
+            </td>
+            <td>
+              <div class="c-sel" />
+            </td>
+            <td>
+              <div class="c-sel" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Free Birthday Dessert and Champagne for Two
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+              <div class="c-sel" />
+            </td>
+            <td>
+              <div class="c-sel" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Buy 25 Tickets: 2 Companion Tickets Free
+            </td>
+            <td></td>
+            <td class="active">
+              <div class="c-sel" />
+            </td>
+            <td>
+              <div class="c-sel" />
+            </td>
+            <td>
+              <div class="c-sel" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Priority Ticket FLIX ACCESS for New Releases
+            </td>
+            <td></td>
+            <td class="active">
+              <div class="c-sel" />
+            </td>
+            <td>
+              <div class="c-sel" />
+            </td>
+            <td>
+              <div class="c-sel" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              VIP Concierge Service at Guest Services
+            </td>
+            <td></td>
+            <td class="active">
+              <div class="c-sel" />
+            </td>
+            <td>
+              <div class="c-sel" />
+            </td>
+            <td>
+              <div class="c-sel" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Invitations to Special Screenings and Dining
+            </td>
+            <td></td>
+            <td class="active">
+              <div class="c-sel" />
+            </td>
+            <td>
+              <div class="c-sel" />
+            </td>
+            <td>
+              <div class="c-sel" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              IPIC ACCESS Newsletter & Showtimes
+            </td>
+            <td>
+              <div class="c-sel" />
+            </td>
+            <td class="active">
+              <div class="c-sel" />
+            </td>
+            <td>
+              <div class="c-sel" />
+            </td>
+            <td>
+              <div class="c-sel" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Earn IPIC ACCESS Points
+            </td>
+            <td>
+              <div class="c-sel" />
+            </td>
+            <td class="active">
+              <div class="c-sel" />
+            </td>
+            <td>
+              <div class="c-sel" />
+            </td>
+            <td>
+              <div class="c-sel" />
+            </td>
+          </tr>
+          <tr class="mem-reward-pts">
+            <td>
+              FLIX Reward Points Earned
+            </td>
+            <td>
+              <p>1 Point / $1 Spent</p>
+            </td>
+            <td>
+              <p>1 Point / $1 Spent</p>
+            </td>
+            <td>
+              <p>1 Point / $1 Spent</p>
+            </td>
+            <td>
+              <p>1 Point / $1 Spent</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="mem-small-print">
+      <p>
+        Discount varies based on day of week and location. Pricing is per ticket
+        per visit. Subject to change without notice. Other restrictions may
+        apply.
+      </p>
+      <p>
+        In theater or at any IPIC affiliated restaurant (Tanzy, City Perch, Tuck
+        Room and Tuck Tavern). Alcohol not eligible for discount in TX & IL.
+      </p>
+      <p>
+        Only 5 tickets / day valid towards 25 Tickets Reward and Membership
+        Level Upgrade.
+      </p>
+      <p class="title text-uppercase">Redeeming Points</p>
+      <p>
+        You must have earned a minimum of 500 IPIC ACCESS Points before you can
+        begin redeeming points.
+      </p>
+      <p>
+        IPIC ACCESS Points are redeemable at a value of 500 for $5 in credit
+        towards qualifying purchases.
+      </p>
+      <p>
+        On qualifying purchases; does not include alcoholic beverages, tax,
+        gratuities, gift card or membership purchases.
+      </p>
+    </section>
+    <%- include('partials/footer.ejs') %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="/assets/js/main.bundle.js"></script><script src="/assets/js/memberships.bundle.js"></script></body>
+</html>

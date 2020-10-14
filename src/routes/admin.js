@@ -1,7 +1,9 @@
-const moviesController = require('../controllers/movies.controller');
-const router = require('express').Router();
+import { Router } from 'express';
+import * as moviesController from '@src/controllers/movies.controller';
+
+const router = Router();
 
 router.get('/', moviesController.getAdminDash);
 
-module.exports = router;
+export default router;
 

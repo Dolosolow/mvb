@@ -1,4 +1,4 @@
-const socketio = require('socket.io');
+import socketio from 'socket.io';
 let io = null;
 // -----------------------------
 // temp array holding reservations. Considering to move over to redis
@@ -69,7 +69,7 @@ function getReservations(socket, screenId) {
   }
 }
 
-module.exports = server => {
+export default function(server) {
   io = socketio(server);
 
   io.on('connection', socket => {

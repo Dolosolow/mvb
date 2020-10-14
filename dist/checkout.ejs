@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- *************** -->
+    <!-- owl-carosuel -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    />
+    <!-- *************** -->
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/e9063b30c3.js"></script>
+    <!-- *************** -->
+    <!-- facvicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/images/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/images/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/assets/images/favicons/site.webmanifest" />
+    <!-- *************** -->
+    <!-- materializecss -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <!-- *************** -->
+    <!-- materializecss -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <title>FLIX Theater | Dine in theater</title>
+  <link href="/assets/css/styles.css" rel="stylesheet"></head>
+  <body>
+    <%- include('partials/navbar.ejs') %>
+    <header class="container-layout signup-headline">
+      <div class="t-nav">
+        <h2>FLIX Checkout</h2>
+      </div>
+    </header>
+    <main class="bg-smoked">
+      <div class="container-layout">
+        <div class="section-layout section-layout--signup">
+          <!-- left half of signup (account sign up forms) -->
+          <div class="section-content section-content--form-steps">
+            <div class="form-container">
+              <ul class="collapsible">
+                <li>
+                  <h3 class="collapsible-header">
+                    <button id="act-personal" class="btn-transparent">
+                      Already a Member?
+                    </button>
+                  </h3>
+                  <form
+                    id="act-personal__form"
+                    class="collapsible-body"
+                    action="#"
+                  >
+                  <div class="popup show flex-row" id="si-popup">
+                    <div class="popup__form" id="popup__form">
+                      <form action="#">
+                        <div class="input-field">
+                          <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            class="validate"
+                            autocomplete="email"
+                            required
+                          />
+                          <label for="email">Email</label>
+                        </div>
+                        <div class="input-field">
+                          <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            class="validate"
+                            autocomplete="off"
+                            required
+                          />
+                          <label for="password">Password</label>
+                          <div><i class="fas fa-lock fa-lg"></i></div>
+                        </div>
+                        <button class="color-text color-text__btn float-right">
+                          Forgot Password?
+                        </button>
+                        <button class="btn-prim">Log In</button>
+                      </form>
+                      <p class="text-center">
+                        <a href="#" class="color-text color-text__link">Continue as a Guest</a>
+                      </p>
+                    </div>
+                  </div>
+                  </form>
+                </li>
+                <li>
+                  <h3 class="collapsible-header">
+                    <button id="act-personal" class="btn-transparent">
+                      Personal Info
+                    </button>
+                  </h3>
+                  <form
+                    id="act-personal__form"
+                    class="collapsible-body"
+                    action="#"
+                  >
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <input
+                          type="text"
+                          id="name"
+                          name="name"
+                          class="validate"
+                          autocomplete="off"
+                          required
+                        />
+                        <label for="name">Name</label>
+                      </div>
+                      <div class="input-field">
+                        <input
+                          type="text"
+                          id="email"
+                          name="email"
+                          class="validate"
+                          autocomplete="email"
+                          required
+                        />
+                        <label for="email">Email</label>
+                      </div>
+                    </div>
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <input
+                          type="tel"
+                          id="phone"
+                          name="phone"
+                          class="validate"
+                          autocomplete="off"
+                          required
+                        />
+                        <label for="phone">Phone</label>
+                      </div>
+                      <div class="input-field">
+                        <input
+                          type="text"
+                          id="zipcode"
+                          name="zipcode"
+                          class="validate"
+                          autocomplete="postal-code"
+                          required
+                        />
+                        <label for="zipcode">Zip Code</label>
+                      </div>
+                    </div>
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <input
+                          type="text"
+                          id="streetAddress"
+                          name="streetAddress"
+                          class="validate"
+                          autocomplete="street-address"
+                          required
+                        />
+                        <label for="streetAddress">Street Address</label>
+                      </div>
+                      <div class="input-field">
+                        <input
+                          type="text"
+                          id="streetAddress2"
+                          name="streetAddress2"
+                          class="validate"
+                          autocomplete="off"
+                        />
+                        <label for="streetAddress2">Street Address (optional)</label>
+                      </div>
+                    </div>
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <input
+                          type="text"
+                          id="city"
+                          name="city"
+                          class="validate"
+                          autocomplete="off"
+                          required
+                        />
+                        <label for="city">City</label>
+                      </div>
+                      <div class="input-field">
+                        <select id="state" name="state">
+                          <option value="" disabled selected></option>
+                          <option value="nj">NJ</option>
+                          <option value="ny">NY</option>
+                          <option value="fl">FL</option>
+                        </select>
+                        <label for="state">State</label>
+                      </div>
+                    </div>
+                  </form>
+                </li>
+                <li>
+                  <h3 class="collapsible-header">
+                    <button id="act-cc" class="btn-transparent">
+                      Payment Info
+                    </button>
+                  </h3>
+                  <form id="act-cc__form" class="collapsible-body" action="#">
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <input
+                          inputmode="numeric"
+                          type="text"
+                          id="ccNumber"
+                          name="ccNumber"
+                          class="validate"
+                          autocomplete="cc-number"
+                          required
+                        />
+                        <label for="ccNumber">Payment Card Number</label>
+                      </div>
+                    </div>
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <input
+                          inputmode="numeric"
+                          type="text"
+                          id="ccExpDate"
+                          name="ccExpDate"
+                          class="validate"
+                          autocomplete="cc-exp-month"
+                          required
+                        />
+                        <label for="ccExpDate">Exp Date</label>
+                      </div>
+                      <div class="input-field">
+                        <input
+                          inputmode="numeric"
+                          type="text"
+                          id="ccCVV"
+                          name="ccCVV"
+                          class="validate"
+                          autocomplete="cc-csc"
+                          required
+                        />
+                        <label for="ccCVV">CVV/CVC</label>
+                        <div class="cvc-loc-img">
+                          <img
+                            src="/assets/images/svg/cc-cvc.svg"
+                            alt="cvv/cvc location"
+                          />
+                        </div>
+                        <div>
+                          <button class="toggle-info-btn"></button>
+                        </div>
+                      </div>
+                      <div class="input-field">
+                        <input
+                          type="text"
+                          id="ccZipcode"
+                          name="ccZipcode"
+                          class="validate"
+                          autocomplete="postal-code"
+                          required
+                        />
+                        <label for="ccZipcode">Zip Code</label>
+                      </div>
+                    </div>
+                    <div class="form-container-row">
+                      <div class="input-field">
+                        <input
+                          type="text"
+                          id="billingAddress"
+                          name="billingAddress"
+                          class="validate"
+                          autocomplete="billing"
+                          required
+                        />
+                        <label for="billingAddress">Billing Address</label>
+                      </div>
+                    </div>
+                  </form>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- right half of signup (cart) -->
+          <div class="section-content">
+            <div class="mycart mycart--checkout" id="mycart">
+              <p class="mycart__title text-capitalize">Cart</p>
+              <div class="mycart__list-wrapper" id="mycart_list-wrapper">
+                <ul class="mycart__list" id="cart">
+                    <li class="mycart__item" data-id="test">
+                      <span class="seat-type">Baby Driver @ 10/12 8:30p</span>
+                      <span class="seat-id">F3/F4/F9</span>
+                      <span class="seat-price">$40</span>
+                    </li>
+                  </ul>
+              </div>
+              <h2 class="mycart_total text-center">Total: $90.00</h2>
+              <div class="mycart_btns">
+                <button class="btn-outline-dark btn-block mt-xs mr-xs" id="cart-cancel-btn">Cancel</button>
+                <button class="btn-prim btn-block mt-xs" id="cart-btn" disabled>Confirm</button>
+              </div>
+            </div>
+            <div class="mobi-cart flex-row align-center" id="mobi-cart">
+              <div class="mobi-cart__total" id="mobi-cart__total">
+                <h5>TOTAL: &nbsp;0</h5>
+              </div>
+              <a href="#" class="text-uppercase">Confirm</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <%- include('partials/footer.ejs') %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="/assets/js/main.bundle.js"></script><script src="/assets/js/signup.bundle.js"></script></body>
+</html>

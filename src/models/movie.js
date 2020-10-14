@@ -1,10 +1,10 @@
-const getDb = require('../utils/database').getDatabase;
-const { v4: uuidv4 } = require('uuid');
-const Screen = require('./screen');
-const moment = require('moment');
+import moment from 'moment';
+import { v4 as uuidv4 } from 'uuid';
+import { getDatabase } from '@src/utils/database';
+import Screen from './screen';
 
 async function isAlreadyCreated(title) {
-  const db = getDb();
+  const db = getDatabase();
   const movie = await db.collection('movies').findOne({ title });
 
   if(movie) {
@@ -15,7 +15,7 @@ async function isAlreadyCreated(title) {
 }
 
 async function updateMovie(movie, newScreen) {
-  const db = getDb();
+  const db = getDatabase();
   const currentDate = moment();
   const dateFormat = Screen.getDateFormat();
   const dateIndex = movie.screens.findIndex(screen => screen.date === newScreen.date);
@@ -35,7 +35,7 @@ async function updateMovie(movie, newScreen) {
   await db.collection('movies').updateOne({ id: movie.id }, { $set: { screens: movie.screens } });
 }
 
-module.exports = class Movie {
+export default class Movie {
   constructor(
     title,
     rated,
@@ -58,7 +58,7 @@ module.exports = class Movie {
   }
 
   async save() {
-    const db = getDb();
+    const db = getDatabase();
     const screen = new Screen();
     
     let movie = await isAlreadyCreated(this.title);
@@ -77,13 +77,13 @@ module.exports = class Movie {
   }
 
   static async getAllMovies() {
-    const db = getDb();
+    const db = getDatabase();
     const movies = await db.collection('movies').find().toArray();
     return movies;
   }
 
   static async getById(id) {
-    const db = getDb();
+    const db = getDatabase();
     const foundMovie = await db.collection('movies').findOne({ id });
     return foundMovie;
   }

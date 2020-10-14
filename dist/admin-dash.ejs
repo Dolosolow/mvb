@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- *************** -->
+    <!-- TABLESAW -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tablesaw/3.1.2/tablesaw.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesaw/3.1.2/tablesaw.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesaw/3.1.2/tablesaw-init.js"></script>
+    <!-- *************** -->
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css"
+    />
+    <!-- *************** -->
+    <!-- facvicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/images/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/images/favicons/favicon-16x16.png"
+    />
+    <link
+      rel="manifest"
+      href="/assets/images/favicons/site.webmanifest"
+    />
+    <title>FLIX Theater | Dine in theater</title>
+  <link href="/assets/css/styles.css" rel="stylesheet"></head>
+  <body>
+    <%- include('partials/navbar.ejs') %>
+    <div class="container-layout container-layout--ua-header">
+      <header class="t-nav t-nav--md">
+        <h2>Account Operations</h2>
+      </header>
+      <section class="account__card flex-row" id="account__card">
+        <div>
+          <h4 class="account__card-name">Jose Munoz</h4>
+          <span class="account__card-note">FLIX Team Member</span>
+        </div>
+        <ul class="flex-row">
+          <li class="info-item flex-column text-uppercase">
+            <span class="info-item__label">
+              Rev this year
+            </span>
+            <span class="info-item__val">
+              $78,422.12
+            </span>
+          </li>
+          <li class="info-item flex-column text-uppercase">
+            <span class="info-item__label">
+              Rev this month
+            </span>
+            <span class="info-item__val">
+              $13,577.43
+            </span>
+          </li>
+          <li class="info-item flex-column text-uppercase">
+            <span class="info-item__label">
+              Rev this week
+            </span>
+            <span class="info-item__val">
+              $4,433.08
+            </span>
+          </li>
+          <li class="info-item flex-column text-uppercase">
+            <span class="info-item__label">
+              member id
+            </span>
+            <span class="info-item__val">
+              P483382267
+            </span>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <div class="container-layout bg-smoked flex-row">
+      <nav class="account__tabs">
+        <ul class="nav-tabs fluid">
+          <li
+            class="nav-tabs__item flex-row align-center active"
+            id="overview-tab"
+            data-target="overview"
+          >
+            <i class="fas fa-desktop fa-2x"></i>
+            <div class="tab-desc">
+              <p class="text-uppercase">Overview</p>
+              <p class="muted">View or Modify overall operations at theater</p>
+            </div>
+          </li>
+          <li
+            class="nav-tabs__item flex-row align-center"
+            data-target="add-movie"
+          >
+            <i class="fas fa-film fa-2x"></i>
+            <div class="tab-desc">
+              <p class="text-uppercase">Add Movie</p>
+              <p class="muted">
+                Add Movie for screening at selected theater room
+              </p>
+            </div>
+          </li>
+          <li
+            class="nav-tabs__item flex-row align-center"
+            id="adj-movie-tab"
+            data-target="adj-movie"
+          >
+            <i class="fas fa-film fa-2x"></i>
+            <i
+              class="fas fa-pencil-alt fa-lg"
+              style="position: absolute; left: 2rem; top: 3rem;"
+            ></i>
+            <div class="tab-desc">
+              <p class="text-uppercase">
+                Edit / Remove Movie
+              </p>
+              <p class="muted">
+                Remove Movie currently added to movie roster
+              </p>
+            </div>
+          </li>
+          <li
+            class="nav-tabs__item flex-row align-center"
+            data-target="view-menu"
+          >
+            <i class="fas fa-utensils fa-2x"></i>
+            <div class="tab-desc">
+              <p class="text-uppercase">View Menu</p>
+              <p class="muted">
+                View or edit dine menu
+              </p>
+            </div>
+          </li>
+          <li
+            class="nav-tabs__item flex-row align-center"
+            data-target="add-promotion"
+          >
+            <i class="fas fa-tags fa-2x"></i>
+            <div class="tab-desc">
+              <p class="text-uppercase">Add / Edit Promotion</p>
+              <p class="muted">
+                Add or edit Promotion code and sitewide sale
+              </p>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="sections-container sections-container--admin">
+        <div class="loader" id="loader"></div>
+        <section class="acct-page acct-page__overview mb-md" id="overview">
+          <div class="acct-page__headeline-container">
+            <h2 class="acct-page__headline">
+              Day Operation <span style="float: right;">June 22, 2020</span>
+            </h2>
+          </div>
+          <div class="no-results-msg text-center mt-xs" id="no-results-msg">
+            <h4>No movies currently playing</h4>
+          </div>
+        </section>
+        <section
+          class="acct-page acct-page__add-movie mb-md"
+          id="add-movie"
+          style="display: none;"
+        >
+          <div class="acct-page__headeline-container">
+            <h2 class="acct-page__headline">Add Movie</h2>
+          </div>
+          <div class="srh-form flex-column fluid mt-xs">
+            <div class="srh-form__inline flex-row fluid">
+              <div class="inline-form">
+                <input
+                  type="text"
+                  id="search__input"
+                  name="title"
+                  autocomplete="off"
+                  placeholder="search for movie by title...."
+                />
+                <i class="fas fa-search fa-lg"></i>
+                <ul class="search__sugg" id="search__sugg"></ul>
+              </div>
+            </div>
+            <div class="no-results-msg text-center mt-xs" id="no-results-msg">
+              <h4>Add to Movie Playlist</h4>
+            </div>
+            <div class="srh-results flex-row"></div>
+            <button id="add-mov-btn" type="submit" class="btn-prim" disabled>
+              Add Movie
+            </button>
+          </div>
+        </section>
+        <!-- ADMIN EDIT MOVIES SECTION -->
+        <section
+          class="acct-page acct-page__adj-movie mb-md"
+          id="adj-movie"
+          style="display: none;"
+        >
+          <div class="acct-page__headeline-container">
+            <h2 class="acct-page__headline">Edit / Remove Movie</h2>
+          </div>
+          <div class="no-results-msg text-center mt-xs" id="no-results-msg">
+            <h4>No movies currently playing</h4>
+          </div>
+          <!-- <table
+            class="data-tablesaw data-tablesaw--editable tablesaw tablesaw-stack tablesaw-sortable mb-sm"
+            data-tablesaw-sortable
+            data-tablesaw-sortable-switch
+          >
+            <thead>
+              <tr>
+                <th
+                  scope="col"
+                  data-tablesaw-sortable-col
+                  data-tablesaw-priority="persist"
+                  data-tablesaw-sortable-numeric="false"
+                >
+                  Movie Title
+                </th>
+                <th
+                  scope="col"
+                  data-tablesaw-sortable-col
+                  data-tablesaw-priority="persist"
+                  data-tablesaw-sortable-numeric
+                >
+                  Theater
+                </th>
+                <th
+                  scope="col"
+                  data-tablesaw-sortable-col
+                  data-tablesaw-priority="persist"
+                  data-tablesaw-sortable-numeric
+                >
+                  Start Date
+                </th>
+                <th
+                  scope="col"
+                  data-tablesaw-sortable-col
+                  data-tablesaw-priority="persist"
+                  data-tablesaw-sortable-numeric
+                >
+                  End Date
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-remove-icon="&#xf2ed;">
+                <td class="title">Bad Boys for Life</td>
+                <td class="theater-screen">2</td>
+                <td class="strt-date">06-11-20</td>
+                <td class="end-date">08-11-20</td>
+              </tr>
+              <tr data-remove-icon="&#xf2ed;">
+                <td class="title">Inception</td>
+                <td class="theater-screen">4</td>
+                <td class="strt-date">07-23-20</td>
+                <td class="end-date">09-23-20</td>
+              </tr>
+              <tr data-remove-icon="&#xf2ed;">
+                <td class="title">Wolf of Wall Street</td>
+                <td class="theater-screen">5</td>
+                <td class="strt-date">06-18-20</td>
+                <td class="end-date">08-18-20</td>
+              </tr>
+              <tr data-remove-icon="&#xf2ed;">
+                <td class="title">Tenet</td>
+                <td class="theater-screen">1</td>
+                <td class="strt-date">08-04-20</td>
+                <td class="end-date">10-04-20</td>
+              </tr>
+            </tbody>
+          </table> -->
+          <!-- <a href="./index.html" class="btn-prim mt-md">Add Movie Now</a> -->
+        </section>
+        <!-- ADMIN VIEW MENU SECTION -->
+        <section
+          class="acct-page acct-page__view-menu mb-md"
+          id="view-menu"
+          style="display: none;"
+        >
+          <div class="acct-page__headeline-container">
+            <h2 class="acct-page__headline">View Menu</h2>
+            <h2 class="acct-page__headline text-center mt-xs mb-sm">
+              TO BE ADDED SOON
+            </h2>
+          </div>
+        </section>
+        <section
+          class="acct-page acct-page__view-menu mb-md"
+          id="add-promotion"
+          style="display: none;"
+        >
+          <div class="acct-page__headeline-container">
+            <h2 class="acct-page__headline">Add / Edit Promotions</h2>
+            <h2 class="acct-page__headline text-center mt-xs mb-sm">
+              TO BE ADDED SOON
+            </h2>
+          </div>
+        </section>
+      </div>
+    </div>
+    <%- include('partials/footer.ejs') %>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ejs@3.1.3/ejs.min.js"></script>
+  <script src="/assets/js/main.bundle.js"></script><script src="/assets/js/gen_acct.bundle.js"></script><script src="/assets/js/admin_acct.bundle.js"></script></body>
+</html>

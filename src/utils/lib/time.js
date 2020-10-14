@@ -1,6 +1,6 @@
-const moment = require('moment');
+import moment from 'moment';
 
-const sortScreenTime = screenTimes => {
+export const sortScreenTime = screenTimes => {
   let newArray = screenTimes;
 
   newArray = newArray.map(screen => {
@@ -20,8 +20,4 @@ const sortScreenTime = screenTimes => {
   });
 
   return newArray;
-}
-
-module.exports = {
-  sortScreenTime
 }

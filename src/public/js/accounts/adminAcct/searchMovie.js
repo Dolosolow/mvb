@@ -1,5 +1,5 @@
-import { hasAttribute } from '../../utils/global';
-import * as render from '../../utils/markup/searchMarkup';
+import { hasAttribute } from 'client_utils/global';
+import * as render from 'client_utils/markup/searchMarkup';
 
 const baseUrl = `http://www.omdbapi.com/?apikey=${process.env.APIKEY}&`;
 // ------------------------

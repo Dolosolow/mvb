@@ -1,8 +1,23 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import moment from 'moment';
+import { v4 as uuidv4 } from 'uuid';
+
 const filePath = path.join(path.dirname('src/data'), 'data/cart.json');
 
-module.exports = class Cart {
+export default class Cart {
+  constructor(userId) {
+    this.id = uuidv4();
+    this.userId = userId;
+    this.cartItems = [];
+    this.cartTotal = 0;
+    this.dateCreated = moment.toString();
+  }
+
+  save(email) {
+    this.email = email;
+  }
+
   static addItem(newItem) {
     const { id, type, unit_price } = newItem;
     

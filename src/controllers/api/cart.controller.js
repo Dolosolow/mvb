@@ -1,4 +1,4 @@
-const Cart = require('../../models/cart');
+import Cart from '@src/models/cart';
 
 const priceCatelog = {
   seats: {
@@ -24,13 +24,13 @@ function getSeatingPrice(seat_type) {
   }
 }
 
-exports.getCart = (req, res, next) => {
+export const getCart = (req, res, next) => {
   Cart.getItems(cart => {
     res.status(200).json({ cart });
   });
 }
 
-exports.postCart = (req, res, next) => {
+export const postCart = (req, res, next) => {
   const { id, seat_type } = req.body;
   const newProduct = { id, verified: false, type: 'seating', unit_price: getSeatingPrice(seat_type).toFixed(2) };
   if(newProduct.type === 'seating') {
@@ -40,7 +40,7 @@ exports.postCart = (req, res, next) => {
   res.status(201).json({ msg: `${id} added to cart` });
 }
 
-exports.deleteCartItem = (req, res, next) => {
+export const deleteCartItem = (req, res, next) => {
   const { id } = req.params;
   Cart.deleteItem(id);
   

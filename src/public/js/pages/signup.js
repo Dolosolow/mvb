@@ -1,5 +1,5 @@
-import validate from '../utils/validate';
-import { toggleQuickTipImg } from '../utils/global';
+import validate from 'client_utils/validate';
+import { toggleQuickTipImg } from 'client_utils/global';
 
 function checkFormForClass(elm) {
   if(!$(elm).hasClass('complete')) {

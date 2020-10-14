@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- *************** -->
+    <!-- owl-carosuel -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    />
+    <!-- *************** -->
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/e9063b30c3.js"></script>
+    <!-- *************** -->
+    <!-- facvicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/flix-theater-server/public/images/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/flix-theater-server/public/images/favicons/favicon-16x16.png"
+    />
+    <link
+      rel="manifest"
+      href="/flix-theater-server/public/images/favicons/site.webmanifest"
+    />
+    <title>FLIX Theater | Dine in theater</title>
+    <!-- *************** -->
+    <!-- materializecss -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+  <link href="/assets/css/styles.css" rel="stylesheet"></head>
+  <body>
+    <%- include('partials/navbar.ejs') %>
+    <header class="location-headline container-layout">
+      <div class="location-headline__banner">
+        <div class="t-nav t-nav--light">
+          <h2>FLIX Theaters</h2>
+        </div>
+        <span>New Jersey</span>
+      </div>
+      <div class="location-headline__show-more">
+        <a href="#" class="btn-outline btn-outline-doubled">View Showtimes</a>
+      </div>
+      <div id="location-headline" class="owl-carousel owl-theme owl-loaded">
+        <img
+          src="https://cdn.vox-cdn.com/thumbor/7I7XsKMlKmL7mXKMzSnnTf72Uf4=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/13293313/CMX_Cin_Bistro_3rd._Floor_Bar.jpg"
+          alt="upper lobby"
+        />
+        <img
+          src="https://www.gannett-cdn.com/-mm-/7fc706b3250a4912053c55767fb4ea6a4766727c/c=0-202-3872-2390/local/-/media/2017/04/06/Phoenix/Phoenix/636270899404189477-Dinner-at-the-movies-iPic-9.jpg?width=1300&height=900&fit=crop"
+          alt="theater hallway"
+        />
+        <img
+          src="https://meredithannemillerdotcom.files.wordpress.com/2012/07/cinepolisseats2.jpeg"
+          alt="theater seating"
+        />
+      </div>
+    </header>
+    <div class="dining-avl container-layout">
+      <div class="dining-avl__in">
+        <strong class="dining-avl__title">In Theater Dining</strong>
+        <span class="dining-avl__service">
+          <a href="#" class="text-uppercase">View Menu</a>
+        </span>
+      </div>
+      <span class="dining-avl__icon">
+        <i class="fas fa-utensils fa-3x"></i>
+      </span>
+      <div class="dining-avl__in">
+        <strong class="dining-avl__title">Self serve</strong>
+        <span class="dining-avl__service">Available</span>
+      </div>
+    </div>
+    <section class="bg-smoked">
+      <div
+        class="section-layout section-layout--location__about container-layout"
+      >
+        <div class="section-content">
+          <h2 class="section-content__title">About</h2>
+          <p class="section-content__body">
+            Entertainment and fine dining come together at FLIX, Hudson Lights
+            to make every experience, Exclusively Yours. Experience an intimate
+            date night or gathering with friends & family in our auditoriums,
+            lounge, bar and restaurant.
+          </p>
+        </div>
+        <div class="section-content">
+          <div class="location__info">
+            <span>
+              1099 Flix Place, Flixville NJ 07100,<br />
+              <a href="tel:+8003453549">800-345-3549</a>
+            </span>
+            <a href="#" class="btn-outline-dark">Contact us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="location__map bg-smoked">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.399389405845!2d-74.03493226405207!3d40.75323965601925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2577d04e0e1d9%3A0x97972d1222957218!2sBow%20Tie%20Cinemas!5e0!3m2!1sen!2sus!4v1588019002406!5m2!1sen!2sus"
+        frameborder="0"
+        style="border: 0"
+        allowfullscreen=""
+        aria-hidden="false"
+        tabindex="0"
+      ></iframe>
+    </div>
+    <section class="bg-smoked">
+      <div
+        class="section-layout section-layout--location__reserve container-layout"
+      >
+        <div class="section-content">
+          <h2 class="section-content__title">Flixville Dine</h2>
+          <span>The Flixville Dine</span>
+          <p class="section-content__body">
+            Entertainment and fine dining come together at FLIX, Hudson Lights
+            to make every experience, Exclusively Yours. Experience an intimate
+            date night or gathering with friends & family in our auditoriums,
+            lounge, bar and restaurant.
+          </p>
+          <a href="#" class="btn-prim">Reserve a Table</a>
+        </div>
+        <div class="section-content__img owl-carousel owl-theme owl-loaded">
+          <div id="location-reserve" class="owl-carousel owl-theme owl-loaded">
+            <img
+              src="https://cdn.vox-cdn.com/thumbor/7I7XsKMlKmL7mXKMzSnnTf72Uf4=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/13293313/CMX_Cin_Bistro_3rd._Floor_Bar.jpg"
+              alt="upper lobby"
+            />
+            <img
+              src="https://www.gannett-cdn.com/-mm-/7fc706b3250a4912053c55767fb4ea6a4766727c/c=0-202-3872-2390/local/-/media/2017/04/06/Phoenix/Phoenix/636270899404189477-Dinner-at-the-movies-iPic-9.jpg?width=1300&height=900&fit=crop"
+              alt="theater hallway"
+            />
+            <img
+              src="https://meredithannemillerdotcom.files.wordpress.com/2012/07/cinepolisseats2.jpeg"
+              alt="theater seating"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include('partials/footer.ejs') %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="/assets/js/main.bundle.js"></script><script src="/assets/js/owl_carousel.bundle.js"></script></body>
+</html>

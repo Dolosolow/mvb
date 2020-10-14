@@ -1,8 +1,8 @@
-const path = require('path');
-const webpack = require('webpack');
-const config = require('../../webpack.config');
-const webpackDM = require('webpack-dev-middleware');
-const webpackHM = require('webpack-hot-middleware');
+import path from 'path';
+import webpack from 'webpack';
+import config from '../../webpack.config';
+import webpackDM from 'webpack-dev-middleware';
+import webpackHM from 'webpack-hot-middleware';
 
 const webpackServerConnect = (server, inDevelopment) => {
   if(inDevelopment) {
@@ -19,4 +19,4 @@ const webpackServerConnect = (server, inDevelopment) => {
   }
 }
 
-exports.webpackServerConnect = webpackServerConnect;
+export default webpackServerConnect;

@@ -1,7 +1,7 @@
 require.context("../../images", true, /\.(png|svg|jpg)$/);
 import "regenerator-runtime/runtime";
 import "core-js/stable";
-import '../../scss/styles.scss';
+import 'src/public/scss/styles.scss';
 // --------------------
 // when navbar button or an anchor with href linked to signin modal is clicked
 // it adds no-scroll behavior to the html page.

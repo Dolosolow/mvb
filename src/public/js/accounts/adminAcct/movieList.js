@@ -1,6 +1,6 @@
-import { hasAttribute } from '../../utils/global';
-import * as render from '../../utils/markup/tableMarkup';
-import updateEJStemplate from '../../utils/ejsupdate';
+import { hasAttribute } from 'client_utils/global';
+import * as render from 'client_utils/markup/tableMarkup';
+import updateEJStemplate from 'client_utils/ejsupdate';
 
 function resetTableview() {
   $('#overview #now-playing-table').remove();

@@ -1,8 +1,8 @@
 import axios from 'axios';
-import * as time from '../utils/time';
-import * as render from '../utils/markup/movieStartTime';
+import * as time from 'client_utils/time';
+import * as render from 'client_utils/markup/movieStartTime';
 import { resetSelectedSeats } from './seat-reservations';
-import updateEJStemplate from '../utils/ejsupdate';
+import updateEJStemplate from 'client_utils/ejsupdate';
 
 let socket = io('localhost:5001', { query: `screenId=${$('#screen-avl__times-list .time').eq(0).data('id')}` });
 // --------------------------

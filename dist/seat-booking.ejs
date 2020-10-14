@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- *************** -->
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/e9063b30c3.js"></script>
+    <!-- *************** -->
+    <!-- facvicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/images/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/images/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/assets/images/favicons/site.webmanifest" />
+    <!-- *************** -->
+    <!-- materializecss -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <title>FLIX Theater | Dine in theater</title>
+  <link href="/assets/css/styles.css" rel="stylesheet"></head>
+  <body>
+    <%- include('partials/navbar.ejs') %>
+    <!-- dynamic movie cover background -->
+    <div class="header-poster fluid">
+      <img
+        class="fluid"
+        src="<%= movie.poster_xl %>"
+        alt="interstellar"
+      />
+    </div>
+    <header class="theater-headline">
+      <div class="container-layout flex-row">
+        <!-- dynamic movie cover card img -->
+        <img
+          src="<%= movie.poster %>"
+          alt="movie"
+        />
+        <div class="theater-headline__content flex-column fluid">
+          <div class="t-nav t-nav--light">
+            <h2><%= movie.title %></h2>
+          </div>
+          <!-- container for date & time selection -->
+          <div class="screen-avl flex-row">
+            <div class="screen-avl__dates flex-column">
+              <h3 class="text-uppercase">Dates</h3>
+              <!-- movie date list -->
+              <div class="screen-avl__dates-list" id="screen-dates-list">
+                <i class="fas fa-angle-left text-red"></i>
+                <% for(let day of movie.screens) { %>
+                  <div class="screen-avl__date text-center" data-date="<%= day.numerical_isodate %>">
+                    <p class="mth muted"><%= day.date.split(' ')[1].toUpperCase() %> <%= day.date.split(' ')[2] %></p>
+                    <p class="day"><%= day.date.split(' ')[0] %></p>
+                  </div>
+                <% } %>
+                <i class="fas fa-angle-right text-red"></i>
+              </div>
+            </div>
+            <div class="screen-avl__times flex-column" id='screen-avl__times'>
+              <h3 class="text-uppercase">Available Times</h3>
+              <!-- movie play time list -->
+              <div class="screen-avl__times-list" id='screen-avl__times-list'>
+                <i class="fas fa-angle-left text-red"></i>
+                <% for(let startTime of movie.screens[0].times) { %>
+                  <p class="time<%= movie.screens[0].times[0].id === startTime.id ? ' active' : ''  %>" data-id="<%= startTime.id %>" ><%= startTime.time %></p>
+                <% } %> 
+                <i class="fas fa-angle-right text-red"></i>
+              </div>
+            </div>
+            <!-- OTHER SECTION OF SCREEN DATES -->
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="bg-smoked">
+      <main class="seat-selection container-layout flex-row">
+        <div class="seat-selection__chart">
+          <header class="seat-selection__header flex-row">
+            <!-- theater name, dynamic number corresponding to the theater room moving being played -->
+            <div class="theater-name">
+              <p class="muted text-uppercase">Movie Theater No.</p>
+              <h2>FLIX Theater <span id="screenRoom"><%= screen.screenRoom %></span></h2>
+            </div>
+            <div class="seat-selection__legend-wrapper">
+              <!-- seating legend -->
+              <div class="seat-selection__legend flex-row">
+                <div class="seat-wrapper">
+                  <div class="seat-cple"></div>
+                  <p>Couple Seat</p>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-vip"></div>
+                  <p>VIP Seat</p>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg"></div>
+                  <p>Regular seat</p>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-acc"></div>
+                  <p>Accessible</p>
+                </div>
+              </div>
+              <!-- seating legend user interaction guide -->
+              <div class="seat-selection__legend flex-row">
+                <div class="seat-wrapper">
+                  <div class="seat-vip"></div>
+                  <p>Available</p>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-na"></div>
+                  <p>Taken</p>
+                </div>
+                <div class="seat-wrapper">
+                  <div class="seat-reg active"></div>
+                  <p>Selected</p>
+                </div>
+              </div>
+            </div>
+          </header>
+          <!-- illustration of the theater screen in the room -->
+          <span class="seat-selection__screen text-center">SCREEN</span>
+          <div class="seat-selection__layout">
+            <p class="small-note text-center muted">
+              Click seats to add the to cart
+            </p>
+            <div class="seat-selection__layout-grid">
+              <% for(let row of screen.seating_chart.reverse()) { %>
+                <% if(row.row_id !== 'empty-row') { %>
+                  <div class="seat-row flex-row justify-center">
+                    <span class="row-char">&nbsp;<%= row.row_id.toUpperCase() %></span>
+                    <% for(let seat of row.seats) { %>
+                      <div class="seat-wrapper" data-id="<%= seat.id.toUpperCase() %>" data-type="<%= seat.type %>" data-reserved="<%= seat.reserved %>">
+                        <button class="<%= seat.type %> <%= seat.reserved ? 'disable' : '' %>"></button>
+                      </div>
+                    <% } %>
+                    <span class="row-char">&nbsp;<%= row.row_id.toUpperCase() %></span>
+                  </div>
+                <% } else { %>
+                  <div class="empty-row"></div>
+                <% } %>
+              <% } %>
+            </div>
+          </div>
+        </div>
+        <div class="mycart" id="mycart">
+          <b class="mycart__title text-uppercase">
+            Selected Seats
+          </b>
+          <div class="mycart__list-wrapper" id="mycart__list-wrapper"></div>
+          <button class="btn-prim btn-block mt-xs" id="cart-btn" disabled>Purchase</button>
+          <p class="mycart__timer text-center muted" id="mycart__timer">
+            Time left to purchase: &nbsp;<span></span>
+          </p>
+        </div>
+        <div class="mobi-cart flex-row align-center" id="mobi-cart">
+          <div class="mobi-cart__total" id="mobi-cart__total">
+            <p>Selected 0 seats</p>
+            <h5>TOTAL: &nbsp;0</h5>
+          </div>
+          <a href="#" class="text-uppercase">submit</a>
+        </div>
+      </main>
+    </div>
+    <%- include('partials/footer.ejs') %>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ejs@3.1.3/ejs.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+  <script src="/assets/js/main.bundle.js"></script><script src="/assets/js/reservations.bundle.js"></script></body>
+</html>

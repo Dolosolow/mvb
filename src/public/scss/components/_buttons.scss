@@ -48,6 +48,11 @@ button {
   @extend %btn-outlined;
   @include set-button-colors(transparent, #000);
   border: 1px solid #000;
+
+  &:focus {
+    background-color: black;
+    outline: none;
+  }
 }
 
 .btn-outline-doubled {

@@ -1,8 +1,9 @@
-const getDb = require('../utils/database').getDatabase;
-const moment = require('moment');
-const fs = require('fs');
-const path = require('path');
-const { v4: uuidv4 } = require('uuid');
+import fs  from 'fs';
+import path  from 'path';
+import moment  from 'moment';
+import { v4 as uuidv4 }  from 'uuid';
+import { getDatabase } from '@src/utils/database';
+
 const seatingData = path.join(path.dirname('data'), 'data/seat-chart.json');
 const dateFormat = 'ddd MMM D YYYY hh:mm:ss GMT';
 
@@ -13,7 +14,7 @@ function setStartTime(schedule) {
 }
 
 async function getScreensByRoom(room, date) {
-  const db = getDb();
+  const db = getDatabase();
   const screens = await db.collection('screens').find({ screenRoom: room }).toArray();
 
   const daySchedule = screens.filter(screen => { 
@@ -43,13 +44,13 @@ async function getMovieTimes(runtime) {
   return { screenRoom, startTime, endTime };
 }
 
-module.exports = class Screen {
+export default class Screen {
   static getDateFormat() {
     return dateFormat;
   }
 
   async addMovie(movieId, runtime, cb) {
-    const db = getDb();
+    const db = getDatabase();
     this.id = uuidv4();
 
     const movieTimes = await getMovieTimes(runtime);
@@ -71,20 +72,20 @@ module.exports = class Screen {
   }
 
   static async getAllScreens() {
-    const db = getDb();
+    const db = getDatabase();
     const allScreens = await db.collection('screens').find().toArray();
     return allScreens;
   }
 
   static async getScreenById(id) {
-    const db = getDb();
+    const db = getDatabase();
     const screen = await db.collection('screens').findOne({ id });
 
     return screen;
   }
 
   static async getScreensByDate(date) {
-    const db = getDb();
+    const db = getDatabase();
     const screen = await db.collection('screens').find({ date });
 
     console.log(screen)

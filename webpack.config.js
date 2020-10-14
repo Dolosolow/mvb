@@ -24,6 +24,13 @@ module.exports = {
     filename: 'assets/js/[name].bundle.js',
     publicPath: '/'
   },
+  resolve: {
+    alias: {
+      src: path.resolve(__dirname, 'src/'),
+      client_utils: path.resolve(__dirname, 'src/public/js/utils')
+    },
+    extensions: ['.js']
+  },
   module: {
     rules: [
       {
@@ -95,12 +102,11 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
-    new WriteFilePlugin(),
-    new MiniCssExtractPlugin({ filename: 'assets/css/styles.css' }),
     new Dotenv(),
+    new webpack.HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({ filename: 'assets/css/styles.css' }),
+    new WriteFilePlugin(),
     new CopyWebpackPlugin({
       patterns: [
         { from: './src/public/images/favicons', to: 'assets/images/favicons' },

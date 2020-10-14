@@ -1,9 +1,10 @@
-const router = require('express').Router();
-const cartRoute = require('./cart');
-const movieRoute = require('./movie');
+import { Router } from 'express';
+import cartRoute from './cart';
+import movieRoute from './movie';
+
+const router = Router();
 
 router.use('/cart', cartRoute);
-
 router.use('/movies', movieRoute);
 
-module.exports = router;
+export default router;

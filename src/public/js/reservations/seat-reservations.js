@@ -1,6 +1,6 @@
 import axios from 'axios';
-import * as render from '../utils/markup/cartMarkup';
-import updateEJStemplate from '../utils/ejsupdate';
+import * as render from 'client_utils/markup/cartMarkup';
+import updateEJStemplate from 'client_utils/ejsupdate';
 
 let socket = io('localhost:5001', { query: `screenId=${$('#screen-avl__times-list .time').eq(0).data('id')}` });
 // ---------------------
