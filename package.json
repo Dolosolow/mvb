@@ -7,8 +7,8 @@
   "scripts": {
     "build": "NODE_ENV=production webpack --mode production",
     "clean-up": "rimraf dist",
-    "start": "NODE_ENV=development npm run clean-up",
-    "poststart": "nodemon --watch src/server --exec babel-node src/server/server.js --ignore dist"
+    "start": "npm run clean-up",
+    "poststart": "NODE_ENV=development nodemon --watch src/server --exec babel-node src/server/server.js --ignore dist"
   },
   "keywords": [],
   "author": "",

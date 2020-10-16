@@ -25,7 +25,7 @@
           >Events</a
         >
       </li>
-      <% if(!user) { %>
+      <% if(user.type === 'guest') { %>
         <li class="navigation__item">
           <a
             class="navigation__link <%= transNav && 'nav-light' %> <%= path === '/membership' && 'active' %>"
@@ -41,19 +41,19 @@
           >Location</a
         >
       </li>
-      <% if(user) { %>
-      <li class="navigation__item">
-        <a class="navigation__link <%= transNav && 'nav-light' %>" href="#">
-          <i class="far fa-user fa-sm"></i>
-        </a>
-      </li>
+      <% if(user.type === 'guest') { %>
+        <li class="navigation__item">
+          <a class="navigation__link" id="signin-btn" href="#si-popup">Sign in</a>
+        </li>
+        <li class="navigation__item navigation__item--btn">
+          <a class="btn-prim navigation__link" href="/membership/gold">Sign up</a>
+        </li>
       <% } else { %>
-      <li class="navigation__item">
-        <a class="navigation__link" id="signin-btn" href="#si-popup">Sign in</a>
-      </li>
-      <li class="navigation__item navigation__item--btn">
-        <a class="btn-prim navigation__link" href="/membership/gold">Sign up</a>
-      </li>
+        <li class="navigation__item">
+          <a class="navigation__link <%= transNav && 'nav-light' %>" href="#">
+            <i class="far fa-user fa-sm"></i>
+          </a>
+        </li>
       <% } %>
     </ul>
     <input

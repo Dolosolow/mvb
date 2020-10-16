@@ -1,6 +1,7 @@
 import moment from 'moment';
 import { v4 as uuidv4 } from 'uuid';
 import { getDatabase } from '@src/utils/database';
+import { dateFormat } from '@src/utils/lib/time'
 import Screen from './screen';
 
 async function isAlreadyCreated(title) {
@@ -17,7 +18,6 @@ async function isAlreadyCreated(title) {
 async function updateMovie(movie, newScreen) {
   const db = getDatabase();
   const currentDate = moment();
-  const dateFormat = Screen.getDateFormat();
   const dateIndex = movie.screens.findIndex(screen => screen.date === newScreen.date);
 
   console.log(`index: ${dateIndex}`)
@@ -25,7 +25,11 @@ async function updateMovie(movie, newScreen) {
   if(dateIndex !== -1) {
     movie.screens[dateIndex].times = [...movie.screens[dateIndex].times, { id: newScreen.id, time: newScreen.startTime }];
   } else {
-    movie.screens.push({ date: newScreen.date, numerical_isodate: newScreen.numerical_isodate, times: new Array({ id: newScreen.id, time: newScreen.startTime }) });
+    movie.screens.push({ 
+      date: newScreen.date, 
+      numerical_isodate: newScreen.numerical_isodate, 
+      times: new Array({ id: newScreen.id, time: newScreen.startTime }) 
+    });
   }
 
   movie.screens.sort((a, b) => {
@@ -71,7 +75,11 @@ export default class Movie {
     if(movie) {
       updateMovie(movie, newScreen);
     } else {
-      this.screens.push({ date: newScreen.date, numerical_isodate: newScreen.numerical_isodate, times: new Array({ id: newScreen.id, time: newScreen.startTime }) });
+      this.screens.push({ 
+        date: newScreen.date, 
+        numerical_isodate: newScreen.numerical_isodate, 
+        times: new Array({ id: newScreen.id, time: newScreen.startTime }) 
+      });
       await db.collection('movies').insertOne(this);
     }
   }

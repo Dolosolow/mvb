@@ -3,9 +3,9 @@ import path  from 'path';
 import moment  from 'moment';
 import { v4 as uuidv4 }  from 'uuid';
 import { getDatabase } from '@src/utils/database';
+import { dateFormat } from '@src/utils/lib/time'
 
 const seatingData = path.join(path.dirname('data'), 'data/seat-chart.json');
-const dateFormat = 'ddd MMM D YYYY hh:mm:ss GMT';
 
 function setStartTime(schedule) {
   const lastMoviePlaying = schedule[schedule.length - 1];
@@ -45,10 +45,6 @@ async function getMovieTimes(runtime) {
 }
 
 export default class Screen {
-  static getDateFormat() {
-    return dateFormat;
-  }
-
   async addMovie(movieId, runtime, cb) {
     const db = getDatabase();
     this.id = uuidv4();

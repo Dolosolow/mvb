@@ -1,5 +1,7 @@
 import moment from 'moment';
 
+export const dateFormat = 'ddd MMM D YYYY hh:mm:ss GMT';
+
 export const sortScreenTime = screenTimes => {
   let newArray = screenTimes;
 

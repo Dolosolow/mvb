@@ -36,7 +36,7 @@ function adjustMobileCart(cartItems, cartTotalPrice) {
 // Event for when a cart needs to be updated. The desktop & mobile
 // cart are updated depending on screen width.
 function updateCart({ cart }) {
-  const cartItems = cart.products;
+  const cartItems = cart.items;
   const cartTotalPrice = cart.totalPrice;
 
   if($(window).width() > 1024) {
@@ -108,5 +108,5 @@ $('#mycart').on('click', '#remove-cart-btn', function() {
 $('#cart-btn').click(function() {
   // functionality to either complete purchase or redirect to 
   // checkout page where transaction is completed
-  alert('clicked purchased')
+  window.location.href = '/checkout';
 })

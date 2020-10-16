@@ -24,25 +24,35 @@ function getSeatingPrice(seat_type) {
   }
 }
 
-export const getCart = (req, res, next) => {
-  Cart.getItems(cart => {
-    res.status(200).json({ cart });
-  });
+export const getCart = async (req, res, next) => {
+ const cart = await Cart.getCart(req.user.id);
+ res.status(200).json({ cart: cart });
 }
 
-export const postCart = (req, res, next) => {
+export const postCart = async (req, res, next) => {
   const { id, seat_type } = req.body;
-  const newProduct = { id, verified: false, type: 'seating', unit_price: getSeatingPrice(seat_type).toFixed(2) };
+  const newProduct = { 
+    id, 
+    verified: false, 
+    type: 'seating', 
+    unit_price: getSeatingPrice(seat_type).toFixed(2) 
+  };
+
   if(newProduct.type === 'seating') {
     newProduct.seat_type = seat_type;
   }
-  Cart.addItem(newProduct);
+
+  const cart = new Cart();
+
+  await cart.createCart(req.user.id);
+  await Cart.addItem(newProduct, req.user.id);  
+
   res.status(201).json({ msg: `${id} added to cart` });
 }
 
 export const deleteCartItem = (req, res, next) => {
   const { id } = req.params;
-  Cart.deleteItem(id);
+  Cart.deleteItem(id, req.user.id);
   
   res.status(200).json({ msg: `${id} removed from cart` });
 }

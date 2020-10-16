@@ -17,7 +17,7 @@ import User from '@src/models/user';
 config();
 
 const server = express();
-webpackServerConnect(server, true);
+webpackServerConnect(server, process.env.NODE_ENV === 'development');
 
 server.use(express.static(path.resolve(__dirname, 'dist')));
 server.use(express.urlencoded({ extended: false }));
@@ -25,15 +25,22 @@ server.use(express.json());
 server.set('view engine', 'ejs');
 server.set('views', 'dist');
 
-// server.use(async (req, res, next) => {
-//   try {
-//     const foundUser = await User.findById('00');
-//     req.user = foundUser;
-//   } catch (err) {
-//     console.log('something went wrong, call to db was not reached');
-//   }
-//   next();
-// });
+import { v4 as uuidv4 } from 'uuid';
+import { accountTypes } from '@src/models/user';
+
+server.use(async (req, res, next) => {
+  try {
+    const foundUser = await User.findById('00');
+    if(!foundUser) {
+      req.user = { id: uuidv4(), type: accountTypes.GUEST };
+    } else {
+      req.user = foundUser;
+    }
+  } catch (err) {
+    console.log('something went wrong, call to db was not reached');
+  }
+  next();
+});
 server.use('/api', apiRoutes);
 server.use('/admin', adminRoutes);
 server.use('/', storeRoutes);
