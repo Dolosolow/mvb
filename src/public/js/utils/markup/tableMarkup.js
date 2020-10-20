@@ -59,8 +59,8 @@ export function tablesawTable(isEditable) {
       <tbody>
         <% for(let movie of movies) { %>
           <% for(let screen of screens) { %>
-            <tr id="mov-row" ${isEditable && 'data-remove-icon=\"&#xf2ed;\" data-id=\"<%= movie.id %>\"'}>
-              <% if(screen.movieId === movie.id) { %>
+            <tr id="mov-row" ${isEditable && 'data-remove-icon=\"&#xf2ed;\" data-id=\"<%= movie._id %>\"'}>
+              <% if(screen.movieId === movie._id) { %>
                 <td class="title"><%= movie.title %></td>
                 <td class="theater-screen"><%= screen.screenRoom %></td>
                 <td class="strt-date"><%= screen.date %></td>

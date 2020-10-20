@@ -269,18 +269,6 @@
     font-size: 1.8rem;
     margin-bottom: 4rem;
   }
-
-  .btn-worded-only {
-    background-color: transparent;
-    border: none;
-    color: rgba(#fff, 0.5) !important;
-    font: 400 3.6rem $primary-font;
-    height: max-content;
-
-    @include respond-to-breakpoint(750) {
-      margin-top: 1.5rem;
-    }
-  }
 }
 // ******************
 // MEMBERSHIP OFFER TABLE

@@ -1,95 +1,91 @@
 import moment from 'moment';
-import { v4 as uuidv4 } from 'uuid';
-import { getDatabase } from '@src/utils/database';
+import mongoose from 'mongoose';
 import { dateFormat } from '@src/utils/lib/time';
 
-export default class Cart {
-  constructor() {
-    this.id = uuidv4();
-    this.items = [];
-    this.totalPrice = 0;
-    this.dateCreated = moment().format(dateFormat);
+const cartSchema = new mongoose.Schema({
+  userId: { type: String, required: true },
+  email: { type: String },
+  totalPrice: { type: Number, default: 0, required: true },
+  items: [{
+    _id: false,
+    screenId: { type: mongoose.Schema.Types.ObjectId, ref: 'Screen' },
+    itemId: { type: String },
+    type: { type: String },
+    seat_type: { type: String },
+    unit_price: { type: String },
+    qty: { type: Number, default: 0 }
+  }],
+  date_created: {
+    type: String,
+    default: moment().format(dateFormat),
+    required: true
+  },
+  date_updated: {
+    type: String,
+    default: moment().format(dateFormat),
+    required: true
+  }
+});
+
+cartSchema.statics.addItem = async function(newItem, userId) {
+  const foundCart = await this.findOne({ userId });
+  let cart, updatedItem;
+
+  if(foundCart) {
+    cart = foundCart;
+  } else {
+    cart = new this({ userId });
   }
 
-  save(userId, email) {
-    this.email = email;
-  }
+  const existingItemIdx = cart.items.findIndex(item => item.seat_type === newItem.seat_type);
+  const existingItem = cart.items[existingItemIdx];
 
-  async createCart(userId) {
-    const db = getDatabase();
-    const cart = await db.collection('carts').findOne({ userId });
+  if(existingItem) {
+    updatedItem = existingItem;
+    updatedItem.qty += 1;
+    updatedItem.itemId += `-${newItem.itemId}`;
     
-    if(!cart) {
-      this.userId = userId;
-      await db.collection('carts').insertOne(this);
-    }
+    cart.items[existingItemIdx] = updatedItem;
+  } else {
+    updatedItem = { ...newItem, qty: 1 };
+    cart.items = [...cart.items, updatedItem];
   }
+  cart.totalPrice += +newItem.unit_price;
 
-  static async addItem(newItem, userId) {
-    const db = getDatabase();
-    const { id, type, unit_price } = newItem;
-    let existingItemIdx, updateItem;
+  return cart.save();
+}
 
-    const userCart = await db.collection('carts').findOne({ userId });
+cartSchema.statics.deleteItem = async function(itemId, userId) {
+  const cart = await this.findOne({ userId });
+  const selectedItemIdx = cart.items.findIndex(item => item.itemId.includes(itemId));
 
-    if(type === 'seating') {
-      existingItemIdx = userCart.items.findIndex(item => item.seat_type === newItem.seat_type);
+  if(selectedItemIdx !== -1) {
+    let selectedItem = cart.items[selectedItemIdx];
+
+    if(itemId.split('-').length === 1) {
+      selectedItem.itemId = selectedItem.itemId.split('-').filter(selectedId => selectedId !== itemId).join('-');
+      --selectedItem.qty;
     } else {
-      existingItemIdx = userCart.items.findIndex(item => item.id === id);
+      selectedItem.qty = 0;
+    }
+    cart.items = cart.items.filter(item => item.qty !== 0);
+    cart.totalPrice -= selectedItem.unit_price * itemId.split('-').length;
+
+    if(cart.totalPrice < 0) {
+      cart.totalPrice = 0;
     }
 
-    const existingItem = userCart.items[existingItemIdx];
-
-    if(existingItem) {
-      updateItem = { ...existingItem };
-      updateItem.qty += 1;
-      if(updateItem.type === 'seating') {
-        updateItem.id += `-${id}`;
-      }
-      userCart.items[existingItemIdx] = updateItem;
-    } else {
-      updateItem = { ...newItem, qty: 1 };
-      userCart.items = [...userCart.items, updateItem];
-    }
-
-    this.totalPrice += +unit_price;
-    await db.collection('carts').updateMany(
-      { id: userCart.id }, 
-      { $set: { items: userCart.items, totalPrice: userCart.totalPrice += +unit_price } }
-    );
-  }
-
-  static async getCart(userId) {
-    const db = getDatabase();
-    const foundCart = await db.collection('carts').findOne({ userId });
-    return foundCart;
-  }
-
-  static async deleteItem(itemId, userId) {
-    const db = getDatabase();
-    const userCart = await db.collection('carts').findOne({ userId });
-    const foundItemIdx = userCart.items.findIndex(item => item.id.includes(itemId));
-
-    if(foundItemIdx !== -1) {
-      let foundItem = userCart.items[foundItemIdx];
-
-      if(itemId.split('-').length === 1) {
-        foundItem.id = foundItem.id.split('-').filter(item => item !== itemId).join('-');
-        --foundItem.qty;
-      } else {
-        foundItem.qty = 0;
-      }
-      userCart.items = userCart.items.filter(item => item.qty !== 0);
-      userCart.totalPrice -= foundItem.unit_price * itemId.split('-').length;
-      
-      if(userCart.totalPrice < 0) {
-        userCart.totalPrice = 0;
-      }
-
-      await db.collection('carts').updateOne(
-        { userId }, 
-        { $set: { items: userCart.items, totalPrice: userCart.totalPrice } }
-      );
-    }
+    return cart.save();
   }
 }
+
+cartSchema.statics.clearCart = async function(userId) {
+  const cart = await this.findOne({ userId });
+  
+  cart.items = [];
+  cart.totalPrice = 0;
+
+  return cart.save();
+}
+
+export default mongoose.model('Cart', cartSchema);

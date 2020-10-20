@@ -25,34 +25,34 @@ function getSeatingPrice(seat_type) {
 }
 
 export const getCart = async (req, res, next) => {
- const cart = await Cart.getCart(req.user.id);
+ const cart = await Cart.findOne({ userId: req.user.id });
  res.status(200).json({ cart: cart });
 }
 
 export const postCart = async (req, res, next) => {
-  const { id, seat_type } = req.body;
-  const newProduct = { 
-    id, 
+  const { id, screenId, seat_type } = req.body;
+  const newItem = { 
+    itemId: id, 
+    screenId: screenId,
     verified: false, 
     type: 'seating', 
+    seat_type: seat_type,
     unit_price: getSeatingPrice(seat_type).toFixed(2) 
   };
 
-  if(newProduct.type === 'seating') {
-    newProduct.seat_type = seat_type;
-  }
-
-  const cart = new Cart();
-
-  await cart.createCart(req.user.id);
-  await Cart.addItem(newProduct, req.user.id);  
+  await Cart.addItem(newItem, req.user.id);  
 
   res.status(201).json({ msg: `${id} added to cart` });
 }
 
-export const deleteCartItem = (req, res, next) => {
-  const { id } = req.params;
-  Cart.deleteItem(id, req.user.id);
+export const deleteCartItem = async (req, res, next) => {
+  let { id } = req.params;
+
+  if(!id.includes('+')) {
+    await Cart.deleteItem(id, req.user.id);
+  } else {
+    await Cart.clearCart(req.user.id);
+  }
   
   res.status(200).json({ msg: `${id} removed from cart` });
 }

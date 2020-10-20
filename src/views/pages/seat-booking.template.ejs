@@ -72,7 +72,7 @@
               <div class="screen-avl__times-list" id='screen-avl__times-list'>
                 <i class="fas fa-angle-left text-red"></i>
                 <% for(let startTime of movie.screens[0].times) { %>
-                  <p class="time<%= movie.screens[0].times[0].id === startTime.id ? ' active' : ''  %>" data-id="<%= startTime.id %>" ><%= startTime.time %></p>
+                  <p class="time<%= movie.screens[0].times[0].screenId === startTime.screenId ? ' active' : ''  %>" data-id="<%= startTime.screenId %>" ><%= startTime.time %></p>
                 <% } %> 
                 <i class="fas fa-angle-right text-red"></i>
               </div>
@@ -163,12 +163,19 @@
             Time left to purchase: &nbsp;<span></span>
           </p>
         </div>
-        <div class="mobi-cart flex-row align-center" id="mobi-cart">
-          <div class="mobi-cart__total" id="mobi-cart__total">
-            <p>Selected 0 seats</p>
-            <h5>TOTAL: &nbsp;0</h5>
+        <div class="mobi-cart flex-column align-center" id="mobi-cart">
+          <button class="btn btn-block text-center">
+            <i class="fas fa-chevron-up"></i>
+          </button>
+          <div class="mobi-cart__list-content">
+            <div class="mobi-cart__list-wrapper" id="mobi-cart__list-wrapper"></div>
+            <h5 class="mobi-cart__total" id="mobi-cart__totalNum">Selected 0 seats</h5>
+            <h5 class="mobi-cart__total" id="mobi-cart__total">TOTAL: &nbsp;$0</h5>
+            <div class="mobi-cart__ctrl flex-row" id="mobi-cart__ctrl">
+              <button class="btn-worded-only">Cancel</button>
+              <button class="btn-worded-only">Checkout</button>
+            </div>
           </div>
-          <a href="#" class="text-uppercase">submit</a>
         </div>
       </main>
     </div>

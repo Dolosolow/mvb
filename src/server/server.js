@@ -1,4 +1,4 @@
-import { config } from 'dotenv';
+import dotenv from 'dotenv';
 import path from 'path';
 import express from 'express';
 import { createServer } from 'http';
@@ -12,9 +12,7 @@ import apiRoutes from '@src/routes/api';
 import adminRoutes from '@src/routes/admin';
 import storeRoutes from '@src/routes/store';
 
-import User from '@src/models/user';
-
-config();
+dotenv.config();
 
 const server = express();
 webpackServerConnect(server, process.env.NODE_ENV === 'development');
@@ -26,11 +24,11 @@ server.set('view engine', 'ejs');
 server.set('views', 'dist');
 
 import { v4 as uuidv4 } from 'uuid';
-import { accountTypes } from '@src/models/user';
+import User, { accountTypes } from '@src/models/user';
 
 server.use(async (req, res, next) => {
   try {
-    const foundUser = await User.findById('00');
+    const foundUser = await User.findOne({ id: '00' });
     if(!foundUser) {
       req.user = { id: uuidv4(), type: accountTypes.GUEST };
     } else {

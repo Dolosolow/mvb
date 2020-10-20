@@ -1,7 +1,6 @@
 import { hasAttribute } from 'client_utils/global';
 import * as render from 'client_utils/markup/searchMarkup';
 
-const baseUrl = `http://www.omdbapi.com/?apikey=${process.env.APIKEY}&`;
 // ------------------------
 // resets search results including movie poster.
 function clearSearchResults() {
@@ -44,7 +43,7 @@ function getSearchResults(response) {
 // ------------------------
 // makes call to api using the search input from the user.
 async function searchMovie(title) {
-  const foundMovie = await axios.get(`${baseUrl}s=${title}`);
+  const foundMovie = await axios.get(`${process.env.BASE_API_URL}&s=${title}`);
   $('#search__sugg').addClass('collapse');
   getSearchResults(foundMovie.data);
 };
@@ -66,7 +65,7 @@ $('#search__sugg').on('click', '.list-group__item', async function() {
   clearSearchResults();
 
   const movieId = $(this).data('id');
-  const foundMovie = await axios.get(`${baseUrl}i=${movieId}&plot=full`);
+  const foundMovie = await axios.get(`${process.env.BASE_API_URL}&i=${movieId}&plot=full`);
 
   $('.no-results-msg').css('display', 'none');
   $('#add-mov-btn').removeAttr('disabled');
@@ -82,7 +81,7 @@ $('#add-mov-btn').on('click', async function() {
   if(!hasAttribute(isBtnDisabled)) {
     const sendData = { movieId: $('#srh-results__list').data('id') };
 
-    const response = await axios.post('/api/movies/add-movie', sendData);
+    const response = await axios.post('/admin/add-movie', sendData);
     clearSearchResults();
     $('.no-results-msg').css('display', 'block');
     $('.btn-prim').attr('disabled', true);

@@ -11,13 +11,14 @@ const path = require('path');
 module.exports = {
   mode: 'development',
   entry: {
-    main: ['webpack-hot-middleware/client?reload=true&timeout=1000', './src/public/js/pages/index.js'],
-    owl_carousel: ['./src/public/js/pages/owl-carousel.js'],
-    gen_acct: ['./src/public/js/pages/accounts-dash.js'],
     admin_acct: ['./src/public/js/accounts/adminAcct/movieList.js', './src/public/js/accounts/adminAcct/searchMovie.js'],
+    cart: ['./src/public/js/cart/cart.js'],
+    gen_acct: ['./src/public/js/pages/accounts-dash.js'],
+    main: ['webpack-hot-middleware/client?reload=true&timeout=1000', './src/public/js/pages/index.js'],
     memberships: ['./src/public/js/pages/main-membership.js'],
+    owl_carousel: ['./src/public/js/pages/owl-carousel.js'],
+    reservations: ['./src/public/js/reservations/index.js', './src/public/js/reservations/seat-reservations.js'],
     signup: ['./src/public/js/pages/signup.js'],
-    reservations: ['./src/public/js/reservations/index.js', './src/public/js/reservations/seat-reservations.js']
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -125,7 +126,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: '!!raw-loader!./src/views/pages/seat-booking.template.ejs',
       filename: 'seat-booking.ejs',
-      chunks: ['main', 'reservations']
+      chunks: ['main', 'reservations', 'cart']
     }),
     new HtmlWebpackPlugin({
       template: '!!raw-loader!./src/views/pages/index.template.ejs',
@@ -160,7 +161,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: '!!raw-loader!./src/views/pages/checkout.template.ejs',
       filename: 'checkout.ejs',
-      chunks: ['main', 'signup']
+      chunks: ['main', 'signup', 'cart']
     }),
     new HtmlWebpackPlugin({
       template: '!!raw-loader!./src/views/pages/wine-dine.template.ejs',

@@ -1,25 +1,17 @@
-import { MongoClient } from 'mongodb';
+import mongoose from 'mongoose';
 
-let db;
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
 
 export const connect = async (cb) => {
   try {
-    const client = await MongoClient.connect(
-      `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@flix.qnebs.mongodb.net/flix?retryWrites=true&w=majority`,
-      { useUnifiedTopology: true }
-      );
+    await mongoose.connect(process.env.MONGO_URI);
     console.log('<< connected >>');
-    db = client.db();
     cb();
   } catch (err) {
     console.log(err);
     throw err;
   }
-}
-
-export const getDatabase = () => {
-  if(db) {
-    return db;
-  }
-  throw 'No database found';
 }

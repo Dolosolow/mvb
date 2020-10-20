@@ -130,6 +130,7 @@
   position: relative;
   visibility: visible;
   width: max-content;
+  z-index: 1;
 
   .popup__bg {
     display: none;

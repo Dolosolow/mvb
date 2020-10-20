@@ -80,16 +80,20 @@ export default function(server) {
       addReservation(socket, screenId, seat);
     });
 
+    socket.on('update seats', screenTestId => {
+      screenId = screenTestId;
+      getReservations(socket, screenId);
+    });
+
     socket.on('cancel reservation', ({ seat }) => {
       seat.split('-').forEach(resSeat => {
         cancelReservationBySeat(socket, screenId, resSeat);
       })
     });
 
-    socket.on('update seats', screenTestId => {
-      screenId = screenTestId;
-      getReservations(socket, screenId);
-    })
+    socket.on('clear reservation', () => {
+      cancelReservation(socket, screenId);
+    });
 
     socket.on('disconnect', () => {
       cancelReservation(socket, screenId);

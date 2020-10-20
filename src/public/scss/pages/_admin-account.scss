@@ -44,14 +44,22 @@
     .srh-form {
       position: relative;
 
-      .inline-form {
+      .srh-field {
+        border: none;
         height: max-content;
         position: relative;
+        width: 100%;
 
         input {
           border: 1px solid $muted;
           border-radius: 3px;
+          font-size: 1.6rem;
           padding: 1rem 2rem;
+          width: 100%;
+
+          &:focus {
+            outline: none;
+          }
         }
       }
 

@@ -1,38 +1,24 @@
 import { Router } from 'express';
-import * as moviesController from '@src/controllers/movies.controller';
+import * as siteController from '@src/controllers/site.controller';
 
 const router = Router();
 
-router.get('/dining', (req, res, next) => {
-  res.render('wine-dine', { transNav: false, path: '/dining', user: req.user ? req.user.id : null })
-});
+router.get('/dining', siteController.getDining);
 
-router.get('/events', (req, res, next) => {
-  res.render('events', { transNav: false, path: '/events', user: req.user ? req.user.id : null })
-});
+router.get('/events', siteController.getEvents);
 
-router.get('/membership', (req, res, next) => {
-  res.render('membership', { transNav: true, path: '/membership', user: req.user ? req.user.id : null })
-});
+router.get('/membership', siteController.getMemberships);
 
-router.get('/membership/gold', (req, res, next) => {
-  res.render('signup-gold', { transNav: false, path: '/membership', user: req.user ? req.user.id : null })
-});
+router.get('/membership/gold', siteController.getGoldSignup);
 
-router.get('/membership/silver', (req, res, next) => {
-  res.render('signup-silver', { transNav: false, path: '/membership', user: req.user ? req.user.id : null })
-});
+router.get('/membership/silver', siteController.getSilverSignup);
 
-router.get('/location', (req, res, next) => {
-  res.render('locations', { transNav: false, path: '/location', user: req.user ? req.user.id : null })
-});
+router.get('/location', siteController.getLocations);
 
-router.get('/checkout', (req, res, next) => {
-  res.render('checkout', { transNav: false, path: '/', user: req.user ? req.user.id : null })
-});
+router.get('/checkout', siteController.getCheckout);
 
-router.get('/movies/:id', moviesController.getMovieById);
+router.get('/movies/:id', siteController.getMovieSeats);
 
-router.get('/', moviesController.getMovies);
+router.get('/', siteController.getIndex);
 
 export default router;

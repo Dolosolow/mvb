@@ -124,11 +124,21 @@
         border: none;
         margin: 0;
         padding-top: 0;
+
+        @include respond-to-breakpoint(750) {
+          padding-left: 0;
+          margin-left: -0.7rem;
+        }
       }
 
       .collapsible-body {
         border-bottom: none;
         padding: 5px 0 1rem 1rem;
+
+        @include respond-to-breakpoint(750) {
+          padding-left: 0;
+          margin-left: -0.7rem;
+        }
       }
 
       form {
