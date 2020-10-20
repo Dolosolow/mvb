@@ -1,10 +1,9 @@
-node_modules/
-
 .env
 
-<<<<<<< HEAD
-=======
+dist/
+
+node_modules/
+
 .DS_Store
 .DS_Store?
->>>>>>> master
 **/.DS_Store
