@@ -1,4 +1,5 @@
 import Cart from '@src/models/cart';
+import mongoose from 'mongoose';
 
 const priceCatelog = {
   seats: {
@@ -25,7 +26,7 @@ function getSeatingPrice(seat_type) {
 }
 
 export const getCart = async (req, res, next) => {
- const cart = await Cart.findOne({ userId: req.user.id });
+ const cart = await Cart.findOne({ userId: req.session.user._id });
  res.status(200).json({ cart: cart });
 }
 
@@ -40,7 +41,12 @@ export const postCart = async (req, res, next) => {
     unit_price: getSeatingPrice(seat_type).toFixed(2) 
   };
 
-  await Cart.addItem(newItem, req.user.id);  
+  if(req.session.user) {
+    await Cart.addItem(newItem, req.session.user._id); 
+  } else {
+    req.session.user = { _id: mongoose.Types.ObjectId().toHexString(), type: 'guest' };
+    await Cart.addItem(newItem, req.session.user);
+  }
 
   res.status(201).json({ msg: `${id} added to cart` });
 }
@@ -49,9 +55,9 @@ export const deleteCartItem = async (req, res, next) => {
   let { id } = req.params;
 
   if(!id.includes('+')) {
-    await Cart.deleteItem(id, req.user.id);
+    await Cart.deleteItem(id, req.session.user._id);
   } else {
-    await Cart.clearCart(req.user.id);
+    await Cart.clearCart(req.session.user._id);
   }
   
   res.status(200).json({ msg: `${id} removed from cart` });

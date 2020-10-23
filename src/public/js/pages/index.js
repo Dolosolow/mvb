@@ -2,24 +2,36 @@ require.context("../../images", true, /\.(png|svg|jpg)$/);
 import "regenerator-runtime/runtime";
 import "core-js/stable";
 import 'src/public/scss/styles.scss';
-// --------------------
-// when navbar button or an anchor with href linked to signin modal is clicked
-// it adds no-scroll behavior to the html page.
-$('#signin-btn, a[href="#si-popup"]').click(function() {
-  $('html').addClass('no-scroll');
-});
-// --------------------
-// Applies the reset effect of the event above restoring scroll behavior to the html page.
-$('#si-close-btn').click(function() {
-  $('#popup__content').addClass('slide-out-top');
-  $('html').removeClass('no-scroll');
-  setTimeout(() => {
-    $('#popup__content').removeClass('slide-out-top');
-  }, 500);
-});
-// --------------------
-// A Friendly alternative to closing signin modal. Triggers the signin modal close 
-// button when the user clicks outside the modal. 
-$('#popup__bg').click(function() {
-  $('#si-close-btn')[0].click();
-});
+import materialize from 'client_utils/materialize-components';
+
+// ----------------------
+// removes scrolling while the collpased navigation is opened/checked
+$('#navigation-toggle').click(function() {
+  if($(this).is(':checked')) {
+    $('html').addClass('no-scroll');
+  } else {
+    $('html').removeClass('no-scroll');
+  }
+})
+// ----------------------
+// Using sessionStorage, if obj messageAfterReload is stored after an event. On
+// reload a one time message will displayed coming from connect-flash afterwards
+// deleting/clearing that sessionstorage object.
+function displayMessages() {
+  if(sessionStorage.messageAfterReload) {
+    $('#modal-msg').modal('open');
+    delete sessionStorage.messageAfterReload;
+  }
+}
+
+$(document).ready(function() {
+  // ----------------------
+  // materialize... Initialization of materialize components
+  materialize.dropDowns.userMenu;
+
+  materialize.modals.messageModal;
+
+  materialize.modals.loginModal;
+
+  displayMessages();
+})

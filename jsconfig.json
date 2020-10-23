@@ -5,7 +5,7 @@
     "baseUrl": "./",
     "paths": {
       "@src/*": ["src/*"],
-      "@client_utils/*": ["src/public/js/utils/*"]
+      "client_utils/*": ["src/public/js/utils/*"]
     }
   }
 }
