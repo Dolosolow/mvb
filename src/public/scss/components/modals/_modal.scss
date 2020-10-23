@@ -1,0 +1,30 @@
+.modal {
+  max-height: max-content;
+
+  button.btn-worded-only {
+    color: #121212;
+    float: right;
+    font-size: 7rem;
+    line-height: 0;
+    padding: 2rem 2rem 0 0;
+    text-align: center;
+
+    @include respond-to-breakpoint(tab-port) {
+      font-size: 6rem;
+    }
+  }
+
+  .modal-content {
+    h2 {
+      color: $primary-color;
+      font-size: 6rem;
+
+      @include respond-to-breakpoint(tab-port) {
+        font-size: 4rem;
+      }
+    }
+  }
+}
+
+@import "./modal-msg";
+@import "./modal_login";

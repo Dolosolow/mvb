@@ -1,0 +1,7 @@
+.modal-msg {
+  width: 55rem;
+
+  @include respond-to-breakpoint(phone) {
+    width: 95%;
+  }
+}

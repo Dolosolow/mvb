@@ -8,6 +8,10 @@ button {
       background-color: $muted-light;
     }
   }
+
+  &:focus {
+    background-color: inherit;
+  }
 }
 
 %btn-outlined {
@@ -134,7 +138,7 @@ button {
 .btn-worded-only {
   background-color: transparent;
   border: none;
-  color: #fff !important;
+  color: #fff;
   font: 400 3.6rem $primary-font;
   height: max-content;
 

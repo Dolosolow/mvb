@@ -1,0 +1,116 @@
+nav {
+  .user-menu {
+    color: $primary-color;
+    display: none;
+    margin-bottom: 2.5rem;
+    padding: 0 1.5rem;
+
+    @include respond-to-breakpoint(tab-land) {
+      display: block;
+    }
+
+    &__greet {
+      &:hover {
+        background-color: transparent;
+        cursor: default;
+      }
+
+      .user-greet {
+        color: $primary-color;
+        font-size: 5rem;
+        margin: 1rem 0;
+
+        a {
+          color: $primary-color;
+          font-size: 5rem;
+          padding: 0;
+          text-transform: capitalize;
+
+          &:hover {
+            background-color: transparent;
+          }
+        }
+      }
+
+      .user-email {
+        color: $muted;
+        font-size: 1.6rem;
+        font-family: $secondary-font;
+      }
+    }
+
+    &__logout {
+      margin-top: 1rem;
+
+      a:hover {
+        background-color: transparent;
+      }
+
+      a,
+      .btn-worded-only {
+        color: $primary-color !important;
+        cursor: pointer;
+        font-family: $secondary-font;
+        font-size: 1.6rem;
+        line-height: 1;
+        padding: 0;
+        text-transform: capitalize !important;
+      }
+    }
+  }
+
+  .dropdown-trigger.navigation__link {
+    + .dropdown-content.user-menu {
+      height: max-content !important;
+      margin-bottom: 0 !important;
+      padding: 1.5rem 0 0 0 !important;
+      top: 4rem !important;
+      left: 41rem !important;
+      width: 25rem !important;
+
+      .user-menu__item {
+        color: $primary-color;
+        padding: 0 1.5rem;
+
+        &-greet {
+          color: #121212;
+          padding-bottom: 2rem;
+
+          &:hover {
+            background-color: #fff;
+            cursor: default;
+          }
+
+          .user-greet {
+            font-size: 4rem;
+            margin: 1rem 0;
+            text-transform: capitalize;
+          }
+
+          .user-email {
+            color: $muted;
+            font-size: 1.6rem;
+            font-family: $secondary-font;
+          }
+        }
+
+        a:hover {
+          background-color: transparent;
+        }
+
+        a,
+        .btn-worded-only {
+          color: $primary-color !important;
+          cursor: pointer;
+          font-family: $secondary-font;
+          font-size: 1.6rem;
+          line-height: 3.5;
+          padding: 0;
+          text-align: left;
+          text-transform: capitalize !important;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

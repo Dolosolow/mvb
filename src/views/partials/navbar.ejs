@@ -3,7 +3,7 @@
     class="main-nav flex-row align-center fluid <%= !transNav && 'container-layout' %> <%= transNav && 'nav-trans' %>"
   >
     <a href="/" class="navbar-brand">FLIX<br /><span>the experience</span></a>
-    <ul class="navigation<%= user && ' navigation-usr' %> flex-row">
+    <ul class="navigation<%= user.type !== 'guest' ? ' navigation-usr' : '' %> flex-row">
       <li class="navigation__item">
         <a
           class="navigation__link <%= transNav && 'nav-light' %> <%= path === '/' && 'active' %>"
@@ -25,7 +25,7 @@
           >Events</a
         >
       </li>
-      <% if(user.type === 'guest') { %>
+      <% if(!user || user.type === 'guest') { %>
         <li class="navigation__item">
           <a
             class="navigation__link <%= transNav && 'nav-light' %> <%= path === '/membership' && 'active' %>"
@@ -41,18 +41,32 @@
           >Location</a
         >
       </li>
-      <% if(user.type === 'guest') { %>
+      <% if(!user || user.type === 'guest') { %>
         <li class="navigation__item">
-          <a class="navigation__link" id="signin-btn" href="#si-popup">Sign in</a>
+          <a class="modal-trigger navigation__link" href="#modal-login">Sign in</a>
         </li>
         <li class="navigation__item navigation__item--btn">
           <a class="btn-prim navigation__link" href="/membership/gold">Sign up</a>
         </li>
       <% } else { %>
         <li class="navigation__item">
-          <a class="navigation__link <%= transNav && 'nav-light' %>" href="#">
+          <a id="user-menu-btn" class="dropdown-trigger navigation__link <%= transNav && 'nav-light' %>" href="#" data-target="user-menu">
             <i class="far fa-user fa-sm"></i>
           </a>
+          <ul id="user-menu" class="dropdown-content user-menu">
+            <li class="user-menu__item user-menu__item-greet">
+              <h3 class="user-greet">Welcome, <%= user.fName %></h3>
+              <p class="user-email"><%= user.email %></p>
+            </li>
+            <li class="user-menu__item">
+              <a href="#">Go to Account</a>
+            </li>
+            <li class="user-menu__item">
+              <form id="logout-form__nav">
+                <button type="submit" class="btn-worded-only">Sign out</button>
+              </form>
+            </li>
+          </ul>
         </li>
       <% } %>
     </ul>
@@ -109,16 +123,32 @@
     </label>
     <div class="navigation__bg-wrapper fluid"></div>
     <ul class="navigation__collapse flex-column">
-      <div class="navigation__acct navigation__toggle">
-        <a class="navigation__link text-red" id="signin-btn" href="#si-popup"
-          >Sign in</a
-        >
-        <span class="navigation__item--btn">
-          <a class="navigation__link btn-prim" href="/membership/gold"
-            >Sign up</a
+      <% if(!user || user.type === 'guest') { %>
+        <div class="navigation__acct navigation__toggle">
+          <a class="navigation__link text-red" id="signin-btn" href="#si-popup"
+            >Sign in</a
           >
-        </span>
-      </div>
+          <span class="navigation__item--btn">
+            <a class="navigation__link btn-prim" href="/membership/gold"
+              >Sign up</a
+            >
+          </span>
+        </div>
+      <% } else { %>
+        <div class="user-menu">
+          <div class="user-menu__greet">
+            <h3 class="user-greet">
+              <a href="#">Welcome, <%= user.fName %></a>
+            </h3>
+            <p class="user-email"><%= user.email %></p>
+          </div>
+          <div class="user-menu__logout">
+            <form id="logout-form__nav-collapse">
+              <button type="submit" class="btn-worded-only">Sign out</button>
+            </form>
+          </div>
+        </div>
+      <% } %>
       <li class="navigation__item navigation__toggle">
         <a class="navigation__link" href="/">Movies</a>
       </li>

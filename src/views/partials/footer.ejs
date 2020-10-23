@@ -48,15 +48,15 @@
     </div>
   </footer>
 </div>
-<!-- onclick="location.href='#navbar'" -->
-<div class="popup flex-row justify-center" id="si-popup">
-  <div class="popup__bg" id="popup__bg"></div>
-  <div class="popup__form" id="popup__form">
-    <a href="#" class="popup__close-btn" id="si-close-btn">&times;</a>
-    <h2 class="popup__title">Log In</h2>
-    <form action="#">
+<!-- -------------------------- -->
+<!-- login modal -->
+<div class="modal modal-login" id="modal-login">
+  <button class="btn-worded-only modal-close">&times;</button>
+  <div class="modal-content">
+    <h2>Log In</h2>
+    <form id="login-form">
       <div class="input-field">
-        <input
+        <input 
           type="email"
           id="email"
           name="email"
@@ -67,7 +67,7 @@
         <label for="email">Email</label>
       </div>
       <div class="input-field">
-        <input
+        <input 
           type="password"
           id="password"
           name="password"
@@ -81,7 +81,7 @@
       <button class="color-text color-text__btn float-right">
         Forgot Password?
       </button>
-      <button class="btn-prim">Log In</button>
+      <button type="submit" class="btn-prim btn-block">Log In</button>
     </form>
     <p>
       Receive member-only ticket pricing, 10% off food and beverage, and
@@ -89,3 +89,14 @@
     </p>
   </div>
 </div>
+<!-- -------------------------- -->
+<!-- confirmation message modal -->
+<% if(successMsg && successMsg.length > 0) { %>
+  <div class="modal modal-msg" id="modal-msg">
+    <button class="btn-worded-only modal-close">&times;</button>
+    <div class="modal-content">
+      <h2>Confirmation</h2>
+      <p><%= successMsg %></p>
+    </div>
+  </div>
+<% } %>

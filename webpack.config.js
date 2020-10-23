@@ -14,7 +14,7 @@ module.exports = {
     admin_acct: ['./src/public/js/accounts/adminAcct/movieList.js', './src/public/js/accounts/adminAcct/searchMovie.js'],
     cart: ['./src/public/js/cart/cart.js'],
     gen_acct: ['./src/public/js/pages/accounts-dash.js'],
-    main: ['webpack-hot-middleware/client?reload=true&timeout=1000', './src/public/js/pages/index.js'],
+    main: ['webpack-hot-middleware/client?reload=true&timeout=1000', './src/public/js/pages/index.js', './src/public/js/forms/login-form.js'],
     memberships: ['./src/public/js/pages/main-membership.js'],
     owl_carousel: ['./src/public/js/pages/owl-carousel.js'],
     reservations: ['./src/public/js/reservations/index.js', './src/public/js/reservations/seat-reservations.js'],
