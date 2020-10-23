@@ -1,8 +1,12 @@
 .env
 
+<<<<<<< HEAD
 dist/
 
 node_modules/
+=======
+public/
+>>>>>>> development-nosql
 
 .DS_Store
 .DS_Store?
