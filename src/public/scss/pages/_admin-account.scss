@@ -15,7 +15,6 @@
   }
 
   &__overview {
-    // overflow: hidden;
     position: relative;
 
     .data-tablesaw {
@@ -51,13 +50,17 @@
         width: 100%;
 
         input {
-          border: 1px solid $muted;
+          border: 1px solid $muted !important;
           border-radius: 3px;
+          box-sizing: inherit;
           font-size: 1.6rem;
+          height: 4rem;
+          margin: 0;
           padding: 1rem 2rem;
           width: 100%;
 
           &:focus {
+            box-shadow: none;
             outline: none;
           }
         }

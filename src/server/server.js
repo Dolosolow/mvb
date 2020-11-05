@@ -2,17 +2,17 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { createServer } from 'http';
 
+import csrf from 'csurf';
 import express from 'express';
-import cookieParser from 'cookie-parser';
-import session from 'express-session';
-import flash from 'connect-flash';
+import createSession from '@src/config/session';
+import helmetProtection from '@src/config/helmet';
 
-import mongoose from 'mongoose';
-import createMongoStore from 'connect-mongodb-session';
 import * as mongoDB from '@src/config/database';
 import createSocket from '@src/config/socket';
 
 import webpackServerConnect from '@src/config/wpServer';
+
+import initialVisitorMW from '@src/middlewares/initialVisitor';
 
 import * as errorController from '@src/controllers/error.controller';
 import apiRoutes from '@src/routes/api';
@@ -30,47 +30,24 @@ webpackServerConnect(server, process.env.NODE_ENV === 'development');
 const http = createServer(server);
 createSocket(http);
 // -------------
-// connect express-session to connect-mongodb-session
-const monogDBStore = createMongoStore(session);
+// csurf protection
+const csrfProtection = csrf();
 
 server.use(express.static(path.resolve(__dirname, 'dist')));
 server.use(express.urlencoded({ extended: false }));
 server.use(express.json());
 server.set('view engine', 'ejs');
 server.set('views', 'dist');
-
-server.use(cookieParser(process.env.SESSION_SECRET));
-server.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  name: '_311820',
-  cookie: {
-    maxAge: 1000*60*60*24
-  },
-  store: new monogDBStore({
-    uri: process.env.MONGO_URI,
-    collection: 'sessions',
-    expires: 1000*60*60*24
-  })
-}));
-server.use(flash());
-
+server.use(createSession(process.env.SESSION_SECRET));
 // -------------
-// Global variables
-server.use((req, res, next) => {
-  // -------------
-  // req.session.user: Sets a initial account with type 'guest' to users when visit site.
-  // changes to the session.account are done if user login/signup.
-  if(!req.session.user) {
-    req.session.user = { _id: mongoose.Types.ObjectId(), type: 'guest' };
-  }
-  res.locals.successMsg = req.flash('success');
-  res.locals.errorMsg = req.flash('error');
-  
-  next();
-});
-
+// helmetjs + csrf protection
+server.use(csrfProtection);
+server.use(helmetProtection);
+// -------------
+// middleware required for all routes
+server.use(initialVisitorMW);
+// -------------
+// All routes being served
 server.use('/api', apiRoutes);
 server.use('/admin', adminRoutes);
 server.use('/', storeRoutes);

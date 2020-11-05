@@ -261,7 +261,15 @@
         @include respond-to-breakpoint(750) {
           margin-right: 0;
         }
+
+        input {
+          font-size: 1.8rem;
+        }
       }
+    }
+
+    .btn-worded-only {
+      align-self: flex-start;
     }
   }
 

@@ -1,8 +1,11 @@
 require.context("../../images", true, /\.(png|svg|jpg)$/);
 import "regenerator-runtime/runtime";
 import "core-js/stable";
+
 import 'src/public/scss/styles.scss';
 import materialize from 'client_utils/materialize-components';
+
+import * as render from 'client_utils/markup/messages';
 
 // ----------------------
 // removes scrolling while the collpased navigation is opened/checked
@@ -19,7 +22,12 @@ $('#navigation-toggle').click(function() {
 // deleting/clearing that sessionstorage object.
 function displayMessages() {
   if(sessionStorage.messageAfterReload) {
+    const msg = sessionStorage.messageAfterReload;
+    $(render.successMessage(msg)).insertAfter('#modal-login');
+    
+    materialize.init.modals('#modal-msg');
     $('#modal-msg').modal('open');
+
     delete sessionStorage.messageAfterReload;
   }
 }
@@ -27,11 +35,8 @@ function displayMessages() {
 $(document).ready(function() {
   // ----------------------
   // materialize... Initialization of materialize components
-  materialize.dropDowns.userMenu;
-
-  materialize.modals.messageModal;
-
-  materialize.modals.loginModal;
+  materialize.init.dropDowns('#user-menu-btn');
+  materialize.init.modals('#modal-login');
 
   displayMessages();
 })

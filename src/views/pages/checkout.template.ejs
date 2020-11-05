@@ -319,7 +319,8 @@
               <h2 class="mycart_total text-center">Total: $<%= cart.totalPrice.toFixed(2) %></h2>
               <div class="mycart_btns">
                 <button class="btn-outline-dark btn-block mt-xs mr-xs" id="cart-cancel-btn">Cancel</button>
-                <button class="btn-prim btn-block mt-xs" id="cart-btn" disabled>Confirm</button>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button type="submit" class="btn-prim btn-block mt-xs" id="cart-btn" disabled>Confirm</button>
               </div>
             </div>
             <div class="mobi-cart mobi-cart--checkout flex-column align-center" id="mobi-cart">
@@ -342,7 +343,8 @@
                 <h5 class="mobi-cart__total text-center">TOTAL: &nbsp;$<%= cart.totalPrice.toFixed(2) %></h5>
                 <div class="mobi-cart__ctrl flex-row" id="mobi-cart__ctrl">
                   <button class="btn-worded-only">Cancel</button>
-                  <button class="btn-worded-only" disabled>Checkout</button>
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <button type="submit" class="btn-worded-only" disabled>Checkout</button>
                 </div>
               </div>
             </div>

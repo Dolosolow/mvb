@@ -1,0 +1,20 @@
+.btn-worded-only {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font: 400 3.6rem $primary-font;
+  height: max-content;
+
+  @include respond-to-breakpoint(750) {
+    margin-top: 1.5rem;
+  }
+
+  &:disabled {
+    color: rgba(#fff, 0.5) !important;
+  }
+
+  &--light {
+    color: rgba(#fff, 0.5) !important;
+  }
+}

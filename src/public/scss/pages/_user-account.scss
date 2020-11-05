@@ -76,7 +76,11 @@
 
 .account__tabs {
   background-color: #ebeaea;
+  box-shadow: none;
+  color: #121212;
   font-size: 1.6rem;
+  height: max-content;
+  line-height: inherit;
   width: 52rem;
 
   @include respond-to-breakpoint(1000) {
@@ -86,6 +90,7 @@
   .nav-tabs {
     &__item {
       cursor: pointer;
+      float: unset;
       padding: 1.2rem 0;
       position: relative;
       transition: all 0.2s;

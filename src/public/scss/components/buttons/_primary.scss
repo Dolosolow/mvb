@@ -1,0 +1,9 @@
+.btn-prim {
+  @extend %btn-outlined;
+  @include set-button-colors($primary-color, #fff);
+  border: none;
+
+  &:hover {
+    border: none;
+  }
+}

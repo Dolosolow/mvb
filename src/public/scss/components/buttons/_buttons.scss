@@ -1,0 +1,26 @@
+button {
+  &:disabled,
+  &[disabled] {
+    background-color: $muted-light;
+    cursor: initial;
+
+    &:hover {
+      background-color: $muted-light;
+    }
+  }
+
+  &:focus {
+    background-color: inherit;
+  }
+}
+
+.btn-block {
+  width: 100%;
+}
+
+@import "./primary.scss";
+@import "./outlined.scss";
+@import "./toggle-info-btn";
+@import "./toggle-info-btn";
+@import "./transparent";
+@import "./worded-only";

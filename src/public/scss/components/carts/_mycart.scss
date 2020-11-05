@@ -1,0 +1,63 @@
+.mycart {
+  font: 400 2.1rem $primary-font;
+  float: right;
+  width: 25%;
+
+  @include respond-to-breakpoint(1024) {
+    display: none;
+  }
+
+  &__title {
+    letter-spacing: 1px;
+  }
+
+  &__list {
+    color: #151515a2;
+    letter-spacing: 1px;
+    width: 100%;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    height: max-content;
+
+    &:not(:last-of-type) {
+      border-bottom: 1px solid rgba(rgb(218, 218, 218), 0.4);
+    }
+
+    .seat-wrapper {
+      div {
+        margin-bottom: 0;
+      }
+    }
+
+    .seat-id {
+      margin-left: 0;
+    }
+
+    .seat-price {
+      color: black;
+      font-size: 2.4rem;
+      font-weight: bold;
+      margin-left: auto;
+    }
+
+    .btn-remove-item {
+      cursor: pointer;
+      margin-left: 15px;
+      padding-bottom: 5px;
+      font-size: 4rem;
+    }
+  }
+
+  &__timer {
+    font: 400 1.4rem $secondary-font;
+    margin-top: 2rem;
+
+    span {
+      color: #121212;
+      font-size: 2rem;
+    }
+  }
+}

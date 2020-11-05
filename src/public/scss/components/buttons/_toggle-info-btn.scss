@@ -1,0 +1,35 @@
+.toggle-info-btn {
+  border: 2px solid rgb(20, 20, 20);
+  border-radius: 50%;
+  height: 2rem;
+  position: absolute;
+  bottom: 6px;
+  right: 0;
+  width: 2rem;
+
+  &::before {
+    background-color: rgb(20, 20, 20);
+    content: "";
+    height: 0.3rem;
+    position: absolute;
+    top: 3px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 0.221rem;
+  }
+
+  &::after {
+    background-color: rgb(20, 20, 20);
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 0.5rem;
+    width: 0.221rem;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

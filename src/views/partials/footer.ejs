@@ -58,29 +58,32 @@
       <div class="input-field">
         <input 
           type="email"
-          id="email"
+          id="si-email"
           name="email"
           class="validate"
           autocomplete="email"
           required
         />
-        <label for="email">Email</label>
+        <label for="si-email">Email</label>
+        <span class="helper-text" data-error="This field is required."></span>
       </div>
       <div class="input-field">
         <input 
           type="password"
-          id="password"
+          id="si-password"
           name="password"
           class="validate"
           autocomplete="off"
           required
         />
-        <label for="password">Password</label>
+        <label for="si-password">Password</label>
+        <span class="helper-text" data-error="This field is required."></span>
         <div><i class="fas fa-lock fa-lg"></i></div>
       </div>
-      <button class="color-text color-text__btn float-right">
+      <button id="fg-psw" type="button" class="color-text color-text__btn">
         Forgot Password?
       </button>
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
       <button type="submit" class="btn-prim btn-block">Log In</button>
     </form>
     <p>
@@ -89,14 +92,3 @@
     </p>
   </div>
 </div>
-<!-- -------------------------- -->
-<!-- confirmation message modal -->
-<% if(successMsg && successMsg.length > 0) { %>
-  <div class="modal modal-msg" id="modal-msg">
-    <button class="btn-worded-only modal-close">&times;</button>
-    <div class="modal-content">
-      <h2>Confirmation</h2>
-      <p><%= successMsg %></p>
-    </div>
-  </div>
-<% } %>

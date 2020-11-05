@@ -11,14 +11,25 @@
   }
 
   form {
+    display: flex;
+    flex-direction: column;
+
     .input-field:not(:first-of-type) {
-      margin-top: 2.5rem;
+      margin-top: 1rem;
     }
+  }
+
+  .alert-error {
+    margin-top: 3rem;
+  }
+
+  .color-text__btn {
+    margin-left: auto;
   }
 
   .btn-prim {
     display: inline-block;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
   }
 
   p {
