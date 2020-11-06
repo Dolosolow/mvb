@@ -1,12 +1,13 @@
 import bcrypt from 'bcryptjs';
-import moment from 'moment';
 import mongoose from 'mongoose';
-import { dateFormat } from '@src/utils/lib/time';
+import AuthToken from '@src/models/authToken';
 
 export const accountTypes = {
   GUEST: 'guest',
   SILVER: 'silver',
-  GOLD: 'gold'
+  GOLD: 'gold',
+  PLATINUM : 'platinum',
+  PLATNIUM_ELITE: 'platinum elite'
 };
 
 const userSchema = new mongoose.Schema({
@@ -18,7 +19,6 @@ const userSchema = new mongoose.Schema({
   phone: { type: String, required: true },
   dob: { type: String },
   gender: { type: String },
-  email: { type: String, required: true },
   referralCode: { type: String },
   streetAddress: { type: String },
   city: { type: String },
@@ -26,15 +26,18 @@ const userSchema = new mongoose.Schema({
   zipcode: { type: String },
   verified: { type: Boolean, default: false },
   eSubscription: { type: Boolean, default: false },
-  date_created: {
-    type: String,
-    default: moment().format(dateFormat),
-  },
-  date_updated: {
-    type: String,
-    default: moment().format(dateFormat),
-  }
-});
+  authToken: { type: String }
+}, {timestamps: true});
+
+userSchema.methods.applyAuthToken = async function(token) {
+  const authToken = new AuthToken({ token, user: this });
+  this.authToken = authToken.token;
+  await authToken.save();
+}
+
+userSchema.methods.comparePasswords = function(testPassword) {
+  return bcrypt.compareSync(testPassword, this.password);
+}
 
 userSchema.pre('save', function(next) {
   if(!this.isModified('password')) return next();
@@ -45,9 +48,5 @@ userSchema.pre('save', function(next) {
     next();
   });
 });
-
-userSchema.methods.comparePasswords = function(testPassword) {
-  return bcrypt.compareSync(testPassword, this.password);
-}
 
 export default mongoose.model('User', userSchema);
