@@ -13,10 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesaw/3.1.2/tablesaw-init.js"></script>
     <!-- *************** -->
     <!-- font awesome -->
-    <link
-      rel="stylesheet"
-      href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css"
-    />
+    <script src="https://kit.fontawesome.com/e9063b30c3.js"></script>
     <!-- *************** -->
     <!-- facvicon -->
     <link
@@ -35,13 +32,13 @@
       rel="manifest"
       href="/assets/images/favicons/site.webmanifest"
     />
+        <title>FLIX | Dine in theater</title>
     <!-- *************** -->
     <!-- materializecss -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
-    <title>FLIX Theater | Dine in theater</title>
   </head>
   <body>
     <%- include('partials/navbar.ejs') %>
@@ -90,7 +87,7 @@
         </ul>
       </section>
     </div>
-    <div class="container-layout bg-smoked flex-row">
+    <div class="container-layout container-layout--ua-content bg-smoked flex-row">
       <nav class="account__tabs">
         <ul class="nav-tabs fluid">
           <li
@@ -121,11 +118,7 @@
             id="adj-movie-tab"
             data-target="adj-movie"
           >
-            <i class="fas fa-film fa-2x"></i>
-            <i
-              class="fas fa-pencil-alt fa-lg"
-              style="position: absolute; left: 2rem; top: 3rem;"
-            ></i>
+            <i class="fas fa-pencil-alt fa-lg"></i>
             <div class="tab-desc">
               <p class="text-uppercase">
                 Edit / Remove Movie
@@ -169,9 +162,6 @@
               Day Operation <span style="float: right;">June 22, 2020</span>
             </h2>
           </div>
-          <div class="no-results-msg text-center mt-xs" id="no-results-msg">
-            <h4>No movies currently playing</h4>
-          </div>
         </section>
         <section
           class="acct-page acct-page__add-movie mb-md"
@@ -199,6 +189,16 @@
               <h4>Add to Movie Playlist</h4>
             </div>
             <div class="srh-results flex-row"></div>
+            <div class="input-field">
+              <select id="num-of-screens" name="num-of-screens">
+                <option value="" disabled selected></option>
+                <% for(let i = 1; i <= 10; i++) { %>
+                  <option value="<%= i %>"><%= i %></option>
+                <% } %>
+              </select>
+              <label for="num-of-screens">Number of screenings</label>
+            </div>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
             <button id="add-mov-btn" type="submit" class="btn-prim" disabled>
               Add Movie
             </button>
@@ -213,78 +213,6 @@
           <div class="acct-page__headeline-container">
             <h2 class="acct-page__headline">Edit / Remove Movie</h2>
           </div>
-          <div class="no-results-msg text-center mt-xs" id="no-results-msg">
-            <h4>No movies currently playing</h4>
-          </div>
-          <!-- <table
-            class="data-tablesaw data-tablesaw--editable tablesaw tablesaw-stack tablesaw-sortable mb-sm"
-            data-tablesaw-sortable
-            data-tablesaw-sortable-switch
-          >
-            <thead>
-              <tr>
-                <th
-                  scope="col"
-                  data-tablesaw-sortable-col
-                  data-tablesaw-priority="persist"
-                  data-tablesaw-sortable-numeric="false"
-                >
-                  Movie Title
-                </th>
-                <th
-                  scope="col"
-                  data-tablesaw-sortable-col
-                  data-tablesaw-priority="persist"
-                  data-tablesaw-sortable-numeric
-                >
-                  Theater
-                </th>
-                <th
-                  scope="col"
-                  data-tablesaw-sortable-col
-                  data-tablesaw-priority="persist"
-                  data-tablesaw-sortable-numeric
-                >
-                  Start Date
-                </th>
-                <th
-                  scope="col"
-                  data-tablesaw-sortable-col
-                  data-tablesaw-priority="persist"
-                  data-tablesaw-sortable-numeric
-                >
-                  End Date
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr data-remove-icon="&#xf2ed;">
-                <td class="title">Bad Boys for Life</td>
-                <td class="theater-screen">2</td>
-                <td class="strt-date">06-11-20</td>
-                <td class="end-date">08-11-20</td>
-              </tr>
-              <tr data-remove-icon="&#xf2ed;">
-                <td class="title">Inception</td>
-                <td class="theater-screen">4</td>
-                <td class="strt-date">07-23-20</td>
-                <td class="end-date">09-23-20</td>
-              </tr>
-              <tr data-remove-icon="&#xf2ed;">
-                <td class="title">Wolf of Wall Street</td>
-                <td class="theater-screen">5</td>
-                <td class="strt-date">06-18-20</td>
-                <td class="end-date">08-18-20</td>
-              </tr>
-              <tr data-remove-icon="&#xf2ed;">
-                <td class="title">Tenet</td>
-                <td class="theater-screen">1</td>
-                <td class="strt-date">08-04-20</td>
-                <td class="end-date">10-04-20</td>
-              </tr>
-            </tbody>
-          </table> -->
-          <!-- <a href="./index.html" class="btn-prim mt-md">Add Movie Now</a> -->
         </section>
         <!-- ADMIN VIEW MENU SECTION -->
         <section

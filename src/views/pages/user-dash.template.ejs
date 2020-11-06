@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- *************** -->
     <!-- font awesome -->
-    <link
-      rel="stylesheet"
-      href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css"
-    />
+    <script src="https://kit.fontawesome.com/e9063b30c3.js"></script>
     <!-- *************** -->
     <!-- facvicon -->
     <link
@@ -28,6 +25,12 @@
       href="/flix-theater-server/public/images/favicons/site.webmanifest"
     />
     <title>FLIX Theater | Dine in theater</title>
+    <!-- *************** -->
+    <!-- materializecss -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
   </head>
   <body>
     <%- include('partials/navbar.ejs') %>
@@ -37,7 +40,7 @@
       </header>
       <section class="account__card flex-row">
         <div>
-          <h4 class="account__card-name">Jose Munoz</h4>
+          <h4 class="account__card-name"><span><%= user.fName %></span> <span><%= user.lName %></span></h4>
           <span class="account__card-note">
             As a member you earn reward points with every purchase
           </span>
