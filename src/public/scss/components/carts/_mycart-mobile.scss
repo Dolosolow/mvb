@@ -80,3 +80,10 @@
     }
   }
 }
+// ********************
+// Media Queries
+@include respond-to-breakpoint(1024) {
+  .mobi-cart {
+    visibility: visible;
+  }
+}

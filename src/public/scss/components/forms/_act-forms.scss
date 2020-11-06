@@ -7,19 +7,26 @@
     position: relative;
     display: flex;
 
-    @include respond-to-breakpoint(phone) {
-      flex-direction: column;
-    }
-
     .input-field {
       width: 48%;
 
-      @include respond-to-breakpoint(phone) {
-        width: 100%;
-      }
-
       &:nth-child(even) {
         margin-left: auto;
+      }
+    }
+  }
+}
+// ********************
+// Media Queries
+@include respond-to-breakpoint(phone) {
+  #act-personal__form,
+  #act-address__form,
+  #act-login__form {
+    .form-container-row {
+      flex-direction: column;
+
+      .input-field {
+        width: 100%;
       }
     }
   }

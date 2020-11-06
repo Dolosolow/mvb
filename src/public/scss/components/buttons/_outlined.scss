@@ -1,48 +1,27 @@
-%btn-outlined {
-  cursor: pointer;
-  display: block;
-  font-family: $primary-font;
-  font-size: 3.6rem;
-  line-height: 1;
-  padding: 0.7rem 0;
-  text-align: center;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-
-  @include respond-to-breakpoint(650) {
-    width: 100% !important;
-  }
-
-  &:hover,
-  &:active {
-    background-color: #000;
-    border: 1px solid #000;
-    color: #fff;
-  }
-
-  &:focus {
-    background-color: $primary-color;
-    outline: none;
-  }
-}
-
 .btn-outline {
   @extend %btn-outlined;
-  @include set-button-colors(transparent, #fff);
-  border: 1px solid #fff;
+  @include set-button-colors(transparent, white);
+  border: 1px solid white;
+
+  &:focus,
+  &:hover,
+  &:active {
+    border: 1px solid black;
+  }
 }
 
 .btn-outline-dark {
   @extend %btn-outlined;
-  @include set-button-colors(transparent, #000);
-  border: 1px solid #000;
-
-  &:focus {
-    background-color: black;
-    outline: none;
-  }
+  @include set-button-colors(transparent, black);
+  border: 1px solid black;
 }
 
 .btn-outline-doubled {
   border-width: 2px;
+
+  &:focus,
+  &:hover,
+  &:active {
+    border-width: 1px;
+  }
 }

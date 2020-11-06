@@ -1,9 +1,12 @@
 .btn-prim {
   @extend %btn-outlined;
   @include set-button-colors($primary-color, #fff);
-  border: none;
+  border: 1px solid $primary-color;
 
-  &:hover {
-    border: none;
+  &:focus,
+  &:hover,
+  &:active {
+    background-color: black;
+    color: white;
   }
 }

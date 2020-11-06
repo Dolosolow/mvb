@@ -10,12 +10,15 @@
   line-height: 1;
   text-align: left;
 
-  @include respond-to-breakpoint(phone) {
-    font-size: 4.2rem;
-  }
-
   &:focus {
     background-color: transparent;
     outline: none;
+  }
+}
+// *************************
+// Media Queries
+@include respond-to-breakpoint(phone) {
+  .btn-transparent {
+    font-size: 4.2rem;
   }
 }

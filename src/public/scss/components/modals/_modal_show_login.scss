@@ -1,0 +1,17 @@
+.modal-login--show {
+  max-width: 32rem;
+
+  .input-field {
+    margin: 2rem 0;
+
+    &:nth-of-type(2) {
+      margin-bottom: 0;
+    }
+  }
+
+  button {
+    &.btn-prim {
+      margin: 2.5rem 0;
+    }
+  }
+}

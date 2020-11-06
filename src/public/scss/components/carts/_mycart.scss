@@ -3,10 +3,6 @@
   float: right;
   width: 25%;
 
-  @include respond-to-breakpoint(1024) {
-    display: none;
-  }
-
   &__title {
     letter-spacing: 1px;
   }
@@ -59,5 +55,12 @@
       color: #121212;
       font-size: 2rem;
     }
+  }
+}
+// ********************
+// Media Queries
+@include respond-to-breakpoint(1024) {
+  .mycart {
+    display: none;
   }
 }

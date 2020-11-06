@@ -1,7 +1,6 @@
 .sections-container--admin {
-  @include respond-to-breakpoint(1120) {
-    padding: 0 2rem !important;
-  }
+  max-height: 95rem;
+  overflow: scroll;
 
   .loader {
     left: unset;
@@ -43,6 +42,18 @@
     .srh-form {
       position: relative;
 
+      i {
+        position: absolute;
+        top: 32%;
+        right: 1.5rem;
+        transform: rotate(-90deg);
+      }
+
+      .input-field {
+        width: 200px;
+        margin-top: 4rem;
+      }
+
       .srh-field {
         border: none;
         height: max-content;
@@ -66,35 +77,13 @@
         }
       }
 
-      i {
-        position: absolute;
-        top: 32%;
-        right: 1.5rem;
-        transform: rotate(-90deg);
-      }
-
       .srh-results {
         justify-content: space-between;
         margin-top: 5rem;
         min-width: 60rem;
 
-        @include respond-to-breakpoint(1000) {
-          justify-content: space-around;
-        }
-
-        @include respond-to-breakpoint(600) {
-          flex-direction: column;
-        }
-
-        &__list {
-          border: 2px solid lime;
+        &-list {
           width: 48%;
-
-          @include respond-to-breakpoint(600) {
-            margin-top: 5rem;
-            order: 1;
-            width: 100%;
-          }
         }
 
         li {
@@ -102,12 +91,17 @@
             margin-bottom: 1rem;
           }
 
-          .srh-results__plot {
+          .srh-results__plot,
+          .srh-results__title {
             display: -webkit-box;
             overflow: hidden;
             text-overflow: ellipsis;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
+          }
+
+          .srh-results__title {
+            max-width: 260px;
           }
         }
 
@@ -116,23 +110,12 @@
           min-width: 27.3rem;
           margin-left: 3rem;
           overflow: hidden;
-          width: 48%;
-
-          @include respond-to-breakpoint(1000) {
-            width: 20rem;
-          }
-
-          @include respond-to-breakpoint(600) {
-            min-width: auto;
-            position: absolute;
-            top: 8rem;
-            right: 0;
-          }
+          width: 46%;
         }
       }
 
       button {
-        margin-top: 5rem;
+        margin-top: 2rem;
         width: 36rem;
       }
 
@@ -146,6 +129,7 @@
         overflow: scroll;
         position: absolute;
         width: 100%;
+        z-index: 100;
 
         &.collapse {
           display: block;
@@ -189,6 +173,55 @@
     .btn-prim {
       display: inline-block;
       width: 30rem;
+    }
+  }
+}
+// ********************
+// Media Queries
+@include respond-to-breakpoint(1120) {
+  .sections-container--admin {
+    padding: 0 2rem !important;
+  }
+}
+
+@include respond-to-breakpoint(1000) {
+  .acct-page {
+    &__add-movie {
+      .srh-form {
+        .srh-results {
+          justify-content: space-around;
+
+          .img-wrapper {
+            width: 18rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include respond-to-breakpoint(600) {
+  .acct-page {
+    &__add-movie {
+      .srh-form {
+        .srh-results {
+          flex-direction: column;
+          min-width: auto;
+
+          &-list {
+            margin-top: 5rem;
+            order: 1;
+            width: 100%;
+          }
+
+          .img-wrapper {
+            min-width: auto;
+            position: absolute;
+            top: 8rem;
+            right: 0;
+          }
+        }
+      }
     }
   }
 }

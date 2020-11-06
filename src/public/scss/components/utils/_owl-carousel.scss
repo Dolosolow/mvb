@@ -1,5 +1,3 @@
-// *****************************
-// OWL-CAROUSEL
 .owl-nav {
   .owl-prev,
   .owl-next {
@@ -15,12 +13,6 @@
     top: 40%;
     width: 5rem !important;
 
-    @include respond-to-breakpoint(phone) {
-      font-size: 4rem !important;
-      height: 4rem !important;
-      width: 4rem !important;
-    }
-
     span {
       position: absolute;
       top: -1.8rem;
@@ -30,21 +22,35 @@
 
   .owl-prev {
     left: 0;
-
-    span {
-      @include respond-to-breakpoint(phone) {
-        top: -1.3rem;
-        left: 1.1rem;
-      }
-    }
   }
 
   .owl-next {
     right: 0;
+  }
+}
+// ********************
+// Media Queries
+@include respond-to-breakpoint(phone) {
+  .owl-nav {
+    .owl-prev,
+    .owl-next {
+      font-size: 4rem !important;
+      height: 4rem !important;
+      width: 4rem !important;
 
-    span {
-      @include respond-to-breakpoint(phone) {
+      span {
         top: -1.3rem;
+      }
+    }
+
+    .owl-prev {
+      span {
+        left: 1.1rem;
+      }
+    }
+
+    .owl-next {
+      span {
         left: 1.3rem;
       }
     }

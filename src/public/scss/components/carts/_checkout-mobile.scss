@@ -1,8 +1,4 @@
 .mobi-cart--checkout {
-  @include respond-to-breakpoint(1024) {
-    visibility: visible;
-  }
-
   .mobi-cart__total {
     display: block;
     margin: 0.5rem 0 0.5rem 0;
@@ -10,5 +6,12 @@
     &:last-of-type {
       float: none;
     }
+  }
+}
+// ********************
+// Media Queries
+@include respond-to-breakpoint(1024) {
+  .mobi-cart--checkout {
+    visibility: visible !important;
   }
 }

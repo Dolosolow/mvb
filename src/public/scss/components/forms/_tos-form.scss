@@ -1,19 +1,6 @@
-// ******************
-// ACCOUNT TERMS AND SERVICE FORM
 .act-tos-form {
   align-self: flex-end;
   margin: 3rem 0 0 3rem;
-  // max-width: 53.5rem;
-
-  @include respond-to-breakpoint(tab-port) {
-    align-self: flex-start;
-    margin-left: 7rem;
-  }
-
-  @include respond-to-breakpoint(750) {
-    margin: 3rem 0 0 5px;
-    max-width: 60rem;
-  }
 
   label {
     margin: 1.5rem 0 5rem 0;
@@ -22,5 +9,20 @@
   .btn-prim {
     margin: 2rem 0 !important;
     width: 20rem;
+  }
+}
+// **********************
+// Media Queries
+@include respond-to-breakpoint(tab-port) {
+  .act-tos-form {
+    align-self: flex-start;
+    margin-left: 7rem;
+  }
+}
+
+@include respond-to-breakpoint(750) {
+  .act-tos-form {
+    margin: 3rem 0 0 5px;
+    max-width: 60rem;
   }
 }

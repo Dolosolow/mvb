@@ -1,5 +1,3 @@
-// ******************
-// LOCATION HEADER/HEADLINE
 .location-headline {
   color: #fff;
   position: relative;
@@ -12,36 +10,14 @@
     z-index: 2;
     width: 100%;
 
-    @include respond-to-breakpoint(1000) {
-      padding: 3rem;
-    }
-
-    @include respond-to-breakpoint(phone) {
-      padding: 3rem 1.5rem;
-    }
-
     .t-nav {
       margin-bottom: 1.2rem;
-
-      @include respond-to-breakpoint(1000) {
-        padding-left: 1.5rem;
-      }
-
-      h2 {
-        @include respond-to-breakpoint(1000) {
-          font-size: 6rem;
-        }
-      }
     }
 
     span {
       color: currentColor;
       font-size: 1.8rem;
       margin-left: 3rem;
-
-      @include respond-to-breakpoint(1000) {
-        margin-left: 1.5rem;
-      }
     }
   }
 
@@ -54,20 +30,12 @@
     z-index: 2;
     width: 100%;
 
-    @include respond-to-breakpoint(1000) {
-      padding: 0 1.5rem;
-    }
-
     .btn-outline {
       color: currentColor;
       display: inline-block;
       padding: 0.8rem 0;
       text-transform: capitalize;
       width: 28rem;
-
-      @include respond-to-breakpoint(750) {
-        width: 100%;
-      }
     }
   }
 }
@@ -110,11 +78,6 @@
   justify-content: center;
   padding: 5rem 0;
 
-  @include respond-to-breakpoint(1000) {
-    flex-direction: column;
-    padding: 3rem 0;
-  }
-
   &__in {
     display: flex;
     flex-direction: column;
@@ -128,37 +91,6 @@
     padding: 0 2.5rem;
     position: relative;
 
-    @include respond-to-breakpoint(1000) {
-      padding: 1rem 1.2rem;
-      width: 100%;
-
-      &::before,
-      &::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        width: 45%;
-        height: 1px;
-        background-color: rgba($muted-light, 0.5);
-
-        @include respond-to-breakpoint(tab-port) {
-          width: 43%;
-        }
-
-        @include respond-to-breakpoint(750) {
-          width: 40%;
-        }
-      }
-
-      &::before {
-        left: 1.5rem;
-      }
-
-      &::after {
-        right: 1.5rem;
-      }
-    }
-
     i {
       color: rgba($muted-light, 0.5);
     }
@@ -169,20 +101,12 @@
     font-size: 3.8rem;
     font-family: $primary-font;
     font-weight: 400;
-
-    @include respond-to-breakpoint(1000) {
-      border-bottom: none;
-    }
   }
 
   &__service {
     font-size: 1.6rem;
     margin-top: 1rem;
     text-transform: uppercase;
-
-    @include respond-to-breakpoint(1000) {
-      margin-top: 1rem;
-    }
 
     a {
       color: $primary-color;
@@ -196,24 +120,10 @@
   padding: 3rem 0;
   padding-bottom: 6rem;
 
-  @include respond-to-breakpoint(1000) {
-    flex-direction: column;
-  }
-
   .section-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    @include respond-to-breakpoint(1400) {
-      &:not(:last-of-type) {
-        padding: 3rem;
-      }
-    }
-
-    @include respond-to-breakpoint(1000) {
-      width: 100%;
-    }
 
     &__title {
       color: currentColor;
@@ -223,10 +133,6 @@
     &__body {
       line-height: 1.8;
       padding-right: 5rem;
-
-      @include respond-to-breakpoint(1000) {
-        padding-right: 0;
-      }
     }
 
     .location__info {
@@ -236,12 +142,6 @@
       font-family: $primary-font;
       margin-top: auto;
       max-width: 31rem;
-
-      @include respond-to-breakpoint(1000) {
-        align-self: flex-start;
-        padding-left: 3rem;
-        max-width: 100%;
-      }
 
       span {
         font-size: 3.2rem;
@@ -272,22 +172,8 @@
 .section-layout--location__reserve {
   padding: 6rem 0;
 
-  @include respond-to-breakpoint(1400) {
-    padding: 6rem 3rem;
-  }
-
-  @include respond-to-breakpoint(tab-port) {
-    flex-direction: column;
-    padding: 0;
-  }
-
   .section-content {
     padding-right: 6rem;
-
-    @include respond-to-breakpoint(tab-port) {
-      padding: 3rem;
-      width: 100%;
-    }
 
     .section-content__title {
       margin-bottom: 0;
@@ -307,10 +193,6 @@
       text-transform: capitalize;
       width: 28rem;
 
-      @include respond-to-breakpoint(phone) {
-        width: 100%;
-      }
-
       &:hover {
         color: #fff;
       }
@@ -320,11 +202,6 @@
   .section-content__img {
     height: 35rem;
     max-width: 64rem;
-
-    @include respond-to-breakpoint(tab-port) {
-      max-width: 100%;
-      width: 100%;
-    }
   }
 }
 
@@ -353,6 +230,160 @@
           background-color: #fff;
           opacity: 1;
         }
+      }
+    }
+  }
+}
+// ********************
+// Media Queries
+@include respond-to-breakpoint(1400) {
+  .section-layout--location__about {
+    .section-content {
+      &:not(:last-of-type) {
+        padding: 3rem;
+      }
+    }
+  }
+
+  .section-layout--location__reserve {
+    padding: 6rem 3rem;
+  }
+}
+
+@include respond-to-breakpoint(1000) {
+  .location-headline {
+    &__banner {
+      padding: 3rem;
+
+      .t-nav {
+        padding-left: 1.5rem;
+
+        h2 {
+          font-size: 6rem;
+        }
+      }
+
+      span {
+        margin-left: 1.5rem;
+      }
+    }
+
+    &__show-more {
+      padding: 0 1.5rem;
+    }
+  }
+
+  .dining-avl {
+    flex-direction: column;
+    padding: 3rem 0;
+
+    &__icon {
+      padding: 1rem 1.2rem;
+      width: 100%;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 45%;
+        height: 1px;
+        background-color: rgba($muted-light, 0.5);
+      }
+
+      &::before {
+        left: 1.5rem;
+      }
+
+      &::after {
+        right: 1.5rem;
+      }
+    }
+
+    &__title {
+      border-bottom: none;
+    }
+
+    &__service {
+      margin-top: 1rem;
+    }
+  }
+
+  .section-layout--location__about {
+    flex-direction: column;
+
+    .section-content {
+      width: 100%;
+
+      &__body {
+        padding-right: 0;
+      }
+
+      .location__info {
+        align-self: flex-start;
+        padding-left: 3rem;
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+@include respond-to-breakpoint(tab-port) {
+  .dining-avl {
+    &__icon {
+      &::before,
+      &::after {
+        width: 43%;
+      }
+    }
+  }
+
+  .section-layout--location__reserve {
+    flex-direction: column;
+    padding: 0;
+
+    .section-content {
+      padding: 3rem;
+      width: 100%;
+    }
+
+    .section-content__img {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+}
+
+@include respond-to-breakpoint(750) {
+  .location-headline {
+    &__show-more {
+      .btn-outline {
+        width: 100%;
+      }
+    }
+  }
+
+  .dining-avl {
+    &__icon {
+      &::before,
+      &::after {
+        width: 40%;
+      }
+    }
+  }
+}
+
+@include respond-to-breakpoint(phone) {
+  .location-headline {
+    &__banner {
+      padding: 3rem 1.5rem;
+    }
+  }
+
+  .section-layout--location__reserve {
+    .section-content {
+      .btn-prim {
+        width: 100%;
       }
     }
   }

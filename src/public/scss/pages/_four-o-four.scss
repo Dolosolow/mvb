@@ -7,8 +7,13 @@
     height: 100%;
     object-fit: contain;
     width: 100%;
-
-    @include respond-to-breakpoint(tab-port) {
+  }
+}
+// ********************
+// Media Queries
+@include respond-to-breakpoint(tab-port) {
+  .four-o-four {
+    img {
       width: 155%;
     }
   }

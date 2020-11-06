@@ -3,38 +3,9 @@
   max-width: 136.6rem;
   width: 100%;
 
-  &--limiter {
-    @include respond-to-breakpoint(1366) {
-      padding: 0 1.2rem;
-    }
-  }
-
-  &--limiter-lg {
-    @include respond-to-breakpoint(1366) {
-      padding: 0 3rem;
-    }
-  }
-
   &-padded {
     max-width: 136.6rem;
     padding: 5.5rem 4rem;
-
-    @include respond-to-breakpoint(big-desktop) {
-      margin: auto;
-    }
-
-    @include respond-to-breakpoint(tab-land) {
-      padding: 6rem 0;
-    }
-
-    @include respond-to-breakpoint(tab-port) {
-      flex-direction: column;
-      padding: 0 0 4rem 0;
-    }
-
-    @include respond-to-breakpoint(phone) {
-      padding: 0;
-    }
   }
 }
 
@@ -74,6 +45,52 @@
       object-fit: cover;
       object-position: center;
       width: 100%;
+    }
+  }
+}
+// ********************
+// Media Queries
+@include respond-to-breakpoint(1366) {
+  .container-layout {
+    &--limiter {
+      padding: 0 1.2rem;
+    }
+
+    &--limiter-lg {
+      padding: 0 3rem;
+    }
+  }
+}
+
+@include respond-to-breakpoint(big-desktop) {
+  .container-layout {
+    &-padded {
+      margin: auto;
+    }
+  }
+}
+
+@include respond-to-breakpoint(tab-land) {
+  .container-layout {
+    &-padded {
+      padding: 6rem 0;
+    }
+  }
+}
+
+@include respond-to-breakpoint(tab-port) {
+  .container-layout {
+    &-padded {
+      flex-direction: column;
+      padding: 0 0 4rem 0;
+    }
+  }
+}
+
+@include respond-to-breakpoint(phone) {
+  .container-layout {
+    &-padded {
+      padding: 0;
     }
   }
 }

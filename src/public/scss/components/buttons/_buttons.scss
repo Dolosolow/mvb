@@ -1,11 +1,36 @@
+%btn-outlined {
+  cursor: pointer;
+  display: block;
+  font-family: $primary-font;
+  font-size: 3.6rem;
+  line-height: 1;
+  padding: 0.7rem 0;
+  text-align: center;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+
+  &:focus,
+  &:hover,
+  &:active {
+    @include set-button-colors(#121212, white);
+    border: 1px solid #121212;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
 button {
   &:disabled,
   &[disabled] {
     background-color: $muted-light;
+    border: none;
     cursor: initial;
 
     &:hover {
       background-color: $muted-light;
+      border: none;
     }
   }
 
@@ -16,6 +41,13 @@ button {
 
 .btn-block {
   width: 100%;
+}
+// *************************
+// Media Queries
+@include respond-to-breakpoint(650) {
+  %btn-outlined {
+    width: 100% !important;
+  }
 }
 
 @import "./primary.scss";

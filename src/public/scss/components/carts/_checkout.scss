@@ -5,7 +5,8 @@
   padding: 2rem;
   position: sticky;
   top: 4rem;
-  width: 92%;
+  min-width: 59rem;
+  width: 92% !important;
 
   .mycart__title {
     font-size: 5rem;
