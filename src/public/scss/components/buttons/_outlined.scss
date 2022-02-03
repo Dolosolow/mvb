@@ -1,0 +1,27 @@
+.btn-outline {
+  @extend %btn-outlined;
+  @include set-button-colors(transparent, white);
+  border: 1px solid white;
+
+  &:focus,
+  &:hover,
+  &:active {
+    border: 1px solid black;
+  }
+}
+
+.btn-outline-dark {
+  @extend %btn-outlined;
+  @include set-button-colors(transparent, black);
+  border: 1px solid black;
+}
+
+.btn-outline-doubled {
+  border-width: 2px;
+
+  &:focus,
+  &:hover,
+  &:active {
+    border-width: 1px;
+  }
+}

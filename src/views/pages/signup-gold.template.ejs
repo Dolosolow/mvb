@@ -58,7 +58,7 @@
         <div class="section-layout section-layout--signup">
           <!-- left half of signup (account sign up forms) -->
           <div class="section-content section-content--form-steps">
-            <div class="form-container">
+            <div id="act-gold-forms" class="form-container">
               <ul class="collapsible">
                 <li>
                   <h3 class="collapsible-header">
@@ -75,49 +75,49 @@
                       <div class="input-field">
                         <input
                           type="text"
-                          id="fName"
+                          id="su-fName"
                           name="fName"
                           class="validate"
                           autocomplete="off"
                           required
                         />
-                        <label for="fName">First Name</label>
+                        <label for="su-fName">First Name</label>
                       </div>
                       <div class="input-field">
                         <input
                           type="text"
-                          id="lName"
+                          id="su-lName"
                           name="lName"
                           class="validate"
                           autocomplete="off"
                           required
                         />
-                        <label for="lName">Last Name</label>
+                        <label for="su-lName">Last Name</label>
                       </div>
                     </div>
                     <div class="form-container-row">
                       <div class="input-field">
                         <input
                           type="tel"
-                          id="phone"
+                          id="su-phone"
                           name="phone"
                           class="validate"
                           autocomplete="off"
                           required
                         />
-                        <label for="phone">Phone</label>
+                        <label for="su-phone">Phone</label>
                       </div>
                       <div class="input-field">
                         <input
                           type="text"
-                          id="dob"
+                          id="su-dob"
                           name="dob"
                           class="validate"
                           maxlength="10"
                           autocomplete="bday-day"
                           required
                         />
-                        <label for="dob">Birth Date</label>
+                        <label for="su-dob">Birth Date</label>
                       </div>
                     </div>
                     <div class="radio-wrapper mt-sm">
@@ -153,12 +153,12 @@
                       <div class="input-field">
                         <input
                           type="text"
-                          id="referralCode"
+                          id="su-referralCode"
                           name="referralCode"
                           class="validate"
                           autocomplete="off"
                         />
-                        <label for="referralCode">Referral Code</label>
+                        <label for="su-referralCode">Referral Code</label>
                       </div>
                     </div>
                   </form>
@@ -178,26 +178,26 @@
                       <div class="input-field">
                         <input
                           type="email"
-                          id="email"
+                          id="su-email"
                           name="email"
                           class="validate"
                           autocomplete="email"
                           required
                         />
-                        <label for="email">Email</label>
+                        <label for="su-email">Email</label>
                       </div>
                     </div>
                     <div class="form-container-row">
                       <div class="input-field">
                         <input
                           type="password"
-                          id="password"
+                          id="su-password"
                           name="password"
                           class="validate"
                           autocomplete="off"
                           required
                         />
-                        <label for="password">Password</label>
+                        <label for="su-password">Password</label>
                         <div><i class="fas fa-lock fa-lg"></i></div>
                       </div>
                     </div>
@@ -205,13 +205,13 @@
                       <div class="input-field">
                         <input
                           type="password"
-                          id="confirmPassword"
+                          id="su-confirmPassword"
                           name="confirmPassword"
                           class="validate"
                           autocomplete="off"
                           required
                         />
-                        <label for="confirmPassword">Confirm Password</label>
+                        <label for="su-confirmPassword">Confirm Password</label>
                         <div><i class="fas fa-lock fa-lg"></i></div>
                       </div>
                     </div>
@@ -232,24 +232,24 @@
                       <div class="input-field">
                         <input
                           type="text"
-                          id="streetAddress"
+                          id="su-streetAddress"
                           name="streetAddress"
                           class="validate"
                           autocomplete="street-address"
                           required
                         />
-                        <label for="streetAddress">Street Address</label>
+                        <label for="su-streetAddress">Street Address</label>
                       </div>
                       <div class="input-field">
                         <input
                           type="text"
-                          id="city"
+                          id="su-city"
                           name="city"
                           class="validate"
                           autocomplete="off"
                           required
                         />
-                        <label for="city">City</label>
+                        <label for="su-city">City</label>
                       </div>
                     </div>
                     <div class="form-container-row">
@@ -265,13 +265,13 @@
                       <div class="input-field">
                         <input
                           type="text"
-                          id="zipcode"
+                          id="su-zipcode"
                           name="zipcode"
                           class="validate"
                           autocomplete="postal-code"
                           required
                         />
-                        <label for="zipcode">Zip Code</label>
+                        <label for="su-zipcode">Zip Code</label>
                       </div>
                     </div>
                   </form>
@@ -366,33 +366,14 @@
                   </form>
                 </li>
               </ul>
-              <form class="act-tos-form flex-column" action="#">
-                <label for="tcmPolicy">
+              <form class="act-tos-form flex-column">
+                <label for="su-eSubscription">
                   <input
                     type="checkbox"
-                    id="tcmPolicy"
-                    name="tcmPolicy"
-                    class="filled-in"
-                    required
-                  />
-                  <span
-                    >I agree to the
-                    <a href="#" class="color-text color-text__link"
-                      >Terms & Conditions</a
-                    >
-                    and
-                    <a href="#" class="color-text color-text__link"
-                      >Membership policies</a
-                    ></span
-                  >
-                </label>
-                <label for="eSubscription">
-                  <input
-                    type="checkbox"
-                    id="eSubscription"
+                    id="su-eSubscription"
                     name="eSubscription"
                     class="filled-in"
-                    required
+                    value="false"
                     checked
                   />
                   <span
@@ -401,12 +382,21 @@
                     offers and news</span
                   >
                 </label>
-                <button class="btn-prim">Submit</button>
+                <span
+                    >By creating an account, you agree to FLIX's
+                    <a href="#" class="color-text color-text__link"
+                      >Terms & Conditions</a
+                    >
+                    and
+                    <a href="#" class="color-text color-text__link"
+                      >Membership policies</a
+                    ></span
+                  >
+                <input type="hidden" name="type" value="gold">
+                <button id="submit-silver" type="submit" class="btn-prim">Submit</button>
                 <p>
                   No thank you, sign me up for
-                  <a
-                    href="/membership/silver"
-                    class="color-text color-text__link"
+                  <a href="/membership/silver" class="color-text color-text__link"
                     >Silver Membership</a
                   >
                 </p>

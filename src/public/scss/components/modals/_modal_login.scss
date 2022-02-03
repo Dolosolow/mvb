@@ -1,29 +1,77 @@
 .modal-login {
   width: 37rem;
 
-  @include respond-to-breakpoint(tab-port) {
-    width: 35rem;
+  &.show {
+    display: block;
   }
 
-  h2 {
-    font-weight: 300;
-    margin: 0 0 4rem 0;
-  }
+  .modal-content {
+    transition: height 0.3s ease-in-out both;
 
-  form {
-    .input-field:not(:first-of-type) {
-      margin-top: 2.5rem;
+    h2 {
+      font-weight: 300;
+      margin: 0 0 4rem 0;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      .input-field:not(:first-of-type) {
+        margin-top: 1rem;
+      }
+    }
+
+    .alert-error {
+      margin-top: 3rem;
+    }
+
+    .color-text__btn {
+      margin-left: auto;
+    }
+
+    .btn-prim {
+      display: inline-block;
+      margin-top: 1.5rem;
+    }
+
+    p {
+      color: #121212;
+      line-height: 1.3;
+      margin: 2rem 0 0 0;
     }
   }
 
-  .btn-prim {
-    display: inline-block;
-    margin-top: 3rem;
-  }
+  .modal-content--pwdReset {
+    display: none;
 
-  p {
-    color: #121212;
-    line-height: 1.3;
-    margin: 2rem 0 0 0;
+    &.show {
+      display: block;
+    }
+
+    h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+      margin: 1rem 0 3rem 0;
+    }
+
+    .color-text__btn {
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    .btn-prim {
+      margin-top: 3rem;
+    }
+  }
+}
+// ********************
+// Media Queries
+@include respond-to-breakpoint(tab-port) {
+  .modal-login {
+    width: 35rem;
   }
 }

@@ -1,0 +1,23 @@
+.btn-worded-only {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font: 400 3.6rem $primary-font;
+  height: max-content;
+
+  &:disabled {
+    color: rgba(#fff, 0.5) !important;
+  }
+
+  &--light {
+    color: rgba(#fff, 0.5) !important;
+  }
+}
+// *************************
+// Media Queries
+@include respond-to-breakpoint(750) {
+  .btn-worded-only {
+    margin-top: 1.5rem;
+  }
+}

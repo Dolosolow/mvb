@@ -1,15 +1,6 @@
 .footer {
   height: 23rem;
 
-  @include respond-to-breakpoint(tab-land) {
-    padding: 1.2rem 0 1.2rem 0;
-  }
-
-  @include respond-to-breakpoint(660) {
-    flex-direction: column;
-    padding: 0;
-  }
-
   a {
     color: currentColor;
     transition: all 0.25s ease-in-out;
@@ -23,22 +14,9 @@
     padding-right: 2.5rem;
     width: max-content;
 
-    @include respond-to-breakpoint(660) {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-      padding: 0 5rem;
-      width: 100%;
-    }
-
     .navbar-brand {
       color: $primary-color;
       font-size: 4rem;
-
-      @include respond-to-breakpoint(660) {
-        align-self: flex-end;
-        padding-bottom: 1rem;
-      }
     }
   }
 
@@ -47,10 +25,6 @@
     margin-top: 2rem;
     line-height: 1.8;
     white-space: nowrap;
-
-    @include respond-to-breakpoint(tab-land) {
-      align-self: flex-start;
-    }
   }
 
   &__links {
@@ -58,27 +32,8 @@
     border-right: 4px solid #000;
     width: 100%;
 
-    @include respond-to-breakpoint(tab-land) {
-      border-right: none;
-    }
-
-    @include respond-to-breakpoint(tab-port) {
-      width: 80%;
-    }
-
-    @include respond-to-breakpoint(660) {
-      border-left: none;
-      border-top: 2px solid #000;
-      padding: 0 5rem;
-      width: 100%;
-    }
-
     &-social {
       font-size: 1.6rem;
-
-      @include respond-to-breakpoint(660) {
-        margin-top: 2rem;
-      }
 
       a {
         &:not(:last-child) {
@@ -91,10 +46,6 @@
       flex-wrap: wrap;
       font-family: $primary-font;
       margin-top: 2rem;
-
-      @include respond-to-breakpoint(tab-land) {
-        margin-top: 8px;
-      }
 
       li {
         &:not(:first-of-type) a {
@@ -109,24 +60,12 @@
             transform: translateY(-70%);
             height: 65%;
             width: 2px;
-
-            @include respond-to-breakpoint(660) {
-              width: 1px;
-            }
           }
         }
 
         a {
           font-size: 3rem;
           padding: 0 1rem;
-
-          @include respond-to-breakpoint(tab-port) {
-            font-size: 2.5rem;
-          }
-
-          @include respond-to-breakpoint(660) {
-            font-size: 2rem;
-          }
         }
       }
     }
@@ -136,5 +75,85 @@
     color: $muted;
     font-size: 1.3rem;
     margin-top: 2rem;
+  }
+}
+// ********************
+// Media Queries
+@include respond-to-breakpoint(tab-land) {
+  .footer {
+    padding: 1.2rem 0 1.2rem 0;
+
+    &__adr {
+      align-self: flex-start;
+    }
+
+    &__links {
+      border-right: none;
+
+      &-list {
+        margin-top: 8px;
+      }
+    }
+  }
+}
+
+@include respond-to-breakpoint(tab-port) {
+  .footer {
+    &__links {
+      width: 80%;
+
+      &-list {
+        li {
+          a {
+            font-size: 2.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include respond-to-breakpoint(660) {
+  .footer {
+    flex-direction: column;
+    padding: 0;
+
+    &__info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      padding: 0 5rem;
+      width: 100%;
+
+      .navbar-brand {
+        align-self: flex-end;
+        padding-bottom: 1rem;
+      }
+    }
+
+    &__links {
+      border-left: none;
+      border-top: 2px solid #000;
+      padding: 0 5rem;
+      width: 100%;
+
+      &-social {
+        margin-top: 2rem;
+      }
+
+      &-list {
+        li {
+          &:not(:first-of-type) a {
+            &::after {
+              width: 1px;
+            }
+          }
+
+          a {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
   }
 }

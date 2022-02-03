@@ -7,30 +7,12 @@
   left: 0;
   z-index: -1;
 
-  @include respond-to-breakpoint(phone) {
-    height: 45rem;
-  }
-
   img {
     opacity: 0.6;
     object-fit: cover;
     position: absolute;
     top: -45rem;
     left: 0;
-
-    @include respond-to-breakpoint(900) {
-      top: -35rem;
-    }
-
-    @include respond-to-breakpoint(790) {
-      top: -20rem;
-    }
-
-    @include respond-to-breakpoint(phone) {
-      height: 45rem;
-      top: 0;
-      left: 0;
-    }
   }
 }
 
@@ -38,16 +20,6 @@
   padding-top: 11rem;
   position: relative;
   width: 100%;
-
-  .container-layout {
-    @include respond-to-breakpoint(1366) {
-      padding: 0 3rem;
-    }
-
-    @include respond-to-breakpoint(phone) {
-      margin-top: 3.5rem;
-    }
-  }
 
   &::after {
     content: "";
@@ -58,14 +30,6 @@
     bottom: 0;
     left: 0;
     z-index: -1;
-
-    @include respond-to-breakpoint(700) {
-      height: 45%;
-    }
-
-    @include respond-to-breakpoint(phone) {
-      height: 42%;
-    }
   }
 
   img {
@@ -73,10 +37,6 @@
     margin-bottom: 5rem;
     width: 28rem;
     z-index: 1;
-
-    @include respond-to-breakpoint(700) {
-      display: none;
-    }
   }
 
   &__content {
@@ -85,15 +45,6 @@
     padding-bottom: 4rem;
     padding-left: 5rem;
     width: 100%;
-
-    @include respond-to-breakpoint(1090) {
-      padding-bottom: 1rem;
-    }
-
-    @include respond-to-breakpoint(700) {
-      margin-top: 6rem;
-      padding-left: 0;
-    }
 
     .t-nav {
       margin: 0;
@@ -105,28 +56,15 @@
       font-family: $primary-font;
       margin-top: 6rem;
 
-      @include respond-to-breakpoint(1090) {
-        flex-direction: column;
-        margin-top: 3rem;
-      }
-
       h3 {
         font-size: 2.4rem;
         letter-spacing: 3px;
         margin-bottom: 2rem;
-
-        @include respond-to-breakpoint(1090) {
-          margin-bottom: 0;
-        }
       }
 
       p {
         font-size: 3.2rem;
         margin: 0;
-
-        @include respond-to-breakpoint(700) {
-          font-size: 2.4rem;
-        }
       }
 
       &__dates {
@@ -154,20 +92,12 @@
           }
 
           &::before {
-            background-image: linear-gradient(
-              to right,
-              #121212 25%,
-              transparent 75%
-            );
+            background-image: linear-gradient(to right, #121212 25%, transparent 75%);
             left: 0;
           }
 
           &::after {
-            background-image: linear-gradient(
-              to left,
-              #121212 25%,
-              transparent 75%
-            );
+            background-image: linear-gradient(to left, #121212 25%, transparent 75%);
             right: 0;
           }
 
@@ -198,10 +128,6 @@
 
         .mth {
           font-size: 2rem;
-
-          @include respond-to-breakpoint(700) {
-            font-size: 1.6rem;
-          }
         }
       }
 
@@ -209,11 +135,6 @@
         margin-left: 3rem;
         position: relative;
         width: 65%;
-
-        @include respond-to-breakpoint(1090) {
-          margin-left: 0;
-          width: 100%;
-        }
 
         &::before,
         &::after {
@@ -233,7 +154,6 @@
         &-list {
           display: flex;
           align-items: center;
-          // ^^^^ change above
           height: 6.4rem;
           overflow-x: scroll;
           padding: 0 4rem;
@@ -310,7 +230,7 @@
       cursor: auto;
 
       &::after {
-        display: none;
+        visibility: hidden;
       }
     }
 
@@ -396,33 +316,15 @@
   position: relative;
   max-width: 120.4rem;
 
-  @include respond-to-breakpoint(1024) {
-    justify-content: center;
-  }
-
-  @include respond-to-breakpoint(620) {
-    height: 75rem;
-  }
-
   &__chart {
     min-width: 64rem;
     width: 65%;
-
-    @include respond-to-breakpoint(680) {
-      min-width: auto;
-      width: 100%;
-    }
   }
 
   &__header {
     align-items: flex-end;
     margin-bottom: 5rem;
     z-index: 1;
-
-    @include respond-to-breakpoint(1100) {
-      flex-direction: column;
-      margin-bottom: 3rem;
-    }
 
     p {
       color: #151515a2;
@@ -436,27 +338,13 @@
       white-space: nowrap;
       width: 100%;
 
-      > * {
-        @include respond-to-breakpoint(1100) {
-          display: inline;
-        }
-      }
-
       p {
         font: 500 2.08rem $primary-font;
         letter-spacing: 1px;
-
-        @include respond-to-breakpoint(1100) {
-          line-height: 3;
-        }
       }
 
       h2 {
         font-size: 4rem;
-
-        @include respond-to-breakpoint(1100) {
-          float: right;
-        }
       }
     }
   }
@@ -465,11 +353,6 @@
     display: flex;
     justify-content: flex-end;
     width: 100%;
-
-    @include respond-to-breakpoint(1100) {
-      margin-top: 2rem;
-      justify-content: center;
-    }
   }
 
   &__legend {
@@ -478,10 +361,6 @@
     &:nth-of-type(1) {
       padding-right: 8rem;
       position: relative;
-
-      @include respond-to-breakpoint(620) {
-        padding-right: 0;
-      }
 
       &::after {
         content: "";
@@ -492,17 +371,6 @@
         top: 0;
         right: 4rem;
         width: 1px;
-
-        @include respond-to-breakpoint(620) {
-          display: none;
-        }
-      }
-    }
-
-    &:nth-of-type(2) {
-      @include respond-to-breakpoint(620) {
-        position: absolute;
-        bottom: 3.5rem;
       }
     }
   }
@@ -555,28 +423,12 @@
       }
 
       .row-char {
-        @include respond-to-breakpoint(500) {
-          font-size: 1.3rem;
-        }
-
-        @include respond-to-breakpoint(370) {
-          display: none;
-        }
-
         &:first-of-type {
           margin-right: auto;
-
-          @include respond-to-breakpoint(500) {
-            display: none;
-          }
         }
 
         &:last-of-type {
           margin-left: auto;
-
-          @include respond-to-breakpoint(500) {
-            display: none;
-          }
         }
       }
 
@@ -585,12 +437,216 @@
 
         &:not(:last-child) {
           margin-right: 1rem;
+        }
+      }
+    }
+  }
+}
+// ********************
+// Media Queries
+@include respond-to-breakpoint(1366) {
+  .theater-headline {
+    .container-layout {
+      padding: 0 3rem;
+    }
+  }
+}
 
-          @include respond-to-breakpoint(500) {
-            margin-right: 0.75rem;
+@include respond-to-breakpoint(1100) {
+  .seat-selection {
+    &__header {
+      flex-direction: column;
+      margin-bottom: 3rem;
+
+      .theater-name {
+        > * {
+          display: inline;
+        }
+
+        p {
+          line-height: 3;
+        }
+
+        h2 {
+          float: right;
+        }
+      }
+    }
+
+    &__legend-wrapper {
+      margin-top: 2rem;
+      justify-content: center;
+    }
+  }
+}
+
+@include respond-to-breakpoint(1090) {
+  .theater-headline {
+    &__content {
+      padding-bottom: 1rem;
+
+      .screen-avl {
+        flex-direction: column;
+        margin-top: 3rem;
+
+        h3 {
+          margin-bottom: 0;
+        }
+
+        &__times {
+          margin-left: 0;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@include respond-to-breakpoint(1024) {
+  .seat-selection {
+    justify-content: center;
+  }
+}
+
+@include respond-to-breakpoint(900) {
+  .header-poster {
+    img {
+      top: -35rem;
+    }
+  }
+}
+
+@include respond-to-breakpoint(790) {
+  .header-poster {
+    img {
+      top: -20rem;
+    }
+  }
+}
+
+@include respond-to-breakpoint(700) {
+  .theater-headline {
+    .container-layout {
+      margin-top: 3.5rem;
+    }
+
+    &::after {
+      height: 45%;
+    }
+
+    img {
+      display: none;
+    }
+
+    &__content {
+      margin-top: 6rem;
+      padding-left: 0;
+
+      .screen-avl {
+        p {
+          font-size: 2.4rem;
+        }
+
+        &__date {
+          .mth {
+            font-size: 1.6rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include respond-to-breakpoint(680) {
+  .seat-selection {
+    &__chart {
+      min-width: auto;
+      width: 100%;
+    }
+  }
+}
+
+@include respond-to-breakpoint(620) {
+  .seat-selection {
+    height: 80rem;
+
+    &__legend {
+      &:nth-of-type(1) {
+        padding-right: 0;
+
+        &::after {
+          display: none;
+        }
+      }
+
+      &:nth-of-type(2) {
+        position: absolute;
+        bottom: 1.2rem;
+      }
+    }
+  }
+}
+
+@include respond-to-breakpoint(phone) {
+  .header-poster {
+    height: 45rem;
+
+    img {
+      height: 45rem;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  .theater-headline {
+    .container-layout {
+      margin-top: 3.5rem;
+    }
+
+    &::after {
+      height: 42%;
+    }
+  }
+}
+
+@include respond-to-breakpoint(500) {
+  .seat-selection {
+    &__layout {
+      &-grid {
+        .row-char {
+          font-size: 1.3rem;
+
+          &:first-of-type {
+            display: none;
           }
 
-          @include respond-to-breakpoint(370) {
+          &:last-of-type {
+            display: none;
+          }
+        }
+
+        .seat-wrapper {
+          &:not(:last-child) {
+            margin-right: 0.75rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include respond-to-breakpoint(370) {
+  .seat-selection {
+    &__layout {
+      &-grid {
+        .row-char {
+          display: none;
+        }
+
+        .seat-wrapper {
+          cursor: pointer;
+
+          &:not(:last-child) {
             margin-right: 0.5rem;
           }
         }

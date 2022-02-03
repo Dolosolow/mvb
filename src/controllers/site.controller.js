@@ -5,36 +5,28 @@ import moment from 'moment';
 import { sortScreenTime } from '@src/utils/lib/time';
 
 export const getAdminDash = (req, res, next) => { 
-  res.render('admin-dash', { transNav: false, path: "/admin", user: req.session.user });
+  res.render('admin-dash', { transNav: false, path: "/admin" });
 };
 
 export const getDining = (req, res, next) => {
-  res.render('wine-dine', { transNav: false, path: '/dining', user: req.session.user });
+  res.render('wine-dine', { transNav: false, path: '/dining' });
 };
 
 export const getEvents = (req, res, next) => {
-  res.render('events', { transNav: false, path: '/events', user: req.session.user });
+  res.render('events', { transNav: false, path: '/events' });
 };
 
 export const getMemberships = (req, res, next) => {
-  res.render('membership', { transNav: true, path: '/membership', user: req.session.user });
-};
-
-export const getGoldSignup = (req, res, next) => {
-  res.render('signup-gold', { transNav: false, path: '/membership', user: req.session.user });
-};
-
-export const getSilverSignup = (req, res, next) => {
-  res.render('signup-silver', { transNav: false, path: '/membership', user: req.session.user });
+  res.render('membership', { transNav: true, path: '/membership' });
 };
 
 export const getLocations = (req, res, next) => {
-  res.render('locations', { transNav: false, path: '/location', user: req.session.user });
+  res.render('locations', { transNav: false, path: '/location' });
 };
 
 export const getIndex = async (req, res, next) => {
   const movies = await Movie.find();
-  res.render('index', { transNav: true, path: '/', currentMovies: movies, user: req.session.user });
+  res.render('index', { transNav: true, path: '/', currentMovies: movies });
 };
 
 export const getMovieSeats = async (req, res, next) => {
@@ -45,7 +37,7 @@ export const getMovieSeats = async (req, res, next) => {
 
   const screen = await Screen.findById(foundMovie.screens[0].times[0].screenId);
 
-  res.render('seat-booking', { transNav: true, path: '/', movie: foundMovie, screen, user: req.session.user  });
+  res.render('seat-booking', { transNav: true, path: '/', movie: foundMovie, screen });
 };
 
 export const getCheckout = async (req, res, next) => {
@@ -53,7 +45,7 @@ export const getCheckout = async (req, res, next) => {
     .findOne({ userId: req.session.user._id })
     .populate({ 
       path: 'items.screenId', 
-      select: '-_id movieTitle screenRoom startTime endTime' , 
+      select: '-_id movieTitle screenRoom startTime endTime', 
       model: 'Screen' 
     })
     .exec((err, cart) => {
@@ -65,7 +57,6 @@ export const getCheckout = async (req, res, next) => {
 
         res.render('checkout', { 
           transNav: false, path: '/', 
-          user: req.session.user, 
           cart: cart
         });
       } else {

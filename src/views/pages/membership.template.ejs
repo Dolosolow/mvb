@@ -53,7 +53,7 @@
           <div class="login-prompt flex-row">
             <p>
               Already a Member? &nbsp;
-              <a class="color-text color-text__btn" href="#si-popup">Log In</a>
+              <a class="modal-trigger color-text color-text__btn" href="#modal-login">Log In</a>
             </p>
             <p>
               Don't have an account? &nbsp;
@@ -171,7 +171,7 @@
           <a href="/membership/gold" class="btn-prim">Join Now</a>
           <div class="article-banner__body">
             <p class="article-banner__desc">Sign up for Silver Membership:</p>
-            <form action="#" class="flex-row flex-center">
+            <form class="flex-row flex-center" id="email-silver-form">
               <div class="input-field input-field--light">
                 <input
                   type="email"
@@ -182,7 +182,9 @@
                   required
                 />
                 <label for="email">Email</label>
+                <span class="helper-text" data-error="This field is required."></span>
               </div>
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
               <button class="btn-worded-only btn-worded-only--light">Submit</button>
             </form>
           </div>
@@ -382,10 +384,10 @@
               <p>1 Point / $1 Spent</p>
             </td>
             <td>
-              <p>1 Point / $1 Spent</p>
+              <p>1.5 Point / $1 Spent</p>
             </td>
             <td>
-              <p>1 Point / $1 Spent</p>
+              <p>2 Point / $1 Spent</p>
             </td>
           </tr>
         </tbody>

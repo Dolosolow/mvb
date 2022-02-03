@@ -1,0 +1,12 @@
+.btn-prim {
+  @extend %btn-outlined;
+  @include set-button-colors($primary-color, #fff);
+  border: 1px solid $primary-color;
+
+  &:focus,
+  &:hover,
+  &:active {
+    background-color: black;
+    color: white;
+  }
+}

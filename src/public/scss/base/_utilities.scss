@@ -6,10 +6,6 @@
 
 .mb-sm {
   margin-bottom: 4rem !important;
-
-  @include respond-to-breakpoint(tab-port) {
-    margin-bottom: 1.5rem !important;
-  }
 }
 
 .mb-md {
@@ -18,10 +14,6 @@
 
 .mb-lg {
   margin-bottom: 6rem !important;
-
-  @include respond-to-breakpoint(tab-port) {
-    margin-bottom: 5rem !important;
-  }
 }
 
 .mt-xs {
@@ -51,12 +43,6 @@
 
 .pl-xs {
   padding-left: 2.5rem;
-}
-
-.p-sm--screen-sm {
-  @include respond-to-breakpoint(phone) {
-    padding: 1.2rem;
-  }
 }
 // ******************
 // FLEX
@@ -110,4 +96,20 @@
 
 .text-uppercase {
   text-transform: uppercase;
+}
+
+@include respond-to-breakpoint(tab-port) {
+  .mb-sm {
+    margin-bottom: 1.5rem !important;
+  }
+
+  .mb-lg {
+    margin-bottom: 5rem !important;
+  }
+}
+
+@include respond-to-breakpoint(phone) {
+  .p-sm--screen-sm {
+    padding: 1.2rem;
+  }
 }

@@ -1,51 +1,11 @@
-// ******************
-// EVENT HEADER
 .event-header {
   position: relative;
-
-  .container-layout {
-    @include respond-to-breakpoint(tab-port) {
-      padding: 0 2.5rem;
-    }
-
-    @include respond-to-breakpoint(750) {
-      padding: 0 1.2rem;
-    }
-  }
-
-  .description-text {
-    @include respond-to-breakpoint(750) {
-      padding-right: 0;
-    }
-  }
 }
-// ******************
-// DESCRIPTION TEXT
+
 .description-text--events {
   width: 100%;
-
-  @include respond-to-breakpoint(750) {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  > p {
-    line-height: 1.6;
-    width: 48%;
-
-    @include respond-to-breakpoint(tab-port) {
-      margin: 0 2.5rem;
-      font-size: 1.6rem;
-    }
-
-    @include respond-to-breakpoint(750) {
-      margin: 0;
-      width: 100%;
-    }
-  }
 }
-// ******************
-// CONTACT BOX
+
 .contact__box {
   max-width: 70rem;
   position: absolute;
@@ -53,12 +13,6 @@
   left: 50%;
   width: 48%;
   z-index: 1;
-
-  @include respond-to-breakpoint(750) {
-    position: static;
-    margin-top: 1rem;
-    width: 100%;
-  }
 
   &-title {
     font-size: 5rem;
@@ -83,30 +37,11 @@
     justify-content: space-between;
     margin-top: 4.5rem;
     width: 95%;
-
-    @include respond-to-breakpoint(tab-port) {
-      justify-content: space-between;
-    }
-
-    @include respond-to-breakpoint(700) {
-      flex-wrap: nowrap;
-      margin-top: 1.5rem;
-      width: 100%;
-    }
-
-    @include respond-to-breakpoint(445) {
-      flex-wrap: wrap;
-    }
   }
 }
-// ******************
-// CONTACT BOX INFO ITEMS
+
 .info-item {
   padding: 0 1rem;
-
-  @include respond-to-breakpoint(tab-port) {
-    padding: 0 0.8rem;
-  }
 
   &:first-child {
     padding-left: 0;
@@ -123,70 +58,19 @@
   a {
     color: $primary-color;
     font: 400 3.8rem $primary-font;
-
-    @include respond-to-breakpoint(tab-port) {
-      font-size: 2.8rem;
-    }
   }
 }
-// ******************
-// EVENTS SECTION LAYOUT W/ CONTAINER-LAYOUT-PADDED
+
 .section-layout--events-plan {
   flex-direction: column;
   margin-top: 8rem;
-
-  @include respond-to-breakpoint(750) {
-    margin-top: 4rem;
-  }
-
-  .container-layout-padded {
-    @include respond-to-breakpoint(tab-land) {
-      padding: 5rem 0;
-    }
-
-    @include respond-to-breakpoint(tab-port) {
-      padding-top: 2rem;
-      flex-direction: row;
-    }
-
-    @include respond-to-breakpoint(700) {
-      padding-top: 0;
-      flex-direction: column;
-    }
-  }
 }
-// ******************
-// EVENTS SECTION CONTENT
+
 .section-content--event-plan {
   padding: 0 6rem 0 0;
 
-  @include respond-to-breakpoint(tab-land) {
-    padding: 0 2rem 0 2rem;
-  }
-
-  @include respond-to-breakpoint(700) {
-    order: 2;
-    padding: 1.2rem;
-    width: 100%;
-  }
-
   &:nth-of-type(2) {
     padding-left: 4rem;
-
-    @include respond-to-breakpoint(700) {
-      padding-left: 1.2rem;
-    }
-  }
-
-  .section-content__title {
-    @include respond-to-breakpoint(tab-port) {
-      font-size: 5rem;
-    }
-
-    @include respond-to-breakpoint(700) {
-      font-size: 4rem;
-      margin-bottom: 2rem;
-    }
   }
 
   .section-content__body {
@@ -201,60 +85,192 @@
     }
   }
 }
-// ******************
-// EVENTS SECTION CONTENT IMG
+
+.section-content__img--tours {
+  padding-right: 4rem;
+}
+
 .section-content__img--event-plan {
-  @include respond-to-breakpoint(tab-land) {
-    padding: 0 2rem 0 0;
-  }
-
-  @include respond-to-breakpoint(700) {
-    padding: 0;
-    width: 100%;
-  }
-
   .section-content__btn {
     justify-content: space-evenly;
     margin-top: 5rem;
 
-    @include respond-to-breakpoint(1400) {
-      flex-direction: row;
-      padding: 0 1.2rem;
-    }
-
-    @include respond-to-breakpoint(tab-port) {
-      flex-direction: column;
-      margin-top: 3rem;
-    }
-
-    @include respond-to-breakpoint(700) {
-      width: 100%;
-    }
-
     button {
       width: 40%;
-
-      @include respond-to-breakpoint(tab-port) {
-        width: 100%;
-      }
+    }
+  }
+}
+// ********************
+// Media Queries
+@include respond-to-breakpoint(1400) {
+  .section-content__img--event-plan {
+    .section-content__btn {
+      flex-direction: row;
+      padding: 0 1.2rem;
     }
   }
 }
 
-.section-content__img--tours {
-  padding-right: 4rem;
+@include respond-to-breakpoint(tab-land) {
+  .section-layout--events-plan {
+    .container-layout-padded {
+      padding: 5rem 0;
+    }
+  }
 
-  @include respond-to-breakpoint(tab-land) {
+  .section-content--event-plan {
+    padding: 0 2rem 0 2rem;
+  }
+
+  .section-content__img--event-plan {
+    padding: 0 2rem 0 0;
+  }
+
+  .section-content__img--tours {
     padding-left: 4rem;
   }
+}
 
-  @include respond-to-breakpoint(tab-port) {
-    padding-right: 2rem;
+@include respond-to-breakpoint(tab-port) {
+  .event-header {
+    .container-layout {
+      padding: 0 2.5rem;
+    }
   }
 
-  @include respond-to-breakpoint(700) {
+  .description-text--events {
+    > p {
+      margin: 0 2.5rem;
+      font-size: 1.6rem;
+    }
+  }
+
+  .contact__box {
+    &-info {
+      justify-content: space-between;
+    }
+  }
+
+  .info-item {
+    padding: 0 0.8rem;
+
+    a {
+      font-size: 2.8rem;
+    }
+  }
+
+  .section-layout--events-plan {
+    .container-layout-padded {
+      padding-top: 2rem;
+      flex-direction: row;
+    }
+  }
+
+  .section-content--event-plan {
+    .section-content__title {
+      font-size: 5rem;
+    }
+  }
+
+  .section-content__img--event-plan {
+    .section-content__btn {
+      flex-direction: column;
+      margin-top: 3rem;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+
+  .section-content__img--tours {
+    padding-right: 2rem;
+  }
+}
+
+@include respond-to-breakpoint(750) {
+  .event-header {
+    .container-layout {
+      padding: 0 1.2rem;
+    }
+
+    .description-text {
+      padding-right: 0;
+    }
+  }
+
+  .description-text--events {
+    flex-direction: column;
+    width: 100%;
+
+    > p {
+      margin: 0;
+      width: 100%;
+    }
+  }
+
+  .contact__box {
+    position: static;
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  .section-layout--events-plan {
+    margin-top: 4rem;
+  }
+}
+
+@include respond-to-breakpoint(700) {
+  .contact__box {
+    &-info {
+      flex-wrap: nowrap;
+      margin-top: 1.5rem;
+      width: 100%;
+    }
+  }
+
+  .section-layout--events-plan {
+    .container-layout-padded {
+      padding-top: 0;
+      flex-direction: column;
+    }
+  }
+
+  .section-content--event-plan {
+    order: 2;
+    padding: 1.2rem;
+    width: 100%;
+
+    &:nth-of-type(2) {
+      padding-left: 1.2rem;
+    }
+
+    .section-content__title {
+      font-size: 4rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .section-content__img--event-plan {
+    padding: 0;
+    width: 100%;
+
+    .section-content__btn {
+      width: 100%;
+    }
+  }
+
+  .section-content__img--tours {
     padding: 0;
     max-width: none;
     width: 100%;
+  }
+}
+
+@include respond-to-breakpoint(445) {
+  .contact__box {
+    &-info {
+      flex-wrap: wrap;
+    }
   }
 }

@@ -45,47 +45,36 @@
       <div class="container-layout fluid">
         <h2 class="headline__title fluid">Snack . Sip . Socialize</h2>
         <p class="headline__desc mb-lg">
-          C'mon get happy. Join us for Happy Hour. Monday - Friday from 4pm to
-          7pm. Enjoy $4 beers and wines, $6 handcrafted cocktails and a new menu
-          with great dishes. Have them up by the bar, at a table, or while
-          watching a movie.
+          C'mon get happy. Join us for Happy Hour. Monday - Friday from 4pm to 7pm. Enjoy $4 beers
+          and wines, $6 handcrafted cocktails and a new menu with great dishes. Have them up by the
+          bar, at a table, or while watching a movie.
         </p>
         <button class="btn-outline btn-block--sc">View Menu</button>
       </div>
     </header>
     <article class="article-banner">
       <div class="container-layout container-layout--limiter-lg">
-        <h2 class="article-banner__title mb-sm">
-          Become a FLIX Premium Member
-        </h2>
+        <h2 class="article-banner__title mb-sm">Become a FLIX Premium Member</h2>
         <div class="article-banner__content">
           <ul class="article-banner__amenities">
             <li class="article-banner__item flex-column flex-center">
               <img src="/assets/images/png/dine-eat.png" alt="dine and drink" />
-              <span class="article-banner__text text-center"
-                >10% OFF FOOD & BEVERAGE</span
-              >
+              <span class="article-banner__text text-center">10% OFF FOOD & BEVERAGE</span>
             </li>
             <li class="article-banner__item flex-column flex-center">
               <img src="/assets/images/png/tickets.png" alt="dine and drink" />
-              <span class="article-banner__text text-center"
-                >MEMBER-ONLY TICKET PRICING</span
-              >
+              <span class="article-banner__text text-center">MEMBER-ONLY TICKET PRICING</span>
             </li>
             <li class="article-banner__item flex-column flex-center">
               <img src="/assets/images/png/present.png" alt="dine and drink" />
-              <span class="article-banner__text text-center"
-                >PREMIUM PLUS B-DAY TICKET</span
-              >
+              <span class="article-banner__text text-center">PREMIUM PLUS B-DAY TICKET</span>
             </li>
           </ul>
           <div class="article-banner__btn-container flex-column flex-center">
-            <a href="/membership" class="btn-outline btn-block mb-md"
-              >Join now</a
-            >
+            <a href="/membership" class="btn-outline btn-block mb-md">Join now</a>
             <p class="login-inline text-center">
               Already a Member?&nbsp;
-              <a class="color-text color-text__btn" href="#si-popup">Log In</a>
+              <a class="modal-trigger color-text color-text__btn" href="#modal-login">Log In</a>
             </p>
           </div>
         </div>
@@ -106,11 +95,7 @@
         >
           <% for(let movie of currentMovies) { %>
           <div class="card">
-            <img
-              src="<%= movie.poster %>"
-              class="card-img-top"
-              alt="<%= movie.title %>"
-            />
+            <img src="<%= movie.poster %>" class="card-img-top" alt="<%= movie.title %>" />
             <div class="card__body">
               <p class="card__title text-uppercase"><%= movie.title %></p>
               <p class="card__text">
@@ -127,18 +112,6 @@
           <% } %>
         </section>
         <% } %>
-      </div>
-      <div class="t-nav__wrapper">
-        <div class="t-nav mt-sm">
-          <h2>FLIX Classics</h2>
-        </div>
-      </div>
-      <div class="section-layout flex-column">
-        <section
-          id="classics"
-          class="owl-carousel owl-theme"
-          data-ct="5"
-        ></section>
       </div>
     </main>
     <%- include('partials/footer.ejs') %>

@@ -8,16 +8,7 @@
     flex-shrink: 0;
     padding: 4rem 0 5rem 0;
 
-    @include respond-to-breakpoint(tab-port) {
-      flex-direction: column;
-    }
-
     .section-content {
-      @include respond-to-breakpoint(tab-port) {
-        width: 100%;
-      }
-      // ******************
-      // do not get this confused with other mem-desc__faq section found in the gold form section
       .mem-desc__faq {
         color: $muted;
         font-size: 1.4rem;
@@ -27,26 +18,48 @@
           margin: 2.2rem 0;
         }
 
-        @include respond-to-breakpoint(750) {
-          display: none;
-        }
-
         &:nth-child(1) {
           border: 2px solid red;
         }
       }
-      // ******************
-      // do not get this confused with other mem-desc__faq section found in the gold form section
+
       &:first-of-type .mem-desc__faq {
         display: none;
+      }
+    }
+  }
+}
+// ********************
+// Media Queries
+@include respond-to-breakpoint(tab-port) {
+  .section-layout {
+    &--signup {
+      flex-direction: column;
 
-        @include respond-to-breakpoint(750) {
-          display: block;
-          margin-bottom: 0;
+      .section-content {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@include respond-to-breakpoint(750) {
+  .section-layout {
+    &--signup {
+      flex-direction: column;
+
+      .section-content {
+        width: 100%;
+
+        .mem-desc__faq {
+          display: none;
         }
 
-        p {
-          @include respond-to-breakpoint(750) {
+        &:first-of-type .mem-desc__faq {
+          display: block;
+          margin-bottom: 0;
+
+          p {
             margin-bottom: 0;
           }
         }

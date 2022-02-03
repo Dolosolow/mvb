@@ -1,0 +1,11 @@
+<!-- -------------------------- -->
+<!-- confirmation message modal -->
+<% if(successMsg && successMsg.length > 0) { %>
+  <div class="modal modal-msg" id="modal-msg">
+    <button class="btn-worded-only modal-close">&times;</button>
+    <div class="modal-content">
+      <h2>Confirmation</h2>
+      <p><%= successMsg %></p>
+    </div>
+  </div>
+<% } %>

@@ -11,10 +11,6 @@
     position: relative;
     margin-bottom: 0;
     padding: 3.5rem 0 6rem 0;
-
-    @include respond-to-breakpoint(1366) {
-      padding: 3.5rem 2rem 6rem 2rem;
-    }
   }
 
   &::before {
@@ -53,26 +49,14 @@
   color: #fff;
   padding: 2rem 0;
 
-  @include respond-to-breakpoint(tab-port) {
-    padding-bottom: 2rem;
-  }
-
   &__title {
     font-size: 7rem;
-
-    @include respond-to-breakpoint(tab-port) {
-      font-size: 4rem;
-    }
   }
 
   &__content {
     display: flex;
     justify-content: flex-start;
     width: 100%;
-
-    @include respond-to-breakpoint(phone) {
-      flex-direction: column;
-    }
   }
 
   &__amenities {
@@ -81,25 +65,11 @@
     justify-content: space-around;
     list-style: none;
     width: 70%;
-
-    @include respond-to-breakpoint(phone) {
-      align-items: center;
-      flex-direction: column;
-      width: 100%;
-    }
   }
 
   &__item {
     margin-bottom: 3.5rem;
     width: max-content;
-
-    @include respond-to-breakpoint(tab-port) {
-      margin-bottom: 0;
-    }
-
-    @include respond-to-breakpoint(phone) {
-      margin-bottom: 5.5rem;
-    }
 
     img {
       max-width: 200px;
@@ -114,45 +84,86 @@
     line-height: 1;
     margin-top: 1.6rem;
     white-space: nowrap;
-
-    @include respond-to-breakpoint(980) {
-      font-size: 2.5rem;
-    }
-
-    @include respond-to-breakpoint(tab-port) {
-      font-size: 2.5rem;
-      margin-top: 2rem;
-      white-space: normal;
-    }
-
-    @include respond-to-breakpoint(phone) {
-      font-size: 3.5rem;
-    }
   }
 
   &__btn-container {
     margin-left: auto;
     width: 26%;
 
-    @include respond-to-breakpoint(600) {
-      margin-left: auto;
-      width: 100%;
-    }
-
     .btn-outline {
       align-self: flex-end;
       text-transform: capitalize;
 
-      @include respond-to-breakpoint(tab-port) {
-        font-size: 3.5rem;
-      }
-
-      @include respond-to-breakpoint(phone) {
-        font-size: 4.5rem;
-      }
-
       &:hover {
         border-color: #fff;
+      }
+    }
+  }
+}
+// ********************
+// Media Queries
+@include respond-to-breakpoint(1366) {
+  .headline {
+    .container-layout {
+      padding: 3.5rem 2rem 6rem 2rem;
+    }
+  }
+}
+
+@include respond-to-breakpoint(980) {
+  .article-banner {
+    &__text {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+@include respond-to-breakpoint(tab-port) {
+  .article-banner {
+    padding-bottom: 2rem;
+
+    &__title {
+      font-size: 4rem;
+    }
+
+    &__item {
+      margin-bottom: 0;
+    }
+
+    &__text {
+      font-size: 2.5rem;
+      margin-top: 2rem;
+      white-space: normal;
+    }
+  }
+}
+
+@include respond-to-breakpoint(phone) {
+  .article-banner {
+    &__content {
+      flex-direction: column;
+    }
+
+    &__amenities {
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    &__item {
+      margin-bottom: 5.5rem;
+    }
+
+    &__text {
+      font-size: 3.5rem;
+    }
+
+    &__btn-container {
+      margin-left: auto;
+      width: 100%;
+
+      .btn-outline {
+        font-size: 4.5rem;
       }
     }
   }
