@@ -17,6 +17,12 @@
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/e9063b30c3.js"></script>
     <!-- *************** -->
+    <!-- materializecss -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <!-- *************** -->
     <!-- facvicon -->
     <link
       rel="icon"
@@ -31,18 +37,7 @@
       href="/assets/images/favicons/favicon-16x16.png"
     />
     <link rel="manifest" href="/assets/images/favicons/site.webmanifest" />
-    <!-- *************** -->
-    <!-- materializecss -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <!-- *************** -->
-    <!-- materializecss -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
+
     <title>FLIX Theater | Dine in theater</title>
   </head>
   <body>
@@ -51,68 +46,37 @@
       <div class="t-nav">
         <h2>Sign up as Silver</h2>
       </div>
-      <span class="t-subline t-subline--text"
-        >Sign up for Silver Membership</span
-      >
+      <span class="t-subline t-subline--text">Sign up for Silver Membership</span>
     </header>
     <main class="bg-smoked">
       <div class="container-layout">
-        <div
-          class="section-layout section-layout--signup section-layout--signup-silver"
-        >
+        <div class="section-layout section-layout--signup section-layout--signup-silver">
           <!-- left half of signup (account sign up forms) -->
           <div class="section-content section-content--form-steps">
             <div id="act-silver-forms" class="form-container">
               <ul class="collapsable">
                 <li>
-                  <form
-                    id="act-personal__form"
-                    class="collapsible-body"
-                  
-                  >
+                  <form id="act-personal__form" class="collapsible-body">
                     <div class="form-container-row">
                       <div class="input-field">
-                        <input
-                          type="text"
-                          id="su-fName"
-                          name="fName"
-                          autocomplete="off"
-                          required
-                        />
+                        <input type="text" id="su-fName" name="fName" autocomplete="off" required />
                         <label for="su-fName">First Name</label>
                         <span class="helper-text" data-error="This field is required."></span>
                       </div>
                       <div class="input-field">
-                        <input
-                          type="text"
-                          id="su-lName"
-                          name="lName"
-                          autocomplete="off"
-                          required
-                        />
+                        <input type="text" id="su-lName" name="lName" autocomplete="off" required />
                         <label for="su-lName">Last Name</label>
                         <span class="helper-text" data-error="This field is required."></span>
                       </div>
                     </div>
                     <div class="form-container-row">
                       <div class="input-field">
-                        <input 
-                          type="email"
-                          id="su-email"
-                          name="email"
-                          required
-                        />
+                        <input type="email" id="su-email" name="email" required />
                         <label for="su-email">Email</label>
                         <span class="helper-text" data-error="This field is required."></span>
                       </div>
                       <div class="input-field">
-                        <input
-                          type="tel"
-                          id="su-phone"
-                          name="phone"
-                          autocomplete="off"
-                          required
-                        />
+                        <input type="tel" id="su-phone" name="phone" autocomplete="off" required />
                         <label for="su-phone">Phone Number</label>
                         <span class="helper-text" data-error="This field is required."></span>
                       </div>
@@ -169,39 +133,31 @@
                     checked
                   />
                   <span
-                    >I agree to receive information about my account,
-                    invitations to FLIX events, weekly showtimes emails, special
-                    offers and news</span
+                    >I agree to receive information about my account, invitations to FLIX events,
+                    weekly showtimes emails, special offers and news</span
                   >
                 </label>
                 <span
-                    >By creating an account, you agree to FLIX's
-                    <a href="#" class="color-text color-text__link"
-                      >Terms & Conditions</a
-                    >
-                    and
-                    <a href="#" class="color-text color-text__link"
-                      >Membership policies</a
-                    ></span
-                  >
-                <input type="hidden" name="type" value="silver">
-                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  >By creating an account, you agree to FLIX's
+                  <a href="#" class="color-text color-text__link">Terms & Conditions</a>
+                  and
+                  <a href="#" class="color-text color-text__link">Membership policies</a></span
+                >
+                <input type="hidden" name="type" value="silver" />
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
                 <button id="submit-silver" type="submit" class="btn-prim">Submit</button>
                 <p>
                   Already have an account?
-                  <a href="#si-popup" class="color-text color-text__link"
-                    >Sign in</a
-                  >
+                  <a href="#si-popup" class="color-text color-text__link">Sign in</a>
                 </p>
                 <div class="mem-desc__faq">
                   <p>
-                    * Discount varies based on day of week and location. Pricing
-                    is per ticket per visit. Subject to change without notice.
-                    Other restrictions may apply.
+                    * Discount varies based on day of week and location. Pricing is per ticket per
+                    visit. Subject to change without notice. Other restrictions may apply.
                   </p>
                   <p>
-                    * Only 5 tickets / day valid towards 25 Tickets Reward and
-                    Membership Level Upgrade
+                    * Only 5 tickets / day valid towards 25 Tickets Reward and Membership Level
+                    Upgrade
                   </p>
                 </div>
               </form>

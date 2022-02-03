@@ -17,6 +17,12 @@
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/e9063b30c3.js"></script>
     <!-- *************** -->
+    <!-- materializecss -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <!-- *************** -->
     <!-- facvicon -->
     <link
       rel="icon"
@@ -31,18 +37,6 @@
       href="/assets/images/favicons/favicon-16x16.png"
     />
     <link rel="manifest" href="/assets/images/favicons/site.webmanifest" />
-    <!-- *************** -->
-    <!-- materializecss -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <!-- *************** -->
-    <!-- materializecss -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
     <title>FLIX Theater | Dine in theater</title>
   </head>
   <body>
@@ -70,25 +64,25 @@
                         <div class="input-field">
                           <input
                             type="email"
-                            id="si-email--checkout"
+                            id="si-email"
                             name="email"
                             class="validate"
                             autocomplete="email"
                             required
                           />
-                          <label for="si-email--checkout">Email</label>
+                          <label for="si-email">Email</label>
                           <span class="helper-text" data-error="This field is required."></span>
                         </div>
                         <div class="input-field">
                           <input
                             type="password"
-                            id="si-password--checkout"
+                            id="si-password"
                             name="password"
                             class="validate"
                             autocomplete="off"
                             required
                           />
-                          <label for="si-password--checkout">Password</label>
+                          <label for="si-password">Password</label>
                           <span class="helper-text" data-error="This field is required."></span>
                           <div><i class="fas fa-lock fa-lg"></i></div>
                         </div>
@@ -316,7 +310,11 @@
               </div>
               <h2 class="mycart_total text-center">Total: $<%= cart.totalPrice.toFixed(2) %></h2>
               <div class="mycart_btns">
-                <button class="btn-outline-dark btn-block mt-xs mr-xs" id="cart-cancel-btn">
+                <button
+                  type="button"
+                  class="btn-outline-dark btn-block mt-xs mr-xs"
+                  id="cart-cancel-btn"
+                >
                   Cancel
                 </button>
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
@@ -333,7 +331,7 @@
                 <ul class="mobi-cart__list" id="mobi-cart__list">
                   <% for(item of cart.items) { %>
                   <li class="mobi-cart__item">
-                    <span class="seat-type flex-column">
+                    <span class="seat-type">
                       <span
                         ><%= item.screenId.startTime.split(' ')[1] %>&nbsp;@&nbsp;<%=
                         item.screenId.startTime.split(' ')[2] %>pm</span
@@ -351,11 +349,11 @@
                   TOTAL: &nbsp;$<%= cart.totalPrice.toFixed(2) %>
                 </h5>
                 <div class="mobi-cart__ctrl flex-row" id="mobi-cart__ctrl">
-                  <button class="btn-worded-only">Cancel</button>
-                  <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-                  <button id="cart-btn" type="submit" class="btn-worded-only" disabled>
-                    Confirm
+                  <button type="button" class="btn-worded-only" id="mobi-cart-cancel-btn">
+                    Cancel
                   </button>
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                  <button id="mobi-cart-btn" type="submit" class="btn-worded-only">Confirm</button>
                 </div>
               </div>
             </div>
@@ -368,5 +366,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
   </body>
 </html>
