@@ -1,28 +1,20 @@
-const autoprefixer = require("autoprefixer");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WriteFilePlugin = require("write-file-webpack-plugin");
-const webpack = require("webpack");
 const path = require("path");
 
 module.exports = {
-  mode: "development",
   entry: {
     admin_acct: [
       "./src/public/js/accounts/adminAcct/movieList.js",
       "./src/public/js/accounts/adminAcct/searchMovie.js",
     ],
     cart: ["./src/public/js/cart/cart.js"],
-    checkout: ["./src/public/js/cart/checkout.js", "./src/public/js/forms/checkout-form.js"],
+    checkout: ["./src/public/js/forms/checkout-form.js"],
     gen_acct: ["./src/public/js/pages/accounts-dash.js"],
-    main: [
-      "webpack-hot-middleware/client?reload=true&timeout=1000",
-      "./src/public/js/pages/index.js",
-      "./src/public/js/forms/login-forms.js",
-    ],
     memberships: [
       "./src/public/js/pages/main-membership.js",
       "./src/public/js/forms/signup-forms.js",
@@ -61,6 +53,7 @@ module.exports = {
             loader: "file-loader",
             options: {
               name: "assets/images/[ext]/[name].[ext]",
+              outputPath: "./",
             },
           },
           {
@@ -93,32 +86,10 @@ module.exports = {
           },
         ],
       },
-      {
-        test: /\.scss$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: "development",
-              reloadAll: true,
-            },
-          },
-          "css-loader",
-          {
-            loader: "postcss-loader",
-            options: {
-              plugins: () => [autoprefixer()],
-            },
-          },
-          "sass-loader",
-        ],
-      },
     ],
   },
   plugins: [
     new Dotenv(),
-    new webpack.HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({ filename: "assets/css/styles.css" }),
     new WriteFilePlugin(),
@@ -136,56 +107,155 @@ module.exports = {
       template: "!!raw-loader!./src/views/pages/admin-dash.template.ejs",
       filename: "admin-dash.ejs",
       chunks: ["main", "gen_acct", "admin_acct"],
+      minify: {
+        collapseWhitespace: true,
+        keepClosingSlash: true,
+        removeComments: true,
+        removeRedundantAttributes: false,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+      },
     }),
     new HtmlWebpackPlugin({
       template: "!!raw-loader!./src/views/pages/checkout.template.ejs",
       filename: "checkout.ejs",
-      chunks: ["main", "signup", "cart", "checkout"],
+      chunks: ["main", "signup", "checkout", "cart"],
+      minify: {
+        collapseWhitespace: true,
+        keepClosingSlash: true,
+        removeComments: true,
+        removeRedundantAttributes: false,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+      },
     }),
     new HtmlWebpackPlugin({
       template: "!!raw-loader!./src/views/pages/events.template.ejs",
       filename: "events.ejs",
       chunks: ["main"],
+      minify: {
+        collapseWhitespace: true,
+        keepClosingSlash: true,
+        removeComments: true,
+        removeRedundantAttributes: false,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+      },
     }),
     new HtmlWebpackPlugin({
       template: "!!raw-loader!./src/views/pages/index.template.ejs",
       filename: "index.ejs",
       chunks: ["main", "owl_carousel"],
+      minify: {
+        collapseWhitespace: true,
+        keepClosingSlash: true,
+        removeComments: true,
+        removeRedundantAttributes: false,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+      },
     }),
     new HtmlWebpackPlugin({
       template: "!!raw-loader!./src/views/pages/locations.template.ejs",
       filename: "locations.ejs",
       chunks: ["main", "owl_carousel"],
+      minify: {
+        collapseWhitespace: true,
+        keepClosingSlash: true,
+        removeComments: true,
+        removeRedundantAttributes: false,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+      },
     }),
     new HtmlWebpackPlugin({
       template: "!!raw-loader!./src/views/pages/membership.template.ejs",
       filename: "membership.ejs",
       chunks: ["main", "memberships"],
+      minify: {
+        collapseWhitespace: true,
+        keepClosingSlash: true,
+        removeComments: true,
+        removeRedundantAttributes: false,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+      },
     }),
     new HtmlWebpackPlugin({
       template: "!!raw-loader!./src/views/pages/seat-booking.template.ejs",
       filename: "seat-booking.ejs",
       chunks: ["main", "reservations", "cart"],
+      minify: {
+        collapseWhitespace: true,
+        keepClosingSlash: true,
+        removeComments: true,
+        removeRedundantAttributes: false,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+      },
     }),
     new HtmlWebpackPlugin({
       template: "!!raw-loader!./src/views/pages/signup-gold.template.ejs",
       filename: "signup-gold.ejs",
       chunks: ["main", "signup"],
+      minify: {
+        collapseWhitespace: true,
+        keepClosingSlash: true,
+        removeComments: true,
+        removeRedundantAttributes: false,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+      },
     }),
     new HtmlWebpackPlugin({
       template: "!!raw-loader!./src/views/pages/signup-silver.template.ejs",
       filename: "signup-silver.ejs",
       chunks: ["main", "signup"],
+      minify: {
+        collapseWhitespace: true,
+        keepClosingSlash: true,
+        removeComments: true,
+        removeRedundantAttributes: false,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+      },
     }),
     new HtmlWebpackPlugin({
       template: "!!raw-loader!./src/views/pages/user-dash.template.ejs",
       filename: "user-dash.ejs",
       chunks: ["main", "gen_acct", "admin_acct"],
+      minify: {
+        collapseWhitespace: true,
+        keepClosingSlash: true,
+        removeComments: true,
+        removeRedundantAttributes: false,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+      },
     }),
     new HtmlWebpackPlugin({
       template: "!!raw-loader!./src/views/pages/wine-dine.template.ejs",
       filename: "wine-dine.ejs",
       chunks: ["main"],
+      minify: {
+        collapseWhitespace: true,
+        keepClosingSlash: true,
+        removeComments: true,
+        removeRedundantAttributes: false,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+      },
     }),
   ],
 };
