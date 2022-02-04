@@ -58,7 +58,7 @@ export default class CartService {
       };
 
       try {
-        const cart = await Cart.addItem(newItem, userId.toString());
+        const cart = await Cart.addItem(newItem, userId);
         resolve(cart);
       } catch (err) {
         reject("Error: Something went wrong, item was not added");
@@ -66,18 +66,19 @@ export default class CartService {
     });
   };
 
-  static clearCart = (cartId) => {
+  static clearCart = (userId) => {
     console.log("clearing requested cart....");
 
     return new Promise(async (resolve, reject) => {
       try {
         const cart = await Cart.findOneAndUpdate(
-          { _id: cartId },
+          { userId },
           { totalPrice: 0, items: [] },
           { new: true }
         );
         resolve(cart);
       } catch (err) {
+        console.log("sometjhing went wrong");
         reject("Error: Something went wrong, cart was not cleared");
       }
     });
@@ -105,7 +106,7 @@ export default class CartService {
         if (!itemId.includes("+")) {
           cart = await Cart.deleteItem(itemId, userId);
         } else {
-          cart = await Cart.clearCart(userId);
+          cart = await this.clearCart(userId);
         }
         resolve(cart);
       } catch (err) {
@@ -114,15 +115,43 @@ export default class CartService {
     });
   };
 
+  static getCartSeatsId = (userId) => {
+    console.log("retreving the seat IDs for the seats in the cart.....");
+
+    return new Promise(async (resolve) => {
+      const cart = await this.getCartByUserId(userId);
+
+      if (cart) {
+        const seatIds = await cart.getItemsId();
+        resolve({ cartId: cart._id, seatIds });
+      } else {
+        resolve({ cartId: null, seatIds: [] });
+      }
+    });
+  };
+
   static getCart = (cartId) => {
     console.log("retreving cart....");
 
-    return new Promise(async (resolve, reject) => {
-      const cart = await Cart.findById(cartId);
+    return new Promise(async (resolve) => {
+      const cart = await Cart.findOne({ _id: cartId });
       if (cart) {
         resolve(cart);
       } else {
-        reject("Error: No cart was found");
+        resolve(null);
+      }
+    });
+  };
+
+  static getCartByUserId = (userId) => {
+    console.log("retreving cart....");
+
+    return new Promise(async (resolve) => {
+      const cart = await Cart.findOne({ userId });
+      if (cart) {
+        resolve(cart);
+      } else {
+        resolve(null);
       }
     });
   };
@@ -137,7 +166,7 @@ export default class CartService {
         })
         .exec((err, cart) => {
           if (!err) {
-            cart.items.forEach((item) => {
+            cart.items.map((item) => {
               item.screenId.startTime = moment(new Date(item.screenId.startTime)).format(
                 "ddd MM/DD hh:mm"
               );
@@ -145,7 +174,6 @@ export default class CartService {
                 "ddd MM/DD hh:mm"
               );
             });
-            console.log(`Found cart: ${cart._id}`);
             resolve(cart);
           } else {
             console.log("Error: No cart found");

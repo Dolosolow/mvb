@@ -38,23 +38,4 @@ export default class Messenger {
     sessionStorage.messageAfterReload = msg;
     sessionStorage.messageStatus = status;
   };
-
-  static promptWarningMessage = (url) => {
-    $(
-      render.promptMessage("Are you sure you want to cancel your order? Your items will be lost.")
-    ).insertAfter("#modal-login");
-
-    materialize.init.modals("#modal-msg--prompt");
-
-    $("#modal-msg--prompt").modal("open");
-    $("#btn-prompt-yes").attr("data-url", url);
-  };
-
-  static removePromptMessage = () => {
-    $("#modal-msg--prompt").modal("close");
-
-    setTimeout(() => {
-      $("#modal-msg--prompt").remove();
-    }, 1000);
-  };
 }
