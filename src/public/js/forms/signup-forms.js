@@ -13,7 +13,7 @@ $(function () {
       if ($(this).hasClass("invalid")) validation.validateInput(evt.target);
     });
   // -------------------
-  // memebership email submit for silver signup
+  // memebership email submit for quick banner silver signup
   $("#email-silver-form").on("submit", function (evt) {
     evt.preventDefault();
     const email = $("#email-silver-form :input");
@@ -31,7 +31,9 @@ $(function () {
     let newAccount = {};
     let errors = [];
 
-    $("#act-silver-forms form :input")
+    $(
+      "#act-silver-forms form :input, #act-silver-forms form :input, #act-gold-forms form :input, #act-gold-forms form :input"
+    )
       .not('[name="referralCode"], button')
       .each(function (idx) {
         let currentElem = $(this);
@@ -52,7 +54,12 @@ $(function () {
       // once reached to this point. confirmation of the user's password has been validated.
       // It is removed as it is no longer needed for the post call.
       delete newAccount.confirmPassword;
-      await axios.post("/api/auth/sivler-signup", { data: { ...newAccount } });
+
+      if (evt.target.id === "submit-silver") {
+        await axios.post("/api/auth/sivler-signup", { data: { ...newAccount } });
+      } else {
+        await axios.post("/api/auth/gold-signup", { data: { ...newAccount } });
+      }
     }
   });
 });
